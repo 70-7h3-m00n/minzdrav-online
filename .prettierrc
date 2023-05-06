@@ -1,0 +1,13 @@
+{
+    "filepath": "./",
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120,
+    "tabWidth": 4,
+    "jsxSingleQuote": true,
+    "arrowParens": "avoid",
+    "semi": true,
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
+}

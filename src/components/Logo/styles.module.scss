@@ -1,0 +1,17 @@
+.logo {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    &_image {
+        position: relative;
+        width: 58px;
+        height: 58px;
+    }
+    &_text {
+        width: 123px;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 12px;
+        color: #000000;
+    }
+}

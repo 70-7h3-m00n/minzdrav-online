@@ -1,0 +1,70 @@
+.footer {
+    background: #242424;
+    color: #ffffff;
+    padding: 41px 0;
+}
+
+.logo {
+    p {
+        color: #ffffff;
+    }
+}
+
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.containerFooter {
+    width: 951px;
+    margin: 0 auto;
+}
+
+.wrapFooterTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapperContacts {
+    width: 394px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.linkPhone {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.wrapperSocialNetwork {
+    .wrapperImageGroup {
+        display: flex;
+        .wrapperImage {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+    }
+}
+
+.wrapperInfoContent {
+    width: 371px;
+}
+
+.wrapperPolitics {
+    display: flex;
+    p {
+        margin-right: 30px;
+    }
+}

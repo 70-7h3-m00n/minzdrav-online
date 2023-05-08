@@ -1,0 +1,19 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.link,
+.linkActive {
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: #9e9e9e;
+    text-decoration: none;
+    margin-right: 47px;
+}
+
+.linkActive {
+    color: #000000;
+}

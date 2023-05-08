@@ -1,6 +1,25 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { appWithTranslation } from 'next-i18next';
+import { Roboto } from '@next/font/google';
+import '@/styles/globals.scss';
+import '@/styles/reset.scss';
+import Layout from '@/src/components/Layout';
+import Locale from '@/src/components/Locale';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+const roboto = Roboto({
+    subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
+    weight: ['100', '300', '400', '500', '700', '900'],
+});
+
+function App({ Component, pageProps }: AppProps) {
+    return (
+        <div className={roboto.className}>
+            <Locale />
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </div>
+    );
 }
+
+export default appWithTranslation(App);

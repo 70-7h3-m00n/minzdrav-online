@@ -1,22 +1,40 @@
 {
-  "name": "new-imo-msk-ru",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@types/node": "20.0.0",
-    "@types/react": "18.2.5",
-    "@types/react-dom": "18.2.4",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1",
-    "next": "13.4.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.4"
-  }
+    "name": "new-imo-msk-ru",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "i18nexus pull && next dev",
+        "build": "i18nexus pull && prettier --write . && next build",
+        "prettier": "prettier --write .",
+        "i18nexus": "i18nexus pull",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@next/font": "^13.4.1",
+        "@types/node": "20.0.0",
+        "@types/react": "18.2.5",
+        "@types/react-dom": "18.2.3",
+        "axios": "^1.4.0",
+        "classnames": "^2.3.2",
+        "eslint": "8.39.0",
+        "eslint-config-next": "13.4.0",
+        "i18next-browser-languagedetector": "^7.0.1",
+        "next": "13.4.0",
+        "next-i18next": "^13.2.2",
+        "qs": "^6.11.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-i18next": "^12.2.2",
+        "react-uuid": "^2.0.0",
+        "sharp": "^0.32.1",
+        "swr": "^2.1.5",
+        "typescript": "5.0.4",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "i18nexus-cli": "^3.1.0",
+        "prettier": "2.8.8",
+        "sass": "^1.62.1"
+    }
 }

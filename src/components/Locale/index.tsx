@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from './styles.module.scss';
+import React from 'react'
+import Link from 'next/link'
+import styles from './styles.module.scss'
 
 const Locale = () => {
     return (
@@ -26,7 +26,7 @@ const Locale = () => {
                 ru
             </Link>
         </div>
-    );
-};
+    )
+}
 
-export default Locale;
+export default Locale

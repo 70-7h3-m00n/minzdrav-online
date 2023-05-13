@@ -1,0 +1,89 @@
+@mixin text-big {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-card-link {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-input {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-general {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-header {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-small {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media screen and (max-width: 1400px) {
+        font-size: 12px;
+    }
+}
+
+@mixin text-extra-small {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-phone {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-politics {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
+@mixin text-btn-form {
+    font-weight: 400;
+    font-size: 18px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}

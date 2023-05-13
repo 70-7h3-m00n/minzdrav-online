@@ -1,41 +1,41 @@
 type ArrayRouterLinksFooter = Array<{
-    text: string;
-    link: string | null;
+    text: string
+    link: string | null
     subLink?: Array<{
-        text: string;
-        link: string;
-    }>;
-}>;
+        text: string
+        link: string
+    }>
+}>
 
 export const arrayRouterLinksFooter: ArrayRouterLinksFooter = [
     {
-        text: 'home',
+        text: 'linkHome',
         link: '/',
     },
     {
-        text: 'news',
-        link: '/news',
+        text: 'linkNews',
+        link: '/',
     },
     {
-        text: 'webinars',
-        link: '/webinars',
+        text: 'linkWebinars',
+        link: '/',
     },
     {
-        text: 'aboutUniversity',
+        text: 'groupLinkUniversity',
         link: null,
         subLink: [
             {
-                text: 'Отзывы',
+                text: 'subLinkReviews',
                 link: '/',
             },
             {
-                text: 'Лицензии',
+                text: 'subLinkLicenses',
                 link: '/',
             },
             {
-                text: 'Документы',
+                text: 'subLinkDocuments',
                 link: '/',
             },
         ],
     },
-];
+]

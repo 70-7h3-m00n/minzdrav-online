@@ -1,3 +1,6 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+
 .logo {
     display: flex;
     justify-content: space-between;
@@ -8,10 +11,9 @@
         height: 58px;
     }
     &_text {
+        @include text.text-extra-small;
         width: 123px;
         text-transform: uppercase;
-        font-weight: 400;
-        font-size: 12px;
-        color: #000000;
+        color: color.$general;
     }
 }

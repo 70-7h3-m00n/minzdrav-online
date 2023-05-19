@@ -1,19 +1,21 @@
+@use 'src/styles/mixin/text';
+@use 'src/styles/variables/color';
+
 .footer {
-    background: #242424;
-    color: #ffffff;
+    background: color.$background-footer;
+    color: color.$text-footer;
     padding: 41px 0;
+    min-height: 336px;
 }
 
 .logo {
     p {
-        color: #ffffff;
+        color: color.$text-footer;
     }
 }
 
 .text {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    @include text.text-small;
 }
 
 .containerFooter {
@@ -33,17 +35,13 @@
 }
 
 .linkPhone {
-    font-weight: 500;
-    font-size: 21px;
-    line-height: 25px;
-    color: #ffffff;
+    @include text.text-phone;
+    color: color.$text-footer;
     text-decoration: none;
 }
 
 .header {
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
+    @include text.text-extra-small;
 }
 
 .wrapperSocialNetwork {
@@ -62,9 +60,20 @@
     width: 371px;
 }
 
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuContainer {
+    width: 394px;
+}
+
 .wrapperPolitics {
+    margin-top: 80px;
     display: flex;
     p {
         margin-right: 30px;
+        @include text.text-politics;
     }
 }

@@ -1,23 +1,23 @@
 type ArrayRouterLinks = Array<{
-    text: string;
-    link: string;
-}>;
+    text: string
+    link: string
+}>
 
 export const arrayRouterLinks: ArrayRouterLinks = [
     {
-        text: 'home',
+        text: 'linkHome',
         link: '/',
     },
     {
-        text: 'news',
+        text: 'linkNews',
         link: '/news',
     },
     {
-        text: 'webinars',
+        text: 'linkWebinars',
         link: '/webinars',
     },
     {
-        text: 'aboutUniversity',
+        text: 'groupLinkUniversity',
         link: '/about-university',
     },
-];
+]

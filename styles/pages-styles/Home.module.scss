@@ -1,6 +1,74 @@
-.contentPage {
-}
+@use 'src/styles/variables/color';
 
 .header {
     margin-top: 0;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    color: color.$general;
+    min-height: 950px;
+
+    &_ContainerLeft {
+        width: 55%;
+
+        &__Header {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 47px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        &__SubHeader {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+        }
+        &__Btn {
+            margin-top: 25px;
+        }
+    }
+
+    &_containerRight {
+        position: absolute;
+        width: 62%;
+        height: 950px;
+        right: -19%;
+    }
+}
+
+.wrapperCardDirection {
+    display: flex;
+    justify-content: space-between;
+
+    .btnMedicine {
+        background: #3e3cff;
+    }
+
+    .btnPsychology {
+        background: #ba4df9;
+    }
+
+    .btnDietetics {
+        background: #ff5f3c;
+    }
+}
+
+.resources {
+    margin-bottom: 85px;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.slider {
+    background-color: #9e9e9e;
 }

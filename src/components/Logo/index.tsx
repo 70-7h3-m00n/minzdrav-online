@@ -1,16 +1,16 @@
-import React from 'react';
-import Image, { StaticImageData } from 'next/image';
-import styles from './styles.module.scss';
-import { useTranslation } from 'next-i18next';
-import classNames from 'classnames';
+import React from 'react'
+import Image, { StaticImageData } from 'next/image'
+import styles from './styles.module.scss'
+import { useTranslation } from 'next-i18next'
+import classNames from 'classnames'
 
 interface InterfaceLogo {
-    imageUrl: StaticImageData | string;
-    style?: string;
+    imageUrl: StaticImageData | string
+    style?: string
 }
 
 const Logo = ({ style, imageUrl }: InterfaceLogo): JSX.Element => {
-    const { t } = useTranslation('common');
+    const { t } = useTranslation('common')
 
     return (
         <div className={classNames([styles.logo, style])}>
@@ -28,7 +28,7 @@ const Logo = ({ style, imageUrl }: InterfaceLogo): JSX.Element => {
             </div>
             <p className={styles.logo_text}>{t('logo')}</p>
         </div>
-    );
-};
+    )
+}
 
-export default Logo;
+export default Logo

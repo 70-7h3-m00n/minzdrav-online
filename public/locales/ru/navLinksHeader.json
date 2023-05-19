@@ -1,1 +1,9 @@
-{ "home": "Главная", "news": "Новости", "webinars": "Вебинары", "aboutUniversity": "Об университете" }
+{
+    "linkHome": "Главная",
+    "linkNews": "Новости",
+    "linkWebinars": "Вебинары",
+    "subLinkReviews": "Отзывы",
+    "subLinkLicenses": "Лицензии",
+    "subLinkDocuments": "Документы",
+    "groupLinkUniversity": "Об университете"
+}

@@ -1,17 +1,17 @@
-import React from 'react';
-import Logo from '@/src/components/Logo';
-import logoFooter from '@/public/images/logo-footer.png';
-import styles from './styles.module.scss';
-import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
-import Image from 'next/image';
-import vk from '@/public/images/vk.png';
-import youtube from '@/public/images/youtube.png';
-import telegram from '@/public/images/telegram.png';
-import MenuFooter from '@/src/features/menu/MenuFooter/components/MenuFooter';
+import React from 'react'
+import Logo from '@/src/components/Logo'
+import logoFooter from '@/public/images/logo-footer.png'
+import styles from './styles.module.scss'
+import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
+import Image from 'next/image'
+import vk from '@/public/images/vk.png'
+import youtube from '@/public/images/youtube.png'
+import telegram from '@/public/images/telegram.png'
+import MenuFooter from '@/src/features/menu/MenuFooter/components/MenuFooter'
 
 const Footer = () => {
-    const { t } = useTranslation('footer');
+    const { t } = useTranslation('footer')
 
     return (
         <footer className={styles.footer}>
@@ -71,14 +71,14 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className={styles.infoContainer}>
                     <div className={styles.wrapperInfoContent}>
                         <p className={styles.text}>&copy; &nbsp;{t('rights')}</p>
                         <hr />
                         <p className={styles.text}>{t('license')}</p>
                     </div>
 
-                    <div>
+                    <div className={styles.menuContainer}>
                         <MenuFooter />
                     </div>
                 </div>
@@ -90,7 +90,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default Footer;
+export default Footer

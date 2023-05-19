@@ -1,1 +1,9 @@
-{ "home": "家", "news": "ニュース", "webinars": "ウェビナー", "aboutUniversity": "大学について" }
+{
+    "linkHome": "家",
+    "linkNews": "ニュース",
+    "linkWebinars": "ウェビナー",
+    "subLinkReviews": "レビュー",
+    "subLinkLicenses": "ライセンス",
+    "subLinkDocuments": "ドキュメンテーション",
+    "groupLinkUniversity": "大学について"
+}

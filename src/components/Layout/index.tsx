@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from './styles.module.scss';
-import Header from '@/src/components/Header';
-import Footer from '@/src/components/Footer';
+import React from 'react'
+import styles from './styles.module.scss'
+import Header from '@/src/components/Header'
+import Footer from '@/src/components/Footer'
 
 interface InterfaceLayout {
-    children: JSX.Element;
+    children: JSX.Element
 }
 
 const Layout = ({ children }: InterfaceLayout): JSX.Element => {
@@ -14,7 +14,7 @@ const Layout = ({ children }: InterfaceLayout): JSX.Element => {
             <main className={styles.layout}>{children}</main>
             <Footer />
         </>
-    );
-};
+    )
+}
 
-export default Layout;
+export default Layout

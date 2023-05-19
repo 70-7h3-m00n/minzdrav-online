@@ -1,1 +1,9 @@
-{ "home": "uy", "news": "Yangiliklar", "webinars": "Vebinarlar", "aboutUniversity": "Universitet haqida" }
+{
+    "linkHome": "uy",
+    "linkNews": "Yangiliklar",
+    "linkWebinars": "Vebinarlar",
+    "subLinkReviews": "Sharhlar",
+    "subLinkLicenses": "Litsenziyalar",
+    "subLinkDocuments": "Hujjatlar",
+    "groupLinkUniversity": "Universitet haqida"
+}

@@ -1,17 +1,17 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
 function getLocalesFromDir(dirName) {
-    const locales = [];
+    const locales = []
     fs.readdirSync(dirName).forEach(file => {
-        const filePath = path.join(dirName, file);
-        const stat = fs.statSync(filePath);
+        const filePath = path.join(dirName, file)
+        const stat = fs.statSync(filePath)
         if (stat.isDirectory()) {
-            locales.push(file);
+            locales.push(file)
         }
-    });
+    })
 
-    return locales;
+    return locales
 }
 
 module.exports = {
@@ -20,4 +20,4 @@ module.exports = {
         locales: getLocalesFromDir('./public/locales'),
     },
     reloadOnPrerender: true,
-};
+}

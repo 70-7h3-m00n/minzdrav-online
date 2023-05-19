@@ -1,8 +1,20 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+* {
+    user-select: none;
+}
 .container {
     width: 1396px;
     margin: 0 auto;
 }
-@media (max-width: 1400px) {
+
+.header {
+    @include text.text-header;
+    margin-top: 30px;
+    user-select: none;
+}
+
+@media screen and (max-width: 1400px) {
     .container {
         width: 996px;
     }

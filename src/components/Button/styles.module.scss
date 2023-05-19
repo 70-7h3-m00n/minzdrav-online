@@ -1,5 +1,7 @@
+@use 'src/styles/variables/color';
+
 .button {
-    border: 1px solid #000000;
+    border: 1px solid color.$general;
     border-radius: 30px;
     padding: 10px 20px;
     text-align: center;

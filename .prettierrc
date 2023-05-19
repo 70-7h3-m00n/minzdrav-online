@@ -6,7 +6,7 @@
     "tabWidth": 4,
     "jsxSingleQuote": true,
     "arrowParens": "avoid",
-    "semi": true,
+    "semi": false,
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
     }

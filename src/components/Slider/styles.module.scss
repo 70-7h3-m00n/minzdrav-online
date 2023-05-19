@@ -1,0 +1,33 @@
+.wrapperSlider {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.slider {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliderItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperNavigation {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnSlider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

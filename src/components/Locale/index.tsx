@@ -1,14 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './styles.module.scss'
+import { useRouter } from 'next/router'
 
 const Locale = () => {
+    const router = useRouter()
+
     return (
         <div className={styles.locale}>
             <Link href={''} locale={'ja'}>
                 ja
             </Link>
-            ,
             <br />
             <Link href={''} locale={'kk'}>
                 kk

@@ -9,11 +9,11 @@ interface InterfaceLayout {
 
 const Layout = ({ children }: InterfaceLayout): JSX.Element => {
     return (
-        <>
+        <data className={styles.app}>
             <Header />
             <main className={styles.layout}>{children}</main>
             <Footer />
-        </>
+        </data>
     )
 }
 

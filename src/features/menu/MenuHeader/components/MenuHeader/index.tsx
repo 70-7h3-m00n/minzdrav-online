@@ -23,7 +23,7 @@ const MenuHeader = (): JSX.Element => {
                     {t(`navLinksHeader:${linkData.text}`)}
                 </Link>
             ))}
-            <Button text={t('header:buttonEnter')} />
+            <Button text={t('header:buttonEnter')} link={'/'} />
         </nav>
     )
 }

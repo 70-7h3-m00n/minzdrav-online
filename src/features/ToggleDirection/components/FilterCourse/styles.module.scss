@@ -1,0 +1,54 @@
+.infoBlock {
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 251px;
+}
+
+.headerBlock {
+    padding: 25px 10px 25px 70px;
+    max-width: calc(100% - 651px);
+}
+
+.header {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 150%;
+    margin: 0;
+}
+
+.wrapperBtn {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    .btn,
+    .active {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        background-color: transparent;
+        padding: 10px 20px;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        color: #ffffff;
+        margin-right: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: white;
+        color: #000000;
+    }
+}
+
+.wrapperImage {
+    position: relative;
+    width: 651px;
+
+    img {
+        object-fit: contain;
+    }
+}

@@ -3,12 +3,13 @@ import test2 from '@/public/images/medicine.png'
 import test3 from '@/public/images/psychology.png'
 import styles from '@/styles/pages-styles/Home.module.scss'
 import { StaticImageData } from 'next/image'
+import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
 
 interface DataCardDirection {
     text: string
     image: StaticImageData
     styles: string
-    link: string
+    contentTab: EnumContentToggle
 }
 
 const DataCardDirection: Array<DataCardDirection> = [
@@ -16,19 +17,19 @@ const DataCardDirection: Array<DataCardDirection> = [
         text: 'common:medicine',
         image: test2,
         styles: styles.btnMedicine,
-        link: '/',
+        contentTab: EnumContentToggle.medicine,
     },
     {
         text: 'common:psychology',
         image: test3,
         styles: styles.btnPsychology,
-        link: '/',
+        contentTab: EnumContentToggle.psychology,
     },
     {
         text: 'common:dietetics',
         image: test1,
         styles: styles.btnDietetics,
-        link: '/',
+        contentTab: EnumContentToggle.dietetics,
     },
 ]
 export default DataCardDirection

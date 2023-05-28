@@ -1,0 +1,40 @@
+.medicine {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.header {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 150%;
+    margin: 0;
+}
+
+.contentWrapper {
+    padding: 20px 70px;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 651px;
+
+    img {
+        object-fit: contain;
+    }
+}
+
+.btn {
+    background-color: transparent;
+    margin-top: 50px;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 18px 25px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+}

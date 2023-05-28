@@ -1,1 +1,9 @@
-{"linkHome":"home","linkNews":"News","linkWebinars":"Webinars","subLinkReviews":"Reviews","subLinkLicenses":"Licenses","subLinkDocuments":"Documentation","groupLinkUniversity":"About the university"}
+{
+    "linkHome": "home",
+    "linkNews": "News",
+    "linkWebinars": "Webinars",
+    "subLinkReviews": "Reviews",
+    "subLinkLicenses": "Licenses",
+    "subLinkDocuments": "Documentation",
+    "groupLinkUniversity": "About the university"
+}

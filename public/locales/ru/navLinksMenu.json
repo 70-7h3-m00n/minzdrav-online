@@ -1,1 +1,9 @@
-{"linkHome":"Главная","linkNews":"Новости","linkWebinars":"Вебинары","subLinkReviews":"Отзывы","subLinkLicenses":"Лицензии","subLinkDocuments":"Документы","groupLinkUniversity":"Об университете"}
+{
+    "linkHome": "Главная",
+    "linkNews": "Новости",
+    "linkWebinars": "Вебинары",
+    "subLinkReviews": "Отзывы",
+    "subLinkLicenses": "Лицензии",
+    "subLinkDocuments": "Документы",
+    "groupLinkUniversity": "Об университете"
+}

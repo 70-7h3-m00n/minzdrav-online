@@ -1,1 +1,15 @@
-{"and":"And","name":"Name","email":"Email","phone":"Telephone","submit":"Send","link-one":"processing of personal data","link-two":"with the terms of use of the platform","validName":"Enter your name","header-one":"We'll help you choose!","validEmail":"Enter email","validPhone":"Enter phone","political-one":"By clicking on the button, I agree to"}
+{
+    "and": "And",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Telephone",
+    "submit": "Send",
+    "link-one": "processing of personal data",
+    "link-two": "with the terms of use of the platform",
+    "validName": "Enter your name",
+    "header-one": "We'll help you choose!",
+    "validEmail": "Enter email",
+    "validPhone": "Enter phone",
+    "description": "If you have questions about the format or don't know what to choose, leave your number - we will call to answer all your questions.",
+    "political-one": "By clicking on the button, I agree to"
+}

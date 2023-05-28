@@ -10,7 +10,7 @@ import Image from 'next/image'
 import urlImage from '@/public/images/home.svg'
 import FormApplication from '@/src/features/FormApplication/components/FormApplication'
 import CardResources from '@/src/components/CardResources'
-import CardDirection from '@/src/components/CardDirection'
+import CardDirection from '../src/features/ToggleDirection/components/CardDirection'
 import Slider from '@/src/components/Slider'
 import DataCardDirection from '@/src/config/dataCardDirection'
 import uuid from 'react-uuid'
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     }
 }
 
-const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }: PageHomeProps) => {
+const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
     const { t } = useTranslation()
 
     return (
@@ -50,7 +50,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }: PageHomeP
                     <div className={styles.info_ContainerLeft}>
                         <h1 className={styles.info_ContainerLeft__Header}>{t('home-headers:homeGeneral')}</h1>
                         <h2 className={styles.info_ContainerLeft__SubHeader}>{t('home-headers:homeSub')}</h2>
-                        <Button style={styles.info_ContainerLeft__Btn} text={t('common:homeBtnDiscover')} />
+                        <Button style={styles.info_ContainerLeft__Btn} link={'/'} text={t('common:homeBtnDiscover')} />
                         <FormApplication />
                     </div>
 
@@ -76,26 +76,26 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }: PageHomeP
                                 imageSrc={card.image}
                                 textLink={t(card.text)}
                                 colorBtn={card.styles}
-                                link={card.link}
+                                contentTab={card.contentTab}
                             />
                         ))}
                     </div>
                 </section>
 
-                <section className={classNames(['container', styles.profession])}>
-                    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>
-                </section>
+                {/*<section className={classNames(['container', styles.profession])}>*/}
+                {/*    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>*/}
+                {/*</section>*/}
 
-                <section className={styles.Partners}>
-                    <h2 className={classNames(['header', 'container'])}>{t('homeHeaders:homePartners')}</h2>
+                {/*<section className={styles.Partners}>*/}
+                {/*    <h2 className={classNames(['header', 'container'])}>{t('homeHeaders:homePartners')}</h2>*/}
 
-                    <Slider
-                        dataArray={partnerData}
-                        render={(props, ref) => (
-                            <CardPartners partner={props.partner} iconUrl={props.iconUrl} ref={ref} />
-                        )}
-                    />
-                </section>
+                {/*    <Slider*/}
+                {/*        dataArray={partnerData}*/}
+                {/*        render={(props, ref) => (*/}
+                {/*            <CardPartners partner={props.partner} iconUrl={props.iconUrl} ref={ref} />*/}
+                {/*        )}*/}
+                {/*    />*/}
+                {/*</section>*/}
 
                 <section className={classNames(['container', styles.resources])}>
                     <h2 className={'header'}>{t('homeHeaders:homeResources')}</h2>

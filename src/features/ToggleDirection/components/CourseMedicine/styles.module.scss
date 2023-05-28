@@ -1,0 +1,127 @@
+.infoBlock {
+    display: block;
+}
+
+.headerFilter {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+.courseInfo {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+
+    .filterCourses {
+        width: calc(100% - 920px);
+        padding: 0 50px;
+
+        .search {
+            margin-top: 20px;
+
+            .searchImageWrapper {
+            }
+
+            .searchInput {
+                width: 100%;
+                background: #edecea;
+                border-radius: 10px;
+                border: none;
+                padding: 15px 25px;
+            }
+        }
+
+        .toggleCategoryWrapper {
+            padding-bottom: 40px;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .btnCategory {
+                margin-bottom: 5px;
+                padding: 10px 20px;
+                background-color: transparent;
+                border: 1px solid #000000;
+                border-radius: 30px;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                text-align: center;
+                color: #000000;
+                cursor: pointer;
+            }
+
+            .btnActive {
+                background: #3d3bff;
+                border: 1px solid #3d3bff;
+                border-radius: 30px;
+                color: #ffffff;
+            }
+        }
+
+        .typeTrainingWrapper {
+            border-top: 1px solid black;
+            width: 250px;
+            padding-top: 40px;
+
+            .trainingLabel {
+                .trainingCheckbox {
+                    margin-right: 10px;
+                    border-radius: 100%;
+                }
+            }
+        }
+
+        .durationBlock {
+            padding-top: 45px;
+
+            .durationLabel {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 14px;
+                color: #000000;
+
+                .durationRange {
+                }
+            }
+        }
+    }
+
+    .coursesContent {
+        width: 920px;
+
+        .listCategory {
+            padding: 0;
+
+            .category {
+                list-style: none;
+
+                .header {
+                    font-weight: 400;
+                    font-size: 32px;
+                    line-height: 40px;
+                    color: #000000;
+                }
+
+                .courseList {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-gap: 20px;
+                    padding: 0;
+
+                    .course {
+                        list-style: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}

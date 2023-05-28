@@ -43,6 +43,15 @@
     }
 }
 
+@mixin text-description-form {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    @media screen and (max-width: 1400px) {
+    }
+}
+
 @mixin text-small {
     font-weight: 400;
     font-size: 14px;

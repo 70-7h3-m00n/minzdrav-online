@@ -18,14 +18,23 @@
     @include text.text-small;
 }
 
-.containerFooter {
+.containerFooter,
+.bigContainerFooter {
     width: 951px;
     margin: 0 auto;
+}
+
+.bigContainerFooter {
+    width: 1168px;
 }
 
 .wrapFooterTop {
     display: flex;
     justify-content: space-between;
+}
+
+.formFooter {
+    margin-bottom: 60px;
 }
 
 .wrapperContacts {

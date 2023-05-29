@@ -1,6 +1,14 @@
 @use 'src/styles/variables/color';
 @use 'src/styles/mixin/text';
-* {
+
+h1,
+h2,
+h3,
+p,
+button,
+div,
+ul,
+li {
     user-select: none;
 }
 .container {
@@ -18,4 +26,8 @@
     .container {
         width: 996px;
     }
+}
+
+.close {
+    display: none;
 }

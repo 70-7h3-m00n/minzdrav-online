@@ -9,13 +9,22 @@ import vk from '@/public/images/vk.png'
 import youtube from '@/public/images/youtube.png'
 import telegram from '@/public/images/telegram.png'
 import MenuFooter from '@/src/features/menu/MenuFooter/components/MenuFooter'
+import FormApplication from '@/src/features/FormApplication/components/FormApplication'
+import { useRouter } from 'next/router'
 
 const Footer = () => {
+    const router = useRouter()
     const { t } = useTranslation('footer')
 
     return (
         <footer className={styles.footer}>
-            <div className={styles.containerFooter}>
+            <div className={router.asPath !== '/' ? styles.bigContainerFooter : styles.containerFooter}>
+                {router.asPath !== '/' && (
+                    <div className={styles.formFooter}>
+                        <FormApplication />
+                    </div>
+                )}
+
                 <div className={styles.wrapFooterTop}>
                     <Logo style={styles.logo} imageUrl={logoFooter} />
 
@@ -38,8 +47,8 @@ const Footer = () => {
                                         quality={100}
                                         fill
                                         sizes='(max-width: 768px) 100vw,
-                              (max-width: 1200px) 50vw,
-                              33vw'
+                                              (max-width: 1200px) 50vw,
+                                              33vw'
                                     />
                                 </Link>
 

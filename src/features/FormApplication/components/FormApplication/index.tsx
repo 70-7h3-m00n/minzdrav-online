@@ -2,10 +2,18 @@ import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import FormSending from '@/src/features/FormApplication/components/FormSending'
+import { useEffect, useState } from 'react'
 
 const FormApplication = () => {
+    const [renderForm, setRenderForm] = useState(false)
     const router = useRouter()
     const { t } = useTranslation('form')
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setRenderForm(true)
+        }
+    }, [])
 
     const toggleContent = router.asPath === '/'
 
@@ -17,8 +25,7 @@ const FormApplication = () => {
                     {toggleContent ? <></> : <p className={styles.descriptionForm}>{t('description')}</p>}
                 </div>
             }
-
-            <FormSending />
+            {renderForm && <FormSending />}
         </div>
     )
 }

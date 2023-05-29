@@ -20,7 +20,7 @@ const Slider = ({ dataArray, render }: SliderProps<SliderItems>): JSX.Element =>
     const [debounce, setDebounce] = useState(true)
 
     useEffect(() => {
-        if($item.current !== null && $screenSlider.current !== null) {
+        if ($item.current !== null && $screenSlider.current !== null) {
             const elemScreen = $screenSlider.current
             const elemItem = $item.current
 
@@ -41,8 +41,9 @@ const Slider = ({ dataArray, render }: SliderProps<SliderItems>): JSX.Element =>
     }, [counterItemsScreen, $item, itemWidth, dataArray.length])
 
     useEffect(() => {
-        const andSliderLength =
-            itemWidth! * (counterItemsScreen! + Math.ceil((dataArray.length - counterItemsScreen!) / 2))
+        const hiddenHalfItem = (dataArray.length - counterItemsScreen!) / 2
+        const roundingHalfItem = hiddenHalfItem < 1 ? 0 : hiddenHalfItem
+        const andSliderLength = itemWidth! * (counterItemsScreen! + Math.ceil(roundingHalfItem))
         const isEven = (num: number) => (counterItemsScreen! % 2 ? Math.floor(num) : Math.ceil(num))
         const redirectItem = isEven((dataArray.length - counterItemsScreen!) / 2)
 
@@ -76,16 +77,15 @@ const Slider = ({ dataArray, render }: SliderProps<SliderItems>): JSX.Element =>
                 <div
                     className={styles.sliderItem}
                     style={{
-                        width:
-                            valid
-                                ? `${itemWidth! * (dataArray.length + counterItemsScreen! * 2)}px`
-                                : `${itemWidth! * dataArray.length}px`,
+                        width: valid
+                            ? `${itemWidth! * (dataArray.length + counterItemsScreen! * 2)}px`
+                            : `${itemWidth! * dataArray.length}px`,
                         transform: dataArray.length >= counterItemsScreen! ? `translateX(${translate}px)` : 'none',
                         transition: !debounce ? 'transform 0.3s ease-out' : 'none',
                         visibility: itemWidth ? 'visible' : 'hidden',
                     }}
                 >
-                    { valid &&
+                    {valid &&
                         dataArray
                             .slice(dataArray.length - counterItemsScreen!)
                             .map((item, i) => <React.Fragment key={uuid()}>{render(item, $item)}</React.Fragment>)}
@@ -94,7 +94,7 @@ const Slider = ({ dataArray, render }: SliderProps<SliderItems>): JSX.Element =>
                         <React.Fragment key={uuid()}>{render(item, $item)}</React.Fragment>
                     ))}
 
-                    { valid &&
+                    {valid &&
                         dataArray
                             .slice(0, counterItemsScreen!)
                             .map((item, i) => <React.Fragment key={uuid()}>{render(item, $item)}</React.Fragment>)}
@@ -102,7 +102,7 @@ const Slider = ({ dataArray, render }: SliderProps<SliderItems>): JSX.Element =>
             </div>
 
             <div className={styles.wrapperNavigation}>
-                { valid && (
+                {valid && (
                     <>
                         <button
                             className={styles.btnSlider}

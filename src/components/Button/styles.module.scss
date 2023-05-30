@@ -1,6 +1,8 @@
 @use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
 
 .button {
+    @include text.text-small;
     border: 1px solid color.$general;
     border-radius: 30px;
     padding: 10px 20px;
@@ -10,4 +12,5 @@
     background-color: transparent;
     overflow: hidden;
     outline: none;
+    color: color.$general;
 }

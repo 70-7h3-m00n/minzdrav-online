@@ -1,0 +1,56 @@
+.wrapperCard {
+    position: relative;
+    border-radius: 20px;
+    width: 450px;
+    height: 200px;
+    padding: 20px 23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow: hidden;
+    cursor: pointer;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .wrapperCategory {
+            display: flex;
+
+            .category {
+                background-color: rgba(0, 0, 0, 0.1);
+                color: white;
+                font-weight: 400;
+                font-size: 11px;
+                line-height: 16px;
+                border-radius: 20px;
+                padding: 5px 10px;
+            }
+        }
+
+        .header {
+            width: 270px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 26px;
+            color: #000000;
+        }
+    }
+
+    .data {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        color: #000000;
+    }
+
+    .wrapperImage {
+        position: absolute;
+        right: 20px;
+        bottom: -20%;
+        width: 133px;
+        height: 133px;
+    }
+}

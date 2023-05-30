@@ -1,59 +1,36 @@
 @use 'src/styles/mixin/text';
 @use 'src/styles/variables/color';
 
-.form {
+.wrapper,
+.wrapperFlex {
+    background-color: color.$background-card;
     border: 1px solid color.$color-border;
     border-radius: 10px;
-    max-width: 671px;
-    height: auto;
     margin-top: 40px;
     padding: 26px 117px 54px 66px;
-
-    h2 {
-        margin: 0;
-        @include text.text-header;
-    }
-    form {
-        .inputWrapper {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
 }
 
-.wrapperSubmit {
+.header {
+    @include text.text-header;
+    margin: 0;
+    color: color.$general;
+}
+
+.wrapperFlex {
     display: flex;
-    margin-top: 35px;
+    padding: 54px 64px;
 
-    .text {
-        @include text.text-extra-small;
-        margin: 0 50px 0 0;
-        color: color.$general;
-
-        a {
-            @include text.text-extra-small;
-            color: color.$general;
-        }
-    }
-
-    .btn,
-    .disabled {
-        @include text.text-btn-form;
-        height: auto;
-        display: block;
-        padding: 18px 62px;
-        background: color.$background-btn-form;
-        border-radius: 12px;
-        color: color.$text-btn;
-        border: none;
-        cursor: pointer;
-    }
-    .disabled {
-        background: color.$background-btn-form-disabled;
-        cursor: auto;
+    .header {
+        margin-top: 15px;
     }
 }
 
-.input {
-    width: calc((50%) - 15px);
+.wrapperContent {
+    min-width: 50%;
+}
+
+.descriptionForm {
+    @include text.text-description-form;
+    color: color.$general;
+    width: 410px;
 }

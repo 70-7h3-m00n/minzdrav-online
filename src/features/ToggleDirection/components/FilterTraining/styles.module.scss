@@ -1,0 +1,41 @@
+.typeTrainingWrapper {
+    border-top: 1px solid black;
+    width: 270px;
+    padding-top: 40px;
+}
+
+.wrapperCheck {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.check,
+.active {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border: 1px black solid;
+    margin-right: 10px;
+}
+
+.active {
+    border: 6px blue solid;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #000000;
+    margin: 0;
+}
+
+.headerFilter {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #000000;
+    margin-bottom: 25px;
+}

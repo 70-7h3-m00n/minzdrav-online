@@ -82,9 +82,9 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     </div>
                 </section>
 
-                <section className={classNames(['container', styles.profession])}>
-                    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>
-                </section>
+                {/*<section className={classNames(['container', styles.profession])}>*/}
+                {/*    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>*/}
+                {/*</section>*/}
 
                 <section className={styles.Partners}>
                     <h2 className={classNames(['header', 'container'])}>{t('homeHeaders:homePartners')}</h2>

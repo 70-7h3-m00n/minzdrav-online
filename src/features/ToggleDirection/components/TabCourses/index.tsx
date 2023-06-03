@@ -7,11 +7,7 @@ import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleCo
 import classNames from 'classnames'
 import Image from 'next/image'
 
-interface TabCoursesProps {
-    data?: any
-}
-
-const TabCourses = observer(({ data }: TabCoursesProps) => {
+const TabCourses = observer(() => {
     const { toggle, medicine, psychology, dietetics } = useContentToggle()
 
     const onSearchValid = (type: EnumContentToggle) => {

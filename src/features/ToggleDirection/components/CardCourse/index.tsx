@@ -2,27 +2,33 @@ import styles from './styles.module.scss'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Card from '@/public/images/imgCard.png'
+import uuid from 'react-uuid'
 
 interface CardCourseProps {
     color: string
-    id?: number | string
-    data?: any
+    name: string
+    category: { item: string }[]
+    durationMonth: number
 }
 
-const CardCourse = ({ color, id, data }: CardCourseProps): JSX.Element => {
+const CardCourse = ({ color, name, category, durationMonth }: CardCourseProps): JSX.Element => {
     const router = useRouter()
 
     return (
         <div className={styles.wrapperCard} style={{ background: color }}>
             <div className={styles.content}>
                 <div className={styles.wrapperCategory}>
-                    <div className={styles.category}>Профессиональная переподготовка</div>
+                    {category.map(item => (
+                        <div key={uuid()} className={styles.category}>
+                            {item.item}
+                        </div>
+                    ))}
                 </div>
 
-                <h3 className={styles.header}>Авиционная и космическая медицина</h3>
+                <h3 className={styles.header}>{name}</h3>
             </div>
 
-            <data className={styles.data}>9 месяцев</data>
+            <div className={styles.data}>{durationMonth} месяцев</div>
 
             <div className={styles.wrapperImage}>
                 <Image

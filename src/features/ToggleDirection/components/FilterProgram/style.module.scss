@@ -1,0 +1,29 @@
+.toggleCategoryWrapper {
+    padding-bottom: 40px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .btnCategory {
+        margin-bottom: 5px;
+        padding: 10px 20px;
+        background-color: transparent;
+        border: 1px solid #000000;
+        border-radius: 30px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #000000;
+        cursor: pointer;
+    }
+
+    .btnActive {
+        background: #3d3bff;
+        border: 1px solid #3d3bff;
+        border-radius: 30px;
+        color: #ffffff;
+    }
+}

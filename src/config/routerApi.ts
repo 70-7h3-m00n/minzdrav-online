@@ -5,6 +5,7 @@ interface RouterApi {
     router: {
         resource: string
         partners: string
+        programs: string
     }
 }
 
@@ -13,5 +14,6 @@ export const routerApi: RouterApi = {
     router: {
         resource: '/resources',
         partners: '/partners',
+        programs: '/courses',
     },
 }

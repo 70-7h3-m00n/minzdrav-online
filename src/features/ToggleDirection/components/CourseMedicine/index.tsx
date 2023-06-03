@@ -1,76 +1,160 @@
+import { memo, useCallback, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import img from '@/public/images/MedicineCard.png'
 import styles from './styles.module.scss'
 import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
-import FilterCourse from '@/src/features/ToggleDirection/components/FilterCourse'
+import FilterCategory from '@/src/features/ToggleDirection/components/FilterCategory'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
+import getPartnersData from '@/src/api/getProgramData'
+import FilterProgram from '@/src/features/ToggleDirection/components/FilterProgram'
+import uuid from 'react-uuid'
 import classNames from 'classnames'
+import FilterTraining from '@/src/features/ToggleDirection/components/FilterTraining'
+import Search from '@/src/features/ToggleDirection/components/Search/input'
+import FilterDuration from '@/src/features/ToggleDirection/components/FilterDuration'
 
-const CourseMedicine = observer(() => {
+interface CourseMedicineProps {
+    dataMedicine: Awaited<ReturnType<typeof getPartnersData>>
+}
+
+const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Element => {
     const { medicine } = useContentToggle()
+    const [searchCourse, setSearchCourse] = useState('')
+    const [durationTraining, setDurationTraining] = useState(24)
+
+    const category = (data: Awaited<ReturnType<typeof getPartnersData>>): string[] => {
+        return [
+            ...new Set(
+                data.reduce((accumulator: Array<string>, currentValue) => {
+                    return accumulator.concat(currentValue.categories.map(item => item.item))
+                }, []),
+            ),
+        ]
+    }
+    const [categoryData, setCategoryData] = useState(category(dataMedicine))
+    const [filterCategory, setFilterCategory] = useState(category(dataMedicine)[0])
+
+    const program = useCallback(
+        (data: Awaited<ReturnType<typeof getPartnersData>>): string[] => {
+            return [
+                ...new Set(
+                    data
+                        .filter(course => course.categories.some(item => item.item === filterCategory))
+                        .reduce(
+                            (accumulator: Array<string>, currentValue) => {
+                                return accumulator.concat(currentValue.programs.map(item => item.item))
+                            },
+                            ['Все программы'],
+                        ),
+                ),
+            ]
+        },
+        [filterCategory],
+    )
+    const [programData, setProgramData] = useState(program(dataMedicine))
+    const [filterProgram, setFilterProgram] = useState(programData[0])
+
+    const training = useCallback(
+        (data: Awaited<ReturnType<typeof getPartnersData>>): string[] => {
+            return [
+                ...new Set(
+                    data
+                        .filter(course => course.categories.some(item => item.item === filterCategory))
+                        .reduce(
+                            (accumulator: Array<string>, currentValue) => {
+                                return accumulator.concat(currentValue.typeTraining.map(item => item.item))
+                            },
+                            ['Любой'],
+                        ),
+                ),
+            ]
+        },
+        [filterCategory],
+    )
+    const [trainingData, setTrainingData] = useState(training(dataMedicine))
+    const [filterTraining, setFilterTraining] = useState(trainingData[0])
+
+    useEffect(() => {
+        setProgramData([...program(dataMedicine)])
+        setCategoryData([...category(dataMedicine)])
+        setTrainingData([...training(dataMedicine)])
+    }, [dataMedicine, filterCategory, program, training])
+
+    useEffect(() => {
+        setFilterProgram('Все программы')
+        setFilterTraining('Любой')
+        setDurationTraining(24)
+    }, [programData])
+
+    const courseList = (programFilter: string) => {
+        return dataMedicine
+            .filter(course => course.categories.some(item => item.item === filterCategory))
+            .filter(program =>
+                program.programs.some(item => (programFilter === 'Все программы' ? item : item.item === programFilter)),
+            )
+            .filter(courseName =>
+                searchCourse === '' ? courseName : courseName.name.toLowerCase().includes(searchCourse),
+            )
+            .filter(training =>
+                training.typeTraining.some(item => (filterTraining === 'Любой' ? item : item.item === filterTraining)),
+            )
+            .filter(duration => duration.durationTraining <= durationTraining)
+    }
 
     return (
         <div className={medicine ? styles.infoBlock : 'close'}>
-            <FilterCourse header={'Медицина'} color={'#3D3BFF'} imageUrl={img} />
+            <FilterCategory
+                data={categoryData}
+                setFilterCategory={setFilterCategory}
+                header={'Медицина'}
+                color={'#3D3BFF'}
+                imageUrl={img}
+            />
 
             <div className={styles.courseInfo}>
                 <div className={styles.filterCourses}>
-                    <div className={styles.search}>
-                        <div className={styles.searchImageWrapper}></div>
+                    <Search setSearchCourse={setSearchCourse} />
 
-                        <input className={styles.searchInput} type={'text'} name={'search'} />
-                    </div>
+                    <FilterProgram data={programData} setFilterProgram={setFilterProgram} />
 
-                    <div className={styles.toggleCategoryWrapper}>
-                        <button className={classNames(styles.btnCategory, styles.btnActive)}>Все программы</button>
+                    <FilterTraining data={trainingData} setFilterTraining={setFilterTraining} />
 
-                        <button className={classNames(styles.btnCategory)}>Cестринское дело в терапии</button>
-                    </div>
-
-                    <div className={styles.typeTrainingWrapper}>
-                        <h2 className={styles.headerFilter}>Тип обучения на платформе</h2>
-                    </div>
-
-                    <div className={styles.durationBlock}>
-                        <h2 className={styles.headerFilter}>Длительность</h2>
-
-                        <label className={styles.durationLabel}>
-                            <div>От 1 до 24 месяцев</div>
-                            <input className={styles.durationRange} type={'range'} />
-                        </label>
-                    </div>
+                    <FilterDuration durationTraining={durationTraining} setDurationTraining={setDurationTraining} />
                 </div>
 
                 <div className={styles.coursesContent}>
                     <ul className={styles.listCategory}>
-                        <li className={styles.category}>
-                            <h2 className={styles.header}>Сестринское дело в терапии ({'4'})</h2>
+                        {programData
+                            .filter(item => (filterProgram === 'Все программы' ? item : item === filterProgram))
+                            .map(category => {
+                                if (category === 'Все программы') return null
+                                return (
+                                    <li
+                                        key={uuid()}
+                                        className={classNames(
+                                            styles.category,
+                                            courseList(category).length === 0 && 'close',
+                                        )}
+                                    >
+                                        <h2 className={styles.header}>
+                                            {category} ({courseList(category).length})
+                                        </h2>
 
-                            <ul className={styles.courseList}>
-                                <li className={styles.course}>
-                                    <CardCourse color={'#FFBE86'} />
-                                </li>
-                                <li className={styles.course}>
-                                    <CardCourse color={'#FFBE86'} />
-                                </li>
-                                <li className={styles.course}>
-                                    <CardCourse color={'#FFBE86'} />
-                                </li>
-                                <li className={styles.course}>
-                                    <CardCourse color={'#FFBE86'} />
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li className={styles.category}>
-                            <h2 className={styles.header}>Сестринское дело в онкологии ({'1'})</h2>
-
-                            <ul className={styles.courseList}>
-                                <li className={styles.course}>
-                                    <CardCourse color={'#FFBE86'} />
-                                </li>
-                            </ul>
-                        </li>
+                                        <ul className={styles.courseList}>
+                                            {courseList(category).map(course => (
+                                                <li key={uuid()} className={styles.course}>
+                                                    <CardCourse
+                                                        durationMonth={course.durationTraining}
+                                                        category={course.categories}
+                                                        name={course.name}
+                                                        color={course.color}
+                                                    />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </li>
+                                )
+                            })}
                     </ul>
                 </div>
             </div>
@@ -78,4 +162,4 @@ const CourseMedicine = observer(() => {
     )
 })
 
-export default CourseMedicine
+export default memo(CourseMedicine, (prevProps, nextProps) => prevProps.dataMedicine !== nextProps.dataMedicine)

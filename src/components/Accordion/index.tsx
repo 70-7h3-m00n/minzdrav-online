@@ -9,31 +9,42 @@ import ItemLi from '@/src/components-svg/ItemLi'
 import Image from 'next/image'
 import imageDiet from '@/public/images/fruit.png'
 import imagePsych from '@/public/images/brains.png'
+import { NormalizeProgramData } from '@/src/api/getProgramData/types'
+import uuid from 'react-uuid'
 
 interface AccordionProps {
-    category?: string
-    header?: string
-    data?: string
+    data: NormalizeProgramData
     icon: 'dietetics' | 'psychology'
 }
 
-const Accordion = ({ icon, data, header, category }: AccordionProps): JSX.Element => {
+const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
+    const { t } = useTranslation()
     const [toggleContent, setToggleContent] = useState(false)
     const [openDescription, setOpenDescription] = useState(false)
-    const { t } = useTranslation()
 
     const toggleContentStyle = toggleContent ? styles.open : styles.close
     const openDescrStyle = openDescription ? styles.close : styles.description
     const toggleImageStyles = openDescription ? styles.contentEnd : styles.contentStart
     const toggleBtn = !openDescription ? styles.wrapperBtn : styles.close
 
+    if (data === undefined) return <></>
     return (
         <>
-            <div className={styles.wrapperAccordion}>
+            <div
+                className={styles.wrapperAccordion}
+                style={{
+                    backgroundColor: data.color,
+                }}
+            >
                 <div className={styles.wrapperContent}>
-                    <div className={styles.category}>Профессия</div>
-                    <h3 className={styles.header}>Детский психолог</h3>
-                    <data className={styles.data}>9 месяцев</data>
+                    {data.categories.map(item => (
+                        <div key={uuid()} className={styles.category}>
+                            {item.item}
+                        </div>
+                    ))}
+
+                    <h3 className={styles.header}>{data.name}</h3>
+                    <div className={styles.data}>{data.durationTraining} месяцев</div>
                 </div>
                 <div className={styles.wrapperIcon}>
                     <div className={styles.wrapperArrow}>
@@ -60,18 +71,45 @@ const Accordion = ({ icon, data, header, category }: AccordionProps): JSX.Elemen
 
                 <div className={toggleImageStyles}>
                     <div className={styles.one}>
-                        <div className={classNames([styles.wrapperImage, openDescription && styles.bigWrapper])}>1</div>
-                        <p className={openDescrStyle}>Проводить психологическую диагностику ребенка</p>
+                        <div className={classNames([styles.wrapperImage, openDescription && styles.bigWrapper])}>
+                            <Image
+                                src={data.subInfoContent[0].image}
+                                fill
+                                alt={'image'}
+                                sizes='(max-width: 768px) 100vw,
+                                      (max-width: 1200px) 50vw,
+                                      33vw'
+                            />
+                        </div>
+                        <p className={openDescrStyle}>{data.subInfoContent[0].description}</p>
                     </div>
 
                     <div className={styles.two}>
-                        <div className={styles.wrapperImage}>2</div>
-                        <p className={openDescrStyle}>Выстраивать правильный процесс общения ребенка с родителями</p>
+                        <div className={styles.wrapperImage}>
+                            <Image
+                                src={data.subInfoContent[1].image}
+                                fill
+                                alt={'image'}
+                                sizes='(max-width: 768px) 100vw,
+                                      (max-width: 1200px) 50vw,
+                                      33vw'
+                            />
+                        </div>
+                        <p className={openDescrStyle}>{data.subInfoContent[1].description}</p>
                     </div>
 
                     <div className={styles.three}>
-                        <div className={styles.wrapperImage}>3</div>
-                        <p className={openDescrStyle}>Самостоятельно составлять коррекционно-развивающие программы</p>
+                        <div className={styles.wrapperImage}>
+                            <Image
+                                src={data.subInfoContent[2].image}
+                                fill
+                                alt={'image'}
+                                sizes='(max-width: 768px) 100vw,
+                                      (max-width: 1200px) 50vw,
+                                      33vw'
+                            />
+                        </div>
+                        <p className={openDescrStyle}>{data.subInfoContent[2].description}</p>
                     </div>
 
                     <div className={classNames([styles.four, !openDescription && styles.close])}>
@@ -80,11 +118,13 @@ const Accordion = ({ icon, data, header, category }: AccordionProps): JSX.Elemen
                         </h3>
 
                         <ul className={styles.listItems}>
-                            <li>
-                                <ItemLi />
+                            {data.subInfoText.map(item => (
+                                <li key={uuid()}>
+                                    <ItemLi className={styles.icon} />
 
-                                <p>Проводить психологическую диагностику ребенка</p>
-                            </li>
+                                    <p className={styles.text}>{item.item}</p>
+                                </li>
+                            ))}
                         </ul>
                         <Button style={styles.link} text={'Узнать подробнее'} link={'/'} />
                     </div>

@@ -7,7 +7,7 @@ import styles from '@/styles/pages-styles/Home.module.scss'
 import classNames from 'classnames'
 import Button from '@/src/components/Button'
 import Image from 'next/image'
-import urlImage from '@/public/images/home.svg'
+import urlImage from '@/public/images/home.png'
 import FormApplication from '@/src/features/FormApplication/components/FormApplication'
 import CardResources from '@/src/components/CardResources'
 import CardDirection from '../src/features/ToggleDirection/components/CardDirection'
@@ -51,7 +51,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                         <h1 className={styles.info_ContainerLeft__Header}>{t('home-headers:homeGeneral')}</h1>
                         <h2 className={styles.info_ContainerLeft__SubHeader}>{t('home-headers:homeSub')}</h2>
                         <Button style={styles.info_ContainerLeft__Btn} link={'/'} text={t('common:homeBtnDiscover')} />
-                        <FormApplication />
+
+                        <div className={styles.info_ContainerLeft__form}>
+                            <FormApplication />
+                        </div>
                     </div>
 
                     <div className={styles.info_containerRight}>

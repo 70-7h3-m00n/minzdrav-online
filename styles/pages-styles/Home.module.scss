@@ -7,12 +7,13 @@
 .info {
     display: flex;
     justify-content: space-between;
+	align-items: flex-start;
     position: relative;
     color: color.$general;
     min-height: 950px;
 
     &_ContainerLeft {
-        width: 55%;
+        width: 56%;
 
         &__Header {
             margin-top: 0;
@@ -32,13 +33,19 @@
         &__Btn {
             margin-top: 25px;
         }
+		&__form {
+			width: 90%;
+		}
     }
 
     &_containerRight {
-        position: absolute;
-        width: 62%;
-        height: 950px;
-        right: -19%;
+		position: relative;
+		width: 44%;
+		height: 650px;
+
+		img {
+			object-fit: contain;
+		}
     }
 }
 

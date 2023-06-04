@@ -12,6 +12,10 @@
     position: relative;
     width: 428px;
     height: 386px;
+
+	img {
+		object-fit: contain;
+	}
 }
 
 .link {

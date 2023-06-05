@@ -4,14 +4,4 @@
 }
 
 .app {
-    animation: 2s page-open;
-}
-
-@keyframes page-open {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
 }

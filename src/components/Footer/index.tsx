@@ -32,7 +32,7 @@ const Footer = () => {
                         <div>
                             <h3 className={styles.header}>{t('consultation')}:</h3>
 
-                            <Link className={styles.linkPhone} href={'tel:+7 (499) 116-69-63'}>
+                            <Link className={styles.linkPhone} href={'tel:+7(499)116-69-63'}>
                                 +7 (499) 116-69-63
                             </Link>
                         </div>
@@ -59,8 +59,8 @@ const Footer = () => {
                                         quality={100}
                                         fill
                                         sizes='(max-width: 768px) 100vw,
-                              (max-width: 1200px) 50vw,
-                              33vw'
+                                              (max-width: 1200px) 50vw,
+                                              33vw'
                                     />
                                 </Link>
 

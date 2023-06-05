@@ -7,7 +7,7 @@
 .info {
     display: flex;
     justify-content: space-between;
-	align-items: flex-start;
+    align-items: flex-start;
     position: relative;
     color: color.$general;
     min-height: 950px;
@@ -33,19 +33,19 @@
         &__Btn {
             margin-top: 25px;
         }
-		&__form {
-			width: 90%;
-		}
+        &__form {
+            width: 90%;
+        }
     }
 
     &_containerRight {
-		position: relative;
-		width: 44%;
-		height: 650px;
+        position: relative;
+        width: 44%;
+        height: 650px;
 
-		img {
-			object-fit: contain;
-		}
+        img {
+            object-fit: contain;
+        }
     }
 }
 

@@ -20,6 +20,7 @@ import CardPartners from '@/src/components/CardPartners'
 import getPartnersData from '@/src/api/getPartnerData'
 import { AnimatePresence, motion } from 'framer-motion'
 import { animation } from '@/animationPages/Home'
+import { usePathname } from 'next/navigation'
 
 interface PageHomeProps {
     resources: Awaited<ReturnType<typeof getResourcesData>>
@@ -42,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
     const { t } = useTranslation()
+    const pas = usePathname()
 
     return (
         <>
@@ -52,63 +54,32 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 <section className={classNames(['container', styles.info])}>
                     <AnimatePresence>
                         <motion.div
-                            key={uuid()}
-                            initial='hidden'
-                            whileInView='visible'
+                            initial='initial'
+                            animate='enter'
+                            exit='exit'
+                            variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
                             viewport={{ once: true }}
-                            exit={{
-                                x: -100,
-                                opacity: 0,
-                            }}
                             className={styles.info_ContainerLeft}
+                            key={pas}
                         >
-                            <motion.h1
-                                custom={1}
-                                variants={{ exit: {} }}
-                                className={styles.info_ContainerLeft__Header}
-                            >
-                                {t('home-headers:homeGeneral')}
-                            </motion.h1>
+                            <h1 className={styles.info_ContainerLeft__Header}>{t('home-headers:homeGeneral')}</h1>
 
-                            <motion.h2
-                                custom={2}
-                                variants={animation.leftContentAnimation}
-                                className={styles.info_ContainerLeft__SubHeader}
-                            >
-                                {t('home-headers:homeSub')}
-                            </motion.h2>
+                            <h2 className={styles.info_ContainerLeft__SubHeader}>{t('home-headers:homeSub')}</h2>
 
-                            <motion.div custom={3} layout variants={animation.leftContentAnimation}>
+                            <div>
                                 <Button
                                     style={styles.info_ContainerLeft__Btn}
                                     link={'/'}
                                     text={t('common:homeBtnDiscover')}
                                 />
-                            </motion.div>
+                            </div>
 
-                            <motion.div
-                                custom={4}
-                                layout
-                                variants={animation.leftContentAnimation}
-                                className={styles.info_ContainerLeft__form}
-                            >
+                            <div className={styles.info_ContainerLeft__form}>
                                 <FormApplication />
-                            </motion.div>
+                            </div>
                         </motion.div>
 
-                        <motion.div
-                            initial='hidden'
-                            whileInView='visible'
-                            viewport={{ once: true }}
-                            custom={1}
-                            exit={{
-                                x: -100,
-                                opacity: 0,
-                            }}
-                            layout
-                            variants={animation.rightContentAnimation}
-                            className={styles.info_containerRight}
-                        >
+                        <div className={styles.info_containerRight}>
                             <Image
                                 src={urlImage}
                                 alt={''}
@@ -118,13 +89,11 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                                       (max-width: 1200px) 50vw,
                                       33vw'
                             />
-                        </motion.div>
+                        </div>
                     </AnimatePresence>
                 </section>
 
-                <section
-                    className={classNames(['container', styles.directions])}
-                >
+                <section className={classNames(['container', styles.directions])}>
                     <h2 className={'header'}>{t('homeHeaders:homeDirections')}</h2>
                     <div className={styles.wrapperCardDirection}>
                         {DataCardDirection.map(card => (
@@ -143,9 +112,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 {/*    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>*/}
                 {/*</section>*/}
 
-                <section
-                    className={styles.Partners}
-                >
+                <section className={styles.Partners}>
                     <h2 className={classNames(['header', 'container'])}>{t('homeHeaders:homePartners')}</h2>
 
                     <Slider
@@ -156,9 +123,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     />
                 </section>
 
-                <section
-                    className={classNames(['container', styles.resources])}
-                >
+                <section className={classNames(['container', styles.resources])}>
                     <h2 className={'header'}>{t('homeHeaders:homeResources')}</h2>
                     <div className={styles.cardWrapper}>
                         {resources?.map(item => (

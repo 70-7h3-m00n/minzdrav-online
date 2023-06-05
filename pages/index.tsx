@@ -54,6 +54,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                         whileInView='visible'
                         viewport={{ once: true }}
                         className={styles.info_ContainerLeft}
+                        exit={{
+                            x: -100,
+                            opacity: 0,
+                        }}
                     >
                         <motion.h1
                             custom={1}
@@ -94,6 +98,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                         whileInView='visible'
                         viewport={{ once: true }}
                         custom={1}
+                        exit={{
+                            x: -100,
+                            opacity: 0,
+                        }}
                         layout
                         variants={animation.rightContentAnimation}
                         className={styles.info_containerRight}
@@ -113,6 +121,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 <motion.section
                     className={classNames(['container', styles.directions])}
                     viewport={{ once: true }}
+                    exit={{
+                        x: -100,
+                        opacity: 0,
+                    }}
                     initial='hidden'
                     whileInView='visible'
                     layout
@@ -140,6 +152,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 <motion.section
                     className={styles.Partners}
                     viewport={{ once: true }}
+                    exit={{
+                        x: -100,
+                        opacity: 0,
+                    }}
                     initial='hidden'
                     whileInView='visible'
                     layout
@@ -159,6 +175,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 <motion.section
                     className={classNames(['container', styles.resources])}
                     viewport={{ once: true }}
+                    exit={{
+                        x: -100,
+                        opacity: 0,
+                    }}
                     layout
                     initial='hidden'
                     whileInView='visible'

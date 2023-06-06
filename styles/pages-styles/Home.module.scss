@@ -10,7 +10,6 @@
     align-items: flex-start;
     position: relative;
     color: color.$general;
-    min-height: 950px;
 
     &_ContainerLeft {
         width: 56%;
@@ -49,20 +48,23 @@
     }
 }
 
-.wrapperCardDirection {
-    display: flex;
-    justify-content: space-between;
+.directions {
+    margin-top: 60px;
+    .wrapperCardDirection {
+        display: flex;
+        justify-content: space-between;
 
-    .btnMedicine {
-        background: #3e3cff;
-    }
+        .btnMedicine {
+            background: #3e3cff;
+        }
 
-    .btnPsychology {
-        background: #ba4df9;
-    }
+        .btnPsychology {
+            background: #ba4df9;
+        }
 
-    .btnDietetics {
-        background: #ff5f3c;
+        .btnDietetics {
+            background: #ff5f3c;
+        }
     }
 }
 

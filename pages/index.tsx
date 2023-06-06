@@ -49,10 +49,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
             </Head>
             <>
                 <section className={classNames(['container', styles.info])}>
-                    <motion.div initial='hidden'
-                                animate='visible'
-                                className={styles.info_ContainerLeft}
-                    >
+                    <motion.div initial='hidden' animate='visible' className={styles.info_ContainerLeft}>
                         <motion.h1
                             custom={1}
                             variants={animation.leftContentAnimation}
@@ -69,11 +66,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                             {t('home-headers:homeSub')}
                         </motion.h2>
 
-                        <motion.div
-                            custom={3}
-                            layout
-                            variants={animation.leftContentAnimation}
-                        >
+                        <motion.div custom={3} layout variants={animation.leftContentAnimation}>
                             <Button
                                 style={styles.info_ContainerLeft__Btn}
                                 link={'/'}

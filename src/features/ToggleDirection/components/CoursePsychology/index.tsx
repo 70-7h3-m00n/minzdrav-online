@@ -7,6 +7,7 @@ import Accordion from '@/src/components/Accordion'
 import getPartnersData from '@/src/api/getProgramData'
 import { useState } from 'react'
 import uuid from 'react-uuid'
+import MotionLayoutX from '@/src/components/MotionLayoutX'
 
 interface CoursePsychologyProps {
     dataPsychology: Awaited<ReturnType<typeof getPartnersData>>
@@ -25,13 +26,15 @@ const CoursePsychology = observer(({ dataPsychology }: CoursePsychologyProps): J
 
     return (
         <div className={psychology ? styles.infoBlock : 'close'}>
-            <FilterCategory
-                data={category}
-                setFilterCategory={setFilterCategory}
-                header={'Психология '}
-                color={'#A93BFF'}
-                imageUrl={img}
-            />
+            <MotionLayoutX variant={'left'}>
+                <FilterCategory
+                    data={category}
+                    setFilterCategory={setFilterCategory}
+                    header={'Психология '}
+                    color={'#A93BFF'}
+                    imageUrl={img}
+                />
+            </MotionLayoutX>
 
             <h2>
                 {filterCategory} ({courseList().length})

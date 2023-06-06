@@ -7,6 +7,7 @@ import Accordion from '@/src/components/Accordion'
 import getPartnersData from '@/src/api/getProgramData'
 import { useState } from 'react'
 import uuid from 'react-uuid'
+import MotionLayoutX from '@/src/components/MotionLayoutX'
 
 interface CourseDieteticsProps {
     dataDietetics: Awaited<ReturnType<typeof getPartnersData>>
@@ -25,13 +26,15 @@ const CourseDietetics = observer(({ dataDietetics }: CourseDieteticsProps): JSX.
 
     return (
         <div className={dietetics ? styles.infoBlock : 'close'}>
-            <FilterCategory
-                data={category}
-                setFilterCategory={setFilterCategory}
-                header={'Диетология'}
-                color={'#FF5E3B'}
-                imageUrl={img}
-            />
+            <MotionLayoutX variant={'left'}>
+                <FilterCategory
+                    data={category}
+                    setFilterCategory={setFilterCategory}
+                    header={'Диетология'}
+                    color={'#FF5E3B'}
+                    imageUrl={img}
+                />
+            </MotionLayoutX>
 
             <h2>
                 {filterCategory} ({courseList().length})

@@ -66,7 +66,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                             {t('home-headers:homeSub')}
                         </motion.h2>
 
-                        <motion.div custom={3} layout variants={animation.leftContentAnimation}>
+                        <motion.div viewport={{ once: true }} custom={3} layout variants={animation.leftContentAnimation}>
                             <Button
                                 style={styles.info_ContainerLeft__Btn}
                                 link={'/'}
@@ -85,6 +85,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     </motion.div>
 
                     <motion.div
+                        viewport={{ once: true }}
                         initial='hidden'
                         animate='visible'
                         custom={1}
@@ -105,9 +106,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 </section>
 
                 <motion.section
+                    viewport={{ once: true }}
                     className={classNames(['container', styles.directions])}
                     initial='hidden'
-                    animate='visible'
+                    whileInView='visible'
                     layout
                     custom={1}
                     variants={animation.bottomContentAnimation}
@@ -131,9 +133,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 {/*</section>*/}
 
                 <motion.section
+                    viewport={{ once: true }}
                     className={styles.Partners}
                     initial='hidden'
-                    animate='visible'
+                    whileInView='visible'
                     layout
                     custom={2}
                     variants={animation.bottomContentAnimation}
@@ -149,10 +152,11 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 </motion.section>
 
                 <motion.section
+                    viewport={{ once: true }}
                     className={classNames(['container', styles.resources])}
                     layout
                     initial='hidden'
-                    animate='visible'
+                    whileInView='visible'
                     custom={2}
                     variants={animation.bottomContentAnimation}
                 >

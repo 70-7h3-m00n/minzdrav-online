@@ -40,7 +40,11 @@ const Footer = () => {
                         <div className={styles.wrapperSocialNetwork}>
                             <h3 className={styles.header}>{t('socialNetwork')}:</h3>
                             <div className={styles.wrapperImageGroup}>
-                                <Link href={''} className={styles.wrapperImage}>
+                                <Link
+                                    href={'https://www.youtube.com/@IpoMoscow'}
+                                    target={'_blank'}
+                                    className={styles.wrapperImage}
+                                >
                                     <Image
                                         src={youtube}
                                         alt={'youtube'}
@@ -52,7 +56,7 @@ const Footer = () => {
                                     />
                                 </Link>
 
-                                <Link href={''} className={styles.wrapperImage}>
+                                <Link href={'https://vk.com/ipomsk'} target={'_blank'} className={styles.wrapperImage}>
                                     <Image
                                         src={vk}
                                         alt={'vk'}
@@ -64,7 +68,7 @@ const Footer = () => {
                                     />
                                 </Link>
 
-                                <Link href={''} className={styles.wrapperImage}>
+                                <Link href={'https://t.me/mipo_msk'} target={'_blank'} className={styles.wrapperImage}>
                                     <Image
                                         src={telegram}
                                         alt={'telegram'}

@@ -11,6 +11,7 @@ import imageDiet from '@/public/images/fruit.png'
 import imagePsych from '@/public/images/brains.png'
 import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import uuid from 'react-uuid'
+import { motion } from 'framer-motion'
 
 interface AccordionProps {
     data: NormalizeProgramData
@@ -30,10 +31,18 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
     if (data === undefined) return <></>
     return (
         <>
-            <div
+            <motion.div
                 className={styles.wrapperAccordion}
                 style={{
                     backgroundColor: data.color,
+                }}
+                initial={{
+                    x: 1000,
+                    opacity: 0,
+                }}
+                animate={{
+                    x: 0,
+                    opacity: 1,
                 }}
             >
                 <div className={styles.wrapperContent}>
@@ -65,7 +74,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
             <div className={classNames([styles.contentBlock, toggleContentStyle])}>
                 <h3 className={styles.header}>{t('Accordion:header')}</h3>
 

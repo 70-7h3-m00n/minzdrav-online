@@ -13,4 +13,17 @@
     overflow: hidden;
     outline: none;
     color: color.$general;
+
+    &:hover {
+        background-color: #3e3cff;
+        border: 1px solid #3e3cff;
+        color: color.$text-footer;
+    }
+}
+
+.active {
+    background-color: #3e3cff;
+    border: 1px solid #3e3cff;
+    color: color.$text-footer;
+    cursor: auto;
 }

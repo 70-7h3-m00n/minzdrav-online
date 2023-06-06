@@ -17,6 +17,8 @@ import uuid from 'react-uuid'
 import getResourcesData from '@/src/api/getArticlesData'
 import CardPartners from '@/src/components/CardPartners'
 import getPartnersData from '@/src/api/getPartnerData'
+import { motion } from 'framer-motion'
+import { animation } from '@/animationPages/Home'
 
 interface PageHomeProps {
     resources: Awaited<ReturnType<typeof getResourcesData>>
@@ -47,17 +49,56 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
             </Head>
             <>
                 <section className={classNames(['container', styles.info])}>
-                    <div className={styles.info_ContainerLeft}>
-                        <h1 className={styles.info_ContainerLeft__Header}>{t('home-headers:homeGeneral')}</h1>
-                        <h2 className={styles.info_ContainerLeft__SubHeader}>{t('home-headers:homeSub')}</h2>
-                        <Button style={styles.info_ContainerLeft__Btn} link={'/'} text={t('common:homeBtnDiscover')} />
+                    <motion.div initial='hidden'
+                                animate='visible'
+                                className={styles.info_ContainerLeft}
+                    >
+                        <motion.h1
+                            custom={1}
+                            variants={animation.leftContentAnimation}
+                            className={styles.info_ContainerLeft__Header}
+                        >
+                            {t('home-headers:homeGeneral')}
+                        </motion.h1>
 
-                        <div className={styles.info_ContainerLeft__form}>
+                        <motion.h2
+                            custom={2}
+                            variants={animation.leftContentAnimation}
+                            className={styles.info_ContainerLeft__SubHeader}
+                        >
+                            {t('home-headers:homeSub')}
+                        </motion.h2>
+
+                        <motion.div
+                            custom={3}
+                            layout
+                            variants={animation.leftContentAnimation}
+                        >
+                            <Button
+                                style={styles.info_ContainerLeft__Btn}
+                                link={'/'}
+                                text={t('common:homeBtnDiscover')}
+                            />
+                        </motion.div>
+
+                        <motion.div
+                            custom={4}
+                            layout
+                            variants={animation.leftContentAnimation}
+                            className={styles.info_ContainerLeft__form}
+                        >
                             <FormApplication />
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
-                    <div className={styles.info_containerRight}>
+                    <motion.div
+                        initial='hidden'
+                        animate='visible'
+                        custom={1}
+                        layout
+                        variants={animation.rightContentAnimation}
+                        className={styles.info_containerRight}
+                    >
                         <Image
                             src={urlImage}
                             alt={''}
@@ -67,10 +108,18 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                                       (max-width: 1200px) 50vw,
                                       33vw'
                         />
-                    </div>
+                    </motion.div>
                 </section>
 
-                <section className={classNames(['container', styles.directions])}>
+                <motion.section
+                    viewport={{ once: true }}
+                    className={classNames(['container', styles.directions])}
+                    initial='hidden'
+                    whileInView='visible'
+                    layout
+                    custom={1}
+                    variants={animation.bottomContentAnimation}
+                >
                     <h2 className={'header'}>{t('homeHeaders:homeDirections')}</h2>
                     <div className={styles.wrapperCardDirection}>
                         {DataCardDirection.map(card => (
@@ -83,13 +132,21 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                             />
                         ))}
                     </div>
-                </section>
+                </motion.section>
 
                 {/*<section className={classNames(['container', styles.profession])}>*/}
                 {/*    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>*/}
                 {/*</section>*/}
 
-                <section className={styles.Partners}>
+                <motion.section
+                    viewport={{ once: true }}
+                    className={styles.Partners}
+                    initial='hidden'
+                    whileInView='visible'
+                    layout
+                    custom={2}
+                    variants={animation.bottomContentAnimation}
+                >
                     <h2 className={classNames(['header', 'container'])}>{t('homeHeaders:homePartners')}</h2>
 
                     <Slider
@@ -98,16 +155,24 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                             <CardPartners partner={props.partner} iconUrl={props.iconUrl} ref={ref} />
                         )}
                     />
-                </section>
+                </motion.section>
 
-                <section className={classNames(['container', styles.resources])}>
+                <motion.section
+                    viewport={{ once: true }}
+                    className={classNames(['container', styles.resources])}
+                    layout
+                    initial='hidden'
+                    whileInView='visible'
+                    custom={2}
+                    variants={animation.bottomContentAnimation}
+                >
                     <h2 className={'header'}>{t('homeHeaders:homeResources')}</h2>
                     <div className={styles.cardWrapper}>
                         {resources?.map(item => (
                             <CardResources key={uuid()} text={item.text} alt={item.text} src={item.iconUrl} />
                         ))}
                     </div>
-                </section>
+                </motion.section>
             </>
         </>
     )

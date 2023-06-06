@@ -2,6 +2,8 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import uuid from 'react-uuid'
 import classNames from 'classnames'
+import { motion } from 'framer-motion'
+import { animation } from '@/src/features/ToggleDirection/components/FilterProgram/animation'
 
 interface FilterProgramProps {
     data: string[]
@@ -24,7 +26,9 @@ const FilterProgram = ({ data, setFilterProgram }: FilterProgramProps): JSX.Elem
                 </button>
             ) : (
                 data.map((program, i) => (
-                    <button
+                    <motion.button
+                        variants={animation.buttonHover}
+                        whileHover='hover'
                         key={uuid()}
                         className={classNames(styles.btnCategory, ActiveBtn === i && styles.btnActive)}
                         onClick={() => {
@@ -33,7 +37,7 @@ const FilterProgram = ({ data, setFilterProgram }: FilterProgramProps): JSX.Elem
                         }}
                     >
                         {program}
-                    </button>
+                    </motion.button>
                 ))
             )}
         </div>

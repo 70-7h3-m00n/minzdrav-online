@@ -3,6 +3,8 @@ import classNames from 'classnames'
 import Image, { StaticImageData } from 'next/image'
 import uuid from 'react-uuid'
 import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { animation } from '@/src/features/ToggleDirection/components/FilterCategory/animation'
 
 interface FilterCourseProps {
     data: string[]
@@ -25,7 +27,9 @@ const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: Fi
                 <h2 className={styles.header}>{header}</h2>
                 <div className={styles.wrapperBtn}>
                     {data?.map((item, i) => (
-                        <button
+                        <motion.button
+                            variants={animation.buttonHover}
+                            whileHover='hover'
                             key={uuid()}
                             className={classNames(styles.btn, ActiveBtn === i && styles.active)}
                             onClick={() => {
@@ -34,7 +38,7 @@ const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: Fi
                             }}
                         >
                             {item}
-                        </button>
+                        </motion.button>
                     ))}
                 </div>
             </div>
@@ -52,4 +56,4 @@ const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: Fi
     )
 }
 
-export default memo(FilterCategory, (prevProps, nextProps) => nextProps !== prevProps)
+export default memo(FilterCategory, (prevProps, nextProps) => nextProps.data !== prevProps.data)

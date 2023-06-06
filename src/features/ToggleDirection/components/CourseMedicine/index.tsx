@@ -12,6 +12,7 @@ import classNames from 'classnames'
 import FilterTraining from '@/src/features/ToggleDirection/components/FilterTraining'
 import Search from '@/src/features/ToggleDirection/components/Search/input'
 import FilterDuration from '@/src/features/ToggleDirection/components/FilterDuration'
+import MotionLayoutX from '@/src/components/MotionLayoutX'
 
 interface CourseMedicineProps {
     dataMedicine: Awaited<ReturnType<typeof getPartnersData>>
@@ -103,13 +104,15 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
 
     return (
         <div className={medicine ? styles.infoBlock : 'close'}>
-            <FilterCategory
-                data={categoryData}
-                setFilterCategory={setFilterCategory}
-                header={'Медицина'}
-                color={'#3D3BFF'}
-                imageUrl={img}
-            />
+            <MotionLayoutX variant={'left'}>
+                <FilterCategory
+                    data={categoryData}
+                    setFilterCategory={setFilterCategory}
+                    header={'Медицина'}
+                    color={'#3D3BFF'}
+                    imageUrl={img}
+                />
+            </MotionLayoutX>
 
             <div className={styles.courseInfo}>
                 <div className={styles.filterCourses}>

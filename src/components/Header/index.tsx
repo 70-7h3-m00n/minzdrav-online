@@ -11,12 +11,12 @@ import { useRouter } from 'next/router'
 const Header = () => {
     const { t } = useTranslation('header')
     const router = useRouter()
+    const active = router.asPath === '/directions'
     return (
         <header className={classNames(['container', styles.header])}>
             <div className={styles.contentWrapperLeft}>
                 <Logo imageUrl={logoUrl} />
-
-                {router.asPath !== '/directions' && <Button text={t('areasStudy')} link={'/directions'} />}
+                <Button text={t('areasStudy')} link={'/directions'} active={active} />
             </div>
             <MenuHeader />
         </header>

@@ -9,20 +9,7 @@ interface MotionLayoutXProps {
 const MotionLayoutX = ({ children, variant }: MotionLayoutXProps) => {
     const translateLeft = {
         hidden: {
-            x: -1000,
-            opacity: 0,
-        },
-        visible: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                delay: 0.5,
-            },
-        },
-    }
-    const translateRight = {
-        hidden: {
-            x: -1000,
+            x: variant === 'left' ? -200 : 200,
             opacity: 0,
         },
         visible: {
@@ -36,10 +23,12 @@ const MotionLayoutX = ({ children, variant }: MotionLayoutXProps) => {
 
     return (
         <motion.div
-            variants={variant === 'left' ? translateLeft : translateRight}
+            variants={translateLeft}
             initial={'hidden'}
             whileInView={'visible'}
-            viewport={{ once: true }}
+            viewport={{
+                once: true,
+            }}
             layout
         >
             {children}

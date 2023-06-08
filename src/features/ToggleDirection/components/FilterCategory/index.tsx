@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 import classNames from 'classnames'
 import Image, { StaticImageData } from 'next/image'
 import uuid from 'react-uuid'
-import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/features/ToggleDirection/components/FilterCategory/animation'
 
@@ -56,4 +56,4 @@ const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: Fi
     )
 }
 
-export default memo(FilterCategory, (prevProps, nextProps) => nextProps.data !== prevProps.data)
+export default FilterCategory

@@ -1,9 +1,23 @@
+.local {
+    display: none;
+    background-color: black;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 30px 0;
     min-height: 125px;
+
+    @media screen and (max-width: 992px) {
+        min-height: 90px;
+        padding: 0 0;
+    }
 }
 
 .contentWrapperLeft {
@@ -11,4 +25,19 @@
     align-items: center;
     justify-content: space-between;
     width: 40%;
+
+    @media screen and (max-width: 1400px) {
+        width: 42%;
+    }
+    @media screen and (max-width: 992px) {
+        width: 60%;
+    }
+    @media screen and (max-width: 768px) {
+    }
+}
+
+.media {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 }

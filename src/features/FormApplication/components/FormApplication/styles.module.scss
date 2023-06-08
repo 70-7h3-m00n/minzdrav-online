@@ -8,6 +8,13 @@
     border-radius: 10px;
     margin-top: 40px;
     padding: 26px 117px 54px 66px;
+
+    @media screen and (max-width: 992px) {
+        padding: 27px 99px;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 20px;
+    }
 }
 
 .header {
@@ -23,6 +30,14 @@
     .header {
         margin-top: 15px;
     }
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+        padding: 27px 99px;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 20px;
+    }
 }
 
 .wrapperContent {
@@ -33,4 +48,8 @@
     @include text.text-description-form;
     color: color.$general;
     width: 410px;
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
 }

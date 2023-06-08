@@ -17,5 +17,28 @@
         width: 123px;
         text-transform: uppercase;
         color: color.$general;
+
+        @media screen and (max-width: 1400px) {
+            width: 90px;
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 160px;
+    }
+
+    @media screen and (max-width: 992px) {
+        align-items: center;
+        width: 150px;
+
+        &_image {
+            width: 42px;
+            height: 42px;
+            margin-right: 5px;
+        }
+        &_text {
+            width: 90px;
+            margin: 0;
+        }
     }
 }

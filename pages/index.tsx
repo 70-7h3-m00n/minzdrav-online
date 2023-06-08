@@ -8,6 +8,7 @@ import classNames from 'classnames'
 import Button from '@/src/components/Button'
 import Image from 'next/image'
 import urlImage from '@/public/images/home.png'
+import urlImageMedia from '@/public/images/homeMedia.png'
 import FormApplication from '@/src/features/FormApplication/components/FormApplication'
 import CardResources from '@/src/components/CardResources'
 import CardDirection from '../src/features/ToggleDirection/components/CardDirection'
@@ -93,7 +94,18 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                         className={styles.info_containerRight}
                     >
                         <Image
+                            className={styles.imgLong}
                             src={urlImage}
+                            alt={''}
+                            fill
+                            priority
+                            sizes='(max-width: 768px) 100vw,
+                                      (max-width: 1200px) 50vw,
+                                      33vw'
+                        />
+                        <Image
+                            className={styles.imageShort}
+                            src={urlImageMedia}
                             alt={''}
                             fill
                             priority

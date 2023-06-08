@@ -1,0 +1,53 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+
+.burgerMenu {
+    display: none;
+    position: relative;
+    z-index: 10;
+    margin-left: 20px;
+
+    @media screen and (max-width: 992px) {
+        display: block;
+    }
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 22px;
+}
+
+.wrapperLinks {
+    padding: 20px;
+    background-color: #f6f4f4;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 50vw;
+    min-height: 100%;
+
+    li {
+        list-style: none;
+        text-align: center;
+        padding: 15px;
+    }
+
+    @media screen and (max-width: 768px) {
+        min-width: 80vw;
+    }
+}
+
+.link,
+.linkActive {
+    @include text.text-small;
+    text-decoration: none;
+    color: color.$link-header;
+}
+
+.linkActive {
+    color: color.$active-header;
+}

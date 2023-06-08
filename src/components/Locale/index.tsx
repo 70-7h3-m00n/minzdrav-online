@@ -2,32 +2,81 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './styles.module.scss'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { motion, Variants } from 'framer-motion'
+import uuid from 'react-uuid'
+
+const itemVariants: Variants = {
+    open: {
+        opacity: 1,
+        y: 0,
+        transition: { type: 'spring', stiffness: 300, damping: 24 },
+    },
+    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+}
+
+const listLocale = ['ja', 'kk', 'uz', 'en', 'ru']
 
 const Locale = () => {
+    const [isOpen, setIsOpen] = useState(false)
     const router = useRouter()
 
     return (
-        <div className={styles.locale}>
-            <Link href={''} locale={'ja'}>
-                ja
-            </Link>
-            <br />
-            <Link href={''} locale={'kk'}>
-                kk
-            </Link>
-            <br />
-            <Link href={''} locale={'uz'}>
-                uz
-            </Link>
-            <br />
-            <Link href={''} locale={'en'}>
-                en
-            </Link>
-            <br />
-            <Link href={''} locale={'ru'}>
-                ru
-            </Link>
-        </div>
+        <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} className={styles.locale}>
+            <motion.button className={styles.btn} whileTap={{ scale: 0.97 }} onClick={() => setIsOpen(!isOpen)}>
+                {router.locale?.toUpperCase()}
+                <motion.div
+                    variants={{
+                        open: { rotate: 180 },
+                        closed: { rotate: 0 },
+                    }}
+                    transition={{ duration: 0.2 }}
+                    style={{ originY: 0.55 }}
+                >
+                    <svg className={styles.arrow} xmlns='http://www.w3.org/2000/svg' width='8px' height='4px'>
+                        <path
+                            stroke='#fff'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeMiterlimit={10}
+                            strokeWidth={1.5}
+                            d='M9 1 5.707 4.675a.93.93 0 0 1-1.414 0L1 1'
+                        />
+                    </svg>
+                </motion.div>
+            </motion.button>
+            <motion.ul
+                className={styles.list}
+                variants={{
+                    open: {
+                        clipPath: 'inset(0% 0% 0% 0% round 10px)',
+                        transition: {
+                            type: 'spring',
+                            bounce: 0,
+                            duration: 0.7,
+                            delayChildren: 0.3,
+                            staggerChildren: 0.05,
+                        },
+                    },
+                    closed: {
+                        clipPath: 'inset(10% 50% 90% 50% round 10px)',
+                        transition: {
+                            type: 'spring',
+                            bounce: 0,
+                            duration: 0.3,
+                        },
+                    },
+                }}
+            >
+                {listLocale.map(locale => (
+                    <motion.li key={uuid()} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
+                        <Link className={styles.link} href={''} locale={locale}>
+                            {locale.toUpperCase()}
+                        </Link>
+                    </motion.li>
+                ))}
+            </motion.ul>
+        </motion.nav>
     )
 }
 

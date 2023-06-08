@@ -1,4 +1,5 @@
 @use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
 
 .header {
     margin-top: 0;
@@ -16,22 +17,21 @@
 
         &__Header {
             margin-top: 0;
-            font-weight: 700;
-            font-size: 40px;
-            line-height: 47px;
+            @include text.text-big;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
         &__SubHeader {
+            @include text.text-general;
             font-style: normal;
             font-weight: 400;
-            font-size: 20px;
-            line-height: 23px;
         }
+
         &__Btn {
             margin-top: 25px;
         }
+
         &__form {
             width: 90%;
         }
@@ -46,10 +46,64 @@
             object-fit: contain;
         }
     }
+
+    @media screen and (max-width: 1400px) {
+        flex-direction: column-reverse;
+
+        &_ContainerLeft {
+            width: 100%;
+
+            &__Header {
+                margin: 20px 0;
+            }
+            &__form {
+                width: 100%;
+            }
+        }
+
+        &_containerRight {
+            width: 100%;
+            height: 540px;
+        }
+    }
+    @media screen and (max-width: 992px) {
+        &_containerRight {
+            height: 409px;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        &_containerRight {
+            height: 290px;
+        }
+    }
+    @media screen and (max-width: 576px) {
+        &_containerRight {
+            img {
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.imgLong {
+    display: block;
+
+    @media screen and (max-width: 1400px) {
+        display: none;
+    }
+}
+
+.imageShort {
+    display: none;
+
+    @media screen and (max-width: 1400px) {
+        display: block;
+    }
 }
 
 .directions {
     margin-top: 60px;
+
     .wrapperCardDirection {
         display: flex;
         justify-content: space-between;
@@ -65,17 +119,38 @@
         .btnDietetics {
             background: #ff5f3c;
         }
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
     }
 }
 
 .resources {
     margin-bottom: 85px;
+
+    @media screen and (max-width: 1400px) {
+        margin-bottom: 45px;
+    }
+    @media screen and (max-width: 992px) {
+        margin-bottom: 30px;
+    }
+    @media screen and (max-width: 768px) {
+        margin-bottom: 25px;
+    }
+    @media screen and (max-width: 576px) {
+        margin-bottom: 0;
+    }
 }
 
 .cardWrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+
+    @media screen and (max-width: 1400px) {
+        margin: 0 auto;
+    }
 }
 
 .slider {

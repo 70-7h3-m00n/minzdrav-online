@@ -4,7 +4,6 @@ import { Roboto } from '@next/font/google'
 import '@/styles/globals.scss'
 import '@/styles/reset.scss'
 import Layout from '@/src/components/Layout'
-import Locale from '@/src/components/Locale'
 import Head from 'next/head'
 
 const roboto = Roboto({
@@ -22,7 +21,6 @@ function App({ Component, pageProps }: AppProps) {
             </Head>
 
             <div className={roboto.className}>
-                <Locale />
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>

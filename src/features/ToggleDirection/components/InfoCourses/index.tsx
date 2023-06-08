@@ -3,7 +3,6 @@ import CourseMedicine from '@/src/features/ToggleDirection/components/CourseMedi
 import CoursePsychology from '@/src/features/ToggleDirection/components/CoursePsychology'
 import CourseDietetics from '@/src/features/ToggleDirection/components/CourseDietetics'
 import getPartnersData from '@/src/api/getProgramData'
-import MotionLayoutX from '@/src/components/MotionLayoutX'
 
 interface ShowInfoCoursesProps {
     data: Awaited<ReturnType<typeof getPartnersData>>
@@ -16,13 +15,9 @@ const ShowInfoCourses = observer(({ data }: ShowInfoCoursesProps) => {
 
     return (
         <>
-            <MotionLayoutX variant={'left'}>
-                <>
-                    <CourseMedicine dataMedicine={dataMedicine} />
-                    <CoursePsychology dataPsychology={dataPsychology} />
-                    <CourseDietetics dataDietetics={dataDietetics} />
-                </>
-            </MotionLayoutX>
+            <CourseMedicine dataMedicine={dataMedicine} />
+            <CoursePsychology dataPsychology={dataPsychology} />
+            <CourseDietetics dataDietetics={dataDietetics} />
         </>
     )
 })

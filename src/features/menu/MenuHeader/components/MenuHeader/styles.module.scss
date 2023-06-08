@@ -5,6 +5,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    @media screen and (max-width: 768px) {
+    }
 }
 
 .link,
@@ -14,11 +17,25 @@
     color: color.$link-header;
     text-decoration: none;
     margin-right: 47px;
+
     &:hover {
         color: color.$active-header;
+    }
+
+    @media screen and (max-width: 1400px) {
+        margin-right: 20px;
+    }
+    @media screen and (max-width: 992px) {
+        display: none;
     }
 }
 
 .linkActive {
     color: color.$active-header;
+}
+
+.media {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 }

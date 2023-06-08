@@ -14,7 +14,9 @@ const Button = ({ text, style, link, active = false }: InterfaceButton): JSX.Ele
     const router = useRouter()
     return (
         <button
-            onClick={() => router.push(link)}
+            onClick={() => {
+                router.pathname !== link ? router.push(link) : null
+            }}
             className={classNames([styles.button, active && styles.active, style])}
         >
             {text}

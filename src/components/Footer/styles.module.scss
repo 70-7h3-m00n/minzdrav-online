@@ -6,6 +6,10 @@
     color: color.$text-footer;
     padding: 41px 0;
     min-height: 336px;
+
+    @media screen and (max-width: 576px) {
+        padding: 0;
+    }
 }
 
 .logo {
@@ -22,15 +26,47 @@
 .bigContainerFooter {
     width: 951px;
     margin: 0 auto;
+
+    @media screen and (max-width: 1400px) {
+        width: 960px;
+    }
+    @media screen and (max-width: 992px) {
+        width: 720px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 520px;
+    }
+    @media screen and (max-width: 576px) {
+        padding: 20px;
+        width: auto;
+    }
 }
 
 .bigContainerFooter {
     width: 1168px;
+
+    @media screen and (max-width: 1400px) {
+        width: 960px;
+    }
+    @media screen and (max-width: 992px) {
+        width: 720px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 520px;
+    }
+    @media screen and (max-width: 576px) {
+        padding: 20px;
+        width: auto;
+    }
 }
 
 .wrapFooterTop {
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 576px) {
+        flex-direction: column;
+    }
 }
 
 .formFooter {
@@ -41,6 +77,14 @@
     width: 394px;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 992px) {
+        width: 300px;
+    }
+    @media screen and (max-width: 576px) {
+        width: 100%;
+        margin-top: 10px;
+    }
 }
 
 .linkPhone {
@@ -67,22 +111,46 @@
 
 .wrapperInfoContent {
     width: 371px;
+
+    @media screen and (max-width: 992px) {
+        width: 42%;
+    }
+    @media screen and (max-width: 768px) {
+        margin-top: 15px;
+        width: 100%;
+    }
 }
 
 .infoContainer {
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column-reverse;
+    }
 }
 
 .menuContainer {
     width: 394px;
+
+    @media screen and (max-width: 992px) {
+        width: 50%;
+    }
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 }
 
 .wrapperPolitics {
     margin-top: 80px;
     display: flex;
+
     p {
         margin-right: 30px;
         @include text.text-politics;
+    }
+
+    @media screen and (max-width: 992px) {
+        margin-top: 30px;
     }
 }

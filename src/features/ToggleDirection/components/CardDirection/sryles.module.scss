@@ -8,16 +8,6 @@
     justify-content: center;
 }
 
-.imageContainer {
-    position: relative;
-    width: 428px;
-    height: 386px;
-
-    img {
-        object-fit: contain;
-    }
-}
-
 .link {
     @include text.text-card-link;
     padding: 10px 20px;
@@ -26,4 +16,35 @@
     border-radius: 30px;
     text-decoration: none;
     margin-top: 15px;
+
+    @media screen and (max-width: 992px) {
+        margin-bottom: 15px;
+    }
+}
+
+.imageContainer {
+    position: relative;
+    width: 428px;
+    height: 386px;
+
+    img {
+        object-fit: contain;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 307px;
+        height: 210px;
+    }
+    @media screen and (max-width: 992px) {
+        width: 226px;
+        height: 165px;
+    }
+    @media screen and (max-width: 768px) {
+        width: 360px;
+        height: 280px;
+    }
+    @media screen and (max-width: 576px) {
+        width: 100%;
+        height: 280px;
+    }
 }

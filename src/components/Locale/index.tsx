@@ -1,6 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 import styles from './styles.module.scss'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { motion, Variants } from 'framer-motion'

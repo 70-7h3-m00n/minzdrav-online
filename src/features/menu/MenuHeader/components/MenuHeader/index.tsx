@@ -35,7 +35,7 @@ const MenuHeader = (): JSX.Element => {
                 <Locale />
             </div>
 
-            <Button text={t('header:buttonEnter')} link={'/'} />
+            <Button text={t('header:buttonEnter')} link={'https://sdo-ipo.ru/login/index.php'} />
 
             <BurgerMenu />
         </nav>

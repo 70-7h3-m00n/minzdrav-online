@@ -16,7 +16,6 @@ import Slider from '@/src/components/Slider'
 import DataCardDirection from '@/src/config/dataCardDirection'
 import uuid from 'react-uuid'
 import getResourcesData from '@/src/api/getArticlesData'
-import CardPartners from '@/src/components/CardPartners'
 import getPartnersData from '@/src/api/getPartnerData'
 import { motion } from 'framer-motion'
 import { animation } from '@/animationPages/Home'
@@ -145,21 +144,16 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
                 <motion.section
                     viewport={{ once: true }}
-                    className={styles.Partners}
+                    className={styles.partners}
                     initial='hidden'
                     whileInView='visible'
                     layout
                     custom={2}
                     variants={animation.bottomContentAnimation}
                 >
-                    <h2 className={classNames(['header', 'container'])}>{t('homeHeaders:homePartners')}</h2>
+                    <h2 className={classNames(['container', 'header'])}>{t('homeHeaders:homePartners')}</h2>
 
-                    <Slider
-                        dataArray={partnerData}
-                        render={(props, ref) => (
-                            <CardPartners partner={props.partner} iconUrl={props.iconUrl} ref={ref} />
-                        )}
-                    />
+                    <Slider dataArray={partnerData} />
                 </motion.section>
 
                 <motion.section

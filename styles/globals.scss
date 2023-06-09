@@ -16,7 +16,7 @@ li {
     display: none !important;
 }
 
-.header {
+.nawBlock {
     @include text.text-header;
     margin-top: 30px;
     user-select: none;
@@ -32,7 +32,7 @@ li {
         width: 960px;
     }
 
-    .header {
+    .nawBlock {
         margin-top: 20px;
     }
 }
@@ -42,7 +42,7 @@ li {
         width: 720px;
     }
 
-    .header {
+    .nawBlock {
         margin-top: 15px;
     }
 }
@@ -52,7 +52,7 @@ li {
         width: 520px;
     }
 
-    .header {
+    .nawBlock {
         margin-top: 10px;
     }
 }

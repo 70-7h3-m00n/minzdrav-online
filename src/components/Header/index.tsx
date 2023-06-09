@@ -14,11 +14,11 @@ const Header = () => {
     const router = useRouter()
     const active = router.asPath === '/directions'
     return (
-        <>
+        <header className={styles.header}>
             <div className={styles.local}>
                 <Locale />
             </div>
-            <header className={classNames(['container', styles.header])}>
+            <div className={classNames(['container', styles.nawBlock])}>
                 <div className={styles.contentWrapperLeft}>
                     <Logo imageUrl={logoUrl} />
 
@@ -28,8 +28,8 @@ const Header = () => {
                 </div>
 
                 <MenuHeader />
-            </header>
-        </>
+            </div>
+        </header>
     )
 }
 

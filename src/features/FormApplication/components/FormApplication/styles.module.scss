@@ -17,7 +17,7 @@
     }
 }
 
-.header {
+.nawBlock {
     @include text.text-header;
     margin: 0;
     color: color.$general;
@@ -27,7 +27,7 @@
     display: flex;
     padding: 54px 64px;
 
-    .header {
+    .nawBlock {
         margin-top: 15px;
     }
 

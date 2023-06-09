@@ -124,7 +124,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     custom={1}
                     variants={animation.bottomContentAnimation}
                 >
-                    <h2 className={'header'}>{t('homeHeaders:homeDirections')}</h2>
+                    <h2 className={'nawBlock'}>{t('homeHeaders:homeDirections')}</h2>
                     <div className={styles.wrapperCardDirection}>
                         {DataCardDirection.map(card => (
                             <CardDirection
@@ -165,7 +165,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     custom={2}
                     variants={animation.bottomContentAnimation}
                 >
-                    <h2 className={'header'}>{t('homeHeaders:homeResources')}</h2>
+                    <h2 className={'nawBlock'}>{t('homeHeaders:homeResources')}</h2>
                     <div className={styles.cardWrapper}>
                         {resources?.map(item => (
                             <CardResources key={uuid()} text={item.text} alt={item.text} src={item.iconUrl} />

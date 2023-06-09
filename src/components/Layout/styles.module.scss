@@ -2,6 +2,13 @@
     //min-height: calc(100vh - 399px - 125px);
     padding: 0 0 30px;
     overflow: hidden;
+
+	@media screen and (max-width: 992px) {
+		padding-top: 90px;
+	}
+	@media screen and (max-width: 768px) {
+		padding-top: 125px;
+	}
 }
 
 .app {

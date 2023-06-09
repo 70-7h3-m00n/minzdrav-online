@@ -66,6 +66,7 @@
 
 .contentBlock {
     padding-bottom: 60px;
+
     .header {
         @include text.text-general;
         color: color.$general;

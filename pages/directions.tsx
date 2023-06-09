@@ -36,9 +36,8 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
 
                 <div>
                     <h2 className={'header'}>{t('courseDirections:header')}</h2>
-                    <div>
-                        <ToggleDirection.TabCourses />
-                    </div>
+
+                    <ToggleDirection.TabCourses />
                 </div>
             </section>
         </>

@@ -35,7 +35,7 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
                 <ToggleDirection.ShowInfoCourses data={data} />
 
                 <div>
-                    <h2 className={'header'}>{t('courseDirections:header')}</h2>
+                    <h2 className={'nawBlock'}>{t('courseDirections:header')}</h2>
                     <div>
                         <ToggleDirection.TabCourses />
                     </div>

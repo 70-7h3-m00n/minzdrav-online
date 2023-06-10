@@ -11,9 +11,7 @@ const Layout = ({ children }: InterfaceLayout): JSX.Element => {
     return (
         <div className={styles.app}>
             <Header />
-            <div className={styles.layout}>
-                {children}
-            </div>
+            <div className={styles.layout}>{children}</div>
             <Footer />
         </div>
     )

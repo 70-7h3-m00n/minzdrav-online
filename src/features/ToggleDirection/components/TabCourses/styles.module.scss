@@ -1,3 +1,6 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+
 .medicine {
     display: flex;
     justify-content: space-between;
@@ -5,6 +8,21 @@
     border-radius: 20px;
     height: 250px;
     overflow: hidden;
+
+    @media screen and (max-width: 1400px) {
+        height: 219px;
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+        height: 190px;
+    }
 }
 
 .header {
@@ -17,6 +35,19 @@
 
 .contentWrapper {
     padding: 20px 70px;
+
+    @media screen and (max-width: 1400px) {
+        padding: 20px 35px;
+    }
+
+    @media screen and (max-width: 992px) {
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .imageWrapper {
@@ -25,6 +56,25 @@
 
     img {
         object-fit: contain;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 571px;
+    }
+
+    @media screen and (max-width: 992px) {
+        display: none;
+        //width: 50%;
+        //img {
+        //	object-fit: cover;
+        //}
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+        display: none;
     }
 }
 
@@ -37,4 +87,19 @@
     text-align: center;
     color: #ffffff;
     cursor: pointer;
+
+    @media screen and (max-width: 1400px) {
+        margin-top: 30px;
+        padding: 12px 25px;
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }

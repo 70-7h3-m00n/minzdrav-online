@@ -10,6 +10,22 @@
 
 .wrapperContent {
     padding: 30px 0 30px 82px;
+
+    @media screen and (max-width: 1400px) {
+        width: 40%;
+        padding: 30px 0 30px 40px;
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 50%;
+        padding: 10px 0 10px 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .category {
@@ -23,6 +39,10 @@
     font-size: 12px;
     line-height: 16px;
     margin-right: 5px;
+    margin-top: 5px;
+
+    @media screen and (max-width: 992px) {
+    }
 }
 
 .header {
@@ -37,10 +57,22 @@
 }
 
 .wrapperIcon {
+    position: relative;
     padding-right: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+
+    @media screen and (max-width: 1400px) {
+        width: 60%;
+        padding-right: 20px;
+        justify-content: flex-end;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 50%;
+    }
 }
 
 .image {
@@ -48,16 +80,40 @@
     width: 650px;
     height: 180px;
     margin-right: 110px;
+
+    @media screen and (max-width: 1400px) {
+        margin-right: 0;
+        width: 816px;
+        height: 200px;
+
+        img {
+            object-fit: contain;
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 478px;
+        height: 159px;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .wrapperArrow {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .arrow {
+    width: 40px;
     cursor: pointer;
+    z-index: 100;
 }
 
 .close {
@@ -71,12 +127,30 @@
         @include text.text-general;
         color: color.$general;
     }
+
+    @media screen and (max-width: 576px) {
+        padding-bottom: 20px;
+    }
 }
 
 .contentStart {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
+
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(3, calc((100% - 40px) / 3));
+    }
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .contentEnd {
@@ -115,6 +189,41 @@
         grid-column-end: 7;
         padding-left: 30px;
     }
+
+    @media screen and (max-width: 992px) {
+        .one {
+            grid-column-end: 4;
+        }
+        .two {
+            grid-column-start: 4;
+            grid-column-end: 7;
+        }
+        .three {
+            grid-column-start: 4;
+            grid-column-end: 7;
+        }
+        .four {
+            grid-row-start: 3;
+            grid-column-start: 1;
+            grid-row-end: 3;
+            grid-column-end: 7;
+            padding-left: 0;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        .one {
+            display: none;
+        }
+        .two {
+            grid-column-start: 1;
+            grid-column-end: 7;
+        }
+        .three {
+            grid-column-start: 1;
+            grid-column-end: 7;
+        }
+    }
 }
 
 .wrapperImage {
@@ -136,6 +245,10 @@
     @include text.text-btn-form;
     color: color.$general;
     width: 350px;
+
+    @media screen and (max-width: 1400px) {
+        width: auto;
+    }
 }
 
 .wrapperBtn {
@@ -180,4 +293,16 @@
     display: block;
     border-radius: 12px;
     margin: 20px auto 0;
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
 }

@@ -2,6 +2,11 @@
     border-top: 1px solid black;
     width: 270px;
     padding-top: 40px;
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+        padding-top: 30px;
+    }
 }
 
 .wrapperCheck {

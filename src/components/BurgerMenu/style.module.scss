@@ -53,10 +53,10 @@
 }
 
 .directions {
-	display: none;
-	margin: 0 auto;
+    display: none;
+    margin: 0 auto;
 
-	@media screen and (max-width: 768px) {
-		display: block;
-	}
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
 }

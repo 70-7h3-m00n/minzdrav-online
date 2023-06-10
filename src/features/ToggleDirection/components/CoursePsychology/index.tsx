@@ -36,7 +36,7 @@ const CoursePsychology = observer(({ dataPsychology }: CoursePsychologyProps): J
                 />
             </MotionLayoutX>
 
-            <h2>
+            <h2 className={styles.header}>
                 {filterCategory} ({courseList().length})
             </h2>
 

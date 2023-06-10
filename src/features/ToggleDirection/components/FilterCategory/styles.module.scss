@@ -1,13 +1,44 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+
 .infoBlock {
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
     min-height: 251px;
+
+    @media screen and (max-width: 1400px) {
+        min-height: 219px;
+    }
+
+    @media screen and (max-width: 992px) {
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .headerBlock {
     padding: 25px 10px 25px 70px;
-    max-width: calc(100% - 651px);
+    width: calc(100% - 651px);
+
+    @media screen and (max-width: 1400px) {
+        width: calc(100% - 450px);
+        padding: 25px 10px 25px 35px;
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .header {
@@ -42,6 +73,12 @@
         background-color: white;
         color: #000000;
     }
+
+    @media screen and (max-width: 992px) {
+        .btn {
+            padding: 8px 12px;
+        }
+    }
 }
 
 .wrapperImage {
@@ -50,5 +87,19 @@
 
     img {
         object-fit: cover;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 450px;
+    }
+
+    @media screen and (max-width: 992px) {
+        display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
     }
 }

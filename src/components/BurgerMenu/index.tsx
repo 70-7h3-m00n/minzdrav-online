@@ -23,9 +23,14 @@ const BurgerMenu = () => {
             </motion.button>
 
             <motion.ul className={styles.wrapperLinks} variants={animation.list}>
-                <Link className={classNames([styles.link, styles.directions, pathname === '/directions' && styles.linkActive])}
-                      href={'/directions'}
-                      onClick={() => setIsOpen(!isOpen)}
+                <Link
+                    className={classNames([
+                        styles.link,
+                        styles.directions,
+                        pathname === '/directions' && styles.linkActive,
+                    ])}
+                    href={'/directions'}
+                    onClick={() => setIsOpen(!isOpen)}
                 >
                     {t('header:areasStudy')}
                 </Link>

@@ -1,3 +1,6 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+
 .infoBlock {
     display: block;
 }
@@ -8,6 +11,18 @@
     line-height: 14px;
     color: #000000;
     margin-bottom: 25px;
+
+    @media screen and (max-width: 1400px) {
+    }
+
+    @media screen and (max-width: 992px) {
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
 }
 
 .courseInfo {
@@ -18,6 +33,21 @@
     .filterCourses {
         width: calc(100% - 920px);
         padding: 0 50px;
+
+        @media screen and (max-width: 1400px) {
+            width: 100%;
+            padding: 0 30px;
+        }
+
+        @media screen and (max-width: 992px) {
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 0;
+        }
+
+        @media screen and (max-width: 576px) {
+        }
     }
 
     .coursesContent {
@@ -31,10 +61,8 @@
                 list-style: none;
 
                 .header {
-                    font-weight: 400;
-                    font-size: 32px;
-                    line-height: 40px;
-                    color: #000000;
+                    @include text.text-header;
+                    color: color.$general;
                 }
 
                 .courseList {
@@ -52,5 +80,66 @@
                 }
             }
         }
+
+        @media screen and (max-width: 1400px) {
+            .listCategory {
+                .category {
+                    .courseList {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            width: 100%;
+
+            .listCategory {
+                .category {
+                    .courseList {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .listCategory {
+                .category {
+                    .courseList {
+                        grid-template-columns: repeat(1, 100%);
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .listCategory {
+                .category {
+                    .header {
+                    }
+
+                    .courseList {
+                        .course {
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        padding: 0 15px;
+    }
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0;
+    }
+
+    @media screen and (max-width: 576px) {
     }
 }

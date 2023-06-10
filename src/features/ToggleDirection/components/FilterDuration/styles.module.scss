@@ -34,6 +34,10 @@
             box-shadow: 0 0 0 1px black;
         }
     }
+
+    @media screen and (max-width: 992px) {
+        padding-top: 20px;
+    }
 }
 
 .headerFilter {
@@ -42,4 +46,7 @@
     line-height: 14px;
     color: #000000;
     margin-bottom: 25px;
+
+    @media screen and (max-width: 992px) {
+    }
 }

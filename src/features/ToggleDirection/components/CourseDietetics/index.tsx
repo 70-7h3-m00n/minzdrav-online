@@ -36,7 +36,7 @@ const CourseDietetics = observer(({ dataDietetics }: CourseDieteticsProps): JSX.
                 />
             </MotionLayoutX>
 
-            <h2>
+            <h2 className={styles.header}>
                 {filterCategory} ({courseList().length})
             </h2>
 

@@ -1,3 +1,11 @@
+@use 'src/styles/mixin/text';
+@use 'src/styles/variables/color';
+
 .infoBlock {
     display: block;
+}
+
+.header {
+    @include text.text-header;
+    color: color.$general;
 }

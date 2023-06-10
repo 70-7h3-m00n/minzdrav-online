@@ -69,13 +69,23 @@
     font-size: 36px;
     line-height: 42px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1400px) {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    @media screen and (max-width: 992px) {
         font-size: 28px;
         line-height: 38px;
     }
 
+    @media screen and (max-width: 768px) {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
     @media screen and (max-width: 576px) {
-        font-size: 26px;
+        font-size: 20px;
         line-height: 30px;
     }
 }

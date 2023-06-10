@@ -55,6 +55,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                     <h3 className={styles.header}>{data.name}</h3>
                     <div className={styles.data}>{data.durationTraining} месяцев</div>
                 </div>
+
                 <div className={styles.wrapperIcon}>
                     <div className={styles.wrapperArrow}>
                         <div className={styles.image}>
@@ -75,6 +76,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                     </div>
                 </div>
             </motion.div>
+
             <div className={classNames([styles.contentBlock, toggleContentStyle])}>
                 <h3 className={styles.header}>{t('Accordion:header')}</h3>
 

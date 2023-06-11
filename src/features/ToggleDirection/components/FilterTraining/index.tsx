@@ -1,6 +1,5 @@
 import styles from './styles.module.scss'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import uuid from 'react-uuid'
 import classNames from 'classnames'
 
 interface FilterTrainingProps {
@@ -21,7 +20,7 @@ const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
 
             <div>
                 {data.length === 2 ? (
-                    <div key={uuid()} className={styles.wrapperCheck}>
+                    <div className={styles.wrapperCheck}>
                         <div className={styles.active} />
 
                         <p className={styles.text}>{data[1]}</p>
@@ -29,7 +28,7 @@ const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
                 ) : (
                     data?.map((training, i) => (
                         <div
-                            key={uuid()}
+                            key={i + training}
                             className={styles.wrapperCheck}
                             onClick={() => {
                                 setFilterTraining(training)

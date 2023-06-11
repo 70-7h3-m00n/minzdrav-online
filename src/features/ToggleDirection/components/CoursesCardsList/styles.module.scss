@@ -1,0 +1,49 @@
+@use 'src/styles/mixin/text';
+
+.courseList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 0;
+
+    .course {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 100%);
+    }
+}
+
+.btnShow {
+    @include text.text-btn-form;
+    padding: 18px 60px;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    text-align: center;
+    margin: 20px auto 0;
+    background-color: transparent;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #3d3bff;
+        color: white;
+        border: 1px solid #3d3bff;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 12px 30px;
+    }
+}

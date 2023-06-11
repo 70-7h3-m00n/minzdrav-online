@@ -6,7 +6,6 @@ import img from '@/public/images/PsychologyCard.png'
 import Accordion from '@/src/components/Accordion'
 import getPartnersData from '@/src/api/getProgramData'
 import { useState } from 'react'
-import uuid from 'react-uuid'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
 
 interface CoursePsychologyProps {
@@ -41,8 +40,8 @@ const CoursePsychology = observer(({ dataPsychology }: CoursePsychologyProps): J
             </h2>
 
             <div>
-                {courseList().map(course => (
-                    <Accordion data={course} key={uuid()} icon={'psychology'} />
+                {courseList().map((course, index) => (
+                    <Accordion data={course} key={index} icon={'psychology'} />
                 ))}
             </div>
         </div>

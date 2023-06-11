@@ -4,15 +4,15 @@ import img from '@/public/images/MedicineCard.png'
 import styles from './styles.module.scss'
 import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
 import FilterCategory from '@/src/features/ToggleDirection/components/FilterCategory'
-import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
 import getPartnersData from '@/src/api/getProgramData'
 import FilterProgram from '@/src/features/ToggleDirection/components/FilterProgram'
-import uuid from 'react-uuid'
 import classNames from 'classnames'
 import FilterTraining from '@/src/features/ToggleDirection/components/FilterTraining'
 import Search from '@/src/features/ToggleDirection/components/Search/input'
 import FilterDuration from '@/src/features/ToggleDirection/components/FilterDuration'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
+import CoursesCardsList from '@/src/features/ToggleDirection/components/CoursesCardsList'
+import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 
 interface CourseMedicineProps {
     dataMedicine: Awaited<ReturnType<typeof getPartnersData>>
@@ -87,7 +87,7 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
         setDurationTraining(24)
     }, [programData])
 
-    const courseList = (programFilter: string) => {
+    const courseList = (programFilter: string): NormalizeProgramData[] => {
         return dataMedicine
             .filter(course => course.categories.some(item => item.item === filterCategory))
             .filter(program =>
@@ -129,11 +129,11 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
                     <ul className={styles.listCategory}>
                         {programData
                             .filter(item => (filterProgram === 'Все программы' ? item : item === filterProgram))
-                            .map(category => {
+                            .map((category, index) => {
                                 if (category === 'Все программы') return null
                                 return (
                                     <li
-                                        key={uuid()}
+                                        key={index + 'category'}
                                         className={classNames(
                                             styles.category,
                                             courseList(category).length === 0 && 'close',
@@ -143,18 +143,7 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
                                             {category} ({courseList(category).length})
                                         </h2>
 
-                                        <ul className={styles.courseList}>
-                                            {courseList(category).map(course => (
-                                                <li key={uuid()} className={styles.course}>
-                                                    <CardCourse
-                                                        durationMonth={course.durationTraining}
-                                                        category={course.categories}
-                                                        name={course.name}
-                                                        color={course.color}
-                                                    />
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        <CoursesCardsList data={courseList(category)} />
                                     </li>
                                 )
                             })}

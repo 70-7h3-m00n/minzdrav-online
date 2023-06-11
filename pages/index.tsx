@@ -14,7 +14,6 @@ import CardResources from '@/src/components/CardResources'
 import CardDirection from '../src/features/ToggleDirection/components/CardDirection'
 import Slider from '@/src/components/Slider'
 import DataCardDirection from '@/src/config/dataCardDirection'
-import uuid from 'react-uuid'
 import getResourcesData from '@/src/api/getArticlesData'
 import getPartnersData from '@/src/api/getPartnerData'
 import { motion } from 'framer-motion'
@@ -126,9 +125,9 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 >
                     <h2 className={'header'}>{t('homeHeaders:homeDirections')}</h2>
                     <div className={styles.wrapperCardDirection}>
-                        {DataCardDirection.map(card => (
+                        {DataCardDirection.map((card, index) => (
                             <CardDirection
-                                key={uuid()}
+                                key={index}
                                 imageSrc={card.image}
                                 textLink={t(card.text)}
                                 colorBtn={card.styles}
@@ -167,8 +166,8 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 >
                     <h2 className={'header'}>{t('homeHeaders:homeResources')}</h2>
                     <div className={styles.cardWrapper}>
-                        {resources?.map(item => (
-                            <CardResources key={uuid()} text={item.text} alt={item.text} src={item.iconUrl} />
+                        {resources?.map((item, index) => (
+                            <CardResources key={index} text={item.text} alt={item.text} src={item.iconUrl} />
                         ))}
                     </div>
                 </motion.section>

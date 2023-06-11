@@ -11,18 +11,6 @@
     line-height: 14px;
     color: #000000;
     margin-bottom: 25px;
-
-    @media screen and (max-width: 1400px) {
-    }
-
-    @media screen and (max-width: 992px) {
-    }
-
-    @media screen and (max-width: 768px) {
-    }
-
-    @media screen and (max-width: 576px) {
-    }
 }
 
 .courseInfo {
@@ -39,14 +27,8 @@
             padding: 0 30px;
         }
 
-        @media screen and (max-width: 992px) {
-        }
-
         @media screen and (max-width: 768px) {
             padding: 0;
-        }
-
-        @media screen and (max-width: 576px) {
         }
     }
 
@@ -64,67 +46,11 @@
                     @include text.text-header;
                     color: color.$general;
                 }
-
-                .courseList {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    grid-gap: 20px;
-                    padding: 0;
-
-                    .course {
-                        list-style: none;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                }
-            }
-        }
-
-        @media screen and (max-width: 1400px) {
-            .listCategory {
-                .category {
-                    .courseList {
-                        grid-template-columns: repeat(1, 1fr);
-                    }
-                }
             }
         }
 
         @media screen and (max-width: 992px) {
             width: 100%;
-
-            .listCategory {
-                .category {
-                    .courseList {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
-                }
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .listCategory {
-                .category {
-                    .courseList {
-                        grid-template-columns: repeat(1, 100%);
-                    }
-                }
-            }
-        }
-
-        @media screen and (max-width: 576px) {
-            .listCategory {
-                .category {
-                    .header {
-                    }
-
-                    .courseList {
-                        .course {
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -138,8 +64,5 @@
 
     @media screen and (max-width: 768px) {
         padding: 0;
-    }
-
-    @media screen and (max-width: 576px) {
     }
 }

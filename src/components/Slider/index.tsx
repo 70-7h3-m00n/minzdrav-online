@@ -1,4 +1,3 @@
-import uuid from 'react-uuid'
 import styles from './styles.module.scss'
 import { SliderItems } from '@/src/components/Slider/type'
 import CardPartners from '@/src/components/CardPartners'
@@ -43,8 +42,8 @@ const Slider = ({ dataArray }: SliderProps<SliderItems>): JSX.Element => {
                     onMouseUp={handleMouseUp}
                     onMouseLeave={handleMouseUp}
                 >
-                    {dataArray.map(item => (
-                        <CardPartners key={uuid()} partner={item.partner} iconUrl={item.iconUrl} />
+                    {dataArray.map((item, index) => (
+                        <CardPartners key={index} partner={item.partner} iconUrl={item.iconUrl} />
                     ))}
                 </div>
             </div>

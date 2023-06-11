@@ -30,14 +30,12 @@
         "next-i18next": "^13.2.2",
         "qs": "^6.11.1",
         "react": "18.2.0",
-        "react-dom": "18.2.0",
         "react-hook-form": "^7.43.9",
         "react-i18next": "^12.2.2",
         "react-uuid": "^2.0.0",
         "sharp": "^0.32.1",
         "start-server-and-test": "^2.0.0",
-        "swr": "^2.1.5",
-        "uuid": "^9.0.0"
+        "swr": "^2.1.5"
     },
     "devDependencies": {
         "@types/qs": "^6.9.7",

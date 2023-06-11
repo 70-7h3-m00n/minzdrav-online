@@ -2,7 +2,6 @@ import styles from './styles.module.scss'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Card from '@/public/images/imgCard.png'
-import uuid from 'react-uuid'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/features/ToggleDirection/components/CardCourse/animation'
 
@@ -28,8 +27,8 @@ const CardCourse = ({ color, name, category, durationMonth }: CardCourseProps): 
             >
                 <div className={styles.content}>
                     <div className={styles.wrapperCategory}>
-                        {category.map(item => (
-                            <div key={uuid()} className={styles.category}>
+                        {category.map((item, index) => (
+                            <div key={index} className={styles.category}>
                                 {item.item}
                             </div>
                         ))}

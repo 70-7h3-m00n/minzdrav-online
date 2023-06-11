@@ -18,12 +18,23 @@
         text-align: center;
         color: #000000;
         cursor: pointer;
+
+        &:hover {
+            animation: hover 300ms forwards;
+        }
     }
 
     .btnActive {
+        margin-bottom: 5px;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
         background: #3d3bff;
         border: 1px solid #3d3bff;
-        border-radius: 30px;
         color: #ffffff;
     }
 
@@ -37,5 +48,20 @@
             margin-right: 5px;
             padding: 8px 12px;
         }
+    }
+}
+
+@keyframes hover {
+    0% {
+        background-color: transparent;
+        border: 1px solid #000000;
+        color: #000000;
+        transform: scale(1);
+    }
+    100% {
+        background-color: #3d3bff;
+        border: 1px solid #3d3bff;
+        color: #ffffff;
+        transform: scale(1.07);
     }
 }

@@ -6,7 +6,6 @@ import img from '@/public/images/DieteticsCard.png'
 import Accordion from '@/src/components/Accordion'
 import getPartnersData from '@/src/api/getProgramData'
 import { useState } from 'react'
-import uuid from 'react-uuid'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
 
 interface CourseDieteticsProps {
@@ -41,8 +40,8 @@ const CourseDietetics = observer(({ dataDietetics }: CourseDieteticsProps): JSX.
             </h2>
 
             <div>
-                {courseList().map(course => (
-                    <Accordion data={course} key={uuid()} icon={'dietetics'} />
+                {courseList().map((course, index) => (
+                    <Accordion data={course} key={index} icon={'dietetics'} />
                 ))}
             </div>
         </div>

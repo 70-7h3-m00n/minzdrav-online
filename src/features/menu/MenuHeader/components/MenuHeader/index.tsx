@@ -6,7 +6,6 @@ import styles from './styles.module.scss'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import { useTranslation } from 'next-i18next'
-import uuid from 'react-uuid'
 import Locale from '@/src/components/Locale'
 import BurgerMenu from '@/src/components/BurgerMenu'
 
@@ -16,16 +15,16 @@ const MenuHeader = (): JSX.Element => {
 
     return (
         <nav className={styles.nav}>
-            {arrayRouterLinks.map(linkData =>
+            {arrayRouterLinks.map((linkData, index) =>
                 pathname === linkData.link ? (
                     <div
-                        key={uuid()}
+                        key={index}
                         className={classNames([styles.link, pathname === linkData.link && styles.linkActive])}
                     >
                         {t(`navLinksHeader:${linkData.text}`)}
                     </div>
                 ) : (
-                    <Link className={styles.link} key={uuid()} href={linkData.link}>
+                    <Link className={styles.link} key={index} href={linkData.link}>
                         {t(`navLinksHeader:${linkData.text}`)}
                     </Link>
                 ),

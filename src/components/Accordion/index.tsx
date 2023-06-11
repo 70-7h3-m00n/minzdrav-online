@@ -10,7 +10,6 @@ import Image from 'next/image'
 import imageDiet from '@/public/images/fruit.png'
 import imagePsych from '@/public/images/brains.png'
 import { NormalizeProgramData } from '@/src/api/getProgramData/types'
-import uuid from 'react-uuid'
 import { motion } from 'framer-motion'
 
 interface AccordionProps {
@@ -46,8 +45,8 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                 }}
             >
                 <div className={styles.wrapperContent}>
-                    {data.categories.map(item => (
-                        <div key={uuid()} className={styles.category}>
+                    {data.categories.map((item, index) => (
+                        <div key={index} className={styles.category}>
                             {item.item}
                         </div>
                     ))}
@@ -129,8 +128,8 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                         </h3>
 
                         <ul className={styles.listItems}>
-                            {data.subInfoText.map(item => (
-                                <li key={uuid()}>
+                            {data.subInfoText.map((item, index) => (
+                                <li key={index}>
                                     <ItemLi className={styles.icon} />
 
                                     <p className={styles.text}>{item.item}</p>

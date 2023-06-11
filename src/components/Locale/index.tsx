@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { motion, Variants } from 'framer-motion'
-import uuid from 'react-uuid'
 
 const itemVariants: Variants = {
     open: {
@@ -68,8 +67,8 @@ const Locale = () => {
                     },
                 }}
             >
-                {listLocale.map(locale => (
-                    <motion.li key={uuid()} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
+                {listLocale.map((locale, index) => (
+                    <motion.li key={index} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
                         <Link className={styles.link} href={''} locale={locale}>
                             {locale.toUpperCase()}
                         </Link>

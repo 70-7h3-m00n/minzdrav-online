@@ -1,10 +1,7 @@
 import styles from './styles.module.scss'
-import classNames from 'classnames'
 import Image, { StaticImageData } from 'next/image'
-import uuid from 'react-uuid'
 import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { animation } from '@/src/features/ToggleDirection/components/FilterCategory/animation'
 
 interface FilterCourseProps {
     data: string[]
@@ -27,18 +24,16 @@ const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: Fi
                 <h2 className={styles.header}>{header}</h2>
                 <div className={styles.wrapperBtn}>
                     {data?.map((item, i) => (
-                        <motion.button
-                            variants={animation.buttonHover}
-                            whileHover='hover'
-                            key={uuid()}
-                            className={classNames(styles.btn, ActiveBtn === i && styles.active)}
+                        <button
+                            key={i + item}
+                            className={ActiveBtn === i ? styles.active : styles.btn}
                             onClick={() => {
                                 setFilterCategory(item)
                                 setActiveBtn(i)
                             }}
                         >
                             {item}
-                        </motion.button>
+                        </button>
                     ))}
                 </div>
             </div>

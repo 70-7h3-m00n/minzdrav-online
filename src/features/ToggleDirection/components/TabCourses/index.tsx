@@ -1,6 +1,5 @@
 import { arrayTabs } from '@/src/features/ToggleDirection/data/tabInfo'
 import styles from './styles.module.scss'
-import uuid from 'react-uuid'
 import { observer } from 'mobx-react-lite'
 import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
 import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
@@ -28,7 +27,7 @@ const TabCourses = observer(() => {
                         .filter(item => !onSearchValid(item.toggle))
                         .map((item, i) => (
                             <div
-                                key={uuid()}
+                                key={i}
                                 className={classNames(styles.medicine)}
                                 style={{
                                     background: item.color,

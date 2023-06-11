@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styles from './style.module.scss'
 import classNames from 'classnames'
 import { arrayRouterLinks } from '@/src/features/menu/MenuHeader/utils/arrayRouterLinks'
-import uuid from 'react-uuid'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -35,17 +34,17 @@ const BurgerMenu = () => {
                     {t('header:areasStudy')}
                 </Link>
 
-                {arrayRouterLinks.map(linkData =>
+                {arrayRouterLinks.map((linkData, index) =>
                     pathname === linkData.link ? (
                         <motion.li
-                            key={uuid()}
+                            key={index}
                             className={classNames([styles.link, pathname === linkData.link && styles.linkActive])}
                             variants={animation.item}
                         >
                             {t(`navLinksHeader:${linkData.text}`)}
                         </motion.li>
                     ) : (
-                        <motion.li key={uuid()} variants={animation.item}>
+                        <motion.li key={index} variants={animation.item}>
                             <Link className={styles.link} href={linkData.link} onClick={() => setIsOpen(!isOpen)}>
                                 {t(`navLinksHeader:${linkData.text}`)}
                             </Link>

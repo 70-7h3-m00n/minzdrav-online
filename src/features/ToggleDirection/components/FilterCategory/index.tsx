@@ -1,7 +1,6 @@
 import styles from './styles.module.scss'
 import Image, { StaticImageData } from 'next/image'
 import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
 
 interface FilterCourseProps {
     data: string[]

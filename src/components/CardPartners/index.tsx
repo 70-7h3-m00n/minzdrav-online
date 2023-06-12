@@ -15,7 +15,7 @@ const CardPartners = forwardRef<HTMLDivElement, CardPartnersProps>(function ({ p
                     src={iconUrl!}
                     alt={partner!}
                     fill
-                    priority={false}
+                    loading={'lazy'}
                     sizes='(max-width: 768px) 100vw,
                               (max-width: 1200px) 50vw,
                               33vw'

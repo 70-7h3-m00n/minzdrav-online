@@ -1,0 +1,83 @@
+@use '@/src/styles/mixin/text';
+
+.wrapperHome {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    .wrapperImage {
+        position: relative;
+        width: 293px;
+        height: 255px;
+
+        img {
+            object-fit: contain;
+        }
+    }
+
+    .wrapperContent {
+        margin-left: 50px;
+
+        .header {
+            font-weight: 400;
+            font-size: 128px;
+            margin: 10px 0;
+        }
+
+        .subHeader {
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 120%;
+        }
+
+        .description {
+            @include text.text-general;
+        }
+
+        .linkHome {
+            display: inline-block;
+            margin-top: 60px;
+            text-decoration: none;
+            padding: 18px 60px;
+            text-align: center;
+            cursor: pointer;
+            background: #3d3bff;
+            border-radius: 12px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 20px;
+            color: #ffffff;
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .wrapperContent {
+            .header {
+                font-size: 83px;
+            }
+
+            .subHeader {
+                font-size: 24px;
+                line-height: 34px;
+            }
+
+            .linkHome {
+                padding: 12px 40px;
+                margin-top: 30px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        min-height: 50vh;
+        flex-direction: column;
+
+        .wrapperContent {
+            .header {
+                font-size: 40px;
+            }
+        }
+    }
+}

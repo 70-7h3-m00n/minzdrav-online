@@ -16,7 +16,7 @@ const CardResources = ({ src, alt, text }: CardResourcesProps): JSX.Element => {
                     src={src}
                     alt={alt}
                     fill
-                    priority={false}
+                    loading={'lazy'}
                     sizes='(max-width: 768px) 100vw,
                               (max-width: 1200px) 50vw,
                               33vw'

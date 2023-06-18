@@ -1,0 +1,454 @@
+@use 'src/styles/mixin/text';
+
+.blockInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 0 50px;
+    color: white;
+
+    @media screen and (max-width: 1400px) {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 992px) {
+        padding: 25px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 20px;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 20px 0;
+    }
+}
+
+.cardInfoWrapper {
+    width: 50%;
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.header {
+    @include text.text-header;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+.descrText {
+    @include text.text-description-form;
+    width: 390px;
+}
+
+.itemsBlockWrapper {
+    margin-top: 40px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color: black;
+    grid-gap: 20px;
+
+    .one,
+    .two,
+    .three,
+    .four {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        display: flex;
+        background-color: white;
+        padding: 15px 30px;
+        border-radius: 10px;
+
+        .image {
+            margin-right: 20px;
+        }
+
+        .wrapperText {
+            .headerItem {
+                @include text.text-small;
+                margin-top: 5px;
+            }
+
+            .descr {
+                @include text.text-description-form;
+            }
+        }
+
+        @media screen and (max-width: 376px) {
+            flex-direction: column;
+        }
+    }
+
+    .two {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+
+    .three {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .four {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+    @media screen and (max-width: 768px) {
+        grid-gap: 15px;
+
+        .one {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+        .two {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+
+        .three {
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+
+        .four {
+            grid-row-start: 4;
+            grid-row-end: 5;
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+    }
+}
+
+.wrapperImage {
+    position: relative;
+    width: 603px;
+    height: 560px;
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+
+        img {
+            object-fit: contain;
+        }
+    }
+    @media screen and (max-width: 576px) {
+        width: 403px;
+        height: 360px;
+    }
+    @media screen and (max-width: 400px) {
+        width: 303px;
+        height: 260px;
+    }
+}
+
+.descriptionCourse {
+    margin-top: 40px;
+    background: #adf6b1;
+    border-radius: 20px;
+    padding: 40px 160px 40px 60px;
+
+    h2 {
+        @include text.text-header;
+    }
+    li {
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 1400px) {
+        padding: 35px 100px 35px 55px !important;
+    }
+
+    @media screen and (max-width: 992px) {
+        padding: 30px 70px 30px 50px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 30px 50px !important;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 10px 20px !important;
+    }
+}
+
+.thisCourseFor {
+    margin-top: 30px;
+    display: flex;
+
+    .headerBlock {
+        width: 35%;
+    }
+
+    .listItem {
+        width: 65%;
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .check {
+                width: 20px;
+                height: 15px;
+            }
+
+            .text {
+                width: calc(100% - 35px);
+                @include text.text-description-form;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+
+        .headerBlock {
+            width: 100%;
+            text-align: center;
+        }
+
+        .listItem {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 576px) {
+        .listItem {
+            ul {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.learnInfo {
+    margin-top: 20px;
+    padding: 20px 0;
+    @media screen and (max-width: 576px) {
+        padding: 20px;
+    }
+}
+
+.blockInfoWrapper {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px 60px !important;
+
+    @media screen and (max-width: 576px) {
+        padding: 20px !important;
+    }
+}
+
+.blockList {
+    margin-top: 40px;
+}
+
+.headerList {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 50px;
+}
+
+.list {
+    margin-top: 40px;
+    padding: 0;
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        list-style: none;
+
+        span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            margin-right: 27px;
+        }
+        p {
+            width: calc(100% - 10px);
+            margin: 0;
+        }
+    }
+}
+
+.licensesList {
+    @include text.text-input;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 auto;
+
+    li {
+        margin: 0 10px;
+        list-style: none;
+    }
+}
+
+.rosreestrBlock {
+    margin-top: 40px;
+    padding: 30px 60px;
+    background: #ffb6bc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 1400px) {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 15px 30px;
+    }
+}
+
+.registryDescr {
+    @include text.text-description-form;
+    width: 80%;
+    margin: 0;
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+    }
+}
+
+.registryLink {
+    @include text.text-btn-form;
+    background-color: transparent;
+    display: inline-block;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    color: #000000;
+    cursor: pointer;
+
+    @media screen and (max-width: 1400px) {
+        margin-top: 15px;
+    }
+}
+
+.wrapperPrice {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0;
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+    }
+}
+
+.headerPrice {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 33px;
+}
+
+.cardPrice {
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.categoryItem {
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-right: 10px;
+}
+
+.priceText {
+    @include text.text-btn-form;
+    color: white;
+    margin-top: 70px;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+
+    .discount {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 75px;
+        color: white;
+        margin-right: 20px;
+
+        @media screen and (max-width: 768px) {
+            font-size: 54px;
+            line-height: 65px;
+        }
+
+        @media screen and (max-width: 576px) {
+            font-size: 44px;
+            line-height: 55px;
+        }
+    }
+
+    .price {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        color: rgba(255, 255, 255, 0.6);
+
+        @media screen and (max-width: 768px) {
+            font-size: 28px;
+        }
+
+        @media screen and (max-width: 576px) {
+            font-size: 26px;
+        }
+    }
+}
+
+.priceBlock,
+.formBlock {
+    width: calc((100% - 488px) - 116px);
+
+    @media screen and (max-width: 1400px) {
+        width: calc((100% - 488px) - 20px);
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
+}
+
+.formBlock {
+    width: 488px;
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
+}

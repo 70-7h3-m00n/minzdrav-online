@@ -35,12 +35,7 @@ const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
             <ul className={styles.courseList}>
                 {data.slice(0, counter).map(course => (
                     <li key={course.name} className={styles.course}>
-                        <CardCourse
-                            durationMonth={course.durationTraining}
-                            category={course.categories}
-                            name={course.name}
-                            color={course.color}
-                        />
+                        <CardCourse course={course} />
                     </li>
                 ))}
             </ul>

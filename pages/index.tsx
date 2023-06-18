@@ -143,7 +143,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
                 <motion.section
                     viewport={{ once: true }}
-                    className={styles.partners}
+                    className={classNames(styles.partners, partnerData.length === 0 && 'close')}
                     initial='hidden'
                     whileInView='visible'
                     layout
@@ -157,7 +157,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
                 <motion.section
                     viewport={{ once: true }}
-                    className={classNames(['container', styles.resources])}
+                    className={classNames(['container', resources.length !== 0 ? styles.resources : 'close'])}
                     layout
                     initial='hidden'
                     whileInView='visible'

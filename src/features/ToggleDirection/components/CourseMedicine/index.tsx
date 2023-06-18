@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import img from '@/public/images/MedicineCard.png'
 import styles from './styles.module.scss'
@@ -13,12 +13,14 @@ import FilterDuration from '@/src/features/ToggleDirection/components/FilterDura
 import MotionLayoutX from '@/src/components/MotionLayoutX'
 import CoursesCardsList from '@/src/features/ToggleDirection/components/CoursesCardsList'
 import { NormalizeProgramData } from '@/src/api/getProgramData/types'
+import { useTranslation } from 'next-i18next'
 
 interface CourseMedicineProps {
     dataMedicine: Awaited<ReturnType<typeof getPartnersData>>
 }
 
 const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Element => {
+    const { t } = useTranslation()
     const { medicine } = useContentToggle()
     const [searchCourse, setSearchCourse] = useState('')
     const [durationTraining, setDurationTraining] = useState(24)
@@ -108,7 +110,7 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
                 <FilterCategory
                     data={categoryData}
                     setFilterCategory={setFilterCategory}
-                    header={'Медицина'}
+                    header={t('common:medicine')}
                     color={'#3D3BFF'}
                     imageUrl={img}
                 />
@@ -154,4 +156,4 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
     )
 })
 
-export default memo(CourseMedicine, (prevProps, nextProps) => prevProps.dataMedicine !== nextProps.dataMedicine)
+export default CourseMedicine

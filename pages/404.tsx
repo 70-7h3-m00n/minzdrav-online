@@ -5,6 +5,7 @@ import Url404 from '@/public/images/404.png'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
+import { useTranslation } from 'next-i18next'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
     return {
@@ -16,6 +17,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 }
 
 export default function Custom404() {
+    const { t } = useTranslation()
+
     return (
         <div className={styles.wrapperHome}>
             <div className={styles.wrapperImage}>
@@ -29,10 +32,10 @@ export default function Custom404() {
             </div>
             <div className={styles.wrapperContent}>
                 <h1 className={styles.header}>404</h1>
-                <h2 className={styles.subHeader}>Здесь ничего нет.</h2>
-                <p className={styles.description}>Попробуйте перейти на главную</p>
+                <h2 className={styles.subHeader}>{t('error404:none')}</h2>
+                <p className={styles.description}>{t('error404:linkHome')}</p>
                 <Link className={styles.linkHome} href={'/'}>
-                    Перейти
+                    {t('error404:btnError')}
                 </Link>
             </div>
         </div>

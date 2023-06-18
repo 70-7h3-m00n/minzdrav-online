@@ -7,12 +7,14 @@ import Accordion from '@/src/components/Accordion'
 import getPartnersData from '@/src/api/getProgramData'
 import { useState } from 'react'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
+import { useTranslation } from 'next-i18next'
 
 interface CoursePsychologyProps {
     dataPsychology: Awaited<ReturnType<typeof getPartnersData>>
 }
 
 const CoursePsychology = observer(({ dataPsychology }: CoursePsychologyProps): JSX.Element => {
+    const { t } = useTranslation()
     const { psychology } = useContentToggle()
     const category = dataPsychology.reduce((accumulator: Array<string>, currentValue) => {
         return accumulator.concat(currentValue.categories.map(item => item.item))
@@ -29,7 +31,7 @@ const CoursePsychology = observer(({ dataPsychology }: CoursePsychologyProps): J
                 <FilterCategory
                     data={category}
                     setFilterCategory={setFilterCategory}
-                    header={'Психология '}
+                    header={t('common:psychology')}
                     color={'#A93BFF'}
                     imageUrl={img}
                 />

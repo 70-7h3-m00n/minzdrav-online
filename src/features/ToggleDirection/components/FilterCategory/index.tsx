@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 import Image, { StaticImageData } from 'next/image'
-import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 interface FilterCourseProps {
     data: string[]
@@ -50,4 +50,4 @@ const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: Fi
     )
 }
 
-export default memo(FilterCategory, (prevProps, nextProps) => nextProps.data !== prevProps.data)
+export default FilterCategory

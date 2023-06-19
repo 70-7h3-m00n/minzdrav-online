@@ -13,6 +13,10 @@ interface SubInfoContent {
     }
 }
 
+interface ImageCourse {
+    data: ImageData[]
+}
+
 interface SubInfoText {
     id: number
     item: string
@@ -27,10 +31,13 @@ interface Category {
     id: number
     item: string
 }
+interface ThisCourseFor {
+    id: number
+    item: string
+}
 
 interface Attributes {
     name: string
-    slug: string
     typeCourse: string
     color: string
     durationTraining: number
@@ -39,6 +46,20 @@ interface Attributes {
     typeTraining: { id: number; item: string }[]
     subInfoContent: SubInfoContent[]
     subInfoText: SubInfoText[]
+    description: string
+    imageCourse: ImageCourse
+    startDateTraining: string
+    studyingTime: string
+    receivedDocuments: string
+    thisCourseFor: ThisCourseFor[]
+    pathCourse: string
+    knowledgeList: { id: number; item: string }[]
+    skillList: { id: number; item: string }[]
+    listOfSkills: { id: number; item: string }[]
+    typeTrainingHeader: string
+    header: string
+    ourLicenses: SubInfoContent[]
+    priceCourse: { id: number; price: number; discount: number | null; installmentPlan: number | null }
 }
 
 interface DataItem {
@@ -64,7 +85,6 @@ export interface IPrograms {
 
 export interface NormalizeProgramData {
     name: string
-    slug: string
     typeCourse: string
     color: string
     durationTraining: number
@@ -73,4 +93,18 @@ export interface NormalizeProgramData {
     typeTraining: Array<{ item: string }>
     subInfoText: Array<{ item: string }>
     subInfoContent: Array<{ description: string; image: string }>
+    description: string
+    imageCourse: string
+    startDateTraining: string
+    studyingTime: string
+    receivedDocuments: string
+    thisCourseFor: Array<{ item: string }>
+    pathCourse: string
+    knowledgeList: Array<{ item: string }>
+    skillList: Array<{ item: string }>
+    listOfSkills: Array<{ item: string }>
+    typeTrainingHeader: string
+    header: string
+    ourLicenses: Array<{ description: string; image: string }>
+    priceCourse: { price: number; discount: number | null; installmentPlan: number | null }
 }

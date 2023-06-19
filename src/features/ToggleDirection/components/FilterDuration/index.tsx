@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import styles from './styles.module.scss'
+import { useTranslation } from 'next-i18next'
 
 interface FilterDurationProps {
     durationTraining: number
@@ -7,9 +8,11 @@ interface FilterDurationProps {
 }
 
 const FilterDuration = ({ durationTraining, setDurationTraining }: FilterDurationProps): JSX.Element => {
+    const { t } = useTranslation()
+
     return (
         <div className={styles.durationBlock}>
-            <h2 className={styles.headerFilter}>Длительность</h2>
+            <h2 className={styles.headerFilter}>{t('common:duration')}</h2>
 
             <label className={styles.durationLabel}>
                 <div>От 1 до 24 месяцев</div>

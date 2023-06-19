@@ -1,6 +1,7 @@
 import styles from './styles.module.scss'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 interface FilterTrainingProps {
     data: string[]
@@ -8,6 +9,7 @@ interface FilterTrainingProps {
 }
 
 const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
+    const { t } = useTranslation()
     const [ActiveBtn, setActiveBtn] = useState(0)
 
     useEffect(() => {
@@ -16,7 +18,7 @@ const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
 
     return (
         <div className={styles.typeTrainingWrapper}>
-            <h2 className={styles.headerFilter}>Тип обучения на платформе</h2>
+            <h2 className={styles.headerFilter}>{t('common:typeTraining')}</h2>
 
             <div>
                 {data.length === 2 ? (

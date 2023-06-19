@@ -1,7 +1,11 @@
 {
+    "any": "Any",
     "logo": "Institute of Medical Education",
+    "duration": "Duration",
     "medicine": "Medicine",
     "dietetics": "Dietetics",
     "psychology": "Psychology",
+    "allPrograms": "All programs",
+    "typeTraining": "Platform learning type",
     "homeBtnDiscover": "To learn more"
 }

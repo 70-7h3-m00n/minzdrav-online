@@ -24,7 +24,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
     const { t } = useTranslation()
-
     return (
         <>
             <Head>

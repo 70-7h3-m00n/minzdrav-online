@@ -7,12 +7,14 @@ import Accordion from '@/src/components/Accordion'
 import getPartnersData from '@/src/api/getProgramData'
 import { useState } from 'react'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
+import { useTranslation } from 'next-i18next'
 
 interface CourseDieteticsProps {
     dataDietetics: Awaited<ReturnType<typeof getPartnersData>>
 }
 
 const CourseDietetics = observer(({ dataDietetics }: CourseDieteticsProps): JSX.Element => {
+    const { t } = useTranslation()
     const { dietetics } = useContentToggle()
     const category = dataDietetics.reduce((accumulator: Array<string>, currentValue) => {
         return accumulator.concat(currentValue.categories.map(item => item.item))
@@ -29,7 +31,7 @@ const CourseDietetics = observer(({ dataDietetics }: CourseDieteticsProps): JSX.
                 <FilterCategory
                     data={category}
                     setFilterCategory={setFilterCategory}
-                    header={'Диетология'}
+                    header={t('common:dietetics')}
                     color={'#FF5E3B'}
                     imageUrl={img}
                 />

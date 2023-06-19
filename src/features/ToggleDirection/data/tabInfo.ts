@@ -13,19 +13,19 @@ export type ArrayTabs = {
 
 export const arrayTabs: Array<ArrayTabs> = [
     {
-        header: 'Медицина',
+        header: 'medicine',
         image: MedicineCard,
         toggle: EnumContentToggle.medicine,
         color: '#3d3bff',
     },
     {
-        header: 'Психология ',
+        header: 'psychology',
         image: PsychologyCard,
         toggle: EnumContentToggle.psychology,
         color: '#A93BFF',
     },
     {
-        header: 'Диетология',
+        header: 'dietetics',
         image: DieteticsCard,
         toggle: EnumContentToggle.dietetics,
         color: '#FF5E3B',

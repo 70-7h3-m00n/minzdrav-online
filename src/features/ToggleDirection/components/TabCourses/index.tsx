@@ -6,8 +6,10 @@ import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleCo
 import classNames from 'classnames'
 import Image from 'next/image'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
+import { useTranslation } from 'next-i18next'
 
 const TabCourses = observer(() => {
+    const { t } = useTranslation()
     const { toggle, medicine, psychology, dietetics } = useContentToggle()
 
     const onSearchValid = (type: EnumContentToggle) => {
@@ -35,7 +37,7 @@ const TabCourses = observer(() => {
                                 }}
                             >
                                 <div className={styles.contentWrapper}>
-                                    <h3 className={styles.header}>{item.header}</h3>
+                                    <h3 className={styles.header}>{t(`common:${item.header}`)}</h3>
 
                                     <button className={styles.btn} onClick={() => toggle(item.toggle)}>
                                         Ознакомиться с программами

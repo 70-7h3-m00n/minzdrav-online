@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "i18nexus pull && next dev",
+        "dev": "prettier --write . && i18nexus pull && next dev",
         "build": "prettier --write . && next build",
         "format": "i18nexus pull && prettier --write .",
         "test:cypress": "start-server-and-test start http://localhost:3000 cypress",

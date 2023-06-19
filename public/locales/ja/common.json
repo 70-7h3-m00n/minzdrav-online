@@ -1,7 +1,11 @@
 {
+    "any": "どれでも",
     "logo": "医学教育研究所",
+    "duration": "間隔",
     "medicine": "薬",
     "dietetics": "栄養学",
     "psychology": "心理学",
+    "allPrograms": "すべてのプログラム",
+    "typeTraining": "プラットフォーム学習タイプ",
     "homeBtnDiscover": "詳しく知ることができ"
 }

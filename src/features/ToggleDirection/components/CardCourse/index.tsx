@@ -4,40 +4,43 @@ import Image from 'next/image'
 import Card from '@/public/images/imgCard.png'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/features/ToggleDirection/components/CardCourse/animation'
+import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 
 interface CardCourseProps {
-    color: string
-    name: string
-    category: { item: string }[]
-    durationMonth: number
+    course: NormalizeProgramData
 }
 
-const CardCourse = ({ color, name, category, durationMonth }: CardCourseProps): JSX.Element => {
+const CardCourse = ({ course }: CardCourseProps): JSX.Element => {
     const router = useRouter()
+
+    const handleClick = (slug: string) => {
+        router.push(`/course/${slug}`)
+    }
 
     return (
         <>
             <motion.div
                 className={styles.wrapperCard}
-                style={{ background: color }}
+                style={{ background: course.color }}
                 variants={animation.cardCourse}
                 initial={'hidden'}
                 animate={'visible'}
                 custom={0.8}
+                onClick={() => handleClick(course.pathCourse)}
             >
                 <div className={styles.content}>
                     <div className={styles.wrapperCategory}>
-                        {category.map((item, index) => (
+                        {course.categories.map((item, index) => (
                             <div key={index} className={styles.category}>
                                 {item.item}
                             </div>
                         ))}
                     </div>
 
-                    <h3 className={styles.header}>{name}</h3>
+                    <h3 className={styles.header}>{course.name}</h3>
                 </div>
 
-                <div className={styles.data}>{durationMonth} месяцев</div>
+                <div className={styles.data}>{course.durationTraining} месяцев</div>
 
                 <div className={styles.wrapperImage}>
                     <Image

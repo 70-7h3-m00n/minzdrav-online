@@ -8,7 +8,7 @@ interface ShowInfoCoursesProps {
     data: Awaited<ReturnType<typeof getPartnersData>>
 }
 
-const ShowInfoCourses = observer(({ data }: ShowInfoCoursesProps) => {
+const ShowInfoCourses = ({ data }: ShowInfoCoursesProps) => {
     const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
     const dataPsychology = data.filter(course => course.typeCourse === 'Психология')
     const dataDietetics = data.filter(course => course.typeCourse === 'Диетология')
@@ -20,6 +20,6 @@ const ShowInfoCourses = observer(({ data }: ShowInfoCoursesProps) => {
             <CourseDietetics dataDietetics={dataDietetics} />
         </>
     )
-})
+}
 
-export default ShowInfoCourses
+export default observer(ShowInfoCourses)

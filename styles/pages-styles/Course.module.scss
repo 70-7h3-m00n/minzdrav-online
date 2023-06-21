@@ -166,9 +166,15 @@
     border-radius: 20px;
     padding: 40px 160px 40px 60px;
 
-    h2 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         @include text.text-header;
     }
+
     li {
         margin-top: 10px;
     }

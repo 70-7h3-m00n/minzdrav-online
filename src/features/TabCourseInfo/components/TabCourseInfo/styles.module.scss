@@ -1,0 +1,54 @@
+@use 'src/styles/mixin/text';
+
+.container {
+    margin-top: 32px;
+}
+
+.tabWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 576px) {
+    }
+}
+
+.tab,
+.tabFull {
+    @include text.text-card-link;
+    width: calc((100% - 32px) / 2);
+    text-align: center;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 45px 0;
+    color: black;
+
+    @media screen and (max-width: 992px) {
+        width: calc((100% - 15px) / 2);
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    @media screen and (max-width: 576px) {
+    }
+}
+
+.hoverTab {
+    &:hover {
+        background: #acacac !important;
+        border: 1px solid #acacac !important;
+        color: white !important;
+    }
+}
+
+.tabFull {
+    width: 100%;
+    cursor: auto;
+}

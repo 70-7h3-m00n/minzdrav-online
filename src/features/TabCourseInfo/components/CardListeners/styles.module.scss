@@ -1,0 +1,30 @@
+@use 'src/styles/mixin/text';
+
+.cardWrapper {
+    @include text.text-description-form;
+    margin-top: 25px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 20px 40px;
+
+    ul {
+        list-style: none;
+        position: relative;
+    }
+    li {
+        margin-top: 12px;
+    }
+    li::before {
+        content: '';
+        position: absolute;
+        background: #3d3bff;
+        border-radius: 10px;
+        width: 10px;
+        height: 20px;
+        left: 20px;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 10px;
+    }
+}

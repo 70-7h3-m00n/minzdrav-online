@@ -12,9 +12,8 @@ import item3 from '@/public/images/item3.png'
 import item4 from '@/public/images/item4.png'
 import CheckMark from '@/src/components-svg/CheckMark'
 import { useTranslation } from 'next-i18next'
-import Link from 'next/link'
-import FormApplication from '@/src/features/FormApplication/components/FormApplication'
 import FormSending from '@/src/features/FormApplication/components/FormSending/formSending'
+import TabCourseInfo from '@/src/features/TabCourseInfo/components/TabCourseInfo'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -226,7 +225,11 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
             </section>
 
             <section className={'container'}>
-                <h2 className={'header'}>Запишитесь на программу</h2>
+                <TabCourseInfo course={course} />
+            </section>
+
+            <section className={'container'}>
+                <h2 className={'header'}>{t('CoursesPage:headerProgram')}</h2>
 
                 <div className={styles.wrapperPrice}>
                     <div className={styles.priceBlock}>
@@ -245,18 +248,18 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
 
                             <div className={styles.priceContainer}>
                                 <div className={Boolean(course.priceCourse.discount) ? styles.discount : 'close'}>
-                                    {(course.priceCourse.price / 100) * (100 - course.priceCourse.discount!)}
+                                    {course.priceCourse.price}
                                 </div>
 
                                 <div className={Boolean(course.priceCourse.discount) ? styles.price : styles.discount}>
-                                    {course.priceCourse.price}
+                                    {(course.priceCourse.price / 100) * (100 + course.priceCourse.discount!)}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className={styles.formBlock}>
-                        <h3 className={styles.headerPrice}>Заполните контактные данные</h3>
+                        <h3 className={styles.headerPrice}>{t('CoursesPage:headerForm')}</h3>
 
                         <div>
                             <FormSending />

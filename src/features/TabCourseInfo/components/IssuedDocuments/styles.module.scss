@@ -1,0 +1,82 @@
+.wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column !important;
+    }
+
+    .image {
+        position: relative;
+        width: 600px;
+        height: 294px;
+        border: 1px solid #000000;
+        border-radius: 20px;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+        }
+
+        @media screen and (max-width: 1400px) {
+            width: 400px;
+            height: 294px;
+        }
+
+        @media screen and (max-width: 992px) {
+            width: 290px;
+            height: 220px;
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            border: none;
+
+            img {
+                object-fit: contain;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+        }
+    }
+
+    .text {
+        width: calc(100% - 620px);
+        border: 1px solid #000000;
+        border-radius: 20px;
+        padding: 20px 30px;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 30px;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 150%;
+        }
+
+        @media screen and (max-width: 1400px) {
+            width: calc(100% - 420px);
+        }
+        @media screen and (max-width: 992px) {
+            width: calc(100% - 300px);
+            padding: 10px 15px;
+        }
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            margin-top: 15px;
+            border: none;
+            padding: 0;
+        }
+    }
+}

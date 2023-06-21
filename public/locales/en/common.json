@@ -1,11 +1,14 @@
 {
     "any": "Any",
     "logo": "Institute of Medical Education",
+    "module": "module",
     "duration": "Duration",
     "medicine": "Medicine",
+    "training": "Training",
     "dietetics": "Dietetics",
     "psychology": "Psychology",
     "allPrograms": "All programs",
     "typeTraining": "Platform learning type",
-    "homeBtnDiscover": "To learn more"
+    "homeBtnDiscover": "To learn more",
+    "professionalRetraining": "Professional retraining"
 }

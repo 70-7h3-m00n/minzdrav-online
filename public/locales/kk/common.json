@@ -1,11 +1,14 @@
 {
     "any": "Кез келген",
     "logo": "Медициналық білім институты",
+    "module": "модуль",
     "duration": "Ұзақтығы",
     "medicine": "Дәрі",
+    "training": "Біліктілікті арттыру",
     "dietetics": "Диетика",
     "psychology": "Психология",
     "allPrograms": "Барлық бағдарламалар",
     "typeTraining": "Платформалық оқыту түрі",
-    "homeBtnDiscover": "Көбірек білу үшін"
+    "homeBtnDiscover": "Көбірек білу үшін",
+    "professionalRetraining": "Кәсіби қайта даярлау"
 }

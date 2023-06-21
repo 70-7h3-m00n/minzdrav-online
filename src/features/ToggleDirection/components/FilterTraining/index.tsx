@@ -39,7 +39,7 @@ const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
                         >
                             <div className={classNames(styles.check, ActiveBtn === i && styles.active)} />
 
-                            <p className={styles.text}>{training}</p>
+                            <p className={styles.text}>{t(`common:${training}`)}</p>
                         </div>
                     ))
                 )}

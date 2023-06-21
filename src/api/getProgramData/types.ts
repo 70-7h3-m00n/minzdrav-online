@@ -36,6 +36,46 @@ interface ThisCourseFor {
     item: string
 }
 
+export interface TrainingContentClass {
+    id: number
+    syllabusRetraining: Syllabus[]
+    syllabusQualifications: Syllabus[]
+    listenersRetraining: AdmissionQualification[]
+    listenersQualifications: AdmissionQualification[]
+    admissionQualifications: AdmissionQualification[]
+    admissionRetraining: AdmissionQualification[]
+    IssuedDocumentsQualifications: IssuedDocuments[]
+    IssuedDocumentsRetraining: IssuedDocuments[]
+}
+
+export interface IssuedDocuments {
+    id: number
+    description: string
+    image: Image
+}
+
+export interface Image {
+    data: Datum[]
+}
+
+export interface Datum {
+    id: number
+    attributes: {
+        url: string
+    }
+}
+
+export interface AdmissionQualification {
+    id: number
+    item: string
+}
+
+export interface Syllabus {
+    id: number
+    header: string
+    description: string
+}
+
 interface Attributes {
     name: string
     typeCourse: string
@@ -60,6 +100,7 @@ interface Attributes {
     header: string
     ourLicenses: SubInfoContent[]
     priceCourse: { id: number; price: number; discount: number | null; installmentPlan: number | null }
+    trainingContent: TrainingContentClass
 }
 
 interface DataItem {
@@ -107,4 +148,34 @@ export interface NormalizeProgramData {
     header: string
     ourLicenses: Array<{ description: string; image: string }>
     priceCourse: { price: number; discount: number | null; installmentPlan: number | null }
+    trainingContent: {
+        syllabusRetraining: {
+            header: string
+            description: string
+        }[]
+        syllabusQualifications: {
+            header: string
+            description: string
+        }[]
+        listenersRetraining: {
+            item: string
+        }[]
+        listenersQualifications: {
+            item: string
+        }[]
+        admissionQualifications: {
+            item: string
+        }[]
+        admissionRetraining: {
+            item: string
+        }[]
+        IssuedDocumentsQualifications: {
+            description: string
+            image: string
+        }[]
+        IssuedDocumentsRetraining: {
+            description: string
+            image: string
+        }[]
+    }
 }

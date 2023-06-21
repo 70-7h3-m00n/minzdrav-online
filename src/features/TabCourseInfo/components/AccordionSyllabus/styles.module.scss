@@ -1,0 +1,124 @@
+@use 'src/styles/mixin/text';
+
+.container {
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+
+    @media screen and (max-width: 768px) {
+        padding: 15px;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 10px;
+    }
+}
+
+.wrapperHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.module {
+    background: #ffc759;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    margin-right: 48px;
+
+    @media screen and (max-width: 768px) {
+        margin-right: 20px;
+    }
+
+    @media screen and (max-width: 576px) {
+        margin-right: 10px;
+    }
+}
+
+.text {
+    @include text.text-phone;
+
+    @media screen and (max-width: 768px) {
+        width: 60%;
+    }
+}
+
+.btn,
+.activeBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        border-radius: 20px;
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        border-radius: 20px;
+        transform: rotate(90deg);
+
+        animation: open-btn 500ms forwards;
+    }
+}
+
+.activeBtn {
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        border-radius: 20px;
+        transform: rotate(90deg);
+
+        animation: close-btn 500ms forwards;
+    }
+}
+
+.wrapperContent {
+    display: none;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.contentOpen {
+    display: block;
+}
+
+@keyframes close-btn {
+    0% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes open-btn {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}

@@ -1,11 +1,14 @@
 {
     "any": "Любой",
     "logo": "Институт медицинского образования",
+    "module": "модуль",
     "duration": "Длительность",
     "medicine": "Медицина",
+    "training": "Повышение квалификации",
     "dietetics": "Диетология",
     "psychology": "Психология",
     "allPrograms": "Все программы",
     "typeTraining": "Тип обучения на платформе",
-    "homeBtnDiscover": "Узнать больше"
+    "homeBtnDiscover": "Узнать больше",
+    "professionalRetraining": "Профессиональная переподготовка"
 }

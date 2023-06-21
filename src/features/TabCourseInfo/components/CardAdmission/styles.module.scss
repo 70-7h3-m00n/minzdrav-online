@@ -1,0 +1,31 @@
+.wrapper {
+    margin-top: 20px;
+    width: calc((100% - 30px) / 2);
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 20px 15px;
+    vertical-align: top;
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
+}
+
+.counter {
+    text-align: center;
+    background: #eaeaea;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.content {
+    ul {
+        list-style-type: none;
+    }
+
+    li:before {
+        content: '- ';
+    }
+}

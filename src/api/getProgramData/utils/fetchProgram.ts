@@ -17,6 +17,7 @@ export const fetchProgram = async (locale: string) => {
             'pathCourse',
             'header',
             'typeTrainingHeader',
+            'script',
         ],
         populate: {
             categories: {
@@ -64,6 +65,44 @@ export const fetchProgram = async (locale: string) => {
             },
             priceCourse: {
                 fields: ['price', 'discount', 'installmentPlan'],
+            },
+            trainingContent: {
+                populate: {
+                    syllabusRetraining: {
+                        fields: ['header', 'description'],
+                    },
+                    syllabusQualifications: {
+                        fields: ['header', 'description'],
+                    },
+                    listenersRetraining: {
+                        fields: ['item'],
+                    },
+                    listenersQualifications: {
+                        fields: ['item'],
+                    },
+                    admissionQualifications: {
+                        fields: ['item'],
+                    },
+                    admissionRetraining: {
+                        fields: ['item'],
+                    },
+                    IssuedDocumentsQualifications: {
+                        fields: ['description'],
+                        populate: {
+                            image: {
+                                fields: ['url'],
+                            },
+                        },
+                    },
+                    IssuedDocumentsRetraining: {
+                        fields: ['description'],
+                        populate: {
+                            image: {
+                                fields: ['url'],
+                            },
+                        },
+                    },
+                },
             },
         },
         locale,

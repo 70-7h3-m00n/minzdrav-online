@@ -56,6 +56,36 @@ export const normalizeProgramData = ({
             discount: attributes.priceCourse.discount,
             installmentPlan: attributes.priceCourse.installmentPlan,
         },
+        trainingContent: {
+            syllabusRetraining: attributes.trainingContent.syllabusRetraining.map(item => ({
+                header: item.header,
+                description: item.description,
+            })),
+            syllabusQualifications: attributes.trainingContent.syllabusRetraining.map(item => ({
+                header: item.header,
+                description: item.description,
+            })),
+            listenersRetraining: attributes.trainingContent.listenersRetraining.map(item => ({
+                item: item.item,
+            })),
+            listenersQualifications: attributes.trainingContent.listenersQualifications.map(item => ({
+                item: item.item,
+            })),
+            admissionQualifications: attributes.trainingContent.admissionQualifications.map(item => ({
+                item: item.item,
+            })),
+            admissionRetraining: attributes.trainingContent.admissionRetraining.map(item => ({
+                item: item.item,
+            })),
+            IssuedDocumentsQualifications: attributes.trainingContent.IssuedDocumentsQualifications.map(item => ({
+                description: item.description,
+                image: item.image.data[0].attributes.url,
+            })),
+            IssuedDocumentsRetraining: attributes.trainingContent.IssuedDocumentsRetraining.map(item => ({
+                description: item.description,
+                image: item.image.data[0].attributes.url,
+            })),
+        },
     })) || []
 
 export default normalizeProgramData

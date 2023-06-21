@@ -1,11 +1,14 @@
 {
     "any": "Har qanday",
     "logo": "Tibbiyot ta'limi instituti",
+    "module": "modul",
     "duration": "Davomiyligi",
     "medicine": "Dori",
+    "training": "Malaka oshirish",
     "dietetics": "Parhezshunoslik",
     "psychology": "Psixologiya",
     "allPrograms": "Barcha dasturlar",
     "typeTraining": "Platformani o'rganish turi",
-    "homeBtnDiscover": "Qo'shimcha ma'lumot olish uchun"
+    "homeBtnDiscover": "Qo'shimcha ma'lumot olish uchun",
+    "professionalRetraining": "Professional qayta tayyorlash"
 }

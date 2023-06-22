@@ -15,13 +15,16 @@
     }
 }
 
+.wrapper {
+	background-color: white;
+}
+
 .nawBlock {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 30px 0;
     min-height: 125px;
-    background-color: white;
 
     @media screen and (max-width: 992px) {
         min-height: 90px;

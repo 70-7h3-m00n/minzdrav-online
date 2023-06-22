@@ -1,0 +1,190 @@
+@use 'src/styles/mixin/text';
+@use 'src/styles/variables/color';
+
+.blockList {
+    margin-top: 40px;
+}
+
+.headerList {
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.list {
+    margin-top: 40px;
+    padding: 0 0 0 10px;
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        list-style: none;
+
+        span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            margin-right: 27px;
+        }
+        p {
+            width: calc(100% - 10px);
+            margin: 0;
+        }
+    }
+}
+
+.wrapper {
+    cursor: pointer;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrowBtn {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+    vertical-align: middle;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 3px;
+        background-color: #4d4d4d;
+        border-radius: 30px;
+        transform: rotate(-130deg);
+        left: -3px;
+        top: 9px;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 3px;
+        background-color: #4d4d4d;
+        border-radius: 30px;
+        transform: rotate(130deg);
+        right: 11px;
+        top: 9px;
+    }
+}
+
+.wrapperAccordion {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.wrapperContent {
+    padding: 30px 0 30px 82px;
+
+    @media screen and (max-width: 1400px) {
+        width: 40%;
+        padding: 30px 0 30px 40px;
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 50%;
+        padding: 10px 0 10px 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
+}
+
+.category {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-right: 5px;
+    margin-top: 5px;
+
+    @media screen and (max-width: 992px) {
+    }
+}
+
+.header {
+    @include text.text-general;
+    margin-top: 12px;
+}
+
+.data {
+    @include text.text-politics;
+    margin-top: 36px;
+    color: color.$general;
+}
+
+.wrapperIcon {
+    position: relative;
+    padding-right: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @media screen and (max-width: 1400px) {
+        width: 60%;
+        padding-right: 20px;
+        justify-content: flex-end;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 50%;
+    }
+}
+
+.wrapperArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image {
+    position: relative;
+    width: 650px;
+    height: 180px;
+    margin-right: 110px;
+
+    @media screen and (max-width: 1400px) {
+        margin-right: 0;
+        width: 816px;
+        height: 200px;
+
+        img {
+            object-fit: contain;
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 478px;
+        height: 159px;
+    }
+
+    @media screen and (max-width: 768px) {
+    }
+
+    @media screen and (max-width: 576px) {
+    }
+}
+
+.arrow {
+    width: 40px;
+    cursor: pointer;
+    z-index: 100;
+}

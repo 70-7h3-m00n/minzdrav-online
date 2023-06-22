@@ -1,0 +1,99 @@
+@use 'src/styles/mixin/text';
+
+.cardPrice,
+.cardPriceBorder {
+    margin-top: 40px;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.cardPriceBorder {
+    border: 1px solid #000;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.categoryItem,
+.categoryItemToggle {
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-right: 10px;
+}
+
+.categoryItemToggle {
+    color: black;
+}
+
+.discountBlock {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background: #ececec;
+    padding: 3px 5px;
+}
+
+.wrapperImageDiscount {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.textImage {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%) rotate(-20deg);
+}
+
+.textDiscount {
+    @include text.text-btn-form;
+    margin-left: 20px;
+}
+
+.priceBlock {
+    margin-top: 20px;
+    display: flex;
+
+    @media screen and (max-width: 380px) {
+        flex-direction: column;
+    }
+}
+
+.wrapperPriceBlock {
+    width: 100%;
+}
+
+.textInstallment {
+    @include text.text-card-link;
+}
+
+.smallText {
+    @include text.text-btn-form;
+    margin-top: 10px;
+}
+
+.textPrice {
+    font-size: 64px;
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+
+    @media screen and (max-width: 1400px) {
+        font-size: 44px;
+    }
+
+    @media screen and (max-width: 576px) {
+        font-size: 36px;
+    }
+}
+
+.textThrough {
+    text-decoration: line-through;
+}

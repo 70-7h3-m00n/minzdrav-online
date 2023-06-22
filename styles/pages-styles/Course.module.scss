@@ -79,6 +79,9 @@
             .descr {
                 @include text.text-description-form;
             }
+            @media screen and (max-width: 800px) {
+                width: calc(100% - 90px);
+            }
         }
 
         @media screen and (max-width: 376px) {
@@ -143,20 +146,35 @@
     width: 603px;
     height: 560px;
 
+    img {
+        border-radius: 20px;
+    }
+
     @media screen and (max-width: 1400px) {
-        width: 100%;
+        width: 602px;
 
         img {
             object-fit: contain;
         }
     }
+
+    @media screen and (max-width: 768px) {
+        width: 480px;
+        height: 446px;
+    }
+
     @media screen and (max-width: 576px) {
-        width: 403px;
+        width: 387px;
         height: 360px;
     }
-    @media screen and (max-width: 400px) {
-        width: 303px;
+
+    @media screen and (max-width: 430px) {
+        width: 279px;
         height: 260px;
+    }
+
+    @media screen and (max-width: 279px) {
+        width: 100%;
     }
 }
 
@@ -263,40 +281,6 @@
     }
 }
 
-.blockList {
-    margin-top: 40px;
-}
-
-.headerList {
-    padding: 10px 20px;
-    color: white;
-    border-radius: 50px;
-}
-
-.list {
-    margin-top: 40px;
-    padding: 0;
-
-    .item {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-        list-style: none;
-
-        span {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 100%;
-            margin-right: 27px;
-        }
-        p {
-            width: calc(100% - 10px);
-            margin: 0;
-        }
-    }
-}
-
 .licensesList {
     @include text.text-input;
     display: flex;
@@ -370,72 +354,6 @@
     font-weight: 400;
     font-size: 28px;
     line-height: 33px;
-}
-
-.cardPrice {
-    padding: 20px 30px;
-    border-radius: 10px;
-}
-
-.category {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.categoryItem {
-    border-radius: 10px;
-    padding: 10px 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.05);
-    margin-right: 10px;
-}
-
-.priceText {
-    @include text.text-btn-form;
-    color: white;
-    margin-top: 70px;
-}
-
-.priceContainer {
-    display: flex;
-    align-items: flex-end;
-    margin-top: 10px;
-
-    .discount {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 64px;
-        line-height: 75px;
-        color: white;
-        margin-right: 20px;
-
-        @media screen and (max-width: 768px) {
-            font-size: 54px;
-            line-height: 65px;
-        }
-
-        @media screen and (max-width: 576px) {
-            font-size: 44px;
-            line-height: 55px;
-        }
-    }
-
-    .price {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 38px;
-        color: rgba(255, 255, 255, 0.6);
-
-        @media screen and (max-width: 768px) {
-            font-size: 28px;
-        }
-
-        @media screen and (max-width: 576px) {
-            font-size: 26px;
-        }
-    }
 }
 
 .priceBlock,

@@ -18,16 +18,18 @@ const Header = () => {
             <div className={styles.local}>
                 <Locale />
             </div>
-            <div className={classNames(['container', styles.nawBlock])}>
-                <div className={styles.contentWrapperLeft}>
-                    <Logo imageUrl={logoUrl} />
+            <div className={styles.wrapper}>
+                <div className={classNames(['container', styles.nawBlock])}>
+                    <div className={styles.contentWrapperLeft}>
+                        <Logo imageUrl={logoUrl} />
 
-                    <div className={styles.media}>
-                        <Button text={t('areasStudy')} link={'/directions'} active={active} />
+                        <div className={styles.media}>
+                            <Button text={t('areasStudy')} link={'/directions'} active={active} />
+                        </div>
                     </div>
-                </div>
 
-                <MenuHeader />
+                    <MenuHeader />
+                </div>
             </div>
         </header>
     )

@@ -11,21 +11,22 @@ interface FilterCourseProps {
 }
 
 const FilterCategory = ({ data, imageUrl, color, header, setFilterCategory }: FilterCourseProps): JSX.Element => {
-    const [ActiveBtn, setActiveBtn] = useState(0)
+    const [category, setCategory] = useState(data)
+    const [activeBtn, setActiveBtn] = useState(0)
 
     useEffect(() => {
         setActiveBtn(0)
-    }, [data])
+    }, [category])
 
     return (
         <div className={styles.infoBlock} style={{ backgroundColor: color }}>
             <div className={styles.headerBlock}>
                 <h2 className={styles.header}>{header}</h2>
                 <div className={styles.wrapperBtn}>
-                    {data?.map((item, i) => (
+                    {category?.map((item, i) => (
                         <button
                             key={i + item}
-                            className={ActiveBtn === i ? styles.active : styles.btn}
+                            className={activeBtn === i ? styles.active : styles.btn}
                             onClick={() => {
                                 setFilterCategory(item)
                                 setActiveBtn(i)

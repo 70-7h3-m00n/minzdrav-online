@@ -24,22 +24,12 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
 
     return (
         <div className={data.view ? styles.blockList : 'close'}>
-            <motion.div
+            <div
                 className={styles.wrapperAccordion}
                 onClick={() => setVisible(!isVisible)}
-                viewport={{ once: true }}
                 style={{
                     backgroundColor: color,
                 }}
-                initial={{
-                    x: 1000,
-                    opacity: 0,
-                }}
-                whileInView={{
-                    x: 0,
-                    opacity: 1,
-                }}
-                transition={{ duration: 1.5 }}
             >
                 <div className={styles.wrapperContent}>
                     {category.map((item, index) => (
@@ -69,7 +59,7 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
                         <div className={styles.arrow}>{isVisible ? <ArrowUp /> : <ArrowDown />}</div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
             <AnimatePresence>
                 <motion.ul initial={{ height: 0 }} animate={animateList} exit={{ height: 0 }}>

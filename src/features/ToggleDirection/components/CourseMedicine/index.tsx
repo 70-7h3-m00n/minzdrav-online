@@ -21,6 +21,8 @@ interface CourseMedicineProps {
 
 const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Element => {
     const { t } = useTranslation()
+    const textAny = t('common:any')
+    const allPrograms = t('common:allPrograms')
     const { medicine } = useContentToggle()
     const [searchCourse, setSearchCourse] = useState('')
     const [durationTraining, setDurationTraining] = useState(24)
@@ -47,7 +49,7 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
                             (accumulator: Array<string>, currentValue) => {
                                 return accumulator.concat(currentValue.programs.map(item => item.item))
                             },
-                            ['Все программы'],
+                            [allPrograms],
                         ),
                 ),
             ]
@@ -67,7 +69,7 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
                             (accumulator: Array<string>, currentValue) => {
                                 return accumulator.concat(currentValue.typeTraining.map(item => item.item))
                             },
-                            ['Любой'],
+                            [textAny],
                         ),
                 ),
             ]
@@ -84,8 +86,8 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
     }, [dataMedicine, filterCategory, program, training])
 
     useEffect(() => {
-        setFilterProgram('Все программы')
-        setFilterTraining('Любой')
+        setFilterProgram(allPrograms)
+        setFilterTraining(textAny)
         setDurationTraining(24)
     }, [programData])
 
@@ -93,13 +95,13 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
         return dataMedicine
             .filter(course => course.categories.some(item => item.item === filterCategory))
             .filter(program =>
-                program.programs.some(item => (programFilter === 'Все программы' ? item : item.item === programFilter)),
+                program.programs.some(item => (programFilter === allPrograms ? item : item.item === programFilter)),
             )
             .filter(courseName =>
                 searchCourse === '' ? courseName : courseName.name.toLowerCase().includes(searchCourse),
             )
             .filter(training =>
-                training.typeTraining.some(item => (filterTraining === 'Любой' ? item : item.item === filterTraining)),
+                training.typeTraining.some(item => (filterTraining === textAny ? item : item.item === filterTraining)),
             )
             .filter(duration => duration.durationTraining <= durationTraining)
     }
@@ -130,9 +132,9 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
                 <div className={styles.coursesContent}>
                     <ul className={styles.listCategory}>
                         {programData
-                            .filter(item => (filterProgram === 'Все программы' ? item : item === filterProgram))
+                            .filter(item => (filterProgram === allPrograms ? item : item === filterProgram))
                             .map((category, index) => {
-                                if (category === 'Все программы') return null
+                                if (category === allPrograms) return null
                                 return (
                                     <li
                                         key={index + 'category'}

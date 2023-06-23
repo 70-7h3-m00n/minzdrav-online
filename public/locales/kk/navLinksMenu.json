@@ -1,9 +1,9 @@
 {
-    "groupLinkUniversity": "Университет туралы",
     "linkHome": "үй",
     "linkNews": "Жаңалықтар",
     "linkWebinars": "Вебинарлар",
-    "subLinkDocuments": "Құжаттама",
+    "subLinkReviews": "Пікірлер",
     "subLinkLicenses": "Лицензиялар",
-    "subLinkReviews": "Пікірлер"
+    "subLinkDocuments": "Құжаттама",
+    "groupLinkUniversity": "Университет туралы"
 }

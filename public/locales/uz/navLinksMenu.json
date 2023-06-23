@@ -1,9 +1,9 @@
 {
-    "groupLinkUniversity": "Universitet haqida",
     "linkHome": "uy",
     "linkNews": "Yangiliklar",
     "linkWebinars": "Vebinarlar",
-    "subLinkDocuments": "Hujjatlar",
+    "subLinkReviews": "Sharhlar",
     "subLinkLicenses": "Litsenziyalar",
-    "subLinkReviews": "Sharhlar"
+    "subLinkDocuments": "Hujjatlar",
+    "groupLinkUniversity": "Universitet haqida"
 }

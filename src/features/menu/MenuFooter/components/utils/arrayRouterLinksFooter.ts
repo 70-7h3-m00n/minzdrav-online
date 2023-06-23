@@ -1,9 +1,11 @@
+import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
+
 type ArrayRouterLinksFooter = Array<{
     text: string
     link: string | null
     subLink?: Array<{
         text: string
-        link: string
+        direction: EnumContentToggle
     }>
 }>
 
@@ -25,16 +27,16 @@ export const arrayRouterLinksFooter: ArrayRouterLinksFooter = [
         link: null,
         subLink: [
             {
-                text: 'subLinkReviews',
-                link: '/',
+                text: 'medicine',
+                direction: EnumContentToggle.medicine,
             },
             {
-                text: 'subLinkLicenses',
-                link: '/',
+                text: 'psychology',
+                direction: EnumContentToggle.psychology,
             },
             {
-                text: 'subLinkDocuments',
-                link: '/',
+                text: 'dietetics',
+                direction: EnumContentToggle.dietetics,
             },
         ],
     },

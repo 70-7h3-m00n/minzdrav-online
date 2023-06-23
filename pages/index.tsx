@@ -124,6 +124,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     variants={animation.bottomContentAnimation}
                 >
                     <h2 className={'header'}>{t('homeHeaders:homeDirections')}</h2>
+
                     <div className={styles.wrapperCardDirection}>
                         {DataCardDirection.map((card, index) => (
                             <CardDirection

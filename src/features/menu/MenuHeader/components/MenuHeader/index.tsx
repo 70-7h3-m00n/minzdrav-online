@@ -30,9 +30,9 @@ const MenuHeader = (): JSX.Element => {
                 ),
             )}
 
-            <div className={styles.media}>
-                <Locale />
-            </div>
+            {/*<div className={styles.media}>*/}
+            {/*    <Locale />*/}
+            {/*</div>*/}
 
             <Button text={t('header:buttonEnter')} link={'https://sdo-ipo.ru/login/index.php'} />
 

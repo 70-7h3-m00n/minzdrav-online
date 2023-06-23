@@ -27,6 +27,7 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
             <motion.div
                 className={styles.wrapperAccordion}
                 onClick={() => setVisible(!isVisible)}
+                viewport={{ once: true }}
                 style={{
                     backgroundColor: color,
                 }}
@@ -34,10 +35,11 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
                     x: 1000,
                     opacity: 0,
                 }}
-                animate={{
+                whileInView={{
                     x: 0,
                     opacity: 1,
                 }}
+                transition={{ duration: 1.5 }}
             >
                 <div className={styles.wrapperContent}>
                     {category.map((item, index) => (
@@ -59,8 +61,8 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
                                 priority
                                 fill
                                 sizes='(max-width: 768px) 100vw,
-                                      (max-width: 1200px) 50vw,
-                                      33vw'
+                                  (max-width: 1200px) 50vw,
+                                  33vw'
                             />
                         </div>
 
@@ -70,13 +72,7 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
             </motion.div>
 
             <AnimatePresence>
-                <motion.ul
-                    className={isVisible ? styles.list : 'close'}
-                    initial={{ height: 0 }}
-                    animate={animateList}
-                    exit={{ height: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
+                <motion.ul initial={{ height: 0 }} animate={animateList} exit={{ height: 0 }}>
                     {data.list.map((item, index) => (
                         <motion.li
                             className={styles.item}
@@ -84,7 +80,6 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
                             initial={{ opacity: 0 }}
                             exit={{ opacity: 0 }}
                             animate={animateItem}
-                            transition={{ duration: 2 }}
                         >
                             <span style={{ backgroundColor: color }}></span>
                             <p>{item.item}</p>

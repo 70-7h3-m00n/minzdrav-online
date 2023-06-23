@@ -52,9 +52,9 @@ export const normalizeProgramData = ({
             image: list.image.data[0].attributes.url,
         })),
         priceCourse: {
-            price: attributes.priceCourse.price,
+            priceRetraining: attributes.priceCourse.priceRetraining,
             discount: attributes.priceCourse.discount,
-            installmentPlan: attributes.priceCourse.installmentPlan,
+            priceQualifications: attributes.priceCourse.priceQualifications,
         },
         trainingContent: {
             syllabusRetraining: attributes.trainingContent.syllabusRetraining.map(item => ({

@@ -16,7 +16,7 @@ const AccordionSyllabus = ({ data, indexModule }: AccordionSyllabusProps) => {
     const animate = isVisible ? { height: 'auto' } : {}
     return (
         <div className={styles.container}>
-            <div className={styles.wrapperHeader}>
+            <div className={styles.wrapperHeader} onClick={() => setVisible(!isVisible)}>
                 <div className={styles.wrapper}>
                     <div className={styles.module}>
                         {indexModule} {t('common:module')}
@@ -25,7 +25,7 @@ const AccordionSyllabus = ({ data, indexModule }: AccordionSyllabusProps) => {
                     <p className={styles.text}>{data.header}</p>
                 </div>
 
-                <div className={!isVisible ? styles.btn : styles.activeBtn} onClick={() => setVisible(!isVisible)} />
+                <div className={!isVisible ? styles.btn : styles.activeBtn} />
             </div>
 
             <AnimatePresence>

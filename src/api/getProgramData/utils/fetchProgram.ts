@@ -64,7 +64,7 @@ export const fetchProgram = async (locale: string) => {
                 },
             },
             priceCourse: {
-                fields: ['price', 'discount', 'installmentPlan'],
+                fields: ['priceRetraining', 'discount', 'priceQualifications'],
             },
             trainingContent: {
                 populate: {

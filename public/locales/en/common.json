@@ -1,14 +1,18 @@
 {
-    "any": "Any",
-    "logo": "Institute of Medical Education",
-    "module": "module",
-    "duration": "Duration",
-    "medicine": "Medicine",
-    "training": "Training",
-    "dietetics": "Dietetics",
-    "psychology": "Psychology",
     "allPrograms": "All programs",
-    "typeTraining": "Platform learning type",
+    "any": "Any",
+    "dietetics": "Dietetics",
+    "discount": "Discount valid until",
+    "duration": "Duration",
     "homeBtnDiscover": "To learn more",
-    "professionalRetraining": "Professional retraining"
+    "installmentPlan": "Installment for 12 months First payment after 6 months",
+    "logo": "Institute of Medical Education",
+    "medicine": "Medicine",
+    "module": "module",
+    "month": "month",
+    "price": "Price",
+    "professionalRetraining": "Professional retraining",
+    "psychology": "Psychology",
+    "training": "Training",
+    "typeTraining": "Platform learning type"
 }

@@ -1,15 +1,15 @@
 {
     "and": "Va",
-    "name": "Ism",
+    "description": "Agar format haqida savollaringiz bo'lsa yoki nimani tanlashni bilmasangiz, raqamingizni qoldiring - biz barcha savollaringizga javob berish uchun qo'ng'iroq qilamiz.",
     "email": "Elektron pochta",
-    "phone": "Telefon",
-    "submit": "Yuborish",
+    "header-one": "Biz sizga tanlashda yordam beramiz!",
     "link-one": "shaxsiy ma'lumotlarni qayta ishlash",
     "link-two": "platformadan foydalanish shartlari bilan",
-    "validName": "Ismingizni kiriting",
-    "header-one": "Biz sizga tanlashda yordam beramiz!",
+    "name": "Ism",
+    "phone": "Telefon",
+    "political-one": "Tugmani bosish orqali men rozilik bildiraman",
+    "submit": "Yuborish",
     "validEmail": "Elektron pochtani kiriting",
-    "validPhone": "Telefonni kiriting",
-    "description": "Agar format haqida savollaringiz bo'lsa yoki nimani tanlashni bilmasangiz, raqamingizni qoldiring - biz barcha savollaringizga javob berish uchun qo'ng'iroq qilamiz.",
-    "political-one": "Tugmani bosish orqali men rozilik bildiraman"
+    "validName": "Ismingizni kiriting",
+    "validPhone": "Telefonni kiriting"
 }

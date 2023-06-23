@@ -5,15 +5,18 @@ import getFilesName from '@/src/helper/getFilesName'
 import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import styles from '@/styles/pages-styles/Course.module.scss'
 import classNames from 'classnames'
-import Image, { StaticImageData } from 'next/image'
-import item1 from '@/public/images/item1.png'
-import item2 from '@/public/images/item2.png'
-import item3 from '@/public/images/item3.png'
-import item4 from '@/public/images/item4.png'
+import Image from 'next/image'
 import CheckMark from '@/src/components-svg/CheckMark'
 import { useTranslation } from 'next-i18next'
 import FormSending from '@/src/features/FormApplication/components/FormSending/formSending'
 import TabCourseInfo from '@/src/features/TabCourseInfo/components/TabCourseInfo'
+import Icon1 from '@/src/components-svg/Icons/Icon1'
+import Icon2 from '@/src/components-svg/Icons/Icon2'
+import Icon3 from '@/src/components-svg/Icons/Icon3'
+import Icon4 from '@/src/components-svg/Icons/Icon4'
+import AccordionSkills from '@/src/components/AccordionSkills'
+import Head from 'next/head'
+import CardPrice from '@/src/components/CardPrice'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -59,16 +62,19 @@ interface PageCourseProps {
 interface ItemData {
     style: string
     text: string
-    icon: StaticImageData
+    icon: JSX.Element
     header: string
-    width: number
-    height: number
 }
 
 interface ArrayListSkills {
     header: string
     list: Array<{ item: string }>
     view: boolean
+}
+
+interface DataPrice {
+    category: string
+    price: number
 }
 
 export default function PageCourse({ course }: PageCourseProps): JSX.Element {
@@ -79,36 +85,29 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
         {
             style: styles.one,
             text: course.studyingTime,
-            icon: item1,
+            icon: <Icon1 width={50} height={38} fill={course.color} />,
             header: t('CoursesPage:studyingTime'),
-            width: 38,
-            height: 38,
         },
         {
             style: styles.two,
             text: course.receivedDocuments,
-            icon: item2,
+            icon: <Icon2 width={60} height={53} fill={course.color} />,
             header: t('CoursesPage:receivedDocuments'),
-            width: 49,
-            height: 53,
         },
         {
             style: styles.three,
             text: course.startDateTraining,
-            icon: item3,
+            icon: <Icon3 width={55} height={50} fill={course.color} />,
             header: t('CoursesPage:dateOfTraining'),
-            width: 50,
-            height: 50,
         },
         {
             style: styles.four,
             text: course.typeTrainingHeader,
-            icon: item4,
+            icon: <Icon4 width={76} height={56} fill={course.color} />,
             header: t('CoursesPage:typeTraining'),
-            width: 56,
-            height: 56,
         },
     ]
+
     const arrayListSkills: Array<ArrayListSkills> = [
         {
             header: t('CoursesPage:knowledge'),
@@ -127,8 +126,30 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
         },
     ]
 
+    const dataPrice = [
+        ...new Set(
+            course.typeTraining.reduce((accum: Array<DataPrice>, currentValue) => {
+                if (currentValue.item === 'training') {
+                    return accum.concat({
+                        category: currentValue.item,
+                        price: course.priceCourse.priceRetraining,
+                    })
+                } else if (currentValue.item === 'professionalRetraining') {
+                    return accum.concat({
+                        category: currentValue.item,
+                        price: course.priceCourse.priceQualifications,
+                    })
+                }
+                return accum
+            }, []),
+        ),
+    ]
+
     return (
         <>
+            <Head>
+                <title>Курс: {course.name}</title>
+            </Head>
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>
                     <div className={styles.blockInfo}>
@@ -139,14 +160,7 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                             <div className={styles.itemsBlockWrapper}>
                                 {arrayItemsData.map((item, index) => (
                                     <div key={item.header + index} className={item.style}>
-                                        <Image
-                                            className={styles.image}
-                                            src={item.icon}
-                                            alt={'item'}
-                                            width={item.width}
-                                            height={item.height}
-                                        />
-
+                                        {item.icon}
                                         <div className={styles.wrapperText}>
                                             <h3 className={styles.headerItem}>{item.header}</h3>
                                             <div
@@ -206,20 +220,12 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                     <h2 className={'header'}>{t('CoursesPage:headerBlockSkills')}</h2>
 
                     {arrayListSkills.map((item, index) => (
-                        <div key={index} className={item.view ? styles.blockList : 'close'}>
-                            <span className={styles.headerList} style={{ backgroundColor: course.color }}>
-                                {item.header}
-                            </span>
-
-                            <ul className={styles.list}>
-                                {item.list.map((item, index) => (
-                                    <li className={styles.item} key={item.item + index}>
-                                        <span style={{ backgroundColor: course.color }}></span>
-                                        <p>{item.item}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <AccordionSkills
+                            category={course.categories}
+                            key={item.header + index}
+                            color={course.color}
+                            data={item}
+                        />
                     ))}
                 </div>
             </section>
@@ -235,27 +241,16 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                     <div className={styles.priceBlock}>
                         <h3 className={styles.headerPrice}>{course.name}</h3>
 
-                        <div className={styles.cardPrice} style={{ backgroundColor: course.color }}>
-                            <div className={styles.category}>
-                                {course.categories.map((category, index) => (
-                                    <div className={styles.categoryItem} key={category.item + index}>
-                                        {category.item}
-                                    </div>
-                                ))}
-                            </div>
-
-                            <p className={styles.priceText}>{t('CoursesPage:price')}</p>
-
-                            <div className={styles.priceContainer}>
-                                <div className={Boolean(course.priceCourse.discount) ? styles.discount : 'close'}>
-                                    {course.priceCourse.price}
-                                </div>
-
-                                <div className={Boolean(course.priceCourse.discount) ? styles.price : styles.discount}>
-                                    {(course.priceCourse.price / 100) * (100 + course.priceCourse.discount!)}
-                                </div>
-                            </div>
-                        </div>
+                        {dataPrice.reverse().map((item, index) => (
+                            <CardPrice
+                                category={item.category}
+                                color={course.color}
+                                price={item.price}
+                                discount={course.priceCourse.discount}
+                                toggleContent={item.category === 'training'}
+                                key={item.category + index}
+                            />
+                        ))}
                     </div>
 
                     <div className={styles.formBlock}>

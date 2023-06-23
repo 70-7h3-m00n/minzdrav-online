@@ -14,7 +14,7 @@ const itemVariants: Variants = {
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
 }
 
-const listLocale = ['ja', 'kk', 'uz', 'en', 'ru']
+const listLocale = ['kk', 'uz', 'en', 'ru']
 
 const Locale = () => {
     const [isOpen, setIsOpen] = useState(false)

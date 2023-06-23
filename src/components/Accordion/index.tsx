@@ -136,7 +136,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                                 </li>
                             ))}
                         </ul>
-                        <Button style={styles.link} text={'Узнать подробнее'} link={'/'} />
+                        <Button style={styles.link} text={'Узнать подробнее'} link={`/course/${data.pathCourse}`} />
                     </div>
                 </div>
 

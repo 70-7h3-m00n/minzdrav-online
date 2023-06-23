@@ -99,7 +99,7 @@ interface Attributes {
     typeTrainingHeader: string
     header: string
     ourLicenses: SubInfoContent[]
-    priceCourse: { id: number; price: number; discount: number | null; installmentPlan: number | null }
+    priceCourse: { id: number; priceRetraining: number; discount: number; priceQualifications: number }
     trainingContent: TrainingContentClass
 }
 
@@ -147,7 +147,7 @@ export interface NormalizeProgramData {
     typeTrainingHeader: string
     header: string
     ourLicenses: Array<{ description: string; image: string }>
-    priceCourse: { price: number; discount: number | null; installmentPlan: number | null }
+    priceCourse: { priceRetraining: number; discount: number; priceQualifications: number }
     trainingContent: {
         syllabusRetraining: {
             header: string

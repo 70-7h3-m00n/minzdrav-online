@@ -1,14 +1,18 @@
 {
-    "any": "Кез келген",
-    "logo": "Медициналық білім институты",
-    "module": "модуль",
-    "duration": "Ұзақтығы",
-    "medicine": "Дәрі",
-    "training": "Біліктілікті арттыру",
-    "dietetics": "Диетика",
-    "psychology": "Психология",
     "allPrograms": "Барлық бағдарламалар",
-    "typeTraining": "Платформалық оқыту түрі",
+    "any": "Кез келген",
+    "dietetics": "Диетика",
+    "discount": "дейін жарамды жеңілдік",
+    "duration": "Ұзақтығы",
     "homeBtnDiscover": "Көбірек білу үшін",
-    "professionalRetraining": "Кәсіби қайта даярлау"
+    "installmentPlan": "12 айға бөліп төлеу 6 айдан кейін алғашқы төлем",
+    "logo": "Медициналық білім институты",
+    "medicine": "Дәрі",
+    "module": "модуль",
+    "month": "ай",
+    "price": "Бағасы",
+    "professionalRetraining": "Кәсіби қайта даярлау",
+    "psychology": "Психология",
+    "training": "Біліктілікті арттыру",
+    "typeTraining": "Платформалық оқыту түрі"
 }

@@ -3,9 +3,19 @@ import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 import { arrayRouterLinksFooter } from '@/src/features/menu/MenuFooter/components/utils/arrayRouterLinksFooter'
 import Link from 'next/link'
+import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
+import { useRouter } from 'next/router'
+import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
 
 const MenuFooter = () => {
     const { t } = useTranslation('navLinksHeader')
+    const { toggle } = useContentToggle()
+    const { push } = useRouter()
+
+    const onLink = (direction: EnumContentToggle) => {
+        toggle(direction)
+        push('/directions')
+    }
 
     return (
         <nav className={styles.menuFooter}>
@@ -20,7 +30,7 @@ const MenuFooter = () => {
                         <ul className={styles.menuFooter_subLinkContainer}>
                             {link.subLink?.map((subLink, i) => (
                                 <li key={i} className={styles.menuFooter_subLinkContainer__link}>
-                                    <Link href={subLink.link}>{t(subLink.text)}</Link>
+                                    <div onClick={() => onLink(subLink.direction)}>{t(subLink.text)}</div>
                                 </li>
                             ))}
                         </ul>

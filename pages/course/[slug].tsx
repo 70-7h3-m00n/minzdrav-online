@@ -17,6 +17,8 @@ import Icon4 from '@/src/components-svg/Icons/Icon4'
 import AccordionSkills from '@/src/components/AccordionSkills'
 import Head from 'next/head'
 import CardPrice from '@/src/components/CardPrice'
+import { useRef } from 'react'
+import { useInView } from 'framer-motion'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -79,6 +81,8 @@ interface DataPrice {
 
 export default function PageCourse({ course }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true })
     if (course === undefined) return <></>
 
     const arrayItemsData: Array<ItemData> = [
@@ -148,7 +152,7 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
     return (
         <>
             <Head>
-                <title>Курс: {course.name}</title>
+                <title>Курс</title>
             </Head>
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>
@@ -217,15 +221,21 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
 
             <section className={styles.learnInfo} style={{ backgroundColor: course.color }}>
                 <div className={classNames('container', styles.blockInfoWrapper)}>
-                    <h2 className={'header'}>{t('CoursesPage:headerBlockSkills')}</h2>
+                    <h2 ref={ref} className={'header'}>
+                        {t('CoursesPage:headerBlockSkills')}
+                    </h2>
 
                     {arrayListSkills.map((item, index) => (
-                        <AccordionSkills
-                            category={course.categories}
+                        <div
                             key={item.header + index}
-                            color={course.color}
-                            data={item}
-                        />
+                            style={{
+                                transform: isInView ? 'none' : 'translateX(1000px)',
+                                opacity: isInView ? 1 : 0,
+                                transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
+                            }}
+                        >
+                            <AccordionSkills category={course.categories} color={course.color} data={item} />
+                        </div>
                     ))}
                 </div>
             </section>

@@ -15,9 +15,7 @@ const Header = () => {
     const active = router.asPath === '/directions'
     return (
         <header className={styles.header}>
-            <div className={styles.local}>
-                {/*<Locale />*/}
-            </div>
+            <div className={styles.local}>{/*<Locale />*/}</div>
             <div className={styles.wrapper}>
                 <div className={classNames(['container', styles.nawBlock])}>
                     <div className={styles.contentWrapperLeft}>

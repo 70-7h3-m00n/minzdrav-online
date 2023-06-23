@@ -1,9 +1,9 @@
 {
-    "groupLinkUniversity": "About the university",
     "linkHome": "home",
     "linkNews": "News",
     "linkWebinars": "Webinars",
-    "subLinkDocuments": "Documentation",
+    "subLinkReviews": "Reviews",
     "subLinkLicenses": "Licenses",
-    "subLinkReviews": "Reviews"
+    "subLinkDocuments": "Documentation",
+    "groupLinkUniversity": "About the university"
 }

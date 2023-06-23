@@ -1,11 +1,11 @@
 {
-    "homeDirections": "Areas of study in our center",
+    "homeSub": "Respect for tradition, focus on innovation",
     "homeForm": "We'll help you choose!",
-    "homeGeneral": "center for professional qualifications of medical personnel",
-    "homeGetProfession": "Find out what profession you can retrain for",
     "homeNews": "News",
+    "homeGeneral": "center for professional qualifications of medical personnel",
+    "homeWebinar": "Webinar Recordings",
     "homePartners": "Partners",
     "homeResources": "Resources",
-    "homeSub": "Respect for tradition, focus on innovation",
-    "homeWebinar": "Webinar Recordings"
+    "homeDirections": "Areas of study in our center",
+    "homeGetProfession": "Find out what profession you can retrain for"
 }

@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
             course,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
-        revalidate: 10000,
+        // revalidate: 10000,
     }
 }
 

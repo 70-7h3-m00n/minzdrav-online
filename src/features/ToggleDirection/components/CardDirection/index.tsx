@@ -31,9 +31,7 @@ const CardDirection = observer(({ imageSrc, textLink, colorBtn, contentTab }: Ca
                 />
             </div>
 
-            <div className={classNames([colorBtn, styles.link])}>
-                {textLink}
-            </div>
+            <div className={classNames([colorBtn, styles.link])}>{textLink}</div>
         </Link>
     )
 })

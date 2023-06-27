@@ -6,33 +6,6 @@
         font-size: 14px;
         line-height: 14px;
         color: #000000;
-
-        .durationRange {
-            margin-top: 20px;
-            width: 100%;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            outline: none;
-        }
-
-        .durationRange::-webkit-slider-runnable-track {
-            height: 2px;
-            background-color: #3d3bff;
-        }
-
-        .durationRange::-webkit-slider-thumb {
-            position: relative;
-            background: black;
-            border-radius: 100%;
-            cursor: pointer;
-            width: 23px;
-            height: 23px;
-            border: 7px solid white;
-            -webkit-appearance: none;
-            margin-top: -11px;
-            box-shadow: 0 0 0 1px black;
-        }
     }
 
     @media screen and (max-width: 992px) {
@@ -46,7 +19,4 @@
     line-height: 14px;
     color: #000000;
     margin-bottom: 25px;
-
-    @media screen and (max-width: 992px) {
-    }
 }

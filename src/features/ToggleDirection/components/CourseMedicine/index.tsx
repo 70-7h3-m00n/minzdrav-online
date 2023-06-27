@@ -1,117 +1,78 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import img from '@/public/images/MedicineCard.png'
 import styles from './styles.module.scss'
 import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
 import FilterCategory from '@/src/features/ToggleDirection/components/FilterCategory'
-import getPartnersData from '@/src/api/getProgramData'
 import FilterProgram from '@/src/features/ToggleDirection/components/FilterProgram'
-import classNames from 'classnames'
 import FilterTraining from '@/src/features/ToggleDirection/components/FilterTraining'
 import Search from '@/src/features/ToggleDirection/components/Search/input'
 import FilterDuration from '@/src/features/ToggleDirection/components/FilterDuration'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
-import CoursesCardsList from '@/src/features/ToggleDirection/components/CoursesCardsList'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import { useTranslation } from 'next-i18next'
+import { DataContext } from '@/pages/directions'
+import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
+import CourseListMedicine from '@/src/features/ToggleDirection/components/CourseListMedicine'
+import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 
-interface CourseMedicineProps {
-    dataMedicine: Awaited<ReturnType<typeof getPartnersData>>
-}
-
-const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Element => {
+const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation()
-    const textAny = t('common:any')
-    const allPrograms = t('common:allPrograms')
+    const data = useContext(DataContext)!
+    const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
     const { medicine } = useContentToggle()
-    const [searchCourse, setSearchCourse] = useState('')
-    const [durationTraining, setDurationTraining] = useState(24)
+    const { categoryMedicine, filterTraining } = filterCourseStore.filterCourse
 
-    const category = (data: Awaited<ReturnType<typeof getPartnersData>>): string[] => {
+    const allCategory = categoryMedicine === t('common:allPrograms') || categoryMedicine === ''
+    const allTraining = filterTraining === 'any' || filterTraining === ''
+
+    const category = [
+        ...new Set(
+            dataMedicine.reduce((accumulator: Array<string>, currentValue) => {
+                return accumulator.concat(currentValue.categories.map(item => item.item))
+            }, []),
+        ),
+    ]
+
+    const program = (data: Array<NormalizeProgramData>): Array<string> => {
         return [
             ...new Set(
-                data.reduce((accumulator: Array<string>, currentValue) => {
-                    return accumulator.concat(currentValue.categories.map(item => item.item))
-                }, []),
+                data
+                    .filter(course =>
+                        course.categories.some(item => (allCategory ? item.item : item.item === categoryMedicine)),
+                    )
+                    .reduce(
+                        (accumulator: Array<string>, currentValue) => {
+                            return accumulator.concat(currentValue.programs.map(item => item.item))
+                        },
+                        [t('common:allPrograms')],
+                    ),
             ),
         ]
     }
-    const [categoryData, setCategoryData] = useState(category(dataMedicine))
-    const [filterCategory, setFilterCategory] = useState(category(dataMedicine)[0])
 
-    const program = useCallback(
-        (data: Awaited<ReturnType<typeof getPartnersData>>): string[] => {
-            return [
-                ...new Set(
-                    data
-                        .filter(course => course.categories.some(item => item.item === filterCategory))
-                        .reduce(
-                            (accumulator: Array<string>, currentValue) => {
-                                return accumulator.concat(currentValue.programs.map(item => item.item))
-                            },
-                            [allPrograms],
-                        ),
-                ),
-            ]
-        },
-        [filterCategory],
-    )
-    const [programData, setProgramData] = useState(program(dataMedicine))
-    const [filterProgram, setFilterProgram] = useState(programData[0])
-
-    const training = useCallback(
-        (data: Awaited<ReturnType<typeof getPartnersData>>): string[] => {
-            return [
-                ...new Set(
-                    data
-                        .filter(course => course.categories.some(item => item.item === filterCategory))
-                        .reduce(
-                            (accumulator: Array<string>, currentValue) => {
-                                return accumulator.concat(currentValue.typeTraining.map(item => item.item))
-                            },
-                            [textAny],
-                        ),
-                ),
-            ]
-        },
-        [filterCategory],
-    )
-    const [trainingData, setTrainingData] = useState(training(dataMedicine))
-    const [filterTraining, setFilterTraining] = useState(trainingData[0])
-
-    useEffect(() => {
-        setProgramData([...program(dataMedicine)])
-        setCategoryData([...category(dataMedicine)])
-        setTrainingData([...training(dataMedicine)])
-    }, [dataMedicine, filterCategory, program, training])
-
-    useEffect(() => {
-        setFilterProgram(allPrograms)
-        setFilterTraining(textAny)
-        setDurationTraining(24)
-    }, [programData])
-
-    const courseList = (programFilter: string): NormalizeProgramData[] => {
-        return dataMedicine
-            .filter(course => course.categories.some(item => item.item === filterCategory))
-            .filter(program =>
-                program.programs.some(item => (programFilter === allPrograms ? item : item.item === programFilter)),
-            )
-            .filter(courseName =>
-                searchCourse === '' ? courseName : courseName.name.toLowerCase().includes(searchCourse),
-            )
-            .filter(training =>
-                training.typeTraining.some(item => (filterTraining === textAny ? item : item.item === filterTraining)),
-            )
-            .filter(duration => duration.durationTraining <= durationTraining)
+    const training = (data: Array<NormalizeProgramData>): Array<string> => {
+        return [
+            ...new Set(
+                data
+                    .filter(course =>
+                        course['typeTraining'].some(item => (allTraining ? item.item : item.item === filterTraining)),
+                    )
+                    .reduce(
+                        (accumulator: Array<string>, currentValue) => {
+                            return accumulator.concat(currentValue['typeTraining'].map(item => item.item))
+                        },
+                        ['any'],
+                    ),
+            ),
+        ]
     }
 
     return (
         <div className={medicine ? styles.infoBlock : 'close'}>
             <MotionLayoutX variant={'left'}>
                 <FilterCategory
-                    data={categoryData}
-                    setFilterCategory={setFilterCategory}
+                    type={'Медицина'}
+                    data={category}
                     header={t('common:medicine')}
                     color={'#3D3BFF'}
                     imageUrl={img}
@@ -120,42 +81,19 @@ const CourseMedicine = observer(({ dataMedicine }: CourseMedicineProps): JSX.Ele
 
             <div className={styles.courseInfo}>
                 <div className={styles.filterCourses}>
-                    <Search setSearchCourse={setSearchCourse} />
+                    <Search />
 
-                    <FilterProgram data={programData} setFilterProgram={setFilterProgram} />
+                    <FilterProgram data={program(dataMedicine)} />
 
-                    <FilterTraining data={trainingData} setFilterTraining={setFilterTraining} />
+                    <FilterTraining data={training(dataMedicine)} />
 
-                    <FilterDuration durationTraining={durationTraining} setDurationTraining={setDurationTraining} />
+                    <FilterDuration />
                 </div>
 
-                <div className={styles.coursesContent}>
-                    <ul className={styles.listCategory}>
-                        {programData
-                            .filter(item => (filterProgram === allPrograms ? item : item === filterProgram))
-                            .map((category, index) => {
-                                if (category === allPrograms) return null
-                                return (
-                                    <li
-                                        key={index + 'category'}
-                                        className={classNames(
-                                            styles.category,
-                                            courseList(category).length === 0 && 'close',
-                                        )}
-                                    >
-                                        <h2 className={styles.header}>
-                                            {category} ({courseList(category).length})
-                                        </h2>
-
-                                        <CoursesCardsList data={courseList(category)} />
-                                    </li>
-                                )
-                            })}
-                    </ul>
-                </div>
+                <CourseListMedicine dataCourse={dataMedicine} dataProgram={program(dataMedicine)} />
             </div>
         </div>
     )
-})
+}
 
-export default CourseMedicine
+export default observer(CourseMedicine)

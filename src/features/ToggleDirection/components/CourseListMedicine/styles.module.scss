@@ -1,0 +1,24 @@
+@use 'src/styles/variables/color';
+@use 'src/styles/mixin/text';
+
+.coursesContent {
+    width: 920px;
+
+    .listCategory {
+        padding: 0;
+        overflow: hidden;
+
+        .category {
+            list-style: none;
+
+            .header {
+                @include text.text-header;
+                color: color.$general;
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+    }
+}

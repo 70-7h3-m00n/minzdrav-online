@@ -1,12 +1,10 @@
-import React, { Dispatch, SetStateAction } from 'react'
 import styles from './style.module.scss'
 import SearchIcon from '@/src/components-svg/search'
+import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 
-interface SearchProps {
-    setSearchCourse: Dispatch<SetStateAction<string>>
-}
+const Search = (): JSX.Element => {
+    const { setSearchCourse } = filterCourseStore
 
-const Search = ({ setSearchCourse }: SearchProps): JSX.Element => {
     return (
         <div className={styles.search}>
             <div className={styles.searchImageWrapper}>

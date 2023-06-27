@@ -1,17 +1,22 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './style.module.scss'
+import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
+import { useTranslation } from 'next-i18next'
 
 interface FilterProgramProps {
     data: string[]
-    setFilterProgram: Dispatch<SetStateAction<string>>
 }
 
-const FilterProgram = ({ data, setFilterProgram }: FilterProgramProps): JSX.Element => {
+const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
+    const { t } = useTranslation()
     const [ActiveBtn, setActiveBtn] = useState(0)
+    const { setFilterProgram } = filterCourseStore
+    const { categoryMedicine } = filterCourseStore.filterCourse
 
     useEffect(() => {
         setActiveBtn(0)
-    }, [data])
+        setFilterProgram(t('common:allPrograms'))
+    }, [categoryMedicine])
 
     if (data === undefined) return <></>
     return (

@@ -21,11 +21,7 @@ const Locale = () => {
     const router = useRouter()
 
     return (
-        <motion.nav
-            initial={false}
-            animate={isOpen ? 'open' : 'closed'}
-            className={router.asPath === '/directions' ? 'close' : styles.locale}
-        >
+        <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} className={styles.locale}>
             <motion.button className={styles.btn} whileTap={{ scale: 0.97 }} onClick={() => setIsOpen(!isOpen)}>
                 {router.locale?.toUpperCase()}
                 <motion.div

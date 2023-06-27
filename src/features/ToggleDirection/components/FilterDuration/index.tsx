@@ -1,33 +1,48 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import { observer } from 'mobx-react-lite'
 import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
+import Slider from '@mui/material/Slider'
+import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 
-interface FilterDurationProps {
-    durationTraining: number
-    setDurationTraining: Dispatch<SetStateAction<number>>
-}
+const minDistance = 1
 
-const FilterDuration = ({ durationTraining, setDurationTraining }: FilterDurationProps): JSX.Element => {
+const FilterDuration = (): JSX.Element => {
+    const { filterDuration } = filterCourseStore.filterCourse
+    const { setFilterDuration } = filterCourseStore
     const { t } = useTranslation()
+
+    const handleChange = (event: Event, newValue: number | number[], activeThumb: number) => {
+        if (!Array.isArray(newValue)) {
+            return
+        }
+
+        if (activeThumb === 0) {
+            setFilterDuration([Math.min(newValue[0], filterDuration[1] - minDistance), filterDuration[1]])
+        } else {
+            setFilterDuration([filterDuration[0], Math.max(newValue[1], filterDuration[0] + minDistance)])
+        }
+    }
 
     return (
         <div className={styles.durationBlock}>
             <h2 className={styles.headerFilter}>{t('common:duration')}</h2>
 
             <label className={styles.durationLabel}>
-                <div>От 1 до 24 месяцев</div>
+                <div>{t('common:durationHeader')}</div>
 
-                <input
+                <Slider
+                    getAriaLabel={() => 'Minimum distance'}
                     className={styles.durationRange}
-                    type={'range'}
+                    value={filterDuration}
                     min={1}
                     max={24}
-                    value={durationTraining}
-                    onChange={event => setDurationTraining(+event.target.value)}
+                    onChange={handleChange}
+                    valueLabelDisplay='auto'
+                    disableSwap
                 />
             </label>
         </div>
     )
 }
 
-export default FilterDuration
+export default observer(FilterDuration)

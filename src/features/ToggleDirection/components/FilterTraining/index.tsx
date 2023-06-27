@@ -1,20 +1,24 @@
+import { observer } from 'mobx-react-lite'
 import styles from './styles.module.scss'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from 'next-i18next'
+import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 
 interface FilterTrainingProps {
     data: string[]
-    setFilterTraining: Dispatch<SetStateAction<string>>
 }
 
-const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
+const FilterTraining = ({ data }: FilterTrainingProps) => {
+    const { setFilterTraining } = filterCourseStore
+    const { categoryMedicine } = filterCourseStore.filterCourse
     const { t } = useTranslation()
     const [ActiveBtn, setActiveBtn] = useState(0)
 
     useEffect(() => {
         setActiveBtn(0)
-    }, [data])
+        setFilterTraining('')
+    }, [categoryMedicine])
 
     return (
         <div className={styles.typeTrainingWrapper}>
@@ -33,8 +37,8 @@ const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
                             key={i + training}
                             className={styles.wrapperCheck}
                             onClick={() => {
-                                setFilterTraining(training)
                                 setActiveBtn(i)
+                                setFilterTraining(training)
                             }}
                         >
                             <div className={classNames(styles.check, ActiveBtn === i && styles.active)} />
@@ -48,4 +52,4 @@ const FilterTraining = ({ data, setFilterTraining }: FilterTrainingProps) => {
     )
 }
 
-export default FilterTraining
+export default observer(FilterTraining)

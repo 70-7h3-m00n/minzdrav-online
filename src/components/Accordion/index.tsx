@@ -32,6 +32,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
         <>
             <motion.div
                 className={styles.wrapperAccordion}
+                onClick={() => setToggleContent(!toggleContent)}
                 style={{
                     backgroundColor: data.color,
                 }}
@@ -69,9 +70,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                             />
                         </div>
 
-                        <div className={styles.arrow} onClick={() => setToggleContent(!toggleContent)}>
-                            {toggleContent ? <ArrowUp /> : <ArrowDown />}
-                        </div>
+                        <div className={styles.arrow}>{toggleContent ? <ArrowUp /> : <ArrowDown />}</div>
                     </div>
                 </div>
             </motion.div>

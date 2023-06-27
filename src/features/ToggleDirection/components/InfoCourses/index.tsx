@@ -1,25 +1,24 @@
-import { observer } from 'mobx-react-lite'
 import CourseMedicine from '@/src/features/ToggleDirection/components/CourseMedicine'
-import CoursePsychology from '@/src/features/ToggleDirection/components/CoursePsychology'
-import CourseDietetics from '@/src/features/ToggleDirection/components/CourseDietetics'
-import getPartnersData from '@/src/api/getProgramData'
+import CourseContent from '@/src/features/ToggleDirection/components/CourseContent'
+import dieteticsImg from '@/public/images/DieteticsCard.png'
+import psychologyImg from '@/public/images/PsychologyCard.png'
+import { useTranslation } from 'next-i18next'
 
-interface ShowInfoCoursesProps {
-    data: Awaited<ReturnType<typeof getPartnersData>>
-}
-
-const ShowInfoCourses = ({ data }: ShowInfoCoursesProps) => {
-    const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
-    const dataPsychology = data.filter(course => course.typeCourse === 'Психология')
-    const dataDietetics = data.filter(course => course.typeCourse === 'Диетология')
+const ShowInfoCourses = () => {
+    const { t } = useTranslation()
 
     return (
         <>
-            <CourseMedicine dataMedicine={dataMedicine} />
-            <CoursePsychology dataPsychology={dataPsychology} />
-            <CourseDietetics dataDietetics={dataDietetics} />
+            <CourseMedicine />
+            <CourseContent
+                color={'#A93BFF'}
+                type={'Психология'}
+                header={t('common:psychology')}
+                image={psychologyImg}
+            />
+            <CourseContent color={'#FF5E3B'} type={'Диетология'} header={t('common:dietetics')} image={dieteticsImg} />
         </>
     )
 }
 
-export default observer(ShowInfoCourses)
+export default ShowInfoCourses

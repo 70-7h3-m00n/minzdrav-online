@@ -12,7 +12,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         props: {
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
-        revalidate: 10000,
     }
 }
 

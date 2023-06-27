@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es2022",
         "downlevelIteration": true,
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": ["es6", "dom", "dom.iterable", "esnext"],
         "allowJs": true,
         "skipLibCheck": true,
         "strict": true,
@@ -17,7 +17,10 @@
         "incremental": true,
         "paths": {
             "@/*": ["./*"]
-        }
+        },
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]

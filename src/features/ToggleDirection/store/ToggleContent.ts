@@ -1,4 +1,4 @@
-import { Instance, types } from 'mobx-state-tree'
+import { types } from 'mobx-state-tree'
 
 export enum EnumContentToggle {
     medicine = 'medicine',
@@ -22,8 +22,6 @@ export const ContentToggle = types
             }
         },
     }))
-
-export type IContentToggle = Instance<typeof ContentToggle>
 
 const ContentToggleStore = types.model('ContentToggleStore', {
     contentToggle: ContentToggle,

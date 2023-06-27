@@ -1,6 +1,3 @@
-@use 'src/styles/variables/color';
-@use 'src/styles/mixin/text';
-
 .infoBlock {
     display: block;
 }
@@ -29,28 +26,6 @@
 
         @media screen and (max-width: 768px) {
             padding: 0;
-        }
-    }
-
-    .coursesContent {
-        width: 920px;
-
-        .listCategory {
-            padding: 0;
-            overflow: hidden;
-
-            .category {
-                list-style: none;
-
-                .header {
-                    @include text.text-header;
-                    color: color.$general;
-                }
-            }
-        }
-
-        @media screen and (max-width: 992px) {
-            width: 100%;
         }
     }
 

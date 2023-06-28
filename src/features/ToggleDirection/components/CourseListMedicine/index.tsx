@@ -25,7 +25,7 @@ const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps
             .filter(course =>
                 course.categories.some(item => (allCategory ? item.item : item.item === categoryMedicine)),
             )
-            .filter(program => program.programs.some(item => (allProgram ? item : item.item === programFilter)))
+            .filter(program => program.programs.some(item => item.item === programFilter))
             .filter(courseName =>
                 searchCourse === '' ? courseName : courseName.name.toLowerCase().includes(searchCourse),
             )

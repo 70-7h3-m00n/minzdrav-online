@@ -6,7 +6,7 @@ import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCo
 import { useRouter } from 'next/router'
 import getQueryData from '@/src/features/ToggleDirection/utils/getQueryData'
 import getFilterActions from '@/src/features/ToggleDirection/utils/getFilterActions'
-import {useTranslation} from "next-i18next";
+import { useTranslation } from 'next-i18next'
 
 interface FilterCourseProps {
     type: 'Диетология' | 'Психология' | 'Медицина'
@@ -98,7 +98,7 @@ const FilterCategory = ({ data, imageUrl, color, header, type }: FilterCoursePro
                         <button
                             key={i + item}
                             className={activeBtn(type) === item ? styles.active : styles.btn}
-                            onClick={() => activeBtn(type) !== item? setCategory(item): null}
+                            onClick={() => (activeBtn(type) !== item ? setCategory(item) : null)}
                         >
                             {item}
                         </button>

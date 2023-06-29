@@ -1,7 +1,7 @@
 import { IPartners } from '../types'
 import qs from 'qs'
 import fetcher from '@/src/helper/fetcher'
-import { routerApi } from '@/src/config/routerApi'
+import { routerBack } from '@/src/config/routerBack'
 
 export const fetchPartner = async (locale: string) => {
     const query = qs.stringify({
@@ -14,7 +14,7 @@ export const fetchPartner = async (locale: string) => {
         locale,
     })
 
-    const res = await fetcher<IPartners>(`${routerApi.root}${routerApi.router.partners}?${query}`)
+    const res = await fetcher<IPartners>(`${routerBack.root}${routerBack.router.partners}?${query}`)
 
     return res?.data || []
 }

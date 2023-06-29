@@ -1,6 +1,6 @@
 import qs from 'qs'
 import fetcher from '@/src/helper/fetcher'
-import { routerApi } from '@/src/config/routerApi'
+import { routerBack } from '@/src/config/routerBack'
 import { IPrograms } from '@/src/api/getProgramData/types'
 
 export const fetchProgram = async (locale: string) => {
@@ -108,7 +108,7 @@ export const fetchProgram = async (locale: string) => {
         locale,
     })
 
-    const res = await fetcher<IPrograms>(`${routerApi.root}${routerApi.router.programs}?${query}`)
+    const res = await fetcher<IPrograms>(`${routerBack.root}${routerBack.router.programs}?${query}`)
 
     return res?.data || []
 }

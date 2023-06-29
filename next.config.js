@@ -8,6 +8,10 @@ const nextConfig = {
     images: {
         domains: ['res.cloudinary.com'],
     },
+    env: {
+        previewSecret: 'q4Bp6fgMJMIx9PdyVs12kQ',
+        SMTP_PASS: '^ge47cvp`xLd',
+    },
 }
 
 module.exports = nextConfig

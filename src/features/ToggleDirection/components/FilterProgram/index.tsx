@@ -51,7 +51,7 @@ const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
                     <button
                         key={i + program}
                         className={filterProgram === program ? styles.btnActive : styles.btnCategory}
-                        onClick={() => filterProgram !== program? toggle(program): null}
+                        onClick={() => (filterProgram !== program ? toggle(program) : null)}
                     >
                         {program}
                     </button>

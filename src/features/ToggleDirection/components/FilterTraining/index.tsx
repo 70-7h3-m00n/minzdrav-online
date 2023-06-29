@@ -55,9 +55,11 @@ const FilterTraining = ({ data }: FilterTrainingProps) => {
                     </div>
                 ) : (
                     data?.map((training, i) => (
-                        <div key={i + training}
-                             className={styles.wrapperCheck}
-                             onClick={() => filterTraining !== training? toggle(training): null}>
+                        <div
+                            key={i + training}
+                            className={styles.wrapperCheck}
+                            onClick={() => (filterTraining !== training ? toggle(training) : null)}
+                        >
                             <div className={classNames(styles.check, filterTraining === training && styles.active)} />
 
                             <p className={styles.text}>{t(`common:${training}`)}</p>

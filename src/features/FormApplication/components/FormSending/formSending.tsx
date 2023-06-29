@@ -4,6 +4,8 @@ import { useTranslation } from 'next-i18next'
 import { emailExp, phoneExp } from '@/src/shared/regExp'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import classNames from 'classnames'
+import axios from 'axios'
+import { routerFront } from '@/src/config/routerBack'
 
 interface FormSending {
     name: string
@@ -28,7 +30,9 @@ const FormSending = (): JSX.Element => {
     })
 
     const submit: SubmitHandler<FormSending> = data => {
-        console.log(data)
+        axios.post(`${routerFront.root}`, {
+            ...data,
+        })
         reset()
     }
 

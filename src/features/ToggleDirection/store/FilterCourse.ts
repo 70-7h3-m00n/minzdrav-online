@@ -1,6 +1,7 @@
 import { types } from 'mobx-state-tree'
 
 const FilterCourse = types.model('FilterCourse', {
+    direction: types.string,
     categoryDietetics: types.string,
     categoryPsychology: types.string,
     categoryMedicine: types.string,
@@ -37,15 +38,19 @@ const FilterCourseStore = types
         setSearchCourse(search: string) {
             self.filterCourse.searchCourse = search
         },
+        setDirection(direction: string) {
+            self.filterCourse.direction = direction
+        },
     }))
 
 export const filterCourseStore = FilterCourseStore.create({
     filterCourse: {
+        direction: '',
         categoryDietetics: '',
         categoryPsychology: '',
         categoryMedicine: '',
         filterProgram: '',
-        filterTraining: '',
+        filterTraining: 'any',
         filterDuration: [1, 24],
         searchCourse: '',
     },

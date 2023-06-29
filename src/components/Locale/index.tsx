@@ -69,7 +69,7 @@ const Locale = () => {
             >
                 {listLocale.map((locale, index) => (
                     <motion.li key={index} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
-                        <Link className={styles.link} href={router.asPath} locale={locale}>
+                        <Link className={styles.link} href={router.basePath} locale={locale}>
                             {locale.toUpperCase()}
                         </Link>
                     </motion.li>

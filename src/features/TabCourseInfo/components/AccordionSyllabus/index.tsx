@@ -13,7 +13,7 @@ const AccordionSyllabus = ({ data, indexModule }: AccordionSyllabusProps) => {
     const { t } = useTranslation()
     const [isVisible, setVisible] = useState(false)
 
-    const animate = isVisible ? { height: 'auto' } : {}
+    const animate = isVisible ? { height: 'auto', marginTop: 20} : {}
     return (
         <div className={styles.container}>
             <div className={styles.wrapperHeader} onClick={() => setVisible(!isVisible)}>
@@ -31,11 +31,15 @@ const AccordionSyllabus = ({ data, indexModule }: AccordionSyllabusProps) => {
             <AnimatePresence>
                 <motion.div
                     className={classNames(styles.wrapperContent)}
-                    initial={{ height: 0 }}
+                    initial={{ height: 0, marginTop: 0 }}
                     animate={animate}
-                    exit={{ height: 0 }}
+                    exit={{ height: 0, marginTop: 0 }}
                 >
-                    <p className={styles.text}>{data.description}</p>
+                    <div className={styles.text}
+                         dangerouslySetInnerHTML={{
+                             __html: data.description
+                         }}
+                    />
                 </motion.div>
             </AnimatePresence>
         </div>

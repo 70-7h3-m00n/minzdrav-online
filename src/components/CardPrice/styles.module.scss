@@ -79,7 +79,7 @@
     margin-top: 10px;
 }
 
-.textPrice {
+.textPrice, .textDisc {
     font-size: 64px;
     display: flex;
     align-items: flex-start;
@@ -92,6 +92,14 @@
     @media screen and (max-width: 576px) {
         font-size: 36px;
     }
+}
+
+.textPrice {
+	align-items: flex-end;
+}
+
+.text {
+	@include text.text-general;
 }
 
 .textThrough {

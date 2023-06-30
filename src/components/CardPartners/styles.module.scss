@@ -10,6 +10,7 @@
     height: 200px;
     margin: 15px;
     cursor: grab;
+	overflow: hidden;
 
     @media screen and (max-width: 576px) {
         padding: 20px;
@@ -32,6 +33,7 @@
     position: relative;
     width: 70px;
     height: 70px;
+	object-fit: contain;
 }
 
 .text {

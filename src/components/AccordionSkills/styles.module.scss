@@ -79,6 +79,9 @@
 
 .wrapperContent {
     padding: 10px 0 10px 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
     @media screen and (max-width: 1400px) {
         width: 40%;
@@ -89,40 +92,11 @@
         width: 50%;
         padding: 10px 0 10px 20px;
     }
-
-    @media screen and (max-width: 768px) {
-    }
-
-    @media screen and (max-width: 576px) {
-    }
-}
-
-.category {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: rgba(0, 0, 0, 0.15);
-    color: white;
-    border-radius: 20px;
-    text-align: center;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    margin-right: 5px;
-    margin-top: 5px;
-
-    @media screen and (max-width: 992px) {
-    }
 }
 
 .header {
-    @include text.text-general;
-    margin-top: 12px;
-}
-
-.data {
-    @include text.text-politics;
-    margin-top: 12px;
-    color: color.$general;
+    @include text.text-header;
+	line-height: 30px;
 }
 
 .wrapperIcon {

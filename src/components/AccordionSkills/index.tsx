@@ -32,14 +32,7 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
                 }}
             >
                 <div className={styles.wrapperContent}>
-                    {category.map((item, index) => (
-                        <div key={index} className={styles.category}>
-                            {item.item}
-                        </div>
-                    ))}
-
                     <h3 className={styles.header}>{data.header}</h3>
-                    <div className={styles.data}>3 модуля</div>
                 </div>
 
                 <div className={styles.wrapperIcon}>

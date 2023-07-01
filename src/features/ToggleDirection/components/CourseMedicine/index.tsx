@@ -13,17 +13,16 @@ import { useTranslation } from 'next-i18next'
 import { DataContext } from '@/pages/directions'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 import CourseListMedicine from '@/src/features/ToggleDirection/components/CourseListMedicine'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
+import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 
 const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation()
     const data = useContext(DataContext)!
     const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
     const { medicine } = useContentToggle()
-    const { categoryMedicine, filterTraining } = filterCourseStore.filterCourse
+    const { categoryMedicine } = filterCourseStore.filterCourse
 
     const allCategory = categoryMedicine === t('common:allPrograms') || categoryMedicine === ''
-    const allTraining = filterTraining === 'any' || filterTraining === ''
 
     const category = [
         ...new Set(
@@ -33,7 +32,7 @@ const CourseMedicine = (): JSX.Element => {
         ),
     ]
 
-    const program = (data: Array<NormalizeProgramData>): Array<string> => {
+    const program = (data: Array<NormalizeCoursesData>): Array<string> => {
         return [
             ...new Set(
                 data

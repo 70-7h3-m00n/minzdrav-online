@@ -4,10 +4,10 @@ import Image from 'next/image'
 import Card from '@/public/images/imgCard.png'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/features/ToggleDirection/components/CardCourse/animation'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
+import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 
 interface CardCourseProps {
-    course: NormalizeProgramData
+    course: NormalizeCoursesData
 }
 
 const CardCourse = ({ course }: CardCourseProps): JSX.Element => {

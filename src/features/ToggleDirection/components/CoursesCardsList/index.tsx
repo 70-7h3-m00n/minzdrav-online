@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
+import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 
 interface CoursesCardsListProps {
-    data: NormalizeProgramData[]
+    data: NormalizeCoursesData[]
 }
 
 const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {

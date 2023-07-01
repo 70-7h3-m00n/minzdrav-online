@@ -43,7 +43,6 @@ const FilterTraining = () => {
         }
     }, [query, categoryMedicine])
 
-    if (data.length === 1) return <div className={styles.typeTrainingWrapper} />
     return (
         <div className={styles.typeTrainingWrapper}>
             <h2 className={styles.headerFilter}>{t('common:typeTraining')}</h2>

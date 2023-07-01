@@ -10,7 +10,7 @@
     height: 200px;
     margin: 15px;
     cursor: grab;
-	overflow: hidden;
+    overflow: hidden;
 
     @media screen and (max-width: 576px) {
         padding: 20px;
@@ -34,9 +34,9 @@
     width: 70px;
     height: 70px;
 
-	img {
-		object-fit: contain;
-	}
+    img {
+        object-fit: contain;
+    }
 }
 
 .text {

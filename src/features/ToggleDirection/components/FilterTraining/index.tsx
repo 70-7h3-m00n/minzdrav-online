@@ -7,11 +7,9 @@ import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCo
 import { useRouter } from 'next/router'
 import getQueryData from '@/src/features/ToggleDirection/utils/getQueryData'
 
-interface FilterTrainingProps {
-    data: string[]
-}
+const data = ['any', 'training', 'professionalRetraining']
 
-const FilterTraining = ({ data }: FilterTrainingProps) => {
+const FilterTraining = () => {
     const { t } = useTranslation()
     const { setFilterTraining } = filterCourseStore
     const { categoryMedicine, filterTraining } = filterCourseStore.filterCourse
@@ -20,12 +18,16 @@ const FilterTraining = ({ data }: FilterTrainingProps) => {
 
     const toggle = (training: string) => {
         if (training !== query.filterProgram) {
-            replace(pathname, {
-                query: {
-                    ...queryParams,
-                    filterTraining: training,
+            replace(
+                pathname,
+                {
+                    query: {
+                        ...queryParams,
+                        filterTraining: training,
+                    },
                 },
-            })
+                { scroll: false },
+            )
         }
 
         setFilterTraining(training)
@@ -56,7 +58,7 @@ const FilterTraining = ({ data }: FilterTrainingProps) => {
                 ) : (
                     data?.map((training, i) => (
                         <div
-                            key={i + training}
+                            key={training + i}
                             className={styles.wrapperCheck}
                             onClick={() => (filterTraining !== training ? toggle(training) : null)}
                         >

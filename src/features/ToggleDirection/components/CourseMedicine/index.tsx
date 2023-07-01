@@ -50,23 +50,6 @@ const CourseMedicine = (): JSX.Element => {
         ]
     }
 
-    const training = (data: Array<NormalizeProgramData>): Array<string> => {
-        return [
-            ...new Set(
-                data
-                    .filter(course =>
-                        course['typeTraining'].some(item => (allTraining ? item.item : item.item === filterTraining)),
-                    )
-                    .reduce(
-                        (accumulator: Array<string>, currentValue) => {
-                            return accumulator.concat(currentValue['typeTraining'].map(item => item.item))
-                        },
-                        ['any'],
-                    ),
-            ),
-        ]
-    }
-
     return (
         <div className={medicine ? styles.infoBlock : 'close'}>
             <MotionLayoutX variant={'left'}>
@@ -85,7 +68,7 @@ const CourseMedicine = (): JSX.Element => {
 
                     <FilterProgram data={program(dataMedicine)} />
 
-                    <FilterTraining data={training(dataMedicine)} />
+                    <FilterTraining />
 
                     <FilterDuration />
                 </div>

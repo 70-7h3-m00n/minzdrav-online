@@ -1,4 +1,4 @@
-import { types } from 'mobx-state-tree'
+import { cast, getSnapshot, types } from 'mobx-state-tree'
 
 const FilterCourse = types.model('FilterCourse', {
     direction: types.string,
@@ -32,14 +32,18 @@ const FilterCourseStore = types
             self.filterCourse.filterTraining = training
         },
         setFilterDuration(duration: Array<number>) {
-            // @ts-ignore
-            self.filterCourse.filterDuration = duration
+            self.filterCourse.filterDuration = cast(duration)
         },
         setSearchCourse(search: string) {
             self.filterCourse.searchCourse = search
         },
         setDirection(direction: string) {
             self.filterCourse.direction = direction
+        },
+    }))
+    .views(self => ({
+        get directionQuery() {
+            return getSnapshot(self.filterCourse.filterDuration)
         },
     }))
 

@@ -2,13 +2,13 @@ import { observer } from 'mobx-react-lite'
 import React, { Fragment } from 'react'
 import styles from './styles.module.scss'
 import Accordion from '@/src/components/Accordion'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
+import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 
 interface CourseListProps {
     type: 'Диетология' | 'Психология'
     category: Array<string>
-    data: Array<NormalizeProgramData>
+    data: Array<NormalizeCoursesData>
 }
 
 const CourseList = ({ category, data, type }: CourseListProps): JSX.Element => {

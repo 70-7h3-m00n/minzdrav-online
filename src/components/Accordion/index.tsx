@@ -9,11 +9,11 @@ import ItemLi from '@/src/components-svg/ItemLi'
 import Image from 'next/image'
 import imageDiet from '@/public/images/fruit.png'
 import imagePsych from '@/public/images/brains.png'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import { motion } from 'framer-motion'
+import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 
 interface AccordionProps {
-    data: NormalizeProgramData
+    data: NormalizeCoursesData
     icon: 'dietetics' | 'psychology'
 }
 

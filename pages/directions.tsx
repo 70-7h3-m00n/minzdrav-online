@@ -4,16 +4,16 @@ import getFilesName from '@/src/helper/getFilesName'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { ToggleDirection } from '@/src/features/ToggleDirection'
-import getPartnersData from '@/src/api/getProgramData'
 import { createContext } from 'react'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
+import getCoursesData from '@/src/api/getCoursesData'
+import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 
 interface PageDirectionsProps {
-    data: Awaited<ReturnType<typeof getPartnersData>>
+    data: Awaited<ReturnType<typeof getCoursesData>>
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const data = await getPartnersData(locale!)
+    const data = await getCoursesData(locale!)
 
     return {
         props: {
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     }
 }
 
-export const DataContext = createContext<Array<NormalizeProgramData> | null>(null)
+export const DataContext = createContext<Array<NormalizeCoursesData> | null>(null)
 
 const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
     const { t } = useTranslation()

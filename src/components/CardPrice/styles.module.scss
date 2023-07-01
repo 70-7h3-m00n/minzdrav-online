@@ -79,7 +79,8 @@
     margin-top: 10px;
 }
 
-.textPrice, .textDisc {
+.textPrice,
+.textDisc {
     font-size: 64px;
     display: flex;
     align-items: flex-start;
@@ -95,11 +96,11 @@
 }
 
 .textPrice {
-	align-items: flex-end;
+    align-items: flex-end;
 }
 
 .text {
-	@include text.text-general;
+    @include text.text-general;
 }
 
 .textThrough {

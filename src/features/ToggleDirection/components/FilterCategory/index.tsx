@@ -38,12 +38,16 @@ const FilterCategory = ({ data, imageUrl, color, header, type }: FilterCoursePro
 
     const setQuery = (data: string, type: string) => {
         if (data !== query[type]) {
-            replace(pathname, {
-                query: {
-                    ...queryParams,
-                    [type]: data,
+            replace(
+                pathname,
+                {
+                    query: {
+                        ...queryParams,
+                        [type]: data,
+                    },
                 },
-            })
+                { scroll: false },
+            )
         }
     }
 

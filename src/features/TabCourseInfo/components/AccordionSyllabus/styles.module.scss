@@ -5,7 +5,7 @@
     margin-top: 20px;
     border: 1px solid #000000;
     border-radius: 10px;
-	overflow: hidden;
+    overflow: hidden;
 
     @media screen and (max-width: 768px) {
         padding: 15px;
@@ -26,19 +26,19 @@
 .wrapper {
     display: flex;
     align-items: center;
-	width: calc(100% - 30px);
+    width: calc(100% - 30px);
 
-	.text {
-		width: calc(100% - 156px);
-	}
+    .text {
+        width: calc(100% - 156px);
+    }
 
-	@media screen and (max-width: 500px) {
-		flex-direction: column;
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
 
-		.text {
-			width: 100%;
-		}
-	}
+        .text {
+            width: 100%;
+        }
+    }
 }
 
 .module {
@@ -57,9 +57,9 @@
         margin-right: 10px;
     }
 
-	@media screen and (max-width: 500px) {
-		width: 100%;
-	}
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
 }
 
 .text {

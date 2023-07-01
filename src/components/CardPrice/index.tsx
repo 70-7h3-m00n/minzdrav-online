@@ -43,7 +43,8 @@ const CardPrice = ({ color, price, discount, category, toggleContent = false }: 
                 <div className={styles.wrapperPriceBlock} style={{ color: toggleContent ? 'black' : 'white' }}>
                     <div>{t('common:price')}</div>
 
-                    <h3 className={styles.textPrice}>{price.toLocaleString('ru-RU')}
+                    <h3 className={styles.textPrice}>
+                        {price.toLocaleString('ru-RU')}
                         <span className={styles.text}> ₽</span>
                     </h3>
                 </div>
@@ -65,7 +66,7 @@ const CardPrice = ({ color, price, discount, category, toggleContent = false }: 
                 </div>
 
                 <div className={!toggleContent ? 'close' : styles.wrapperPriceBlock}>
-                    <br/>
+                    <br />
                     <h3 className={classNames(styles.textPrice, styles.textThrough)}>
                         {retraining.toLocaleString('ru-RU')}
                         <span className={styles.text}> ₽</span>

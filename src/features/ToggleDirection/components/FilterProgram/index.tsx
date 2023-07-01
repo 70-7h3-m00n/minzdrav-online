@@ -20,12 +20,16 @@ const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
 
     const toggle = (program: string) => {
         if (program !== query.filterProgram) {
-            replace(pathname, {
-                query: {
-                    ...queryParams,
-                    filterProgram: program,
+            replace(
+                pathname,
+                {
+                    query: {
+                        ...queryParams,
+                        filterProgram: program,
+                    },
                 },
-            })
+                { scroll: false },
+            )
         }
 
         setFilterProgram(program)
@@ -49,7 +53,7 @@ const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
             ) : (
                 data.map((program, i) => (
                     <button
-                        key={i + program}
+                        key={program + i}
                         className={filterProgram === program ? styles.btnActive : styles.btnCategory}
                         onClick={() => (filterProgram !== program ? toggle(program) : null)}
                     >

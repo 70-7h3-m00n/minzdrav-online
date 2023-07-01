@@ -221,9 +221,7 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                 </div>
             </section>
 
-            <section className={viewSkillsBlock? 'close' : styles.learnInfo}
-                     style={{ backgroundColor: course.color }}
-            >
+            <section className={viewSkillsBlock ? 'close' : styles.learnInfo} style={{ backgroundColor: course.color }}>
                 <div className={classNames('container', styles.blockInfoWrapper)}>
                     <h2 ref={ref} className={'header'}>
                         {t('CoursesPage:headerBlockSkills')}

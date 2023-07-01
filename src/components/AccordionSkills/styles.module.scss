@@ -79,9 +79,9 @@
 
 .wrapperContent {
     padding: 10px 0 10px 25px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (max-width: 1400px) {
         width: 40%;
@@ -96,7 +96,7 @@
 
 .header {
     @include text.text-header;
-	line-height: 30px;
+    line-height: 30px;
 }
 
 .wrapperIcon {

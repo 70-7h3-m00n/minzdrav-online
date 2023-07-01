@@ -7,6 +7,7 @@ interface GetQueryData {
     categoryMedicine: string
     filterProgram: string
     filterTraining: string
+    filterDuration: string
 }
 
 const getQueryData = (): GetQueryData => {
@@ -17,6 +18,7 @@ const getQueryData = (): GetQueryData => {
         categoryMedicine: filterCourseStore.filterCourse.categoryMedicine,
         filterProgram: filterCourseStore.filterCourse.filterProgram,
         filterTraining: filterCourseStore.filterCourse.filterTraining,
+        filterDuration: filterCourseStore.directionQuery.toString(),
     }
 }
 

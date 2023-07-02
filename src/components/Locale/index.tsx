@@ -20,6 +20,8 @@ const Locale = () => {
     const [isOpen, setIsOpen] = useState(false)
     const router = useRouter()
 
+    const togglePath = router.pathname.includes('course') ? router.asPath : router.basePath
+    const path404 = router.pathname.includes('404') && router.asPath
     return (
         <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} className={styles.locale}>
             <motion.button className={styles.btn} whileTap={{ scale: 0.97 }} onClick={() => setIsOpen(!isOpen)}>
@@ -69,7 +71,7 @@ const Locale = () => {
             >
                 {listLocale.map((locale, index) => (
                     <motion.li key={index} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
-                        <Link className={styles.link} href={router.basePath} locale={locale}>
+                        <Link className={styles.link} href={path404 || togglePath} locale={locale}>
                             {locale.toUpperCase()}
                         </Link>
                     </motion.li>

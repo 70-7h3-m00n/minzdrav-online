@@ -1,11 +1,11 @@
 import React from 'react'
 import Image, { StaticImageData } from 'next/image'
 import { observer } from 'mobx-react-lite'
-import Link from 'next/link'
 import styles from './sryles.module.scss'
 import classNames from 'classnames'
-import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
-import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
+import { contentToggleStore, EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
+import { useRouter } from 'next/router'
+import getQueryData from '@/src/features/ToggleDirection/utils/getQueryData'
 
 interface CardDirectionProps {
     imageSrc: string | StaticImageData
@@ -15,10 +15,23 @@ interface CardDirectionProps {
 }
 
 const CardDirection = observer(({ imageSrc, textLink, colorBtn, contentTab }: CardDirectionProps): JSX.Element => {
-    const { toggle } = useContentToggle()
+    const { toggle } = contentToggleStore
+    const { push } = useRouter()
+    const queryParams = getQueryData()
+
+    const setData = (type: EnumContentToggle) => {
+        push( {
+            pathname: '/directions',
+            query: {
+                ...queryParams,
+                direction: type,
+            },
+        })
+        toggle(type)
+    }
 
     return (
-        <Link href={'/directions'} className={styles.wrapper} onClick={() => toggle(contentTab)}>
+        <div className={styles.wrapper} onClick={() => setData(contentTab)}>
             <div className={styles.imageContainer}>
                 <Image
                     src={imageSrc}
@@ -32,7 +45,7 @@ const CardDirection = observer(({ imageSrc, textLink, colorBtn, contentTab }: Ca
             </div>
 
             <div className={classNames([colorBtn, styles.link])}>{textLink}</div>
-        </Link>
+        </div>
     )
 })
 

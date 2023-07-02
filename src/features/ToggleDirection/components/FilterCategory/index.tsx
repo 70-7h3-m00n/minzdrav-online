@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 import { useRouter } from 'next/router'
 import getQueryData from '@/src/features/ToggleDirection/utils/getQueryData'
-import getFilterActions from '@/src/features/ToggleDirection/utils/getFilterActions'
 import { useTranslation } from 'next-i18next'
 
 interface FilterCourseProps {
@@ -19,20 +18,18 @@ interface FilterCourseProps {
 const FilterCategory = ({ data, imageUrl, color, header, type }: FilterCourseProps): JSX.Element => {
     const { t } = useTranslation()
     const { locale, replace, query, pathname } = useRouter()
-    const { categoryMedicine, categoryPsychology, categoryDietetics } = filterCourseStore.filterCourse
+    const filterStore = filterCourseStore
     const queryParams = getQueryData()
-    const { setCategoryDietetics, setCategoryPsychology, setCategoryMedicine, setFilterProgram, setFilterTraining } =
-        getFilterActions()
 
     const activeBtn = (type: 'Диетология' | 'Психология' | 'Медицина') => {
         if (type === 'Медицина') {
-            return categoryMedicine
+            return filterStore.categoryMedicine
         }
         if (type === 'Психология') {
-            return categoryPsychology
+            return filterStore.categoryPsychology
         }
         if (type === 'Диетология') {
-            return categoryDietetics
+            return filterStore.categoryDietetics
         }
     }
 
@@ -53,17 +50,17 @@ const FilterCategory = ({ data, imageUrl, color, header, type }: FilterCoursePro
 
     const setCategory = (category: string) => {
         if (type === 'Диетология') {
-            setCategoryDietetics(category)
+            filterStore.setCategoryDietetics(category)
             setQuery(category, 'categoryDietetics')
         }
         if (type === 'Психология') {
-            setCategoryPsychology(category)
+            filterStore.setCategoryPsychology(category)
             setQuery(category, 'categoryPsychology')
         }
         if (type === 'Медицина') {
-            setCategoryMedicine(category)
-            setFilterProgram(t('common:typeTraining'))
-            setFilterTraining('any')
+            filterStore.setCategoryMedicine(category)
+            filterStore.setFilterProgram(t('common:typeTraining'))
+            filterStore.setFilterTraining('any')
             setQuery(category, 'categoryMedicine')
         }
     }
@@ -71,25 +68,25 @@ const FilterCategory = ({ data, imageUrl, color, header, type }: FilterCoursePro
     useEffect(() => {
         if (data[0] === undefined) return
         if (type === 'Диетология') {
-            setCategoryDietetics(data[0])
+            filterStore.setCategoryDietetics(data[0])
         }
         if (type === 'Психология') {
-            setCategoryPsychology(data[0])
+            filterStore.setCategoryPsychology(data[0])
         }
         if (type === 'Медицина') {
-            setCategoryMedicine(data[0])
+            filterStore.setCategoryMedicine(data[0])
         }
     }, [locale])
 
     useEffect(() => {
         if (query.categoryPsychology !== undefined && typeof query.categoryPsychology === 'string') {
-            setCategoryPsychology(query.categoryPsychology)
+            filterStore.setCategoryPsychology(query.categoryPsychology)
         }
         if (query.categoryDietetics !== undefined && typeof query.categoryDietetics === 'string') {
-            setCategoryDietetics(query.categoryDietetics)
+            filterStore.setCategoryDietetics(query.categoryDietetics)
         }
         if (query.categoryMedicine !== undefined && typeof query.categoryMedicine === 'string') {
-            setCategoryMedicine(query.categoryMedicine)
+            filterStore.setCategoryMedicine(query.categoryMedicine)
         }
     }, [query])
 

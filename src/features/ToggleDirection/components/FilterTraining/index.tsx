@@ -11,8 +11,7 @@ const data = ['any', 'training', 'professionalRetraining']
 
 const FilterTraining = () => {
     const { t } = useTranslation()
-    const { setFilterTraining } = filterCourseStore
-    const { categoryMedicine, filterTraining } = filterCourseStore.filterCourse
+    const { setFilterTraining, categoryMedicine, filterTraining } = filterCourseStore
     const { replace, query, pathname } = useRouter()
     const queryParams = getQueryData()
 

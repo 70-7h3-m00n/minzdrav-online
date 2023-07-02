@@ -12,6 +12,8 @@ interface InterfaceButton {
 
 const Button = ({ text, style, link, active = false }: InterfaceButton): JSX.Element => {
     const router = useRouter()
+
+
     return (
         <button
             onClick={() => {

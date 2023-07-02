@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 import Slider from '@mui/material/Slider'
-import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
+import { filterCourseStore, IFilterCourseSnapshotOut } from '@/src/features/ToggleDirection/store/FilterCourse'
 import { useEffect, useState } from 'react'
 import useDebounce from '@/src/hooks/useDebounce'
 import { useRouter } from 'next/router'
@@ -14,7 +14,7 @@ const FilterDuration = (): JSX.Element => {
     const { t } = useTranslation()
     const { replace, query, pathname } = useRouter()
     const { setFilterDuration } = filterCourseStore
-    const { filterDuration } = filterCourseStore.filterCourse as { filterDuration: Array<number> }
+    const { filterDuration }: IFilterCourseSnapshotOut = filterCourseStore
     const [duration, setDuration] = useState(filterDuration)
     const [isQuery, setQuery] = useState(false)
     const debounce = useDebounce(duration, 500)

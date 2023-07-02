@@ -13,8 +13,7 @@ interface CourseListMedicineProps {
 
 const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps): JSX.Element => {
     const { t } = useTranslation()
-    const { categoryMedicine, filterProgram, filterTraining, filterDuration, searchCourse } =
-        filterCourseStore.filterCourse
+    const { categoryMedicine, filterProgram, filterTraining, filterDuration, searchCourse } = filterCourseStore
 
     const allProgram = filterProgram === t('common:allPrograms') || filterProgram === ''
     const allCategory = categoryMedicine === ''

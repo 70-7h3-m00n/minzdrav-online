@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import img from '@/public/images/MedicineCard.png'
 import styles from './styles.module.scss'
-import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
 import FilterCategory from '@/src/features/ToggleDirection/components/FilterCategory'
 import FilterProgram from '@/src/features/ToggleDirection/components/FilterProgram'
 import FilterTraining from '@/src/features/ToggleDirection/components/FilterTraining'
@@ -14,13 +13,14 @@ import { DataContext } from '@/pages/directions'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 import CourseListMedicine from '@/src/features/ToggleDirection/components/CourseListMedicine'
 import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
+import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
 
 const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation()
     const data = useContext(DataContext)!
     const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
-    const { medicine } = useContentToggle()
-    const { categoryMedicine } = filterCourseStore.filterCourse
+    const { medicine } = contentToggleStore
+    const { categoryMedicine } = filterCourseStore
 
     const allCategory = categoryMedicine === t('common:allPrograms') || categoryMedicine === ''
 

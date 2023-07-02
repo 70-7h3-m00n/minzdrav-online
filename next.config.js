@@ -12,6 +12,7 @@ const nextConfig = {
         previewSecret: 'q4Bp6fgMJMIx9PdyVs12kQ',
         SMTP_PASS: '^ge47cvp`xLd',
     },
+    isrMemoryCacheSize: 0,
 }
 
 module.exports = nextConfig

@@ -12,12 +12,12 @@ interface GetQueryData {
 
 const getQueryData = (): GetQueryData => {
     return {
-        direction: filterCourseStore.filterCourse.direction,
-        categoryDietetics: filterCourseStore.filterCourse.categoryDietetics,
-        categoryPsychology: filterCourseStore.filterCourse.categoryPsychology,
-        categoryMedicine: filterCourseStore.filterCourse.categoryMedicine,
-        filterProgram: filterCourseStore.filterCourse.filterProgram,
-        filterTraining: filterCourseStore.filterCourse.filterTraining,
+        direction: filterCourseStore.direction,
+        categoryDietetics: filterCourseStore.categoryDietetics,
+        categoryPsychology: filterCourseStore.categoryPsychology,
+        categoryMedicine: filterCourseStore.categoryMedicine,
+        filterProgram: filterCourseStore.filterProgram,
+        filterTraining: filterCourseStore.filterTraining,
         filterDuration: filterCourseStore.directionQuery.toString(),
     }
 }

@@ -3,13 +3,12 @@ import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 import { arrayRouterLinksFooter } from '@/src/features/menu/MenuFooter/components/utils/arrayRouterLinksFooter'
 import Link from 'next/link'
-import { EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
+import { contentToggleStore, EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
 import { useRouter } from 'next/router'
-import useContentToggle from '@/src/features/ToggleDirection/hooks/useContentToggle'
 
 const MenuFooter = () => {
     const { t } = useTranslation('navLinksHeader')
-    const { toggle } = useContentToggle()
+    const { toggle } = contentToggleStore
     const { push } = useRouter()
 
     const onLink = (direction: EnumContentToggle) => {

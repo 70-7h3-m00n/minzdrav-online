@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
             partnerData,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
-        revalidate: 1000,
+        revalidate: 120,
     }
 }
 

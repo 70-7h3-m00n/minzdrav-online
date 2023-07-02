@@ -12,7 +12,7 @@ interface CourseListProps {
 }
 
 const CourseList = ({ category, data, type }: CourseListProps): JSX.Element => {
-    const { categoryDietetics, categoryPsychology } = filterCourseStore.filterCourse
+    const { categoryDietetics, categoryPsychology } = filterCourseStore
     const icon = type === 'Диетология' ? 'dietetics' : 'psychology'
     const filterCategory = type === 'Диетология' ? categoryDietetics : categoryPsychology
 

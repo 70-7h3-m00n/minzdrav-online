@@ -5,7 +5,6 @@ import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCo
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import getQueryData from '@/src/features/ToggleDirection/utils/getQueryData'
-import getFilterActions from '@/src/features/ToggleDirection/utils/getFilterActions'
 
 interface FilterProgramProps {
     data: string[]
@@ -14,8 +13,7 @@ interface FilterProgramProps {
 const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
     const { t } = useTranslation()
     const { replace, query, pathname } = useRouter()
-    const { categoryMedicine, filterProgram } = filterCourseStore.filterCourse
-    const { setFilterProgram } = getFilterActions()
+    const { categoryMedicine, filterProgram, setFilterProgram } = filterCourseStore
     const queryParams = getQueryData()
 
     const toggle = (program: string) => {

@@ -19,6 +19,7 @@ import Head from 'next/head'
 import CardPrice from '@/src/components/CardPrice'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
+import getPathsCoursesData from '@/src/api/getPathsCourses'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -29,7 +30,7 @@ export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
         (
             await Promise.all(
                 locales.map(async local => {
-                    const data = await getPartnersData(local)
+                    const data = await getPathsCoursesData(local)
                     return data.map(course => ({
                         params: { slug: course.pathCourse },
                         locale: local,
@@ -53,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
             course,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
-        revalidate: 1000,
+        revalidate: 120,
     }
 }
 

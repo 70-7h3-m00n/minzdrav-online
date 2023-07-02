@@ -23,14 +23,8 @@ export const ContentToggle = types
         },
     }))
 
-const ContentToggleStore = types.model('ContentToggleStore', {
-    contentToggle: ContentToggle,
-})
-
-export const contentToggleStore = ContentToggleStore.create({
-    contentToggle: {
-        medicine: false,
-        psychology: false,
-        dietetics: false,
-    },
+export const contentToggleStore = ContentToggle.create({
+    medicine: false,
+    psychology: false,
+    dietetics: false,
 })

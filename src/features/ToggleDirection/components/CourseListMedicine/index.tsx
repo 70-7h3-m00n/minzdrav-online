@@ -12,11 +12,11 @@ interface CourseListMedicineProps {
 }
 
 const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps): JSX.Element => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('common')
     const { categoryMedicine, filterProgram, filterTraining, filterDuration, searchCourse } = filterCourseStore
 
-    const allProgram = filterProgram === t('common:allPrograms') || filterProgram === ''
-    const allCategory = categoryMedicine === ''
+    const allProgram = filterProgram === t('allPrograms') || t(filterProgram) === t('allPrograms')
+    const allCategory = categoryMedicine === t('allCategory') || t(categoryMedicine) === t('allCategory')
     const allTraining = filterTraining === 'any' || filterTraining === ''
 
     const courseList = (programFilter: string): Array<NormalizeCoursesData> => {
@@ -41,7 +41,7 @@ const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps
                 {dataProgram
                     .filter(item => (allProgram ? item : item === filterProgram))
                     .map((category, index) => {
-                        if (category === t('common:allPrograms')) return null
+                        if (category === t('allPrograms')) return null
                         return (
                             <li
                                 key={index + 'category'}

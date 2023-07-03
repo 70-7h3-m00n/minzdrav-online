@@ -16,19 +16,21 @@ import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
 
 const CourseMedicine = (): JSX.Element => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('common')
     const data = useContext(DataContext)!
     const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
     const { medicine } = contentToggleStore
     const { categoryMedicine } = filterCourseStore
-
-    const allCategory = categoryMedicine === t('common:allPrograms') || categoryMedicine === ''
+    const allCategory = categoryMedicine === t('allCategory') || t(categoryMedicine) === t('allCategory')
 
     const category = [
         ...new Set(
-            dataMedicine.reduce((accumulator: Array<string>, currentValue) => {
-                return accumulator.concat(currentValue.categories.map(item => item.item))
-            }, []),
+            dataMedicine.reduce(
+                (accumulator: Array<string>, currentValue) => {
+                    return accumulator.concat(currentValue.categories.map(item => item.item))
+                },
+                [t('allCategory')],
+            ),
         ),
     ]
 
@@ -43,7 +45,7 @@ const CourseMedicine = (): JSX.Element => {
                         (accumulator: Array<string>, currentValue) => {
                             return accumulator.concat(currentValue.programs.map(item => item.item))
                         },
-                        [t('common:allPrograms')],
+                        [t('allPrograms')],
                     ),
             ),
         ]
@@ -55,7 +57,7 @@ const CourseMedicine = (): JSX.Element => {
                 <FilterCategory
                     type={'Медицина'}
                     data={category}
-                    header={t('common:medicine')}
+                    header={t('medicine')}
                     color={'#3D3BFF'}
                     imageUrl={img}
                 />

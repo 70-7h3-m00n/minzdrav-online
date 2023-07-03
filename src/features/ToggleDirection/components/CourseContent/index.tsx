@@ -7,6 +7,7 @@ import { DataContext } from '@/pages/directions'
 import CourseList from '@/src/features/ToggleDirection/components/CourseList'
 import { StaticImageData } from 'next/image'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
+import { useTranslation } from 'next-i18next'
 
 interface CourseDieteticsProps {
     type: 'Диетология' | 'Психология'
@@ -16,6 +17,7 @@ interface CourseDieteticsProps {
 }
 
 const CourseContent = observer(({ type, header, image, color }: CourseDieteticsProps): JSX.Element => {
+    const { t } = useTranslation('common')
     const data = useContext(DataContext)!
     const dataDietetics = data.filter(course => course.typeCourse === type)
     const { dietetics, psychology } = contentToggleStore
@@ -24,9 +26,12 @@ const CourseContent = observer(({ type, header, image, color }: CourseDieteticsP
 
     const category = [
         ...new Set(
-            dataDietetics.reduce((accumulator: Array<string>, currentValue) => {
-                return accumulator.concat(currentValue.categories.map(item => item.item))
-            }, []),
+            dataDietetics.reduce(
+                (accumulator: Array<string>, currentValue) => {
+                    return accumulator.concat(currentValue.categories.map(item => item.item))
+                },
+                [t('allCategory')],
+            ),
         ),
     ]
 
@@ -36,7 +41,7 @@ const CourseContent = observer(({ type, header, image, color }: CourseDieteticsP
                 <FilterCategory type={type} data={category} header={header} color={color} imageUrl={image} />
             </MotionLayoutX>
 
-            <CourseList category={category} data={dataDietetics} type={type} />
+            <CourseList categoryData={category} courseData={dataDietetics} type={type} />
         </div>
     )
 })

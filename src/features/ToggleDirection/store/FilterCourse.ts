@@ -45,10 +45,10 @@ const FilterCourse = types
 
 export const filterCourseStore = FilterCourse.create({
     direction: '',
-    categoryDietetics: '',
-    categoryPsychology: '',
-    categoryMedicine: '',
-    filterProgram: '',
+    categoryDietetics: 'allCategory',
+    categoryPsychology: 'allCategory',
+    categoryMedicine: 'allCategory',
+    filterProgram: 'allPrograms',
     filterTraining: 'any',
     filterDuration: [1, 24],
     searchCourse: '',

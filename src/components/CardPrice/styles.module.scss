@@ -68,6 +68,9 @@
 
 .wrapperPriceBlock {
     width: 100%;
+	 div {
+		 color: black;
+	 }
 }
 
 .textInstallment {
@@ -97,6 +100,7 @@
 
 .textPrice {
     align-items: flex-end;
+	color: black;
 }
 
 .text {

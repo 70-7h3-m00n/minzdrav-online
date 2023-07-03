@@ -135,13 +135,15 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                                 </li>
                             ))}
                         </ul>
-                        <Button style={styles.link} text={'Узнать подробнее'} link={`/course/${data.pathCourse}`} />
+                        <Button style={styles.link} text={t('common:goCourse')} link={`/course/${data.pathCourse}`} />
                     </div>
                 </div>
 
                 <div className={toggleBtn}>
+                    <Button style={styles.btn} text={t('common:goCourse')} link={`/course/${data.pathCourse}`} />
+
                     <button className={styles.btn} onClick={() => setOpenDescription(true)}>
-                        Узнать подробнее
+                        {t('common:learnMore')}
                     </button>
                 </div>
             </div>

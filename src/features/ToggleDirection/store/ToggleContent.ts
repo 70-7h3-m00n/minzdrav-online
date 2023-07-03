@@ -21,6 +21,11 @@ export const ContentToggle = types
                 self[type] = true
             }
         },
+        reset() {
+            self.dietetics = false
+            self.psychology = false
+            self.medicine = false
+        },
     }))
 
 export const contentToggleStore = ContentToggle.create({

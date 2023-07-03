@@ -11,10 +11,11 @@ interface FilterProgramProps {
 }
 
 const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('common')
     const { replace, query, pathname } = useRouter()
     const { categoryMedicine, filterProgram, setFilterProgram } = filterCourseStore
     const queryParams = getQueryData()
+    const allParams = t('allPrograms')
 
     const toggle = (program: string) => {
         if (program !== query.filterProgram) {
@@ -33,9 +34,16 @@ const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
         setFilterProgram(program)
     }
 
+    const isBtnActive = (program: string) => {
+        if (filterProgram === program) {
+            return true
+        }
+        return t(filterProgram) === program
+    }
+
     useEffect(() => {
-        setFilterProgram(t('common:allPrograms'))
-    }, [categoryMedicine])
+        setFilterProgram(allParams)
+    }, [categoryMedicine, allParams])
 
     useEffect(() => {
         if (query.filterProgram !== undefined && typeof query.filterProgram === 'string') {
@@ -45,21 +53,23 @@ const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
 
     if (data.length === 1) return <div className={styles.toggleCategoryWrapper} />
     return (
-        <div className={styles.toggleCategoryWrapper}>
-            {data.length === 2 ? (
+        <>
+            <div className={data.length === 2 ? styles.toggleCategoryWrapper : 'close'}>
                 <button className={styles.btnActive}>{data[1]}</button>
-            ) : (
-                data.map((program, i) => (
+            </div>
+
+            <div className={data.length > 2 ? styles.toggleCategoryWrapper : 'close'}>
+                {data.map((program, i) => (
                     <button
                         key={program + i}
-                        className={filterProgram === program ? styles.btnActive : styles.btnCategory}
+                        className={isBtnActive(program) ? styles.btnActive : styles.btnCategory}
                         onClick={() => (filterProgram !== program ? toggle(program) : null)}
                     >
                         {program}
                     </button>
-                ))
-            )}
-        </div>
+                ))}
+            </div>
+        </>
     )
 }
 

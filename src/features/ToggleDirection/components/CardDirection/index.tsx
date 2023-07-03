@@ -20,14 +20,14 @@ const CardDirection = observer(({ imageSrc, textLink, colorBtn, contentTab }: Ca
     const queryParams = getQueryData()
 
     const setData = (type: EnumContentToggle) => {
-        push( {
+        toggle(type)
+        push({
             pathname: '/directions',
             query: {
                 ...queryParams,
                 direction: type,
             },
         })
-        toggle(type)
     }
 
     return (

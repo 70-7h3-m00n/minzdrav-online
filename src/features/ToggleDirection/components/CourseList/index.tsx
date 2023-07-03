@@ -4,32 +4,32 @@ import styles from './styles.module.scss'
 import Accordion from '@/src/components/Accordion'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
+import { useTranslation } from 'next-i18next'
 
 interface CourseListProps {
     type: 'Диетология' | 'Психология'
-    category: Array<string>
-    data: Array<NormalizeCoursesData>
+    categoryData: Array<string>
+    courseData: Array<NormalizeCoursesData>
 }
 
-const CourseList = ({ category, data, type }: CourseListProps): JSX.Element => {
+const CourseList = ({ categoryData, courseData, type }: CourseListProps): JSX.Element => {
+    const { t } = useTranslation('common')
     const { categoryDietetics, categoryPsychology } = filterCourseStore
     const icon = type === 'Диетология' ? 'dietetics' : 'psychology'
     const filterCategory = type === 'Диетология' ? categoryDietetics : categoryPsychology
+    const allCategory = filterCategory === t('allCategory') || t(filterCategory) === t('allCategory')
 
     const courseList = (category: string) => {
-        return data.filter(course => course.categories.some(item => item.item === category))
+        return courseData.filter(course => course.categories.some(item => item.item === category))
     }
 
     const getCategory = (categoryFilter: string, data: Array<string>): Array<string> => {
-        if (Boolean(categoryFilter)) {
-            return data.filter(item => item === categoryFilter)
-        }
-        return data
+        return data.filter(item => (allCategory ? item !== t('allCategory') : item === categoryFilter))
     }
 
     return (
         <>
-            {getCategory(filterCategory, category).map((item, index) => (
+            {getCategory(filterCategory, categoryData).map((item, index) => (
                 <Fragment key={item + index}>
                     <h2 className={styles.header}>
                         {item} ({courseList(item).length})

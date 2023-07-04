@@ -43,7 +43,10 @@ const FilterDuration = (): JSX.Element => {
                         filterDuration: `${duration[0]},${duration[1]}`,
                     },
                 },
-                { scroll: false },
+                {
+                    scroll: false,
+                    shallow: true,
+                },
             )
         }
         setFilterDuration(duration)

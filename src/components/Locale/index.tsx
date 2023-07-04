@@ -26,7 +26,7 @@ const Locale = () => {
         <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} className={styles.locale}>
             <motion.button className={styles.btn} whileTap={{ scale: 0.97 }} onClick={() => setIsOpen(!isOpen)}>
                 {router.locale?.toUpperCase()}
-                <motion.div
+                <motion.span
                     variants={{
                         open: { rotate: 180 },
                         closed: { rotate: 0 },
@@ -44,9 +44,9 @@ const Locale = () => {
                             d='M9 1 5.707 4.675a.93.93 0 0 1-1.414 0L1 1'
                         />
                     </svg>
-                </motion.div>
+                </motion.span>
             </motion.button>
-            <motion.ul
+            <motion.div
                 className={styles.list}
                 variants={{
                     open: {
@@ -70,13 +70,13 @@ const Locale = () => {
                 }}
             >
                 {listLocale.map((locale, index) => (
-                    <motion.li key={index} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
+                    <motion.div key={index} variants={itemVariants} onClick={() => setIsOpen(!isOpen)}>
                         <Link className={styles.link} href={path404 || togglePath} locale={locale}>
                             {locale.toUpperCase()}
                         </Link>
-                    </motion.li>
+                    </motion.div>
                 ))}
-            </motion.ul>
+            </motion.div>
         </motion.nav>
     )
 }

@@ -1,6 +1,7 @@
 {
     "any": "Har qanday",
     "logo": "Tibbiyot ta'limi instituti",
+    "more": "Ko'proq",
     "month": "oy",
     "price": "Narxi",
     "module": "modul",
@@ -18,5 +19,6 @@
     "durationHeader": "1 oydan 24 oygacha",
     "homeBtnDiscover": "Qo'shimcha ma'lumot olish uchun",
     "installmentPlan": "12 oyga bo'lib to'lash 6 oydan keyin birinchi to'lov",
+    "professionsFrom": "dan kasblar",
     "professionalRetraining": "Professional qayta tayyorlash"
 }

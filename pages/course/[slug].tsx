@@ -183,7 +183,8 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                         </div>
 
                         <div className={styles.wrapperImage}>
-                            <Image className={styles.imageHeader}
+                            <Image
+                                className={styles.imageHeader}
                                 src={course.imageCourse}
                                 alt={'imageCourse'}
                                 priority

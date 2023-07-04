@@ -288,7 +288,7 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                 <ul className={styles.licensesList}>
                     {course.ourLicenses.map((licenses, index) => (
                         <li key={licenses.description + index}>
-                            <Image src={licenses.image} alt={licenses.description} width={244} height={332} priority />
+                            <Image src={licenses.image} alt={licenses.description} width={244} height={332} />
 
                             <p>{licenses.description}</p>
                         </li>

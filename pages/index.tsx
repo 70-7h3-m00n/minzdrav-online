@@ -94,9 +94,13 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                         <Image
                             className={styles.imgLong}
                             src={urlImage}
-                            alt={''}
-                            fill
+                            alt={'home'}
                             priority
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                objectFit: 'contain'
+                            }}
                             sizes='(max-width: 768px) 100vw,
                                       (max-width: 1200px) 50vw,
                                       33vw'
@@ -104,9 +108,13 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                         <Image
                             className={styles.imageShort}
                             src={urlImageMedia}
-                            alt={''}
-                            fill
+                            alt={'home'}
                             priority
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                objectFit: 'contain'
+                            }}
                             sizes='(max-width: 768px) 100vw,
                                       (max-width: 1200px) 50vw,
                                       33vw'

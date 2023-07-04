@@ -144,37 +144,14 @@
 .wrapperImage {
     position: relative;
     width: 603px;
-    height: 560px;
-
-    img {
-        border-radius: 20px;
-    }
-
-    @media screen and (max-width: 1400px) {
-        width: 602px;
-
-        img {
-            object-fit: contain;
-        }
+	.imageHeader {
+		border-radius: 20px;
+		object-fit: contain;
     }
 
     @media screen and (max-width: 768px) {
-        width: 480px;
-        height: 446px;
-    }
-
-    @media screen and (max-width: 576px) {
-        width: 387px;
-        height: 360px;
-    }
-
-    @media screen and (max-width: 430px) {
-        width: 279px;
-        height: 260px;
-    }
-
-    @media screen and (max-width: 279px) {
         width: 100%;
+
     }
 }
 

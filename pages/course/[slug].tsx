@@ -183,11 +183,16 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                         </div>
 
                         <div className={styles.wrapperImage}>
-                            <Image
-                                src={course.imageCourse!}
+                            <Image className={styles.imageHeader}
+                                src={course.imageCourse}
                                 alt={'imageCourse'}
-                                fill
                                 priority
+                                width={100}
+                                height={100}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                }}
                                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                             />
                         </div>

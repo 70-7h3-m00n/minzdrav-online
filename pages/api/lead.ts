@@ -5,6 +5,7 @@ import parseGeneralSlug from '@/src/services/parseGeneralSlug'
 import buildLeadData from '@/src/services/buildLeadData'
 import createLeadEmailBody from '@/src/services/createLeadEmailBody'
 import SMTP from '@/src/config/SMTP'
+import { getCookie } from 'cookies-next'
 
 type TypeNextApiResponseLeadData = {
     readonly err?: unknown
@@ -14,73 +15,20 @@ type TypeNextApiResponseLeadData = {
 const lead = async (req: NextApiRequest, res: NextApiResponse<TypeNextApiResponseLeadData | Error>) => {
     process.env.TZ = 'Europe/Moscow'
 
-    const { email } = req.body
-    if (req?.body?.pdfData) {
-        let responses
-        let attachments = []
-        try {
-            responses = await Promise.all(
-                req.body.pdfData.map(({ url }: { url: string }) => axios.get(url, { responseType: 'arraybuffer' })),
-            )
-            attachments = responses.map((response, i) => ({
-                filename: `${req.body.pdfData[i].name}`,
-                content: response.data,
-            }))
-        } catch (err) {
-            res.status(500).json({ msg: 'Не удалось загрузить PDF: ', err })
-            return
-        }
+    const { name, email, phone } = req.body
 
-        const transporterPdf = nodemailer.createTransport({
-            // @ts-expect-error remove this line and fix the error
-            host: SMTP.HOST,
-            port: SMTP.PORT,
-            secure: false, // true for 465, false for other ports
-            logger: true,
-            debug: true,
-            tls: {
-                rejectUnAuthorized: true,
-            },
-            auth: {
-                user: SMTP.LOGIN,
-                pass: SMTP.PASS,
-            },
-        })
+    const roistatVisit = getCookie('roistat_visit', { req, res })
 
-        const mailOptions = {
-            from: SMTP.FROM,
-            to: email,
-            subject: 'Ваш PDF файл',
-            attachments,
-        }
-
-        transporterPdf.sendMail(mailOptions, (err, info) => {
-            if (err) {
-                res.status(500).json({ msg: 'Ошибка при отправке почты:', err })
-                return
-            }
-            res.json({ msg: 'Письмо отправлено: ' })
-        })
-    }
-
-    const utms = JSON.parse('{}')
-    let utmsAreEmpty = false
-
-    Object.keys(utms).forEach(key => {
-        if (utms.hasOwnProperty(key)) {
-            utmsAreEmpty = true
-        }
+    await axios.request({
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `https://cloud.roistat.com/api/proxy/1.0/leads/add?roistat=${roistatVisit}&key=${
+            process.env.roistatKey
+        }&title=Новая_заявка_с_сайта&name=${encodeURIComponent(name)}&email=${encodeURIComponent(
+            email,
+        )}&phone=${encodeURIComponent(phone)}&is_skip_sending=1`,
+        headers: {},
     })
-
-    const utmsQuery = req.headers.referer?.toString().split('?')[1]
-
-    if (utmsQuery) {
-        utmsQuery.split('&').forEach(utm => {
-            // TODO: fix this eslint-disable-next-line
-            // eslint-disable-next-line
-            utms[utm.split('=')[0] as string] = utm.split('=')[1]
-        })
-    }
 
     const protocol = req.headers['x-forwarded-proto']
     const rootPath = `${protocol ? `${protocol}://` : ''}${req.headers.host}`
@@ -101,7 +49,6 @@ const lead = async (req: NextApiRequest, res: NextApiResponse<TypeNextApiRespons
         ...req.body,
         rootPath,
         leadPage,
-        utms,
         currentFacultySlug,
         currentProgramSlug,
         ip,

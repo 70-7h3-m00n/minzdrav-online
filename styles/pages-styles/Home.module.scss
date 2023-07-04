@@ -38,21 +38,15 @@
     }
 
     &_containerRight {
-        position: relative;
         width: 44%;
-        height: 650px;
-
-        img {
-            object-fit: contain;
-        }
     }
 
-    //TODO найти другое решение адаптива картинки
     @media screen and (max-width: 1400px) {
         flex-direction: column-reverse;
 
         &_ContainerLeft {
             width: 100%;
+			margin-top: 25px;
 
             &__Header {
                 margin: 20px 0;
@@ -64,71 +58,14 @@
 
         &_containerRight {
             width: 100%;
-            height: 540px;
         }
     }
-    @media screen and (max-width: 992px) {
-        &_containerRight {
-            height: 409px;
-        }
-    }
-    @media screen and (max-width: 768px) {
-        &_containerRight {
-            height: 290px;
-        }
-    }
-    @media screen and (max-width: 576px) {
-        &_containerRight {
-            height: 270px;
-        }
-    }
-    @media screen and (max-width: 576px) {
-        &_containerRight {
-            height: 260px;
-        }
-    }
-    @media screen and (max-width: 500px) {
-        &_containerRight {
-            height: 250px;
-        }
-    }
-    @media screen and (max-width: 480px) {
-        &_containerRight {
-            height: 240px;
-        }
-    }
-    @media screen and (max-width: 440px) {
-        &_containerRight {
-            height: 230px;
-        }
-    }
-    @media screen and (max-width: 420px) {
-        &_containerRight {
-            height: 220px;
-        }
-    }
-    @media screen and (max-width: 380px) {
-        &_containerRight {
-            height: 200px;
-        }
-    }
-    @media screen and (max-width: 370px) {
-        &_containerRight {
-            height: 180px;
-        }
-    }
-    @media screen and (max-width: 350px) {
-        &_containerRight {
-            height: 150px;
-        }
-    }
-    @media screen and (max-width: 320px) {
-        &_containerRight {
-            img {
-                object-fit: cover;
-            }
-        }
-    }
+	@media screen and (max-width: 576px) {
+		&_ContainerLeft {
+			margin-top: 10px;
+
+		}
+	}
 }
 
 .imgLong {

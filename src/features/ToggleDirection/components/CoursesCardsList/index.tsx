@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
 import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
+import { useTranslation } from 'next-i18next'
 
 interface CoursesCardsListProps {
     data: NormalizeCoursesData[]
 }
 
 const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
+    const { t } = useTranslation('common')
     const itemsToShow = 10
     const [counter, setCounter] = useState(itemsToShow)
 
@@ -41,7 +43,7 @@ const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
             </ul>
 
             <button className={closeBtn} onClick={addCardItem}>
-                Ещё {counterShow} профессий из {counterCourse}
+                {t('more')} {counterShow} {t('professionsFrom')} {counterCourse}
             </button>
         </>
     )

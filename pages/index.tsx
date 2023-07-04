@@ -99,7 +99,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                             style={{
                                 width: '100%',
                                 height: 'auto',
-                                objectFit: 'contain'
+                                objectFit: 'contain',
                             }}
                             sizes='(max-width: 768px) 100vw,
                                       (max-width: 1200px) 50vw,
@@ -113,7 +113,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                             style={{
                                 width: '100%',
                                 height: 'auto',
-                                objectFit: 'contain'
+                                objectFit: 'contain',
                             }}
                             sizes='(max-width: 768px) 100vw,
                                       (max-width: 1200px) 50vw,

@@ -1,6 +1,7 @@
 {
     "any": "Any",
     "logo": "Institute of Medical Education",
+    "more": "More",
     "month": "month",
     "price": "Price",
     "module": "module",
@@ -18,5 +19,6 @@
     "durationHeader": "1 to 24 months",
     "homeBtnDiscover": "To learn more",
     "installmentPlan": "Installment for 12 months First payment after 6 months",
+    "professionsFrom": "professions from",
     "professionalRetraining": "Professional retraining"
 }

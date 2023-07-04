@@ -46,7 +46,7 @@
 
         &_ContainerLeft {
             width: 100%;
-			margin-top: 25px;
+            margin-top: 25px;
 
             &__Header {
                 margin: 20px 0;
@@ -60,12 +60,11 @@
             width: 100%;
         }
     }
-	@media screen and (max-width: 576px) {
-		&_ContainerLeft {
-			margin-top: 10px;
-
-		}
-	}
+    @media screen and (max-width: 576px) {
+        &_ContainerLeft {
+            margin-top: 10px;
+        }
+    }
 }
 
 .imgLong {

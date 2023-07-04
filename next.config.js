@@ -11,6 +11,7 @@ const nextConfig = {
     env: {
         previewSecret: 'q4Bp6fgMJMIx9PdyVs12kQ',
         SMTP_PASS: '^ge47cvp`xLd',
+        roistatKey: 'OTU1ZDc0NjZlN2M3NDkyYzg4ZDdhMWU5MDQ5Y2ZhYzM6MjMyMTk1',
     },
     isrMemoryCacheSize: 0,
 }

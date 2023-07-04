@@ -13,7 +13,6 @@ const nextConfig = {
         SMTP_PASS: '^ge47cvp`xLd',
         roistatKey: 'OTU1ZDc0NjZlN2M3NDkyYzg4ZDdhMWU5MDQ5Y2ZhYzM6MjMyMTk1',
     },
-    isrMemoryCacheSize: 0,
 }
 
 module.exports = nextConfig

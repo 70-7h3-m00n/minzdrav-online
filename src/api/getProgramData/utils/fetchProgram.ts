@@ -17,9 +17,11 @@ export const fetchProgram = async (locale: string) => {
             'pathCourse',
             'header',
             'typeTrainingHeader',
-            'script',
         ],
         populate: {
+            script: {
+                fields: ['item'],
+            },
             categories: {
                 fields: ['item'],
             },

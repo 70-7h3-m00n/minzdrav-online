@@ -11,6 +11,10 @@ export const normalizeProgramData = ({
         typeCourse: attributes.typeCourse,
         color: attributes.color,
         durationTraining: attributes.durationTraining,
+        script:
+            attributes.script?.map(script => ({
+                item: script?.item,
+            })) || null,
         categories: attributes.categories.map(category => ({
             item: category.item,
         })),

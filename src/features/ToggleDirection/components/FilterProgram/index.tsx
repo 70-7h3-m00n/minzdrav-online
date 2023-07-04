@@ -27,7 +27,10 @@ const FilterProgram = ({ data }: FilterProgramProps): JSX.Element => {
                         filterProgram: program,
                     },
                 },
-                { scroll: false },
+                {
+                    scroll: false,
+                    shallow: true,
+                },
             )
         }
 

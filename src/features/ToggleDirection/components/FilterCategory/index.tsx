@@ -43,7 +43,10 @@ const FilterCategory = ({ data, imageUrl, color, header, type }: FilterCoursePro
                         [type]: data,
                     },
                 },
-                { scroll: false },
+                {
+                    scroll: false,
+                    shallow: true,
+                },
             )
         }
     }

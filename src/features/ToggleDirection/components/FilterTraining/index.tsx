@@ -25,7 +25,10 @@ const FilterTraining = () => {
                         filterTraining: training,
                     },
                 },
-                { scroll: false },
+                {
+                    scroll: false,
+                    shallow: true,
+                },
             )
         }
 

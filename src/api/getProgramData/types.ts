@@ -84,6 +84,7 @@ interface Attributes {
     categories: Category[]
     programs: Program[]
     typeTraining: { id: number; item: string }[]
+    script: { id: number; item: string }[] | null
     subInfoContent: SubInfoContent[]
     subInfoText: SubInfoText[]
     description: string
@@ -148,6 +149,7 @@ export interface NormalizeProgramData {
     header: string
     ourLicenses: Array<{ description: string; image: string }>
     priceCourse: { priceRetraining: number; discount: number; priceQualifications: number }
+    script: Array<{ item: string }> | null
     trainingContent: {
         syllabusRetraining: {
             header: string

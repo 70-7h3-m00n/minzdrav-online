@@ -117,7 +117,7 @@ const FormSending = (): JSX.Element => {
                     </div>
                 </div>
             </form>
-            <ModalAlert />
+            {/*<ModalAlert />*/}
         </div>
     )
 }

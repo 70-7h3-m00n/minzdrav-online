@@ -1,4 +1,4 @@
-import getPartnersData from '@/src/api/getProgramData'
+import getProgramData from '@/src/api/getProgramData'
 import { GetStaticPathsContext, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
@@ -18,8 +18,11 @@ import AccordionSkills from '@/src/components/AccordionSkills'
 import Head from 'next/head'
 import CardPrice from '@/src/components/CardPrice'
 import { useRef } from 'react'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import getPathsCoursesData from '@/src/api/getPathsCourses'
+import { animation } from '@/animationPages/Home'
+import Slider from '@/src/components/Slider'
+import getPartnersData from '@/src/api/getPartnerData'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -46,12 +49,14 @@ export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-    const data = await getPartnersData(locale!)
+    const data = await getProgramData(locale!)
+    const partnerData = await getPartnersData(locale!)
     const course = data.filter(course => course.pathCourse === params!.slug)[0]
 
     return {
         props: {
             course,
+            partnerData,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
         revalidate: 120,
@@ -60,6 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
 
 interface PageCourseProps {
     course: NormalizeProgramData
+    partnerData: Awaited<ReturnType<typeof getPartnersData>>
 }
 
 interface ItemData {
@@ -80,7 +86,7 @@ interface DataPrice {
     price: number
 }
 
-export default function PageCourse({ course }: PageCourseProps): JSX.Element {
+export default function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
@@ -281,6 +287,20 @@ export default function PageCourse({ course }: PageCourseProps): JSX.Element {
                     </div>
                 </div>
             </section>
+
+            <motion.section
+                viewport={{ once: true }}
+                className={classNames(styles.partners, partnerData.length === 0 && 'close')}
+                initial='hidden'
+                whileInView='visible'
+                layout
+                custom={2}
+                variants={animation.bottomContentAnimation}
+            >
+                <h2 className={classNames(['container', 'header'])}>{t('CoursesPage:studying')}</h2>
+
+                <Slider dataArray={partnerData} />
+            </motion.section>
 
             <section className={'container'}>
                 <h2 className={'header'}>{t('CoursesPage:headerLicenses')}</h2>

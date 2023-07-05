@@ -23,11 +23,10 @@ function App({ Component, pageProps }: AppProps) {
             </Head>
 
             <div className={roboto.className}>
+                <ModalAlert />
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
-
-                <ModalAlert />
             </div>
 
             <Scripts />

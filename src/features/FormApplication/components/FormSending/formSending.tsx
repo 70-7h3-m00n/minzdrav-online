@@ -41,11 +41,12 @@ const FormSending = (): JSX.Element => {
             if (reason.status >= 400) {
                 setStatus(false)
             }
+            reset()
         } catch (e) {
             console.log(e)
+            reset()
             setStatus(false)
         }
-        reset()
         toggleModal(true)
     }
 
@@ -117,7 +118,6 @@ const FormSending = (): JSX.Element => {
                     </div>
                 </div>
             </form>
-            <ModalAlert />
         </div>
     )
 }

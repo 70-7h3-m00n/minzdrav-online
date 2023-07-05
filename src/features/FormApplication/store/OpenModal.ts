@@ -11,6 +11,7 @@ const OpenModal = types
         },
         setStatus(status: boolean) {
             self.status = status
+            self.isOpen = true
         },
     }))
 

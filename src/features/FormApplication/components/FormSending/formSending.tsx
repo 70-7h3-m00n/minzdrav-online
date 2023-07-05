@@ -7,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import classNames from 'classnames'
 import axios from 'axios'
 import { routerFront } from '@/src/config/routerBack'
-import ModalAlert from '@/src/features/FormApplication/components/ModalAlert'
 import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 
 interface FormSending {
@@ -34,6 +33,7 @@ const FormSending = (): JSX.Element => {
     })
 
     const submit: SubmitHandler<FormSending> = async data => {
+        reset()
         try {
             const reason = await axios.post(`${routerFront.root}`, {
                 ...data,
@@ -41,13 +41,11 @@ const FormSending = (): JSX.Element => {
             if (reason.status >= 400) {
                 setStatus(false)
             }
-            reset()
+            toggleModal(true)
         } catch (e) {
-            console.log(e)
-            reset()
             setStatus(false)
+            toggleModal(true)
         }
-        toggleModal(true)
     }
 
     return (

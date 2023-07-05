@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import styles from './styles.module.scss'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
@@ -6,6 +7,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import classNames from 'classnames'
 import axios from 'axios'
 import { routerFront } from '@/src/config/routerBack'
+import ModalAlert from '@/src/features/FormApplication/components/ModalAlert'
+import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 
 interface FormSending {
     name: string
@@ -15,6 +18,7 @@ interface FormSending {
 
 const FormSending = (): JSX.Element => {
     const { t } = useTranslation('form')
+    const { toggleModal, setStatus }: IOpenModalStore = openModalStore
     const {
         register,
         formState: { errors, isValid },
@@ -29,11 +33,20 @@ const FormSending = (): JSX.Element => {
         mode: 'onTouched',
     })
 
-    const submit: SubmitHandler<FormSending> = data => {
-        axios.post(`${routerFront.root}`, {
-            ...data,
-        })
+    const submit: SubmitHandler<FormSending> = async data => {
+        try {
+            const reason = await axios.post(`${routerFront.root}`, {
+                ...data,
+            })
+            if (reason.status >= 400) {
+                setStatus(false)
+            }
+        } catch (e) {
+            console.log(e)
+            setStatus(false)
+        }
         reset()
+        toggleModal(true)
     }
 
     return (
@@ -104,8 +117,9 @@ const FormSending = (): JSX.Element => {
                     </div>
                 </div>
             </form>
+            <ModalAlert />
         </div>
     )
 }
 
-export default FormSending
+export default observer(FormSending)

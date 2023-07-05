@@ -54,5 +54,5 @@ export const filterCourseStore = FilterCourse.create({
     searchCourse: '',
 })
 
-interface IFilterCourse extends Instance<typeof FilterCourse> {}
+export interface IFilterCourse extends Instance<typeof FilterCourse> {}
 export interface IFilterCourseSnapshotOut extends SnapshotOut<typeof FilterCourse> {}

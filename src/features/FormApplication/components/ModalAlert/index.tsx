@@ -26,6 +26,9 @@ const ModalAlert = (): JSX.Element => {
         <Modal
             open={isOpen}
             className={styles.modal}
+            disablePortal
+            disableEnforceFocus
+            disableAutoFocus
             aria-labelledby='modal-title'
             aria-describedby='modal-description'
         >

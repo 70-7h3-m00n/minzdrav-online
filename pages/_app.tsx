@@ -6,6 +6,7 @@ import '@/styles/reset.scss'
 import Layout from '@/src/components/Layout'
 import Head from 'next/head'
 import Scripts from '@/src/components/Scripts'
+import ModalAlert from '@/src/features/FormApplication/components/ModalAlert'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
@@ -22,6 +23,7 @@ function App({ Component, pageProps }: AppProps) {
             </Head>
 
             <div className={roboto.className}>
+                <ModalAlert />
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>

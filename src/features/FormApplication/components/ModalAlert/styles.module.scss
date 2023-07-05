@@ -1,12 +1,13 @@
-.modalWrapper {
-	background-color: white;
-	border-radius: 10px;
-	font-size: 16px;
-	padding: 20px;
+.modalWrapper,
+.active {
+    background-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px;
 
-	@media screen and (max-width: 400px) {
-		width: calc(100% - 20px);
-	}
+    @media screen and (max-width: 400px) {
+        width: calc(100% - 20px);
+    }
 }
 
 .statusOk,

@@ -70,15 +70,13 @@ const Locale = () => {
                 }}
             >
                 {listLocale.map((locale, index) => (
-                    <motion.div key={index}
-                                variants={itemVariants}
-                                onClick={() => setIsOpen(!isOpen)}
-                                className={styles.wrapperLink}
+                    <motion.div
+                        key={index}
+                        variants={itemVariants}
+                        onClick={() => setIsOpen(!isOpen)}
+                        className={styles.wrapperLink}
                     >
-                        <Link className={styles.link}
-                              href={path404 || togglePath}
-                              locale={locale}
-                        >
+                        <Link className={styles.link} href={path404 || togglePath} locale={locale}>
                             {locale.toUpperCase()}
                         </Link>
                     </motion.div>

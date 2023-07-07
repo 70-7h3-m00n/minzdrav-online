@@ -27,6 +27,14 @@ export const normalizeProgramData = ({
         subInfoText: attributes.subInfoText.map(type => ({
             item: type.item,
         })),
+        speakers:
+            attributes.speakers !== null
+                ? attributes.speakers.map(speaker => ({
+                      name: speaker.name,
+                      description: speaker.description,
+                      image: speaker.image.data[0].attributes.url,
+                  }))
+                : [],
         subInfoContent: attributes.subInfoContent.map(list => ({
             description: list.description,
             image: list.image.data[0].attributes.url,

@@ -19,6 +19,14 @@ export const fetchProgram = async (locale: string) => {
             'typeTrainingHeader',
         ],
         populate: {
+            speakers: {
+                fields: ['name, description'],
+                populate: {
+                    image: {
+                        fields: ['url'],
+                    },
+                },
+            },
             script: {
                 fields: ['item'],
             },

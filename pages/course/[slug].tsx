@@ -17,12 +17,14 @@ import Icon4 from '@/src/components-svg/Icons/Icon4'
 import AccordionSkills from '@/src/components/AccordionSkills'
 import Head from 'next/head'
 import CardPrice from '@/src/components/CardPrice'
-import { useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import getPathsCoursesData from '@/src/api/getPathsCourses'
 import { animation } from '@/animationPages/Home'
 import Slider from '@/src/components/Slider'
 import getPartnersData from '@/src/api/getPartnerData'
+import CardPartners from '@/src/components/CardPartners'
+import CardSpeaker from '@/src/components/CardSpeaker'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -259,6 +261,31 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
                 <TabCourseInfo course={course} />
             </section>
 
+            <motion.section
+                viewport={{ once: true }}
+                className={classNames('container ', styles.speaker, course.speakers.length === 0 && 'close')}
+                initial='hidden'
+                whileInView='visible'
+                layout
+                custom={2}
+                variants={animation.bottomContentAnimation}
+            >
+                <h2 className={'header'}>{t('CoursesPage:speakers')}</h2>
+
+                <Slider>
+                    <>
+                        {course.speakers?.map((speaker, index) => (
+                            <CardSpeaker
+                                key={speaker.name + index}
+                                name={speaker.name}
+                                description={speaker.description}
+                                image={speaker.image}
+                            />
+                        ))}
+                    </>
+                </Slider>
+            </motion.section>
+
             <section className={'container'}>
                 <h2 className={'header'}>{t('CoursesPage:headerProgram')}</h2>
 
@@ -297,9 +324,15 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
                 custom={2}
                 variants={animation.bottomContentAnimation}
             >
-                <h2 className={classNames(['container', 'header'])}>{t('CoursesPage:studying')}</h2>
+                <h2 className={'container header'}>{t('CoursesPage:studying')}</h2>
 
-                <Slider dataArray={partnerData} />
+                <Slider>
+                    <>
+                        {partnerData.map((item, index) => (
+                            <CardPartners key={index} partner={item.partner} iconUrl={item.iconUrl} />
+                        ))}
+                    </>
+                </Slider>
             </motion.section>
 
             <section className={'container'}>

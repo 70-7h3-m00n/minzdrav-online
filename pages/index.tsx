@@ -18,6 +18,8 @@ import getResourcesData from '@/src/api/getArticlesData'
 import getPartnersData from '@/src/api/getPartnerData'
 import { motion } from 'framer-motion'
 import { animation } from '@/animationPages/Home'
+import CardPartners from '@/src/components/CardPartners'
+import React from 'react'
 
 interface PageHomeProps {
     resources: Awaited<ReturnType<typeof getResourcesData>>
@@ -161,7 +163,13 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 >
                     <h2 className={classNames(['container', 'header'])}>{t('homeHeaders:homePartners')}</h2>
 
-                    <Slider dataArray={partnerData} />
+                    <Slider>
+                        <>
+                            {partnerData.map((item, index) => (
+                                <CardPartners key={index} partner={item.partner} iconUrl={item.iconUrl} />
+                            ))}
+                        </>
+                    </Slider>
                 </motion.section>
 
                 <motion.section

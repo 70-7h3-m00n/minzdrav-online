@@ -13,6 +13,15 @@ interface SubInfoContent {
     }
 }
 
+interface Speakers {
+    id: number
+    name: string
+    description: string
+    image: {
+        data: ImageData[]
+    }
+}
+
 interface ImageCourse {
     data: ImageData[]
 }
@@ -87,6 +96,7 @@ interface Attributes {
     script: { id: number; item: string }[] | null
     subInfoContent: SubInfoContent[]
     subInfoText: SubInfoText[]
+    speakers: Speakers[] | null
     description: string
     imageCourse: ImageCourse
     startDateTraining: string
@@ -145,6 +155,7 @@ export interface NormalizeProgramData {
     knowledgeList: Array<{ item: string }>
     skillList: Array<{ item: string }>
     listOfSkills: Array<{ item: string }>
+    speakers: Array<{ name: string; description: string; image: string }> | []
     typeTrainingHeader: string
     header: string
     ourLicenses: Array<{ description: string; image: string }>

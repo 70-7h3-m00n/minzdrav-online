@@ -21,9 +21,9 @@ const UpBtn = () => {
     }
 
     return (
-        <motion.button className={styles.up} onClick={scrollToTop} initial={{ opacity: 0 }} animate={controls}>
+        <motion.div className={styles.up} onClick={scrollToTop} initial={{ opacity: 0 }} animate={controls}>
             <span className={styles.arrow} />
-        </motion.button>
+        </motion.div>
     )
 }
 

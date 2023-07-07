@@ -1,0 +1,39 @@
+@use 'src/styles/mixin/text';
+@use 'src/styles/variables/color';
+
+.cardBlock {
+    overflow: hidden;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 1px solid color.$general;
+    background: color.$background-card;
+    padding: 25px;
+    color: color.$general;
+    min-width: 400px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    cursor: grab;
+
+    @media screen and (max-width: 450px) {
+        padding: 12px;
+        min-width: 320px;
+        height: 500px;
+    }
+
+    @media screen and (max-width: 380px) {
+        padding: 8px;
+        min-width: 280px;
+    }
+}
+
+.name {
+    @include text.text-btn-form;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.description {
+    @include text.text-small;
+    margin-top: 5px;
+}

@@ -5,15 +5,15 @@ import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { ToggleDirection } from '@/src/features/ToggleDirection'
 import { createContext } from 'react'
-import getCoursesData from '@/src/api/getCoursesData'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
+import fetchCoursesName from '@/src/api/fetchCoursesName'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface PageDirectionsProps {
-    data: Awaited<ReturnType<typeof getCoursesData>>
+    data: Awaited<ReturnType<typeof fetchCoursesName>>
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const data = await getCoursesData(locale!)
+    const data = await fetchCoursesName(locale!)
 
     return {
         props: {
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     }
 }
 
-export const DataContext = createContext<Array<NormalizeCoursesData> | null>(null)
+export const DataContext = createContext<Array<CourseName> | null>(null)
 
 const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
     const { t } = useTranslation()

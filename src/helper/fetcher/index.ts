@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetcher = async <T>(url: string) => {
+export const fetcherGet = async <T>(url: string) => {
     try {
         const res = await axios.get<T>(url)
         return await res.data
@@ -10,4 +10,4 @@ export const fetcher = async <T>(url: string) => {
     }
 }
 
-export default fetcher
+export default fetcherGet

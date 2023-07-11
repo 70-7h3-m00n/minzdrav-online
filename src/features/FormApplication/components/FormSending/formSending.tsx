@@ -6,7 +6,7 @@ import { emailExp, phoneExp } from '@/src/shared/regExp'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import classNames from 'classnames'
 import axios from 'axios'
-import { routerFront } from '@/src/config/routerBack'
+import { routerFront } from '@/src/config/routerApi'
 import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 
 interface FormSending {

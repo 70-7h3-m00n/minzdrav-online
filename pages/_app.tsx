@@ -29,7 +29,7 @@ function App({ Component, pageProps }: AppProps) {
                 </Layout>
             </div>
 
-            <Scripts />
+            {/*<Scripts />*/}
         </>
     )
 }

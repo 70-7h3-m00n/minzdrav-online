@@ -17,11 +17,16 @@ const BurgerMenu = () => {
 
     return (
         <motion.nav className={classNames(styles.burgerMenu)} initial={false} animate={isOpen ? 'open' : 'closed'}>
-            <motion.button className={styles.btn} whileTap={{ scale: 0.97 }} onClick={() => setIsOpen(!isOpen)}>
+            <motion.div
+                tabIndex={0}
+                className={styles.btn}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setIsOpen(!isOpen)}
+            >
                 {!isOpen ? <SvgBurger /> : <SvgClose />}
-            </motion.button>
+            </motion.div>
 
-            <motion.ul className={styles.wrapperLinks} variants={animation.list}>
+            <motion.div className={styles.wrapperLinks} variants={animation.list}>
                 <Link
                     className={classNames([
                         styles.link,
@@ -36,22 +41,22 @@ const BurgerMenu = () => {
 
                 {arrayRouterLinks.map((linkData, index) =>
                     pathname === linkData.link ? (
-                        <motion.li
+                        <motion.div
                             key={index}
                             className={classNames([styles.link, pathname === linkData.link && styles.linkActive])}
                             variants={animation.item}
                         >
                             {t(`navLinksHeader:${linkData.text}`)}
-                        </motion.li>
+                        </motion.div>
                     ) : (
-                        <motion.li key={index} variants={animation.item}>
+                        <motion.div key={index} variants={animation.item}>
                             <Link className={styles.link} href={linkData.link} onClick={() => setIsOpen(!isOpen)}>
                                 {t(`navLinksHeader:${linkData.text}`)}
                             </Link>
-                        </motion.li>
+                        </motion.div>
                     ),
                 )}
-            </motion.ul>
+            </motion.div>
         </motion.nav>
     )
 }

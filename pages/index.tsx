@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 import { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -10,23 +11,26 @@ import Image from 'next/image'
 import urlImage from '@/public/images/home.png'
 import urlImageMedia from '@/public/images/homeMedia.png'
 import FormApplication from '@/src/features/FormApplication/components/FormApplication'
-import CardResources from '@/src/components/CardResources'
-import CardDirection from '../src/features/ToggleDirection/components/CardDirection'
-import Slider from '@/src/components/Slider'
 import DataCardDirection from '@/src/config/dataCardDirection'
-import getResourcesData from '@/src/api/getArticlesData'
-import getPartnersData from '@/src/api/getPartnerData'
 import { motion } from 'framer-motion'
 import { animation } from '@/animationPages/Home'
+import CardPartners from '@/src/components/CardPartners'
+import React from 'react'
+import fetchPartner from '@/src/api/fetchPartner'
+import fetchResources from '@/src/api/fetchResources'
+
+const DynamicCardResources = dynamic(() => import('@/src/components/CardResources'))
+const DynamicCardDirection = dynamic(() => import('@/src/features/ToggleDirection/components/CardDirection'))
+const DynamicSlider = dynamic(() => import('@/src/components/Slider'))
 
 interface PageHomeProps {
-    resources: Awaited<ReturnType<typeof getResourcesData>>
-    partnerData: Awaited<ReturnType<typeof getPartnersData>>
+    resources: Awaited<ReturnType<typeof fetchResources>>
+    partnerData: Awaited<ReturnType<typeof fetchPartner>>
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const resources = await getResourcesData(locale!)
-    const partnerData = await getPartnersData(locale!)
+    const resources = await fetchResources(locale!)
+    const partnerData = await fetchPartner(locale!)
 
     return {
         props: {
@@ -101,9 +105,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                                 height: 'auto',
                                 objectFit: 'contain',
                             }}
-                            sizes='(max-width: 768px) 100vw,
-                                      (max-width: 1200px) 50vw,
-                                      33vw'
+                            sizes='33vw'
                         />
                         <Image
                             className={styles.imageShort}
@@ -115,9 +117,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                                 height: 'auto',
                                 objectFit: 'contain',
                             }}
-                            sizes='(max-width: 768px) 100vw,
-                                      (max-width: 1200px) 50vw,
-                                      33vw'
+                            sizes='33vw'
                         />
                     </motion.div>
                 </section>
@@ -135,7 +135,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
                     <div className={styles.wrapperCardDirection}>
                         {DataCardDirection.map((card, index) => (
-                            <CardDirection
+                            <DynamicCardDirection
                                 key={index}
                                 imageSrc={card.image}
                                 textLink={t(card.text)}
@@ -146,13 +146,9 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     </div>
                 </motion.section>
 
-                {/*<section className={classNames(['container', styles.profession])}>*/}
-                {/*    <h2 className={'header'}>{t('homeHeaders:homeGetProfession')}</h2>*/}
-                {/*</section>*/}
-
                 <motion.section
                     viewport={{ once: true }}
-                    className={classNames(styles.partners, partnerData.length === 0 && 'close')}
+                    className={classNames(styles.partners, partnerData?.length === 0 && 'close')}
                     initial='hidden'
                     whileInView='visible'
                     layout
@@ -161,7 +157,13 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                 >
                     <h2 className={classNames(['container', 'header'])}>{t('homeHeaders:homePartners')}</h2>
 
-                    <Slider dataArray={partnerData} />
+                    <DynamicSlider>
+                        <>
+                            {partnerData?.map((item, index) => (
+                                <CardPartners key={index} partner={item.partner} iconUrl={item.logo[0].url} />
+                            ))}
+                        </>
+                    </DynamicSlider>
                 </motion.section>
 
                 <motion.section
@@ -176,7 +178,12 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
                     <h2 className={'header'}>{t('homeHeaders:homeResources')}</h2>
                     <div className={styles.cardWrapper}>
                         {resources?.map((item, index) => (
-                            <CardResources key={index} text={item.text} alt={item.text} src={item.iconUrl} />
+                            <DynamicCardResources
+                                key={index}
+                                text={item.description}
+                                alt={item.description}
+                                src={item.icon[0].url}
+                            />
                         ))}
                     </div>
                 </motion.section>

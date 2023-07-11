@@ -3,13 +3,13 @@ import React, { Fragment } from 'react'
 import styles from './styles.module.scss'
 import Accordion from '@/src/components/Accordion'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 import { useTranslation } from 'next-i18next'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface CourseListProps {
     type: 'Диетология' | 'Психология'
     categoryData: Array<string>
-    courseData: Array<NormalizeCoursesData>
+    courseData: Array<CourseName>
 }
 
 const CourseList = ({ categoryData, courseData, type }: CourseListProps): JSX.Element => {

@@ -1,4 +1,4 @@
-import { GetStaticPathsContext, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
 import styles from '@/styles/pages-styles/Course.module.scss'
@@ -25,44 +25,6 @@ import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
 
-export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
-    paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
-    fallback: boolean
-}> = async ({ locales }) => {
-    const paths =
-        locales &&
-        (
-            await Promise.all(
-                locales.map(async local => {
-                    const data = await fetchPathsCourses(local)
-                    return data.map(course => ({
-                        params: { slug: course.pathCourse },
-                        locale: local,
-                    }))
-                }),
-            )
-        ).flat(2)
-
-    return {
-        paths,
-        fallback: false,
-    }
-}
-
-export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-    const course = await fetchCourse(locale!, String(params!.slug))
-    const partnerData = await fetchPartner(locale!)
-
-    return {
-        props: {
-            course,
-            partnerData,
-            ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
-        },
-        revalidate: 120,
-    }
-}
-
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
     partnerData: Awaited<ReturnType<typeof fetchPartner>>
@@ -86,7 +48,7 @@ interface DataPrice {
     price: number
 }
 
-export default function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
+function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
@@ -355,3 +317,38 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
         </>
     )
 }
+
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+    const paths = (
+        await Promise.all(
+            locales!.map(async local => {
+                const data = await fetchPathsCourses(local)
+                return data.map(course => ({
+                    params: { slug: course.pathCourse },
+                    locale: local,
+                }))
+            }),
+        )
+    ).flat(2)
+
+    return {
+        paths,
+        fallback: false,
+    }
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+    const course = await fetchCourse(locale!, String(params!.slug))
+    const partnerData = await fetchPartner(locale!)
+
+    return {
+        props: {
+            course,
+            partnerData,
+            ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
+        },
+        revalidate: 120,
+    }
+}
+
+export default PageCourse

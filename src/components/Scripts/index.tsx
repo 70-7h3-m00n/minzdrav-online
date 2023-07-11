@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import Script from 'next/script'
+import dev from '@/src/config/dev'
 
 interface ScriptsProps {
     dataScript?: Array<{ item: string }> | null | undefined
@@ -12,10 +13,12 @@ const Scripts = ({ dataScript }: ScriptsProps): JSX.Element => {
                 <Fragment key={index}>{script.item}</Fragment>
             ))}
 
-            <Script
-                id={'roistat'}
-                dangerouslySetInnerHTML={{
-                    __html: `
+            {dev && (
+                <>
+                    <Script
+                        id={'roistat'}
+                        dangerouslySetInnerHTML={{
+                            __html: `
                     (function(w, d, s, h, id) {
                         w.roistatProjectId = id; w.roistatHost = h;
                         var p = d.location.protocol == "https:" ? "https://" : "http://";
@@ -23,14 +26,14 @@ const Scripts = ({ dataScript }: ScriptsProps): JSX.Element => {
                         var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
                     })(window, document, 'script', 'cloud.roistat.com', '5cfe377c158202483a51ae27717c4045');
                 `,
-                }}
-            />
+                        }}
+                    />
 
-            <Script
-                id='yandex-metrika'
-                type='text/javascript'
-                dangerouslySetInnerHTML={{
-                    __html: `
+                    <Script
+                        id='yandex-metrika'
+                        type='text/javascript'
+                        dangerouslySetInnerHTML={{
+                            __html: `
                     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
                     m[i].l=1*new Date();
                     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -45,17 +48,19 @@ const Scripts = ({ dataScript }: ScriptsProps): JSX.Element => {
                     ecommerce:"dataLayer"
                   });
                   `,
-                }}
-            />
+                        }}
+                    />
 
-            <noscript
-                dangerouslySetInnerHTML={{
-                    __html: `
+                    <noscript
+                        dangerouslySetInnerHTML={{
+                            __html: `
                       <div><img src="https://mc.yandex.ru/watch/87585725"
                         style="position:absolute; left:-9999px;" alt="" />
                       </div>`,
-                }}
-            />
+                        }}
+                    />
+                </>
+            )}
         </>
     )
 }

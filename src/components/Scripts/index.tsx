@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Script from 'next/script'
-import dev from '@/src/config/dev'
+import prod from "@/src/config/prod";
 
 interface ScriptsProps {
     dataScript?: Array<{ item: string }> | null | undefined
@@ -13,7 +13,7 @@ const Scripts = ({ dataScript }: ScriptsProps): JSX.Element => {
                 <Fragment key={index}>{script.item}</Fragment>
             ))}
 
-            {dev && (
+            {prod && (
                 <>
                     <Script
                         id={'roistat'}

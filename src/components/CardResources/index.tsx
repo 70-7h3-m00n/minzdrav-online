@@ -11,17 +11,16 @@ interface CardResourcesProps {
 const CardResources = ({ src, alt, text }: CardResourcesProps): JSX.Element => {
     return (
         <div className={styles.wrapper}>
-            <div className={styles.wrapperImage}>
-                <Image
-                    src={src}
-                    alt={alt}
-                    fill
-                    loading={'lazy'}
-                    sizes='(max-width: 768px) 100vw,
-                              (max-width: 1200px) 50vw,
-                              33vw'
-                />
-            </div>
+            <Image
+                src={src}
+                alt={alt}
+                width={70}
+                height={68}
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                placeholder={'blur'}
+                blurDataURL={typeof src === 'string' ? src : ''}
+            />
+
             <p className={styles.description}>{text}</p>
         </div>
     )

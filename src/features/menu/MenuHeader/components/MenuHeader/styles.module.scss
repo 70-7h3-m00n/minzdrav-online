@@ -14,7 +14,7 @@
 .linkActive {
     @include text.text-small;
     text-align: center;
-    color: color.$link-header;
+    color: color.$general;
     text-decoration: none;
     margin-right: 47px;
 
@@ -32,6 +32,7 @@
 
 .linkActive {
     color: color.$active-header;
+    font-weight: bold;
 }
 
 .media {

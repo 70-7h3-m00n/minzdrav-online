@@ -1,8 +1,6 @@
-import getProgramData from '@/src/api/getProgramData'
 import { GetStaticPathsContext, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import styles from '@/styles/pages-styles/Course.module.scss'
 import classNames from 'classnames'
 import Image from 'next/image'
@@ -17,14 +15,15 @@ import Icon4 from '@/src/components-svg/Icons/Icon4'
 import AccordionSkills from '@/src/components/AccordionSkills'
 import Head from 'next/head'
 import CardPrice from '@/src/components/CardPrice'
-import React, { useMemo, useRef } from 'react'
+import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import getPathsCoursesData from '@/src/api/getPathsCourses'
 import { animation } from '@/animationPages/Home'
 import Slider from '@/src/components/Slider'
-import getPartnersData from '@/src/api/getPartnerData'
 import CardPartners from '@/src/components/CardPartners'
 import CardSpeaker from '@/src/components/CardSpeaker'
+import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
+import fetchPartner from '@/src/api/fetchPartner'
+import fetchPathsCourses from '@/src/api/fetchPathsCourses'
 
 export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
     paths: undefined | FlatArray<Awaited<{ params: { slug: string }; locale: string }[]>[], 2>[]
@@ -35,7 +34,7 @@ export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
         (
             await Promise.all(
                 locales.map(async local => {
-                    const data = await getPathsCoursesData(local)
+                    const data = await fetchPathsCourses(local)
                     return data.map(course => ({
                         params: { slug: course.pathCourse },
                         locale: local,
@@ -51,9 +50,8 @@ export const getStaticPaths: ({ locales }: GetStaticPathsContext) => Promise<{
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-    const data = await getProgramData(locale!)
-    const partnerData = await getPartnersData(locale!)
-    const course = data.filter(course => course.pathCourse === params!.slug)[0]
+    const course = await fetchCourse(locale!, String(params!.slug))
+    const partnerData = await fetchPartner(locale!)
 
     return {
         props: {
@@ -66,8 +64,8 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
 }
 
 interface PageCourseProps {
-    course: NormalizeProgramData
-    partnerData: Awaited<ReturnType<typeof getPartnersData>>
+    course: Awaited<ReturnType<typeof fetchCourse>>
+    partnerData: Awaited<ReturnType<typeof fetchPartner>>
 }
 
 interface ItemData {
@@ -193,7 +191,7 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
                         <div className={styles.wrapperImage}>
                             <Image
                                 className={styles.imageHeader}
-                                src={course.imageCourse}
+                                src={course.imageCourse[0].url}
                                 alt={'imageCourse'}
                                 priority
                                 width={100}
@@ -263,7 +261,7 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
 
             <motion.section
                 viewport={{ once: true }}
-                className={classNames('container ', styles.speaker, course.speakers.length === 0 && 'close')}
+                className={classNames('container ', styles.speaker, course.speakers?.length === 0 && 'close')}
                 initial='hidden'
                 whileInView='visible'
                 layout
@@ -279,7 +277,7 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
                                 key={speaker.name + index}
                                 name={speaker.name}
                                 description={speaker.description}
-                                image={speaker.image}
+                                image={speaker.image[0].url}
                             />
                         ))}
                     </>
@@ -317,7 +315,7 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
 
             <motion.section
                 viewport={{ once: true }}
-                className={classNames(styles.partners, partnerData.length === 0 && 'close')}
+                className={classNames(styles.partners, partnerData?.length === 0 && 'close')}
                 initial='hidden'
                 whileInView='visible'
                 layout
@@ -328,8 +326,8 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
 
                 <Slider>
                     <>
-                        {partnerData.map((item, index) => (
-                            <CardPartners key={index} partner={item.partner} iconUrl={item.iconUrl} />
+                        {partnerData?.map((item, index) => (
+                            <CardPartners key={index} partner={item.partner} iconUrl={item.logo[0].url} />
                         ))}
                     </>
                 </Slider>
@@ -341,7 +339,7 @@ export default function PageCourse({ course, partnerData }: PageCourseProps): JS
                 <ul className={styles.licensesList}>
                     {course.ourLicenses.map((licenses, index) => (
                         <li key={licenses.description + index}>
-                            <Image src={licenses.image} alt={licenses.description} width={244} height={332} />
+                            <Image src={licenses.image[0].url} alt={licenses.description} width={244} height={332} />
 
                             <p>{licenses.description}</p>
                         </li>

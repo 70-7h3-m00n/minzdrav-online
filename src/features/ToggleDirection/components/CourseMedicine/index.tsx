@@ -12,8 +12,8 @@ import { useTranslation } from 'next-i18next'
 import { DataContext } from '@/pages/directions'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 import CourseListMedicine from '@/src/features/ToggleDirection/components/CourseListMedicine'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation('common')
@@ -34,7 +34,7 @@ const CourseMedicine = (): JSX.Element => {
         ),
     ]
 
-    const program = (data: Array<NormalizeCoursesData>): Array<string> => {
+    const program = (data: Array<CourseName>): Array<string> => {
         return [
             ...new Set(
                 data

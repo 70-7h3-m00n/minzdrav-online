@@ -1,10 +1,15 @@
 import qs from 'qs'
-import fetcher from '@/src/helper/fetcher'
-import { routerBack } from '@/src/config/routerBack'
-import { IPrograms } from '@/src/api/getProgramData/types'
+import fetcherGet from '@/src/helper/fetcher'
+import { routerApi } from '@/src/config/routerApi'
+import { ICourseData } from '@/src/api/fetchCourse/types'
 
-export const fetchProgram = async (locale: string) => {
+export const fetchCourse = async (locale: string, slug: string) => {
     const query = qs.stringify({
+        filters: {
+            pathCourse: {
+                $eq: slug,
+            },
+        },
         fields: [
             'name',
             'typeCourse',
@@ -33,21 +38,7 @@ export const fetchProgram = async (locale: string) => {
             categories: {
                 fields: ['item'],
             },
-            programs: {
-                fields: ['item'],
-            },
             typeTraining: {
-                fields: ['item'],
-            },
-            subInfoContent: {
-                fields: ['description'],
-                populate: {
-                    image: {
-                        fields: ['url'],
-                    },
-                },
-            },
-            subInfoText: {
                 fields: ['item'],
             },
             imageCourse: {
@@ -117,10 +108,9 @@ export const fetchProgram = async (locale: string) => {
         },
         locale,
     })
+    const res = await fetcherGet<ICourseData>(`${routerApi.root}${routerApi.router.programs}?${query}`)
 
-    const res = await fetcher<IPrograms>(`${routerBack.root}${routerBack.router.programs}?${query}`)
-
-    return res?.data || []
+    return res?.data[0]
 }
 
-export default fetchProgram
+export default fetchCourse

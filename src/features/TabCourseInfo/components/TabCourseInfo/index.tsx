@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 import TabInfo from '@/src/features/TabCourseInfo/components/TabInfo'
-import { NormalizeProgramData } from '@/src/api/getProgramData/types'
 import classNames from 'classnames'
+import { Course } from '@/src/api/fetchCourse/types'
 
 interface TabCourseInfoProps {
-    course: NormalizeProgramData
+    course: Course
 }
 
 interface TadData {
@@ -15,7 +15,7 @@ interface TadData {
         syllabus: Array<{ header: string; description: string }>
         listeners: Array<{ item: string }>
         admission: Array<{ item: string }>
-        issuedDocuments: Array<{ description: string; image: string }>
+        issuedDocuments: Array<{ description: string; image: Array<{ url: string }> }>
     }
 }
 

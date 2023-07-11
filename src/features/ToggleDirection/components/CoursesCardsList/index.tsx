@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 import { useTranslation } from 'next-i18next'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface CoursesCardsListProps {
-    data: NormalizeCoursesData[]
+    data: CourseName[]
 }
 
 const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
@@ -32,8 +32,10 @@ const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
     const closeBtn = data.length - counter > 0 ? styles.btnShow : 'close'
     const counterShow = itemsShow >= 0 ? itemsShow : 0
     const counterCourse = data.length - counter >= 0 ? data.length - counter : 0
+    const alert = !Boolean(data.length) ? 'close' : ''
     return (
         <>
+            <div className={alert}>Курс не найден</div>
             <ul className={styles.courseList}>
                 {data.slice(0, counter).map(course => (
                     <li key={course.name} className={styles.course}>

@@ -4,11 +4,11 @@ import classNames from 'classnames'
 import CoursesCardsList from '@/src/features/ToggleDirection/components/CoursesCardsList'
 import { useTranslation } from 'next-i18next'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface CourseListMedicineProps {
     dataProgram: Array<string>
-    dataCourse: Array<NormalizeCoursesData>
+    dataCourse: Array<CourseName>
 }
 
 const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps): JSX.Element => {
@@ -19,7 +19,7 @@ const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps
     const allCategory = categoryMedicine === t('allCategory') || t(categoryMedicine) === t('allCategory')
     const allTraining = filterTraining === 'any' || filterTraining === ''
 
-    const courseList = (programFilter: string): Array<NormalizeCoursesData> => {
+    const courseList = (programFilter: string): Array<CourseName> => {
         return dataCourse
             .filter(course =>
                 course.categories.some(item => (allCategory ? item.item : item.item === categoryMedicine)),

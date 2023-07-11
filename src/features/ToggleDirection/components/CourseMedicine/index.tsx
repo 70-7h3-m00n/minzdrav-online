@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import img from '@/public/images/MedicineCard.png'
 import styles from './styles.module.scss'
@@ -17,6 +17,7 @@ import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation('common')
+    const [isFilterMobile, setFilterMobile] = useState(false)
     const data = useContext(DataContext)!
     const dataMedicine = data.filter(course => course.typeCourse === 'Медицина')
     const { medicine } = contentToggleStore
@@ -67,11 +68,29 @@ const CourseMedicine = (): JSX.Element => {
                 <div className={styles.filterCourses}>
                     <Search />
 
-                    <FilterProgram data={program(dataMedicine)} />
+                    <button onClick={() => setFilterMobile(true)} className={styles.btnFilterMobile}>
+                        {t('filter')}
+                    </button>
 
-                    <FilterTraining />
+                    <div className={styles.filterDesktop}>
+                        <FilterProgram data={program(dataMedicine)} />
 
-                    <FilterDuration />
+                        <FilterTraining />
+
+                        <FilterDuration />
+                    </div>
+
+                    <div className={isFilterMobile ? styles.filterMobile : 'close'}>
+                        <FilterProgram data={program(dataMedicine)} />
+
+                        <FilterTraining />
+
+                        <FilterDuration />
+
+                        <button className={styles.btn} onClick={() => setFilterMobile(false)}>
+                            {t('apply')}
+                        </button>
+                    </div>
                 </div>
 
                 <CourseListMedicine dataCourse={dataMedicine} dataProgram={program(dataMedicine)} />

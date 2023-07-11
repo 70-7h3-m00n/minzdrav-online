@@ -32,10 +32,8 @@ const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
     const closeBtn = data.length - counter > 0 ? styles.btnShow : 'close'
     const counterShow = itemsShow >= 0 ? itemsShow : 0
     const counterCourse = data.length - counter >= 0 ? data.length - counter : 0
-    const alert = !Boolean(data.length) ? 'close' : ''
     return (
         <>
-            <div className={alert}>Курс не найден</div>
             <ul className={styles.courseList}>
                 {data.slice(0, counter).map(course => (
                     <li key={course.name} className={styles.course}>

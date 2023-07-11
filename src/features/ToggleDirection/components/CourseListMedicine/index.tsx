@@ -12,11 +12,11 @@ interface CourseListMedicineProps {
 }
 
 const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps): JSX.Element => {
-    const { t } = useTranslation('common')
+    const { t } = useTranslation()
     const { categoryMedicine, filterProgram, filterTraining, filterDuration, searchCourse } = filterCourseStore
 
-    const allProgram = filterProgram === t('allPrograms') || t(filterProgram) === t('allPrograms')
-    const allCategory = categoryMedicine === t('allCategory') || t(categoryMedicine) === t('allCategory')
+    const allProgram = filterProgram === t('common:allPrograms') || t(filterProgram) === t('common:allPrograms')
+    const allCategory = categoryMedicine === t('common:allCategory') || t(categoryMedicine) === t('common:allCategory')
     const allTraining = filterTraining === 'any' || filterTraining === ''
 
     const courseList = (programFilter: string): Array<CourseName> => {
@@ -41,19 +41,34 @@ const CourseListMedicine = ({ dataProgram, dataCourse }: CourseListMedicineProps
                 {dataProgram
                     .filter(item => (allProgram ? item : item === filterProgram))
                     .map((category, index) => {
-                        if (category === t('allPrograms')) return null
-                        return (
-                            <li
-                                key={index + 'category'}
-                                className={classNames(styles.category, courseList(category).length === 0 && 'close')}
-                            >
-                                <h2 className={styles.header}>
-                                    {category} ({courseList(category).length})
-                                </h2>
+                        if (category === t('common:allPrograms')) return null
+                        if (courseList(category).length === 0) {
+                            return (
+                                <li className={styles.category} key={index + 'category'}>
+                                    <h2 className={styles.header}>
+                                        {category} ({courseList(category).length})
+                                    </h2>
 
-                                <CoursesCardsList data={courseList(category)} />
-                            </li>
-                        )
+                                    <div>{t('courseDirections:filterCourse')}</div>
+                                </li>
+                            )
+                        } else {
+                            return (
+                                <li
+                                    key={index + 'category'}
+                                    className={classNames(
+                                        styles.category,
+                                        courseList(category).length === 0 && 'close',
+                                    )}
+                                >
+                                    <h2 className={styles.header}>
+                                        {category} ({courseList(category).length})
+                                    </h2>
+
+                                    <CoursesCardsList data={courseList(category)} />
+                                </li>
+                            )
+                        }
                     })}
             </ul>
         </div>

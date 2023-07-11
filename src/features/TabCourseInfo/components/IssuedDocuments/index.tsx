@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import Image from 'next/image'
 
 interface IssuedDocumentsProps {
-    data: { description: string; image: string }
+    data: { description: string; image: Array<{ url: string }> }
     revers?: boolean
 }
 
@@ -17,7 +17,7 @@ const IssuedDocuments = ({ data, revers = false }: IssuedDocumentsProps) => {
         >
             <div className={styles.image}>
                 <Image
-                    src={data.image}
+                    src={data.image[0].url}
                     alt={'image'}
                     fill
                     priority

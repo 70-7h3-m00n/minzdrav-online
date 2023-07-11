@@ -1,7 +1,7 @@
-import { IPartners } from '../types'
+import fetcherGet from '@/src/helper/fetcher'
+import { routerApi } from '@/src/config/routerApi'
+import { IResponse } from '@/src/api/fetchPartner/types'
 import qs from 'qs'
-import fetcher from '@/src/helper/fetcher'
-import { routerBack } from '@/src/config/routerBack'
 
 export const fetchPartner = async (locale: string) => {
     const query = qs.stringify({
@@ -14,9 +14,9 @@ export const fetchPartner = async (locale: string) => {
         locale,
     })
 
-    const res = await fetcher<IPartners>(`${routerBack.root}${routerBack.router.partners}?${query}`)
+    const res = await fetcherGet<IResponse>(`${routerApi.root}${routerApi.router.partners}?${query}`)
 
-    return res?.data || []
+    return res?.data
 }
 
 export default fetchPartner

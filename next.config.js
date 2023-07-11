@@ -6,6 +6,7 @@ const nextConfig = {
     basePath: '',
     i18n,
     images: {
+        formats: ['image/avif', 'image/webp'],
         domains: ['res.cloudinary.com'],
     },
     env: {

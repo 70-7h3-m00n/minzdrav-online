@@ -1,13 +1,12 @@
 import styles from './styles.module.scss'
 import { SliderItems } from '@/src/components/Slider/type'
-import CardPartners from '@/src/components/CardPartners'
 import React, { useRef, useState } from 'react'
 
 interface SliderProps<Render> {
-    dataArray: { partner: string; iconUrl: string }[]
+    children: JSX.Element
 }
 
-const Slider = ({ dataArray }: SliderProps<SliderItems>): JSX.Element => {
+const Slider = ({ children }: SliderProps<SliderItems>): JSX.Element => {
     const blockRef = useRef<HTMLDivElement | null>(null)
     const [startX, setStartX] = useState<number | null>(null)
     const [scrollLeft, setScrollLeft] = useState(0)
@@ -42,9 +41,7 @@ const Slider = ({ dataArray }: SliderProps<SliderItems>): JSX.Element => {
                     onMouseUp={handleMouseUp}
                     onMouseLeave={handleMouseUp}
                 >
-                    {dataArray.map((item, index) => (
-                        <CardPartners key={index} partner={item.partner} iconUrl={item.iconUrl} />
-                    ))}
+                    {children}
                 </div>
             </div>
         </div>

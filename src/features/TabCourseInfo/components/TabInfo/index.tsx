@@ -12,7 +12,7 @@ interface TabInfoProps {
         syllabus: Array<{ header: string; description: string }>
         listeners: Array<{ item: string }>
         admission: Array<{ item: string }>
-        issuedDocuments: Array<{ description: string; image: string }>
+        issuedDocuments: Array<{ description: string; image: Array<{ url: string }> }>
     }
 }
 

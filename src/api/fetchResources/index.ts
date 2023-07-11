@@ -1,7 +1,7 @@
-import { IResources } from '../types'
+import fetcherGet from '@/src/helper/fetcher'
 import qs from 'qs'
-import fetcher from '@/src/helper/fetcher'
-import { routerBack } from '@/src/config/routerBack'
+import { routerApi } from '@/src/config/routerApi'
+import { IResponse } from '@/src/api/fetchResources/types'
 
 export const fetchResources = async (locale: string) => {
     const query = qs.stringify({
@@ -13,7 +13,7 @@ export const fetchResources = async (locale: string) => {
         },
         locale,
     })
-    const res = await fetcher<IResources>(`${routerBack.root}${routerBack.router.resource}?${query}`)
+    const res = await fetcherGet<IResponse>(`${routerApi.root}${routerApi.router.resource}?${query}`)
 
     return res?.data || []
 }

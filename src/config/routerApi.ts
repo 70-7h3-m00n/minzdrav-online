@@ -1,7 +1,7 @@
 import dev from '@/src/config/dev'
 
 interface RouterApi {
-    root: 'http://localhost:5000/api' | 'https://api.new-imo.msk.ru/api'
+    root: 'http://localhost:5000/api' | 'https://api.minzdrav.online/api'
     router: {
         resource: string
         partners: string
@@ -9,21 +9,21 @@ interface RouterApi {
     }
 }
 interface RouteDomainFront {
-    root: 'http://localhost:3000' | 'https://www.new-imo.msk.ru'
+    root: 'http://localhost:3000' | 'https://minzdrav.online'
 }
 interface RouteDomainBack {
-    root: 'http://localhost:5000' | 'https://api.new-imo.msk.ru'
+    root: 'http://localhost:5000' | 'https://api.minzdrav.online'
 }
 
 export const routeDomainFront: RouteDomainFront = {
-    root: dev ? 'http://localhost:3000' : 'https://www.new-imo.msk.ru',
+    root: dev ? 'http://localhost:3000' : 'https://minzdrav.online',
 }
 
 export const routeDomainBack: RouteDomainBack = {
-    root: dev ? 'http://localhost:5000' : 'https://api.new-imo.msk.ru',
+    root: dev ? 'http://localhost:5000' : 'https://api.minzdrav.online',
 }
 
-export const routerBack: RouterApi = {
+export const routerApi: RouterApi = {
     root: `${routeDomainBack.root}/api`,
     router: {
         resource: '/resources',

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
 import { useTranslation } from 'next-i18next'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface CoursesCardsListProps {
-    data: NormalizeCoursesData[]
+    data: CourseName[]
 }
 
 const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {

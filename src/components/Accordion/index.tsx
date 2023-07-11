@@ -10,10 +10,10 @@ import Image from 'next/image'
 import imageDiet from '@/public/images/fruit.png'
 import imagePsych from '@/public/images/brains.png'
 import { motion } from 'framer-motion'
-import { NormalizeCoursesData } from '@/src/api/getCoursesData/types'
+import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface AccordionProps {
-    data: NormalizeCoursesData
+    data: CourseName
     icon: 'dietetics' | 'psychology'
 }
 
@@ -82,7 +82,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                     <div className={styles.one}>
                         <div className={classNames([styles.wrapperImage, openDescription && styles.bigWrapper])}>
                             <Image
-                                src={data.subInfoContent[0].image}
+                                src={data.subInfoContent[0].image[0].url}
                                 fill
                                 alt={'image'}
                                 sizes='(max-width: 768px) 100vw,
@@ -96,7 +96,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                     <div className={styles.two}>
                         <div className={styles.wrapperImage}>
                             <Image
-                                src={data.subInfoContent[1].image}
+                                src={data.subInfoContent[1].image[0].url}
                                 fill
                                 alt={'image'}
                                 sizes='(max-width: 768px) 100vw,
@@ -110,7 +110,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                     <div className={styles.three}>
                         <div className={styles.wrapperImage}>
                             <Image
-                                src={data.subInfoContent[2].image}
+                                src={data.subInfoContent[2].image[0].url}
                                 fill
                                 alt={'image'}
                                 sizes='(max-width: 768px) 100vw,

@@ -16,6 +16,7 @@
     padding: 0 30px;
 
     .filterCourses {
+        position: relative;
         width: calc(100% - 920px);
         padding: 0 50px;
 
@@ -39,5 +40,50 @@
 
     @media screen and (max-width: 768px) {
         padding: 0;
+    }
+}
+
+.filterDesktop {
+    display: block;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.btnFilterMobile {
+    display: none;
+    color: #3e3cff;
+    background-color: transparent;
+    border: none;
+    margin: 10px auto 0;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
+}
+
+.btn {
+    display: block;
+    background-color: #3e3cff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.filterMobile {
+    display: none;
+    position: absolute;
+    z-index: 1300;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+    padding: 20px;
+
+    @media screen and (max-width: 768px) {
+        display: block;
     }
 }

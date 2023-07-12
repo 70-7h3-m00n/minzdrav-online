@@ -1,14 +1,7 @@
 @use 'src/styles/variables/color';
 @use 'src/styles/mixin/text';
 
-h1,
-h2,
-h3,
-p,
-button,
-div,
-ul,
-li {
+button {
     user-select: none;
 }
 

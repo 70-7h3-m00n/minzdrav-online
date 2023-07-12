@@ -14,7 +14,7 @@ const FormApplication = () => {
         }
     }, [])
 
-    const toggleContent = router.asPath === '/'
+    const toggleContent = router.pathname === '/'
 
     return (
         <div className={toggleContent ? styles.wrapper : styles.wrapperFlex}>

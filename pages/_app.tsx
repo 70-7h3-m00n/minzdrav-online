@@ -7,6 +7,7 @@ import Layout from '@/src/components/Layout'
 import Head from 'next/head'
 import Scripts from '@/src/components/Scripts'
 import ModalAlert from '@/src/features/FormApplication/components/ModalAlert'
+import useHandleUtms from '@/src/hooks/useHandleUtms'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
@@ -14,6 +15,8 @@ const roboto = Roboto({
 })
 
 function App({ Component, pageProps }: AppProps) {
+    useHandleUtms()
+
     return (
         <>
             <Head>

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Script from 'next/script'
-import prod from "@/src/config/prod";
+import prod from '@/src/config/prod'
 
 interface ScriptsProps {
     dataScript?: Array<{ item: string }> | null | undefined

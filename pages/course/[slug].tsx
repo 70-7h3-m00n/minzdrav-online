@@ -24,6 +24,7 @@ import CardSpeaker from '@/src/components/CardSpeaker'
 import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
+import { NextSeo } from 'next-seo'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -53,6 +54,9 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
     if (course === undefined) return <></>
+
+    const seoTitle = Boolean(course.courseSeo?.title) ? course.courseSeo.title : 'Курс'
+    const seoDescription = Boolean(course.courseSeo?.description) ? course.courseSeo.description : 'Курс медецины'
 
     const arrayItemsData: Array<ItemData> = [
         {
@@ -122,9 +126,8 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
 
     return (
         <>
-            <Head>
-                <title>Курс</title>
-            </Head>
+            <NextSeo title={seoTitle} description={seoDescription} />
+
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>
                     <div className={styles.blockInfo}>

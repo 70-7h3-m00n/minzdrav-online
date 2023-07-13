@@ -123,8 +123,10 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     return (
         <>
             <Head>
-                <title>Курс</title>
+                <title>{course.courseSeo.title !== null? course.courseSeo.title : 'Курс'}</title>
+                <meta name='description' content={course.courseSeo.description !== null? course.courseSeo.description: ''} />
             </Head>
+
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>
                     <div className={styles.blockInfo}>

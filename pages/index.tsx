@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 import { GetStaticProps, NextPage } from 'next'
@@ -18,6 +17,7 @@ import CardPartners from '@/src/components/CardPartners'
 import React from 'react'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchResources from '@/src/api/fetchResources'
+import { NextSeo } from 'next-seo'
 
 const DynamicCardResources = dynamic(() => import('@/src/components/CardResources'))
 const DynamicCardDirection = dynamic(() => import('@/src/features/ToggleDirection/components/CardDirection'))
@@ -47,9 +47,8 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
     return (
         <>
-            <Head>
-                <title>Главная</title>
-            </Head>
+            <NextSeo title={'Главная'} />
+
             <>
                 <section className={classNames(['container', styles.info])}>
                     <motion.div initial='hidden' animate='visible' className={styles.info_ContainerLeft}>

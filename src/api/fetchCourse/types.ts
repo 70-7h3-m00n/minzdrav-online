@@ -29,6 +29,13 @@ export interface Course {
     ourLicenses: ItemCard[]
     priceCourse: PriceCourse
     trainingContent: TrainingContent
+    courseSeo: ICourseSeo
+}
+
+interface ICourseSeo {
+    id: number
+    title: string
+    description: string
 }
 
 export interface PriceCourse {

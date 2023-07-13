@@ -13,7 +13,6 @@ import Icon2 from '@/src/components-svg/Icons/Icon2'
 import Icon3 from '@/src/components-svg/Icons/Icon3'
 import Icon4 from '@/src/components-svg/Icons/Icon4'
 import AccordionSkills from '@/src/components/AccordionSkills'
-import Head from 'next/head'
 import CardPrice from '@/src/components/CardPrice'
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
@@ -24,7 +23,8 @@ import CardSpeaker from '@/src/components/CardSpeaker'
 import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
-import { NextSeo } from 'next-seo'
+import { CourseJsonLd, NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -51,6 +51,7 @@ interface DataPrice {
 
 function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
+    const route = useRouter()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
     if (course === undefined) return <></>
@@ -127,6 +128,14 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     return (
         <>
             <NextSeo title={seoTitle} description={seoDescription} />
+            <CourseJsonLd
+                courseName={course.name}
+                description={seoDescription}
+                provider={{
+                    name: course.name,
+                    url: route.pathname,
+                }}
+            />
 
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>

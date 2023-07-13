@@ -1,4 +1,5 @@
 import Document, { DocumentContext, DocumentInitialProps, Head, Main, NextScript, Html } from 'next/document'
+import MetaManifest from '@/src/components/MetaManifest'
 
 class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -15,7 +16,11 @@ class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <Head />
+                <Head>
+                    <meta charSet='UTF-8' />
+                    <MetaManifest />
+                </Head>
+
                 <body>
                     <Main />
                     <NextScript />

@@ -1,12 +1,12 @@
 import { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
-import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { ToggleDirection } from '@/src/features/ToggleDirection'
-import { createContext } from 'react'
+import React, { createContext } from 'react'
 import fetchCoursesName from '@/src/api/fetchCoursesName'
 import { CourseName } from '@/src/api/fetchCoursesName/types'
+import { NextSeo } from 'next-seo'
 
 interface PageDirectionsProps {
     data: Awaited<ReturnType<typeof fetchCoursesName>>
@@ -31,9 +31,7 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
 
     return (
         <DataContext.Provider value={data}>
-            <Head>
-                <title>Направление</title>
-            </Head>
+            <NextSeo title={'Направление'} />
 
             <section className={'container'}>
                 <ToggleDirection.ShowInfoCourses />

@@ -36,7 +36,7 @@ export const fetchCourse = async (locale: string, slug: string) => {
                 fields: ['item'],
             },
             courseSeo: {
-                fields: ['title', 'description']
+                fields: ['title', 'description'],
             },
             categories: {
                 fields: ['item'],

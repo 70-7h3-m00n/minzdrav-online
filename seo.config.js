@@ -18,10 +18,10 @@ const SEO = {
     defaultTitle: 'Московский Институт Медецинского Образования',
     description: 'Получи новую профессию или повысь квалификацию',
     canonical: 'https://minzdrav.online',
-    dangerouslySetAllPagesToNoIndex: true,
-    dangerouslySetAllPagesToNoFollow: true,
-    noindex: true,
-    nofollow: true,
+    // dangerouslySetAllPagesToNoIndex: true,
+    // dangerouslySetAllPagesToNoFollow: true,
+    // noindex: true,
+    // nofollow: true,
 }
 
 export default SEO

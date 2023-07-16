@@ -70,7 +70,7 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                             />
                         </div>
 
-                        <div className={styles.arrow}>{toggleContent ? <ArrowUp /> : <ArrowDown />}</div>
+                        <div className={styles.arrow}>{!toggleContent ? <ArrowUp /> : <ArrowDown />}</div>
                     </div>
                 </div>
             </motion.div>

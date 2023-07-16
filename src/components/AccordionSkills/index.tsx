@@ -49,7 +49,7 @@ const AccordionSkills = ({ color, data, category }: AccordionSkillsProps) => {
                             />
                         </div>
 
-                        <div className={styles.arrow}>{isVisible ? <ArrowUp /> : <ArrowDown />}</div>
+                        <div className={styles.arrow}>{!isVisible ? <ArrowUp /> : <ArrowDown />}</div>
                     </div>
                 </div>
             </div>

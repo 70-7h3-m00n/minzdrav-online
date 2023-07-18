@@ -1,5 +1,6 @@
 {
     "any": "Har qanday",
+    "day": "kunlar",
     "logo": "Tibbiyot ta'limi instituti",
     "more": "Ko'proq",
     "apply": "Murojaat qiling",
@@ -21,6 +22,7 @@
     "statusError": "Xato ro'y berdi",
     "statusOkText": "Menejer tez orada siz bilan bog'lanadi",
     "typeTraining": "Platformani o'rganish turi",
+    "discountTimer": "Chegirma amal qiladi",
     "durationHeader": "1 oydan 24 oygacha",
     "homeBtnDiscover": "Qo'shimcha ma'lumot olish uchun",
     "installmentPlan": "12 oyga bo'lib to'lash 6 oydan keyin birinchi to'lov",

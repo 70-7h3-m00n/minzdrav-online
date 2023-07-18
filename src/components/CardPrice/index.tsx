@@ -1,8 +1,11 @@
-import React from 'react'
+import dynamic from 'next/dynamic'
 import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 import Discount from '@/src/components-svg/Discount'
 import classNames from 'classnames'
+import getDaysDiscount from '@/src/helper/timer/getDaysDiscount'
+import getDayCounter from '@/src/helper/timer/getDayCounter'
+const Timer = dynamic(() => import('@/src/components/Timer'), { ssr: false })
 
 interface CardPriceProps {
     color: string
@@ -12,11 +15,25 @@ interface CardPriceProps {
     toggleContent?: boolean
 }
 
+const discountData = [10, 30] // по каким дням скидка
+const startTimer = 3 // за какаое время отображать таймер
+
 const CardPrice = ({ color, price, discount, category, toggleContent = false }: CardPriceProps): JSX.Element => {
     const { t } = useTranslation()
-
     const installmentPlan = Math.round((price + (price / 100) * discount) / 12)
     const retraining = Math.round((price / 100) * discount + price)
+
+    const redirectTimer =
+        getDayCounter(discountData) <= startTimer
+            ? () => (
+                  <>
+                      {t('common:discountTimer')} &nbsp;
+                      {getDayCounter(discountData)} &nbsp;
+                      {t('common:day')} &nbsp;
+                      <Timer discountData={discountData} />
+                  </>
+              )
+            : () => `${t('common:discount')} ${getDaysDiscount(discountData)}`
 
     return (
         <div
@@ -36,7 +53,7 @@ const CardPrice = ({ color, price, discount, category, toggleContent = false }: 
                     <div className={styles.textImage}>-{discount}%</div>
                 </div>
 
-                <p className={styles.textDiscount}>{t('common:discount')} 30.06.2023</p>
+                <p className={styles.textDiscount}>{redirectTimer()}</p>
             </div>
 
             <div className={styles.priceBlock}>

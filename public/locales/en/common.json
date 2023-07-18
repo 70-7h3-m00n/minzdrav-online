@@ -1,5 +1,6 @@
 {
     "any": "Any",
+    "day": "days",
     "logo": "Institute of Medical Education",
     "more": "More",
     "apply": "Apply",
@@ -21,6 +22,7 @@
     "statusError": "An error has occurred",
     "statusOkText": "Manager will contact you soon",
     "typeTraining": "Platform learning type",
+    "discountTimer": "Discount valid",
     "durationHeader": "1 to 24 months",
     "homeBtnDiscover": "To learn more",
     "installmentPlan": "Installment for 12 months First payment after 6 months",

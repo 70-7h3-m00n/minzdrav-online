@@ -303,6 +303,7 @@
 
 .registryLink {
     @include text.text-btn-form;
+    text-decoration: none;
     background-color: transparent;
     display: inline-block;
     border: 1px solid #000000;

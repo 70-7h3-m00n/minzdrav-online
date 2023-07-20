@@ -25,6 +25,7 @@ import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
 import { CourseJsonLd, NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -323,7 +324,15 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                 <div className={styles.rosreestrBlock}>
                     <p className={styles.registryDescr}>{t('CoursesPage:registryText')}</p>
 
-                    <button className={styles.registryLink}>{t('CoursesPage:registryLink')}</button>
+                    <Link
+                        className={styles.registryLink}
+                        target={'_blank'}
+                        href={
+                            'https://islod.obrnadzor.gov.ru/rlic/details/163962cf-2a44-4fbd-b607-ea0b74071334/?roistat_visit=485253'
+                        }
+                    >
+                        {t('CoursesPage:registryLink')}
+                    </Link>
                 </div>
             </section>
         </>

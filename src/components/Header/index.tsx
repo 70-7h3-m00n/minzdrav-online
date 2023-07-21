@@ -13,7 +13,7 @@ import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleC
 const Header = () => {
     const { t } = useTranslation('header')
     const router = useRouter()
-    const active = router.asPath === '/directions'
+    const active = router.pathname === '/directions'
     const { reset } = contentToggleStore
 
     return (

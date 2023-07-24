@@ -26,6 +26,8 @@ import fetchPathsCourses from '@/src/api/fetchPathsCourses'
 import { CourseJsonLd, NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Spiner from "@/src/components/Spiner";
+import Answer from "@/src/features/FormApplication/components/Answer/Answer";
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -281,8 +283,12 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                     <div className={styles.formBlock}>
                         <h3 className={styles.headerPrice}>{t('CoursesPage:headerForm')}</h3>
 
-                        <div>
+                        <div className={styles.formContainer}>
+                            <Spiner />
+
                             <FormSending />
+
+                            <Answer />
                         </div>
                     </div>
                 </div>

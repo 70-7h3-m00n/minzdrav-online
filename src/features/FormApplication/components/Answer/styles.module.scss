@@ -1,0 +1,23 @@
+@use '@/src/styles/mixin/text';
+@use '@/src/styles/variables/color';
+
+.answerContainer {
+}
+
+.container {
+}
+
+.statusOk {
+    @include text.text-header;
+	color: color.$general;
+}
+
+.statusError {
+    @include text.text-header;
+    color: color.$is-valid-color;
+}
+
+.text {
+    @include text.text-general;
+    color: color.$general;
+}

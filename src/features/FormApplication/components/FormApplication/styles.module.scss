@@ -17,6 +17,12 @@
     }
 }
 
+.spinerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header {
     @include text.text-header;
     margin: 0;

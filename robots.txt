@@ -1,6 +1,10 @@
-User-Agent: *
+User-agent: *
 
-Disallow:
+
+Disallow: *?
+Disallow: */uz
+Disallow: */kk
+Disallow: */en
 
 Allow: /*.css
 Allow: /*.js
@@ -9,3 +13,5 @@ Allow: /*.png
 Allow: /*.gif
 Allow: /*.xml
 Allow: /*.yaml
+
+Sitemap: https://minzdrav.online/sitemap.xml

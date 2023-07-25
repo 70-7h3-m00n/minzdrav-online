@@ -14,7 +14,7 @@ const CardCourse = ({ course }: CardCourseProps): JSX.Element => {
     const router = useRouter()
 
     const handleClick = (slug: string) => {
-        router.push(`/course/${slug}`)
+        router.push(`/courses/${slug}`)
     }
 
     return (

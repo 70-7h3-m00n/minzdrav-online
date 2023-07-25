@@ -20,7 +20,7 @@ const Locale = () => {
     const [isOpen, setIsOpen] = useState(false)
     const router = useRouter()
 
-    const togglePath = router.pathname.includes('course') ? router.asPath : router.basePath
+    const togglePath = router.pathname.includes('courses') ? router.asPath : router.basePath
     const path404 = router.pathname.includes('404') && router.asPath
     return (
         <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} className={styles.locale}>

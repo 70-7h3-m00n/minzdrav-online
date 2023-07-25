@@ -23,9 +23,12 @@ import CardSpeaker from '@/src/components/CardSpeaker'
 import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
-import { CourseJsonLd, NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
+import truncate from 'truncate'
 import Link from 'next/link'
+import Spiner from '@/src/components/Spiner'
+import Answer from '@/src/features/FormApplication/components/Answer/Answer'
+import { routeDomainFront } from '@/src/config/routerApi'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -52,7 +55,6 @@ interface DataPrice {
 
 function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
-    const route = useRouter()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
     if (course === undefined) return <></>
@@ -128,14 +130,10 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
 
     return (
         <>
-            <NextSeo title={seoTitle} description={seoDescription} />
-            <CourseJsonLd
-                courseName={course.name}
-                description={seoDescription}
-                provider={{
-                    name: course.name,
-                    url: route.pathname,
-                }}
+            <NextSeo
+                title={seoTitle}
+                description={truncate(seoDescription, 120)}
+                canonical={`${routeDomainFront.root}${'/course/'}${course.pathCourse}`}
             />
 
             <section style={{ backgroundColor: course.color }}>
@@ -281,8 +279,12 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                     <div className={styles.formBlock}>
                         <h3 className={styles.headerPrice}>{t('CoursesPage:headerForm')}</h3>
 
-                        <div>
+                        <div className={styles.formContainer}>
+                            <Spiner />
+
                             <FormSending />
+
+                            <Answer />
                         </div>
                     </div>
                 </div>

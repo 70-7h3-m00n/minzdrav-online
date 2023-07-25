@@ -45,6 +45,7 @@
         "sharp": "^0.32.1",
         "start-server-and-test": "^2.0.0",
         "swr": "^2.1.5",
+        "truncate": "^3.0.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {

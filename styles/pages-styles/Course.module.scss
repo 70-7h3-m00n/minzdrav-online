@@ -335,6 +335,12 @@
     line-height: 33px;
 }
 
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .priceBlock,
 .formBlock {
     width: calc((100% - 488px) - 116px);

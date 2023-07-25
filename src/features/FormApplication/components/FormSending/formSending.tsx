@@ -9,6 +9,7 @@ import axios from 'axios'
 import { routerFront } from '@/src/config/routerApi'
 import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 import useUtmData from '@/src/hooks/useUtmData'
+import { useRouter } from 'next/router'
 
 interface FormSending {
     name: string
@@ -18,7 +19,8 @@ interface FormSending {
 
 const FormSending = (): JSX.Element => {
     const { t } = useTranslation('form')
-    const { toggleModal, setStatus }: IOpenModalStore = openModalStore
+    const { setStatus, setLoading, setRoutForm }: IOpenModalStore = openModalStore
+    const { pathname } = useRouter()
     const utms = useUtmData()
     const {
         register,
@@ -35,7 +37,9 @@ const FormSending = (): JSX.Element => {
     })
 
     const submit: SubmitHandler<FormSending> = async data => {
-        reset()
+        setRoutForm(pathname)
+        setLoading(true, false, false)
+
         try {
             const reason = await axios.post(`${routerFront.root}`, {
                 ...data,
@@ -44,11 +48,13 @@ const FormSending = (): JSX.Element => {
             if (reason.status >= 400) {
                 setStatus(false)
             }
-            toggleModal(true)
+            setLoading(false, false, true)
         } catch (e) {
             setStatus(false)
-            toggleModal(true)
+            setLoading(false, false, true)
         }
+
+        reset()
     }
 
     return (
@@ -106,7 +112,7 @@ const FormSending = (): JSX.Element => {
 
                 <div className={styles.wrapperSubmit}>
                     <p className={styles.text}>
-                        {t('political-one')}
+                        {t('political-one')}&nbsp;
                         <Link href=''>{t('link-one')}</Link>
                         &nbsp;{t('and')}&nbsp;
                         <Link href=''>{t('link-two')}</Link>

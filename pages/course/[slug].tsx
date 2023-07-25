@@ -28,6 +28,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Spiner from "@/src/components/Spiner";
 import Answer from "@/src/features/FormApplication/components/Answer/Answer";
+import {Head} from "next/document";
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -54,7 +55,6 @@ interface DataPrice {
 
 function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
-    const route = useRouter()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
     if (course === undefined) return <></>
@@ -130,15 +130,10 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
 
     return (
         <>
-            <NextSeo title={seoTitle} description={seoDescription} />
-            <CourseJsonLd
-                courseName={course.name}
-                description={seoDescription}
-                provider={{
-                    name: course.name,
-                    url: route.pathname,
-                }}
-            />
+            <Head>
+                <title>{seoTitle}</title>
+                <meta name={'description'} content={seoDescription}/>
+            </Head>
 
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>

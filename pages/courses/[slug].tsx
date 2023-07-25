@@ -134,6 +134,20 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                 title={seoTitle}
                 description={truncate(seoDescription, 120)}
                 canonical={`${routeDomainFront.root}${'/course/'}${course.pathCourse}`}
+                openGraph={{
+                    type: 'article',
+                    article: {
+                        publishedTime: '2022-06-21T23:04:13Z',
+                        modifiedTime: '2022-01-21T18:04:43Z',
+                        authors: [
+                            'https://www.example.com/authors/@firstnameA-lastnameA',
+                            'https://www.example.com/authors/@firstnameB-lastnameB',
+                        ],
+                        tags: ['Tag A', 'Tag B', 'Tag C'],
+                    },
+                    url: 'www.example.com/next-seo-blog',
+                    site_name: 'Next Blog'
+                }}
             />
 
             <section style={{ backgroundColor: course.color }}>
@@ -188,7 +202,7 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
             />
 
             <section className={'container'}>
-                <div className={styles.thisCourseFor}>
+                <div className={classNames(styles.thisCourseFor, course.thisCourseFor.length === 0 && 'close')}>
                     <div className={styles.headerBlock}>
                         <h2 className={'header'}>{t('CoursesPage:headerCourseFor')}</h2>
                     </div>

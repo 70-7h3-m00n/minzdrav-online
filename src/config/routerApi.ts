@@ -12,7 +12,7 @@ interface RouteDomainFront {
     root: 'http://localhost:3000' | 'https://minzdrav.online'
 }
 interface RouteDomainBack {
-    root: 'https://api.minzdrav.online' | 'https://api.minzdrav.online'
+    root: 'http://localhost:5000' | 'https://api.minzdrav.online'
 }
 
 export const routeDomainFront: RouteDomainFront = {
@@ -20,7 +20,7 @@ export const routeDomainFront: RouteDomainFront = {
 }
 
 export const routeDomainBack: RouteDomainBack = {
-    root: dev ? 'https://api.minzdrav.online' : 'https://api.minzdrav.online',
+    root: dev ? 'http://localhost:5000' : 'https://api.minzdrav.online',
 }
 
 export const routerApi: RouterApi = {

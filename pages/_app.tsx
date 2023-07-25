@@ -5,7 +5,6 @@ import '@/styles/globals.scss'
 import '@/styles/reset.scss'
 import Layout from '@/src/components/Layout'
 import Scripts from '@/src/components/Scripts'
-import ModalAlert from '@/src/features/FormApplication/components/ModalAlert'
 import useHandleUtms from '@/src/hooks/useHandleUtms'
 import { DefaultSeo, LogoJsonLd } from 'next-seo'
 import SEO from '@/seo.config'
@@ -25,7 +24,6 @@ function App({ Component, pageProps }: AppProps) {
             <LogoJsonLd logo={`${routeDomainFront.root}/icons/favicon.ico`} url={routeDomainFront.root} />
 
             <div className={roboto.className}>
-                <ModalAlert />
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>

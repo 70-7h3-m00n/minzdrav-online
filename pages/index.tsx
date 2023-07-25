@@ -46,7 +46,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
     return (
         <>
-            <NextSeo title={'Главная'} />
+            <NextSeo title={'Главная'} description={'Получи новую профессию или повысь квалификацию'} />
 
             <>
                 <section className={classNames(['container', styles.info])}>

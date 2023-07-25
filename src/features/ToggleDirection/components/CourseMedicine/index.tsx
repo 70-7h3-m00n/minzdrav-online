@@ -9,11 +9,11 @@ import Search from '@/src/features/ToggleDirection/components/Search/input'
 import FilterDuration from '@/src/features/ToggleDirection/components/FilterDuration'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
 import { useTranslation } from 'next-i18next'
-import { DataContext } from '@/pages/directions'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 import CourseListMedicine from '@/src/features/ToggleDirection/components/CourseListMedicine'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
 import { CourseName } from '@/src/api/fetchCoursesName/types'
+import { DataContext } from '@/pages/courses'
 
 const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation('common')

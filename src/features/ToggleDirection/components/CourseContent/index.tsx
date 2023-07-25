@@ -3,11 +3,11 @@ import styles from './styles.module.scss'
 import FilterCategory from '@/src/features/ToggleDirection/components/FilterCategory'
 import { useContext } from 'react'
 import MotionLayoutX from '@/src/components/MotionLayoutX'
-import { DataContext } from '@/pages/directions'
 import CourseList from '@/src/features/ToggleDirection/components/CourseList'
 import { StaticImageData } from 'next/image'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
 import { useTranslation } from 'next-i18next'
+import { DataContext } from '@/pages/courses'
 
 interface CourseDieteticsProps {
     type: 'Диетология' | 'Психология'

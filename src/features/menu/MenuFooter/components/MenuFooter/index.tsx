@@ -13,7 +13,7 @@ const MenuFooter = () => {
 
     const onLink = (direction: EnumContentToggle) => {
         toggle(direction)
-        push('/directions')
+        push('/courses')
     }
 
     return (

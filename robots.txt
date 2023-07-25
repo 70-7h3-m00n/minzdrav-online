@@ -14,4 +14,3 @@ Allow: /*.gif
 Allow: /*.xml
 Allow: /*.yaml
 
-Sitemap: https://minzdrav.online/sitemap.xml

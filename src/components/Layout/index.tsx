@@ -12,8 +12,11 @@ const Layout = ({ children }: InterfaceLayout): JSX.Element => {
     return (
         <div className={styles.app}>
             <UpBtn />
+
             <Header />
+
             <div className={styles.layout}>{children}</div>
+
             <Footer />
         </div>
     )

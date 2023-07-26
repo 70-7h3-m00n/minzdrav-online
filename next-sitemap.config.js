@@ -4,8 +4,8 @@ module.exports = {
     priority: 0.7,
     sitemapSize: 5000,
     generateRobotsTxt: true,
-    generateIndexSitemap: false,
-    exclude: ['*?'],
+    generateIndexSitemap: true,
+    exclude: [''],
     transform: async (config, path) => {
         return {
             loc: path, // => this will be exported as http(s)://<config.siteUrl>/<path>
@@ -20,7 +20,6 @@ module.exports = {
             {
                 userAgent: '*',
                 allow: ['/*.css', '/*.js', '/*.jpg', '/*.png', '/*.gif'],
-                // disallow: ['/promo*', '*?'],
                 disallow: ['/'],
             },
         ],

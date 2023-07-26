@@ -5,7 +5,21 @@ module.exports = {
     sitemapSize: 5000,
     generateRobotsTxt: true,
     generateIndexSitemap: true,
-    exclude: [''],
+    exclude: ['/server-sitemap-index.xml'],
+    alternateRefs: [
+        {
+            href: 'https://minzdrav.online',
+            hreflang: 'en',
+        },
+        {
+            href: 'https://minzdrav.online',
+            hreflang: 'kk',
+        },
+        {
+            href: 'https://minzdrav.online',
+            hreflang: 'uz',
+        },
+    ],
     transform: async (config, path) => {
         return {
             loc: path, // => this will be exported as http(s)://<config.siteUrl>/<path>
@@ -19,8 +33,7 @@ module.exports = {
         policies: [
             {
                 userAgent: '*',
-                allow: ['/*.css', '/*.js', '/*.jpg', '/*.png', '/*.gif'],
-                disallow: ['/'],
+                allow: '/',
             },
         ],
     },

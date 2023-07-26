@@ -7,7 +7,7 @@ import React, { createContext } from 'react'
 import fetchCoursesName from '@/src/api/fetchCoursesName'
 import { CourseName } from '@/src/api/fetchCoursesName/types'
 import { NextSeo } from 'next-seo'
-import {routeDomainFront} from "@/src/config/routerApi";
+import { routeDomainFront } from '@/src/config/routerApi'
 
 interface PageDirectionsProps {
     data: Awaited<ReturnType<typeof fetchCoursesName>>
@@ -43,10 +43,10 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
                                 width: 512,
                                 height: 512,
                                 alt: routeDomainFront.root,
-                                type: 'image/png'
-                            }
+                                type: 'image/png',
+                            },
                         ],
-                        site_name: routeDomainFront.root
+                        site_name: routeDomainFront.root,
                     }}
                 />
             </>
@@ -63,7 +63,6 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
                 </section>
             </DataContext.Provider>
         </>
-
     )
 }
 

@@ -13,7 +13,7 @@ import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCo
 import CourseListMedicine from '@/src/features/ToggleDirection/components/CourseListMedicine'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
 import { CourseName } from '@/src/api/fetchCoursesName/types'
-import { DataContext } from '@/pages/courses'
+import { DataContext } from '@/pages/courses-direction'
 
 const CourseMedicine = (): JSX.Element => {
     const { t } = useTranslation('common')

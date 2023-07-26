@@ -135,7 +135,11 @@ const Accordion = ({ icon, data }: AccordionProps): JSX.Element => {
                                 </li>
                             ))}
                         </ul>
-                        <Button style={styles.link} text={t('common:goCourse')} link={`/courses/${data.pathCourse}`} />
+                        <Button
+                            style={styles.link}
+                            text={t('common:goCourse')}
+                            link={`/courses-direction/${data.pathCourse}`}
+                        />
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@ import CourseList from '@/src/features/ToggleDirection/components/CourseList'
 import { StaticImageData } from 'next/image'
 import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleContent'
 import { useTranslation } from 'next-i18next'
-import { DataContext } from '@/pages/courses'
+import { DataContext } from '@/pages/courses-direction'
 
 interface CourseDieteticsProps {
     type: 'Диетология' | 'Психология'

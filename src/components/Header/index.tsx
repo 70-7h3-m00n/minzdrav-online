@@ -13,7 +13,7 @@ import { contentToggleStore } from '@/src/features/ToggleDirection/store/ToggleC
 const Header = () => {
     const { t } = useTranslation('header')
     const router = useRouter()
-    const active = router.pathname === '/courses'
+    const active = router.pathname === '/courses-direction'
     const { reset } = contentToggleStore
 
     return (
@@ -27,7 +27,7 @@ const Header = () => {
                         <Logo imageUrl={logoUrl} />
 
                         <div className={styles.media} onClick={() => (active ? null : reset())}>
-                            <Button text={t('areasStudy')} link={'/courses'} active={active} />
+                            <Button text={t('areasStudy')} link={'/courses-direction'} active={active} />
                         </div>
                     </div>
 

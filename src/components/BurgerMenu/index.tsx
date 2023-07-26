@@ -31,9 +31,9 @@ const BurgerMenu = () => {
                     className={classNames([
                         styles.link,
                         styles.directions,
-                        pathname === '/courses' && styles.linkActive,
+                        pathname === '/courses-direction' && styles.linkActive,
                     ])}
-                    href={'/courses'}
+                    href={'/courses-direction'}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {t('header:areasStudy')}

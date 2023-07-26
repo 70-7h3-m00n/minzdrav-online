@@ -22,7 +22,7 @@ const CardDirection = observer(({ imageSrc, textLink, colorBtn, contentTab }: Ca
     const setData = (type: EnumContentToggle) => {
         toggle(type)
         push({
-            pathname: '/courses',
+            pathname: '/courses-direction',
             query: {
                 ...queryParams,
                 direction: type,

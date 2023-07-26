@@ -6,6 +6,7 @@
         "dev": "i18nexus pull && prettier --write . && next dev",
         "build": "i18nexus pull && prettier --write . && next build",
         "format": "i18nexus pull && prettier --write .",
+        "postbuild": "next-sitemap --config next-sitemap.config.js",
         "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
         "cypress": "cypress open",
         "start": "next start",
@@ -54,6 +55,7 @@
         "cypress": "^12.12.0",
         "eslint-plugin-cypress": "^2.13.3",
         "i18nexus-cli": "^3.1.0",
+        "next-sitemap": "^4.1.8",
         "prettier": "2.8.8",
         "sass": "^1.62.1",
         "typescript": "^5.1.3"

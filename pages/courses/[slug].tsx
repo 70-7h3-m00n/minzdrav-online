@@ -188,7 +188,7 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
             />
 
             <section className={'container'}>
-                <div className={styles.thisCourseFor}>
+                <div className={classNames(styles.thisCourseFor, course.thisCourseFor.length === 0 && 'close')}>
                     <div className={styles.headerBlock}>
                         <h2 className={'header'}>{t('CoursesPage:headerCourseFor')}</h2>
                     </div>

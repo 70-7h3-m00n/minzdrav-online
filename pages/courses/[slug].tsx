@@ -385,7 +385,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     }
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ locale, params }) => {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
     const course = await fetchCourse(locale!, String(params!.slug))
     const partnerData = await fetchPartner(locale!)
 

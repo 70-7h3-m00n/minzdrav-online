@@ -23,7 +23,7 @@ import CardSpeaker from '@/src/components/CardSpeaker'
 import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
-import { NextSeo } from 'next-seo'
+import { NextSeo, CourseJsonLd } from 'next-seo'
 import truncate from 'truncate'
 import Link from 'next/link'
 import Spiner from '@/src/components/Spiner'
@@ -134,6 +134,29 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                 title={seoTitle}
                 description={truncate(seoDescription, 120)}
                 canonical={`${routeDomainFront.root}${'/course/'}${course.pathCourse}`}
+                openGraph={{
+                    url: `${routeDomainFront.root}${'/course/'}${course.pathCourse}`,
+                    title: seoTitle,
+                    description: seoDescription,
+                    images: [
+                        {
+                            url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
+                            width: 512,
+                            height: 512,
+                            alt: routeDomainFront.root,
+                            type: 'image/png'
+                        }
+                    ],
+                    site_name: routeDomainFront.root
+                }}
+            />
+            <CourseJsonLd
+                courseName={seoTitle}
+                description={seoDescription}
+                provider={{
+                    name: routeDomainFront.root,
+                    url: `${routeDomainFront.root}${'/course/'}${course.pathCourse}`
+                }}
             />
 
             <section style={{ backgroundColor: course.color }}>

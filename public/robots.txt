@@ -7,3 +7,4 @@ Host: https://minzdrav.online
 
 # Sitemaps
 Sitemap: https://minzdrav.online/sitemap.xml
+Sitemap: https://minzdrav.online/sitemap-0.xml

@@ -131,8 +131,8 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
     return (
         <>
             <NextSeo
-                title={seoTitle}
-                description={truncate(seoDescription, 120)}
+                title={'test'}
+                description={truncate('Средний медицинский персонал играет важную роль в процессе осуществления качественных медицинских услуг.', 120)}
                 canonical={`${routeDomainFront.root}${'/course/'}${course.pathCourse}`}
             />
 

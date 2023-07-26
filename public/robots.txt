@@ -11,15 +11,6 @@ Disallow: *?
 Disallow: /uz
 Disallow: /kk
 Disallow: /en
-Disallow: *--kursy
-Disallow: /programlar$
-Disallow: /kurstar$
-Disallow: /programs$
-Disallow: /mba-1$
-Disallow: /mba-2$
-Disallow: /mba-3$
-Disallow: /journal$
-Disallow: /journal/*
 
 # Host
 Host: https://minzdrav.online

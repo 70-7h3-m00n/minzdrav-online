@@ -15,13 +15,6 @@ const nextConfig = {
         SMTP_PASS: '^ge47cvp`xLd',
         roistatKey: 'OTU1ZDc0NjZlN2M3NDkyYzg4ZDdhMWU5MDQ5Y2ZhYzM6MjMyMTk1',
     },
-    async headers() {
-        return [{
-            source: '/:path*',
-            referrerPolicy: 'no-referrer-when-downgrade',
-            frameGuard: false
-        }]
-    },
 }
 
 module.exports = nextConfig

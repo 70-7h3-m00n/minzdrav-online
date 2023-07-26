@@ -133,9 +133,9 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
             <NextSeo
                 title={seoTitle}
                 description={truncate(seoDescription, 120)}
-                canonical={`${routeDomainFront.root}${'/course/'}${course.pathCourse}`}
+                canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
                 openGraph={{
-                    url: `${routeDomainFront.root}${'/course/'}${course.pathCourse}`,
+                    url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`,
                     title: seoTitle,
                     description: seoDescription,
                     images: [
@@ -155,7 +155,7 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                 description={seoDescription}
                 provider={{
                     name: routeDomainFront.root,
-                    url: `${routeDomainFront.root}${'/course/'}${course.pathCourse}`
+                    url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`
                 }}
             />
 

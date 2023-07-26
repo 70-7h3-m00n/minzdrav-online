@@ -23,5 +23,3 @@ Disallow: /journal/*
 
 # Host
 Host: https://minzdrav.online
-
-Sitemap: https://minzdrav.online/sitemap.xml

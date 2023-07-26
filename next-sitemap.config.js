@@ -6,20 +6,6 @@ module.exports = {
     generateRobotsTxt: true,
     generateIndexSitemap: true,
     exclude: ['/server-sitemap-index.xml'],
-    alternateRefs: [
-        {
-            href: 'https://minzdrav.online',
-            hreflang: 'en',
-        },
-        {
-            href: 'https://minzdrav.online',
-            hreflang: 'kk',
-        },
-        {
-            href: 'https://minzdrav.online',
-            hreflang: 'uz',
-        },
-    ],
     transform: async (config, path) => {
         return {
             loc: path, // => this will be exported as http(s)://<config.siteUrl>/<path>
@@ -36,5 +22,6 @@ module.exports = {
                 allow: '/',
             },
         ],
+        additionalSitemaps: ['https://minzdrav.online/sitemap-0.xml'],
     },
 }

@@ -15,7 +15,17 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
         )
     ).flat(2)
 
-    const fields: string[] = paths.map(path => `https://minzdrav.online/${path.locale}/courses/${path.params.slug}`)
+    const fields: string[] = paths.reduce(
+        (previousValue, currentValue) =>
+            previousValue.concat(
+                `https://minzdrav.online${currentValue.locale === 'ru' ? '' : `/${currentValue.locale}`}/courses/${
+                    currentValue.params.slug
+                }`,
+            ),
+        ['https://minzdrav.online/courses'],
+    )
+
+    console.log(fields)
 
     return getServerSideSitemapIndexLegacy(ctx, fields)
 }

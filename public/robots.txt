@@ -1,11 +1,6 @@
 # *
 User-agent: *
-Allow: /*.css
-Allow: /*.js
-Allow: /*.jpg
-Allow: /*.png
-Allow: /*.gif
-Disallow: /
+Allow: /
 
 # Host
 Host: https://minzdrav.online

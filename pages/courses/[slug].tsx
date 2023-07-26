@@ -1,4 +1,4 @@
-import {GetServerSideProps, GetStaticPaths, GetStaticProps} from 'next'
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
 import styles from '@/styles/pages-styles/Course.module.scss'
@@ -145,10 +145,10 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                                 width: 512,
                                 height: 512,
                                 alt: routeDomainFront.root,
-                                type: 'image/png'
-                            }
+                                type: 'image/png',
+                            },
                         ],
-                        site_name: routeDomainFront.root
+                        site_name: routeDomainFront.root,
                     }}
                 />
                 <CourseJsonLd
@@ -156,7 +156,7 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                     description={seoDescription}
                     provider={{
                         name: routeDomainFront.root,
-                        url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`
+                        url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`,
                     }}
                 />
             </>

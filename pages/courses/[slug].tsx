@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import {GetServerSideProps, GetStaticPaths, GetStaticProps} from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
 import styles from '@/styles/pages-styles/Course.module.scss'
@@ -130,34 +130,36 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
 
     return (
         <>
-            <NextSeo
-                title={seoTitle}
-                description={truncate(seoDescription, 120)}
-                canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
-                openGraph={{
-                    url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`,
-                    title: seoTitle,
-                    description: seoDescription,
-                    images: [
-                        {
-                            url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
-                            width: 512,
-                            height: 512,
-                            alt: routeDomainFront.root,
-                            type: 'image/png'
-                        }
-                    ],
-                    site_name: routeDomainFront.root
-                }}
-            />
-            <CourseJsonLd
-                courseName={seoTitle}
-                description={seoDescription}
-                provider={{
-                    name: routeDomainFront.root,
-                    url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`
-                }}
-            />
+            <>
+                <NextSeo
+                    title={seoTitle}
+                    description={truncate(seoDescription, 120)}
+                    canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
+                    openGraph={{
+                        url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`,
+                        title: seoTitle,
+                        description: seoDescription,
+                        images: [
+                            {
+                                url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
+                                width: 512,
+                                height: 512,
+                                alt: routeDomainFront.root,
+                                type: 'image/png'
+                            }
+                        ],
+                        site_name: routeDomainFront.root
+                    }}
+                />
+                <CourseJsonLd
+                    courseName={seoTitle}
+                    description={seoDescription}
+                    provider={{
+                        name: routeDomainFront.root,
+                        url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`
+                    }}
+                />
+            </>
 
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>
@@ -383,7 +385,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     }
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale, params }) => {
     const course = await fetchCourse(locale!, String(params!.slug))
     const partnerData = await fetchPartner(locale!)
 
@@ -393,7 +395,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
             partnerData,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
-        revalidate: 120,
     }
 }
 

@@ -9,8 +9,8 @@ const SEO = {
         images: [
             {
                 url: `${routeDomainFront.root}/icons/favicon.ico`,
-                width: 32,
-                height: 32,
+                width: 512,
+                height: 512,
                 alt: 'Favicon description',
             },
         ],
@@ -18,10 +18,6 @@ const SEO = {
     defaultTitle: 'Московский Институт Медецинского Образования',
     description: 'Получи новую профессию или повысь квалификацию',
     canonical: 'https://minzdrav.online',
-    // dangerouslySetAllPagesToNoIndex: true,
-    // dangerouslySetAllPagesToNoFollow: true,
-    // noindex: true,
-    // nofollow: true,
 }
 
 export default SEO

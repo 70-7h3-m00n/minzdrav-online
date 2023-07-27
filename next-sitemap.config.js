@@ -4,8 +4,8 @@ module.exports = {
     priority: 0.7,
     sitemapSize: 5000,
     generateRobotsTxt: true,
-    generateIndexSitemap: false,
-    exclude: ['*?'],
+    generateIndexSitemap: true,
+    exclude: ['/server-sitemap-index.xml'],
     transform: async (config, path) => {
         return {
             loc: path, // => this will be exported as http(s)://<config.siteUrl>/<path>
@@ -19,10 +19,9 @@ module.exports = {
         policies: [
             {
                 userAgent: '*',
-                allow: ['/*.css', '/*.js', '/*.jpg', '/*.png', '/*.gif'],
-                // disallow: ['/promo*', '*?'],
-                disallow: ['/'],
+                allow: '/',
             },
         ],
+        additionalSitemaps: ['https://minzdrav.online/sitemap-0.xml'],
     },
 }

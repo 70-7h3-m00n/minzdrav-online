@@ -17,8 +17,8 @@ import CardPartners from '@/src/components/CardPartners'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchResources from '@/src/api/fetchResources'
 import { NextSeo } from 'next-seo'
-import SEO from "@/seo.config";
-import truncate from "truncate";
+import SEO from '@/seo.config'
+import truncate from 'truncate'
 
 const DynamicCardResources = dynamic(() => import('@/src/components/CardResources'))
 const DynamicCardDirection = dynamic(() => import('@/src/features/ToggleDirection/components/CardDirection'))

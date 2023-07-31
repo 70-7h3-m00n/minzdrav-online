@@ -135,7 +135,6 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
             <NextSeo
                 title={seoTitle}
                 description={truncate(seoDescription, 120)}
-                canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
             />
 
             <section style={{ backgroundColor: course.color }}>

@@ -17,6 +17,8 @@ import CardPartners from '@/src/components/CardPartners'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchResources from '@/src/api/fetchResources'
 import { NextSeo } from 'next-seo'
+import SEO from "@/seo.config";
+import truncate from "truncate";
 
 const DynamicCardResources = dynamic(() => import('@/src/components/CardResources'))
 const DynamicCardDirection = dynamic(() => import('@/src/features/ToggleDirection/components/CardDirection'))
@@ -46,7 +48,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
     return (
         <>
-            <NextSeo title={'Главная'} />
+            <NextSeo title={'Главная'} description={truncate(SEO.description, 120)} />
 
             <>
                 <section className={classNames(['container', styles.info])}>

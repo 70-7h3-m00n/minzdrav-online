@@ -5,7 +5,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
 import { useTranslation } from 'next-i18next'
 import { NextSeo } from 'next-seo'
-import { routeDomainFront } from '@/src/config/routerApi'
 import Image from 'next/image'
 import imgHeader from '@/public/images/specialist.png'
 import { InstituteStatisticsData } from '@/src/data/InstituteStatisticsData'
@@ -70,7 +69,7 @@ function AboutUniversityPage({ courses, speakers, licenses, licensesDocs, review
 
     return (
         <>
-            <NextSeo title={'Об университете'} canonical={`${routeDomainFront.root}$/about-university`} />
+            <NextSeo title={'Об университете'} />
 
             <div onClick={() => onToggleEvents(false)}>
                 <section className={'container'}>

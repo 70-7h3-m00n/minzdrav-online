@@ -6,9 +6,8 @@ import '@/styles/reset.scss'
 import Layout from '@/src/components/Layout'
 import Scripts from '@/src/components/Scripts'
 import useHandleUtms from '@/src/hooks/useHandleUtms'
-import { DefaultSeo, LogoJsonLd } from 'next-seo'
+import { DefaultSeo } from 'next-seo'
 import SEO from '@/seo.config'
-import { routeDomainFront } from '@/src/config/routerApi'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
@@ -21,7 +20,6 @@ function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <DefaultSeo {...SEO} />
-            <LogoJsonLd logo={`${routeDomainFront.root}/icons/favicon.ico`} url={routeDomainFront.root} />
 
             <div className={roboto.className}>
                 <Layout>

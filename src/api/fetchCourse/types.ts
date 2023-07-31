@@ -26,7 +26,6 @@ export interface Course {
     knowledgeList: Item[]
     skillList: Item[]
     listOfSkills: Item[]
-    ourLicenses: ItemCard[]
     priceCourse: PriceCourse
     trainingContent: TrainingContent
     courseSeo: ICourseSeo

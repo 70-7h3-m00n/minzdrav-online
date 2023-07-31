@@ -8,19 +8,22 @@ import Image from 'next/image'
 import vk from '@/public/images/vk.png'
 import youtube from '@/public/images/youtube.png'
 import telegram from '@/public/images/telegram.png'
-import MenuFooter from '@/src/features/menu/MenuFooter/components/MenuFooter'
+import MenuFooter from '../../features/menu/components/MenuFooter'
 import FormApplication from '@/src/features/FormApplication/components/FormApplication'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
+import { mapInstitute } from '@/src/features/Map/store/Map'
 
 const Footer = () => {
+    const { onToggleEvents } = mapInstitute
     const router = useRouter()
     const { t } = useTranslation('footer')
 
     return (
-        <footer className={styles.footer}>
+        <footer className={styles.footer} onClick={() => onToggleEvents(false)}>
             <div className={router.asPath !== '/' ? styles.bigContainerFooter : styles.containerFooter}>
                 {router.asPath !== '/' && (
-                    <div className={styles.formFooter}>
+                    <div className={router.pathname === '/courses' ? styles.formFooter : 'close'}>
                         <FormApplication />
                     </div>
                 )}
@@ -106,4 +109,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default observer(Footer)

@@ -1,5 +1,5 @@
-@use 'src/styles/variables/color';
-@use 'src/styles/mixin/text';
+@use '@/src/styles/variables/color';
+@use '@/src/styles/mixin/text';
 
 .nav {
     display: flex;

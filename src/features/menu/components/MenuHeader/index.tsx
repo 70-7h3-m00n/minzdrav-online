@@ -1,5 +1,5 @@
 import React from 'react'
-import { arrayRouterLinks } from '@/src/features/menu/MenuHeader/utils/arrayRouterLinks'
+import { arrayRouterLinks } from '@/src/data/arrayRouterLinks'
 import Link from 'next/link'
 import Button from '@/src/components/Button'
 import styles from './styles.module.scss'

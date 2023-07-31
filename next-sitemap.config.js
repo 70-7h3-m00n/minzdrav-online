@@ -19,8 +19,8 @@ module.exports = {
         policies: [
             {
                 userAgent: '*',
-                allow: '/',
-                sitemaps: ['https://minzdrav.online/sitemap.xml']
+                allow: '/*',
+                sitemaps: ['https://minzdrav.online/sitemap.xml'],
             },
         ],
     },

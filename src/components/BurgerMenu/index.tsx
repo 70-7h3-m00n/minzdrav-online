@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './style.module.scss'
 import classNames from 'classnames'
-import { arrayRouterLinks } from '@/src/features/menu/MenuHeader/utils/arrayRouterLinks'
+import { arrayRouterLinks } from '@/src/data/arrayRouterLinks'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

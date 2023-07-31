@@ -1,0 +1,263 @@
+@use '@/src/styles/mixin/text';
+
+.colorHeader {
+    color: #3d3bff;
+}
+
+.containerHeader {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1400px) {
+        flex-direction: column-reverse;
+    }
+}
+
+.containerDescriptionHeader {
+    padding: 22px 40px;
+    width: 793px;
+    border-radius: 10px;
+    border: 1px solid #000;
+
+    p {
+        @include text.text-description-form;
+        line-height: 19px;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 15px;
+    }
+}
+
+.containerImageHeader {
+    width: 570px;
+
+    .imgHeader {
+        border-radius: 10px;
+    }
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+    }
+}
+
+.containerStatistic {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    .statisticTitle {
+        @include text.text-general;
+        width: 308px;
+        margin: 0;
+    }
+
+    .containerCard {
+        width: calc(100% - 308px - 116px);
+        display: flex;
+        justify-content: space-between;
+
+        .statisticsCard {
+            width: 300px;
+            padding: 30px;
+            border-radius: 10px;
+
+            .counter {
+                font-size: 58px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+            .statistic {
+                @include text.text-btn-form;
+            }
+
+            @media screen and (max-width: 992px) {
+                width: calc((100% - 45px) / 3);
+
+                .counter {
+                    font-size: 42px;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                .counter {
+                    font-size: 34px;
+                }
+            }
+
+            @media screen and (max-width: 576px) {
+                width: 100%;
+                margin-top: 30px;
+
+                .counter {
+                    text-align: center;
+                }
+
+                .statistic {
+                    text-align: center;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1400px) {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width: 576px) {
+            flex-direction: column;
+            margin-top: 0;
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 576px) {
+        .statisticTitle {
+            width: 100%;
+        }
+    }
+}
+
+.expertsContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .cardExperts {
+        width: calc((100% - 58px) / 2);
+
+        .expertsDescription {
+            @include text.text-description-form;
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .cardExperts {
+            width: 100%;
+        }
+    }
+}
+
+.mapHeader {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.containerMapInfo {
+    position: relative;
+
+    .cardInfoAddresses {
+        @include text.text-btn-form;
+        padding: 35px 40px;
+        width: 457px;
+        height: 240px;
+        position: absolute;
+        z-index: 3001;
+        top: 50px;
+        border-radius: 20px;
+        background: #242424;
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
+        color: white;
+
+        a {
+            @include text.text-btn-form;
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: white;
+        }
+
+        h3 {
+            @include text.text-btn-form;
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        .cardInfoAddresses {
+            width: 300px;
+            height: auto;
+            padding: 15px;
+            h3 {
+                margin-top: 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .cardInfoAddresses {
+            position: relative;
+            width: 100%;
+            top: 0;
+            border-radius: 0;
+        }
+    }
+}
+
+.licensesList {
+    @include text.text-input;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 auto;
+
+    li {
+        margin: 0 10px;
+        list-style: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+    }
+}
+
+.licensesPDF {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 40px 0 0;
+
+    li {
+        margin: 0 10px;
+        list-style: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+    }
+}
+
+.reviewsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    border-radius: 10px;
+    background: #3d3bff;
+    padding: 40px;
+
+    @media screen and (max-width: 992px) {
+        padding: 10px;
+    }
+}
+
+.btnReviews {
+    display: inline-block;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    min-width: 100px;
+    margin: 50px auto 0;
+}

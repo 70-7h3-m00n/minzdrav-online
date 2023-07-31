@@ -59,14 +59,6 @@ export const fetchCourse = async (locale: string, slug: string) => {
             listOfSkills: {
                 fields: ['item'],
             },
-            ourLicenses: {
-                fields: ['description'],
-                populate: {
-                    image: {
-                        fields: ['url'],
-                    },
-                },
-            },
             priceCourse: {
                 fields: ['priceRetraining', 'discount', 'priceQualifications'],
             },

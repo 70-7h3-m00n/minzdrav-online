@@ -25,8 +25,6 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
         ['https://minzdrav.online/courses'],
     )
 
-    console.log(fields)
-
     return getServerSideSitemapIndexLegacy(ctx, fields)
 }
 

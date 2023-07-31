@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
 import styles from '@/styles/pages-styles/Course.module.scss'
@@ -16,23 +16,25 @@ import AccordionSkills from '@/src/components/AccordionSkills'
 import CardPrice from '@/src/components/CardPrice'
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { animation } from '@/animationPages/Home'
+import { animation } from '../../styles/animation/Home'
 import Slider from '@/src/components/Slider'
 import CardPartners from '@/src/components/CardPartners'
 import CardSpeaker from '@/src/components/CardSpeaker'
-import fetchCourse from '@/src/api/fetchCourse/fetchCourse'
+import fetchCourse from '@/src/api/fetchCourse'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchPathsCourses from '@/src/api/fetchPathsCourses'
-import { NextSeo, CourseJsonLd } from 'next-seo'
+import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
 import Link from 'next/link'
 import Spiner from '@/src/components/Spiner'
 import Answer from '@/src/features/FormApplication/components/Answer/Answer'
 import { routeDomainFront } from '@/src/config/routerApi'
+import { fetchLicenses } from '@/src/api/fetchLicenses'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
     partnerData: Awaited<ReturnType<typeof fetchPartner>>
+    licenses: Awaited<ReturnType<typeof fetchLicenses>>
 }
 
 interface ItemData {
@@ -53,7 +55,7 @@ interface DataPrice {
     price: number
 }
 
-function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
+function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
@@ -130,36 +132,11 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
 
     return (
         <>
-            <>
-                <NextSeo
-                    title={seoTitle}
-                    description={truncate(seoDescription, 120)}
-                    canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
-                    openGraph={{
-                        url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`,
-                        title: seoTitle,
-                        description: seoDescription,
-                        images: [
-                            {
-                                url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
-                                width: 512,
-                                height: 512,
-                                alt: routeDomainFront.root,
-                                type: 'image/png',
-                            },
-                        ],
-                        site_name: routeDomainFront.root,
-                    }}
-                />
-                <CourseJsonLd
-                    courseName={seoTitle}
-                    description={seoDescription}
-                    provider={{
-                        name: routeDomainFront.root,
-                        url: `${routeDomainFront.root}${'/courses/'}${course.pathCourse}`,
-                    }}
-                />
-            </>
+            <NextSeo
+                title={seoTitle}
+                description={truncate(seoDescription, 120)}
+                canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
+            />
 
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>
@@ -339,7 +316,7 @@ function PageCourse({ course, partnerData }: PageCourseProps): JSX.Element {
                 <h2 className={'header'}>{t('CoursesPage:headerLicenses')}</h2>
 
                 <ul className={styles.licensesList}>
-                    {course.ourLicenses.map((licenses, index) => (
+                    {licenses.map((licenses, index) => (
                         <li key={licenses.description + index}>
                             <Image src={licenses.image[0].url} alt={licenses.description} width={244} height={332} />
 
@@ -388,11 +365,13 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
     const course = await fetchCourse(locale!, String(params!.slug))
     const partnerData = await fetchPartner(locale!)
+    const licenses = await fetchLicenses(locale!)
 
     return {
         props: {
             course,
             partnerData,
+            licenses,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
     }

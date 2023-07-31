@@ -69,7 +69,7 @@ function AboutUniversityPage({ courses, speakers, licenses, licensesDocs, review
 
     return (
         <>
-            <NextSeo title={'Об университете'} />
+            <NextSeo title={'Об университете'}  />
 
             <div onClick={() => onToggleEvents(false)}>
                 <section className={'container'}>

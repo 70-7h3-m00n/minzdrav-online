@@ -198,7 +198,6 @@
             position: relative;
             width: 100%;
             top: 0;
-            border-radius: 0;
         }
     }
 }
@@ -207,12 +206,13 @@
     @include text.text-input;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     flex-wrap: wrap;
     padding: 0;
     margin: 0 auto;
 
     li {
-        margin: 0 10px;
+        width: min-content;
         list-style: none;
     }
 

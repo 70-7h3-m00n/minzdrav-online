@@ -12,7 +12,6 @@ export interface Course {
     color: string
     durationTraining: number
     description: string
-    startDateTraining: string
     studyingTime: string
     receivedDocuments: string
     pathCourse: string

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
-import { arrayRouterLinksFooter } from '@/src/features/menu/MenuFooter/components/utils/arrayRouterLinksFooter'
+import { arrayRouterLinksFooter } from '@/src/data/arrayRouterLinksFooter'
 import Link from 'next/link'
 import { contentToggleStore, EnumContentToggle } from '@/src/features/ToggleDirection/store/ToggleContent'
 import { useRouter } from 'next/router'

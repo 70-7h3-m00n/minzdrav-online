@@ -6,6 +6,10 @@ interface RouterApi {
         resource: string
         partners: string
         programs: string
+        speakers: string
+        licenses: string
+        licensesDocs: string
+        reviews: string
     }
 }
 interface RouteDomainFront {
@@ -29,6 +33,10 @@ export const routerApi: RouterApi = {
         resource: '/resources',
         partners: '/partners',
         programs: '/courses',
+        speakers: '/speakers',
+        licenses: '/licenses',
+        licensesDocs: '/licenses-docs',
+        reviews: '/reviews',
     },
 }
 

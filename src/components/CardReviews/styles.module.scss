@@ -1,0 +1,72 @@
+@use '@/src/styles/mixin/text';
+
+.reviews {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.imageContainer {
+    position: relative;
+
+    img {
+        border-radius: 10px;
+    }
+}
+
+.content {
+    position: relative;
+    width: calc(100% - 210px - 40px);
+    height: auto;
+    background-color: white;
+    padding: 22px 22px 22px 80px;
+    border-radius: 10px;
+
+    .triangle {
+        position: absolute;
+        background-color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        top: calc(50% - 30px);
+        left: -20px;
+        transform: rotate(45deg);
+
+        @media screen and (max-width: 992px) {
+            display: none;
+        }
+    }
+
+    .header {
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+
+        @media screen and (max-width: 992px) {
+            font-size: 24px;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: 576px) {
+            font-size: 18px;
+        }
+    }
+
+    .description {
+        @include text.text-description-form;
+    }
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+        margin-top: 20px;
+        padding: 15px 30px;
+    }
+}

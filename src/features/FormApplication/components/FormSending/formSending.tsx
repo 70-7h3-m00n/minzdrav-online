@@ -67,7 +67,7 @@ const FormSending = (): JSX.Element => {
                         className={'name' in errors ? styles.valid : styles.input}
                         placeholder={errors.name?.message || t('name')!}
                         {...register('name', {
-                            required: t('validName')!,
+                            // required: t('validName')!,
                             minLength: {
                                 value: 2,
                                 message: 'Минимальная длинна 2 символа',
@@ -100,7 +100,7 @@ const FormSending = (): JSX.Element => {
                             className={'email' in errors ? styles.valid : styles.input}
                             placeholder={errors.email?.message || t('email')!}
                             {...register('email', {
-                                required: t('validEmail')!,
+                                // required: t('validEmail')!,
                                 pattern: {
                                     value: emailExp,
                                     message: 'email введен не коректно ',

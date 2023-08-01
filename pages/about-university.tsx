@@ -23,6 +23,7 @@ import { fetchLicensesDocs } from '@/src/api/fetchLicensesDocs'
 import CardPDF from '@/src/components/CardPDF'
 import { fetchReviews } from '@/src/api/fetchReviews'
 import CardReviews from '@/src/components/CardReviews'
+import OpenImage from '@/src/components/OpenImage'
 
 interface AboutUniversityPage {
     courses: Awaited<ReturnType<typeof fetchCoursesName>>
@@ -219,7 +220,7 @@ function AboutUniversityPage({ courses, speakers, licenses, licensesDocs, review
                     <ul className={classNames(styles.licensesList, licenses.length === 0 || false ? 'close' : '')}>
                         {licenses.map((licenses, index) => (
                             <li key={licenses.description + index}>
-                                <Image
+                                <OpenImage
                                     src={licenses.image[0].url}
                                     alt={licenses.description}
                                     priority
@@ -227,7 +228,6 @@ function AboutUniversityPage({ courses, speakers, licenses, licensesDocs, review
                                     width={244}
                                     height={332}
                                 />
-
                                 <p>{licenses.description}</p>
                             </li>
                         ))}

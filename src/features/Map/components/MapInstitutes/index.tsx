@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 
 const MapInstitutes = (): JSX.Element => {
     return (
-        <YMaps query={{ lang: 'en_RU' }}>
+        <YMaps query={{ lang: 'en_RU', apikey: process.env.yandexMapsKey }}>
             <Map className={styles.mapContent} defaultState={{ center: [55.721189, 37.652301], zoom: 17 }}>
                 <GeolocationControl options={{ float: 'right' }} />
                 <RouteButton options={{ float: 'right' }} />

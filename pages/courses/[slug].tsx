@@ -31,6 +31,7 @@ import Answer from '@/src/features/FormApplication/components/Answer/Answer'
 import { fetchLicenses } from '@/src/api/fetchLicenses'
 import getDaysDiscount from '@/src/helper/timer/getDaysDiscount'
 import { discountData } from '@/src/config/discountData'
+import OpenImage from '@/src/components/OpenImage'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -315,7 +316,12 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
                 <ul className={styles.licensesList}>
                     {licenses.map((licenses, index) => (
                         <li key={licenses.description + index}>
-                            <Image src={licenses.image[0].url} alt={licenses.description} width={244} height={332} />
+                            <OpenImage
+                                src={licenses.image[0].url}
+                                alt={licenses.description}
+                                width={244}
+                                height={332}
+                            />
 
                             <p>{licenses.description}</p>
                         </li>

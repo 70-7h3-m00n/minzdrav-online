@@ -16,7 +16,7 @@ import AccordionSkills from '@/src/components/AccordionSkills'
 import CardPrice from '@/src/components/CardPrice'
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { animation } from '../../styles/animation/Home'
+import { animation } from '@/styles/animation/Home'
 import Slider from '@/src/components/Slider'
 import CardPartners from '@/src/components/CardPartners'
 import CardSpeaker from '@/src/components/CardSpeaker'
@@ -28,8 +28,9 @@ import truncate from 'truncate'
 import Link from 'next/link'
 import Spiner from '@/src/components/Spiner'
 import Answer from '@/src/features/FormApplication/components/Answer/Answer'
-import { routeDomainFront } from '@/src/config/routerApi'
 import { fetchLicenses } from '@/src/api/fetchLicenses'
+import getDaysDiscount from '@/src/helper/timer/getDaysDiscount'
+import { discountData } from '@/src/config/discountData'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -79,7 +80,7 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
         },
         {
             style: styles.three,
-            text: course.startDateTraining,
+            text: getDaysDiscount(discountData),
             icon: <Icon3 width={55} height={50} fill={course.color} />,
             header: t('CoursesPage:dateOfTraining'),
         },
@@ -132,11 +133,7 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
 
     return (
         <>
-            <NextSeo
-                title={seoTitle}
-                description={truncate(seoDescription, 120)}
-                canonical={`${routeDomainFront.root}${'/courses/'}${course.pathCourse}`}
-            />
+            <NextSeo title={seoTitle} description={truncate(seoDescription, 120)} />
 
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>

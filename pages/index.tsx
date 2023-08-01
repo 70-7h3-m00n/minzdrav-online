@@ -17,6 +17,8 @@ import CardPartners from '@/src/components/CardPartners'
 import fetchPartner from '@/src/api/fetchPartner'
 import fetchResources from '@/src/api/fetchResources'
 import { NextSeo } from 'next-seo'
+import SEO from '@/seo.config'
+import truncate from 'truncate'
 
 const DynamicCardResources = dynamic(() => import('@/src/components/CardResources'))
 const DynamicCardDirection = dynamic(() => import('@/src/features/ToggleDirection/components/CardDirection'))
@@ -46,7 +48,7 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
     return (
         <>
-            <NextSeo title={'Главная'} description={'Получи новую профессию или повысь квалификацию'} />
+            <NextSeo title={'Главная'} description={truncate(SEO.description, 120)} />
 
             <>
                 <section className={classNames(['container', styles.info])}>
@@ -166,7 +168,10 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
                 <motion.section
                     viewport={{ once: true }}
-                    className={classNames(['container', resources.length !== 0 ? styles.resources : 'close'])}
+                    className={classNames([
+                        'container',
+                        resources?.length !== 0 || undefined ? styles.resources : 'close',
+                    ])}
                     layout
                     initial='hidden'
                     whileInView='visible'

@@ -16,7 +16,6 @@ export const fetchCourse = async (locale: string, slug: string) => {
             'color',
             'durationTraining',
             'description',
-            'startDateTraining',
             'studyingTime',
             'receivedDocuments',
             'pathCourse',

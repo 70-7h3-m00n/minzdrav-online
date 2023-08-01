@@ -9,7 +9,9 @@ export default function getDaysDiscount(discount: Array<number>): string {
     const nextYear = currentMonth + 2 > 12 ? currentYear + 1 : currentYear
     const filterDiscount = discount.filter(discountData => currentDate <= discountData && discountData <= numDays)[0]
 
+    const setZero = (data: number): string => (data < 10 ? `0${data}` : `${data}`)
+
     return filterDiscount !== undefined
-        ? `${filterDiscount}.${currentMonth + 1}.${nextYear}`
-        : `${discount[0]}.${nextMonth}.${nextYear}`
+        ? `${filterDiscount}.${setZero(currentMonth + 1)}.${nextYear}`
+        : `${discount[0]}.${setZero(nextMonth)}.${nextYear}`
 }

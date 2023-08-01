@@ -15,7 +15,7 @@ export const fetchResources = async (locale: string) => {
     })
     const res = await fetcherGet<IResponse>(`${routerApi.root}${routerApi.router.resource}?${query}`)
 
-    return res?.data || []
+    return res?.data
 }
 
 export default fetchResources

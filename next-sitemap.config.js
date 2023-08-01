@@ -4,7 +4,7 @@ module.exports = {
     priority: 0.7,
     sitemapSize: 5000,
     generateRobotsTxt: true,
-    generateIndexSitemap: true,
+    generateIndexSitemap: false,
     exclude: ['/server-sitemap-index.xml'],
     transform: async (config, path) => {
         return {
@@ -19,9 +19,9 @@ module.exports = {
         policies: [
             {
                 userAgent: '*',
-                allow: '/',
+                allow: '/*',
+                sitemaps: ['https://minzdrav.online/sitemap.xml'],
             },
         ],
-        additionalSitemaps: ['https://minzdrav.online/sitemap-0.xml'],
     },
 }

@@ -75,6 +75,7 @@
 
 .textInstallment {
     @include text.text-card-link;
+    opacity: 0.4;
 }
 
 .smallText {

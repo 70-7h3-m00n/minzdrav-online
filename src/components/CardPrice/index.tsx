@@ -5,6 +5,7 @@ import Discount from '@/src/components-svg/Discount'
 import classNames from 'classnames'
 import getDaysDiscount from '@/src/helper/timer/getDaysDiscount'
 import getDayCounter from '@/src/helper/timer/getDayCounter'
+import { discountData } from '@/src/config/discountData'
 const Timer = dynamic(() => import('@/src/components/Timer'), { ssr: false })
 
 interface CardPriceProps {
@@ -15,7 +16,6 @@ interface CardPriceProps {
     toggleContent?: boolean
 }
 
-const discountData = [10, 30] // по каким дням скидка
 const startTimer = 3 // за какаое время отображать таймер
 
 const CardPrice = ({ color, price, discount, category, toggleContent = false }: CardPriceProps): JSX.Element => {

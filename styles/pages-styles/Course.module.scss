@@ -345,13 +345,14 @@
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    padding: 25px 15px;
+    padding: 13px 15px;
     border-radius: 15px;
+    margin-top: 40px;
 }
 
 .priceBlock,
 .formBlock {
-    width: calc((100% - 488px) - 116px);
+    width: 50%;
 
     @media screen and (max-width: 1400px) {
         width: calc((100% - 488px) - 20px);
@@ -363,7 +364,7 @@
 }
 
 .formBlock {
-    width: 488px;
+    width: 48%;
 
     @media screen and (max-width: 992px) {
         width: 100%;

@@ -9,10 +9,13 @@ interface ModalProps {
 
 const Modal = ({ open, setHidden, children }: ModalProps): JSX.Element => {
     useEffect(() => {
+        let scrollbar = window.innerWidth - document.documentElement.clientWidth
         if (open) {
             document.body.style.overflow = 'hidden'
+            document.body.style.paddingRight = `${scrollbar}px`
         } else {
             document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
         }
     }, [open])
 

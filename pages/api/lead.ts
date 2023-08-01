@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nodemailer from 'nodemailer'
 import axios from 'axios'
-import parseGeneralSlug from '@/src/services/parseGeneralSlug'
-import buildLeadData from '@/src/services/buildLeadData'
-import createLeadEmailBody from '@/src/services/createLeadEmailBody'
+import parseGeneralSlug from '@/src/shared/parseGeneralSlug'
+import buildLeadData from '@/src/shared/buildLeadData'
+import createLeadEmailBody from '@/src/shared/createLeadEmailBody'
 import SMTP from '@/src/config/SMTP'
 import { getCookie } from 'cookies-next'
 

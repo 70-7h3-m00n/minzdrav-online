@@ -141,11 +141,13 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
                 openGraph={{
                     title: seoTitle,
                     description: truncate(seoDescription, 120),
-                    images: [{
-                        url: imageSeo,
-                        width: 512,
-                        height: 512
-                    }]
+                    images: [
+                        {
+                            url: imageSeo,
+                            width: 512,
+                            height: 512,
+                        },
+                    ],
                 }}
             />
 

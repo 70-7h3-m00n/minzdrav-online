@@ -65,6 +65,7 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
 
     const seoTitle = Boolean(course.courseSeo?.title) ? course.courseSeo.title : 'Курс'
     const seoDescription = Boolean(course.courseSeo?.description) ? course.courseSeo.description : 'Курс медецины'
+    const imageSeo = course.imageCourse[0]?.url === undefined ? '' : course.imageCourse[0].url
 
     const arrayItemsData: Array<ItemData> = [
         {
@@ -140,6 +141,11 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
                 openGraph={{
                     title: seoTitle,
                     description: truncate(seoDescription, 120),
+                    images: [{
+                        url: imageSeo,
+                        width: 512,
+                        height: 512
+                    }]
                 }}
             />
 

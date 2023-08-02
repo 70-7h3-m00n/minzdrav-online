@@ -31,25 +31,22 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
 
     return (
         <>
-            <>
-                <NextSeo title={'Направление'} />
-                <NextSeo
-                    title={'Направление'}
-                    openGraph={{
-                        title: 'Направление',
-                        images: [
-                            {
-                                url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
-                                width: 512,
-                                height: 512,
-                                alt: routeDomainFront.root,
-                                type: 'image/png',
-                            },
-                        ],
-                        site_name: routeDomainFront.root,
-                    }}
-                />
-            </>
+            <NextSeo
+                title={'Направление'}
+                openGraph={{
+                    title: 'Направление',
+                    images: [
+                        {
+                            url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
+                            width: 512,
+                            height: 512,
+                            alt: routeDomainFront.root,
+                            type: 'image/png',
+                        },
+                    ],
+                    site_name: routeDomainFront.root,
+                }}
+            />
 
             <DataContext.Provider value={data}>
                 <section className={'container'}>

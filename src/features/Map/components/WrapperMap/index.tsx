@@ -6,9 +6,11 @@ const WrapperMap = () => {
     const { toggleEvents, onToggleEvents } = mapInstitute
 
     return (
-        <div onClick={() => onToggleEvents(true)}>
-            <div style={{ pointerEvents: toggleEvents ? 'auto' : 'none' }}>
-                <MapInstitutes />
+        <div onClick={e => e.stopPropagation()}>
+            <div onClick={() => onToggleEvents(true)}>
+                <div style={{ pointerEvents: toggleEvents ? 'auto' : 'none' }}>
+                    <MapInstitutes />
+                </div>
             </div>
         </div>
     )

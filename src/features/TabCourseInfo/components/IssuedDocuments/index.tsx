@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import Image from 'next/image'
 import OpenImage from '@/src/components/OpenImage'
 
 interface IssuedDocumentsProps {

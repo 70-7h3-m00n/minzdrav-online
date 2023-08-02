@@ -19,6 +19,7 @@ import fetchResources from '@/src/api/fetchResources'
 import { NextSeo } from 'next-seo'
 import SEO from '@/seo.config'
 import truncate from 'truncate'
+import logo from '@/public/icons/imo-logo-512-512.png'
 
 const DynamicCardResources = dynamic(() => import('@/src/components/CardResources'))
 const DynamicCardDirection = dynamic(() => import('@/src/features/ToggleDirection/components/CardDirection'))
@@ -48,7 +49,19 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
 
     return (
         <>
-            <NextSeo title={'Главная'} description={truncate(SEO.description, 120)} />
+            <NextSeo
+                title={'Главная'}
+                description={truncate(SEO.description, 120)}
+                openGraph={{
+                    images: [
+                        {
+                            url: logo.src,
+                            width: 512,
+                            height: 512,
+                        },
+                    ],
+                }}
+            />
 
             <>
                 <section className={classNames(['container', styles.info])}>

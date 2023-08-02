@@ -134,7 +134,14 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
 
     return (
         <>
-            <NextSeo title={seoTitle} description={truncate(seoDescription, 120)} />
+            <NextSeo
+                title={seoTitle}
+                description={truncate(seoDescription, 120)}
+                openGraph={{
+                    title: seoTitle,
+                    description: truncate(seoDescription, 120),
+                }}
+            />
 
             <section style={{ backgroundColor: course.color }}>
                 <div className={'container'}>

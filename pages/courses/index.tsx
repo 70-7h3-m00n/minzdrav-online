@@ -8,6 +8,7 @@ import fetchCoursesName from '@/src/api/fetchCoursesName'
 import { CourseName } from '@/src/api/fetchCoursesName/types'
 import { NextSeo } from 'next-seo'
 import { routeDomainFront } from '@/src/config/routerApi'
+import logo from '@/public/icons/imo-logo-512-512.png'
 
 interface PageDirectionsProps {
     data: Awaited<ReturnType<typeof fetchCoursesName>>
@@ -34,17 +35,13 @@ const PageDirections: NextPage<PageDirectionsProps> = ({ data }) => {
             <NextSeo
                 title={'Направление'}
                 openGraph={{
-                    title: 'Направление',
                     images: [
                         {
-                            url: `${routeDomainFront.root}${'/icons/favicon.ico'}`,
+                            url: logo.src,
                             width: 512,
                             height: 512,
-                            alt: routeDomainFront.root,
-                            type: 'image/png',
                         },
                     ],
-                    site_name: routeDomainFront.root,
                 }}
             />
 

@@ -51,7 +51,6 @@ const PageHome: NextPage<PageHomeProps> = ({ resources, partnerData }) => {
         <>
             <NextSeo
                 title={'Главная'}
-                description={truncate(SEO.description, 120)}
                 openGraph={{
                     images: [
                         {

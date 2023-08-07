@@ -23,6 +23,9 @@ export const fetchCourse = async (locale: string, slug: string) => {
             'typeTrainingHeader',
         ],
         populate: {
+            relatedCourses: {
+                fields: ['name'],
+            },
             speakers: {
                 fields: ['name, description'],
                 populate: {

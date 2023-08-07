@@ -28,6 +28,11 @@ export interface Course {
     priceCourse: PriceCourse
     trainingContent: TrainingContent
     courseSeo: ICourseSeo
+    relatedCourses: IRelatedCourses[]
+}
+
+interface IRelatedCourses {
+    name: string
 }
 
 interface ICourseSeo {

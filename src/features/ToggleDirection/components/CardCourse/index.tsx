@@ -4,13 +4,16 @@ import Image from 'next/image'
 import Card from '@/public/images/imgCard.png'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/features/ToggleDirection/components/CardCourse/animation'
-import { CourseName } from '@/src/api/fetchCoursesName/types'
 
 interface CardCourseProps {
-    course: CourseName
+    color: string
+    pathCourse: string
+    name: string
+    durationTraining: number | string
+    categories: Array<{ item: string }>
 }
 
-const CardCourse = ({ course }: CardCourseProps): JSX.Element => {
+const CardCourse = ({ color, pathCourse, name, durationTraining, categories }: CardCourseProps): JSX.Element => {
     const router = useRouter()
 
     const handleClick = (slug: string) => {
@@ -21,26 +24,37 @@ const CardCourse = ({ course }: CardCourseProps): JSX.Element => {
         <>
             <motion.div
                 className={styles.wrapperCard}
-                style={{ background: course.color }}
+                style={{
+                    background: color,
+                    cursor: router.pathname === '/courses' ? 'pointer' : 'grabbing',
+                }}
                 variants={animation.cardCourse}
                 initial={'hidden'}
                 animate={'visible'}
                 custom={0.8}
-                onClick={() => handleClick(course.pathCourse)}
+                onClick={() => (router.pathname === '/courses' ? handleClick(pathCourse) : null)}
             >
                 <div className={styles.content}>
                     <div className={styles.wrapperCategory}>
-                        {course.categories.map((item, index) => (
+                        {categories.map((item, index) => (
                             <div key={index} className={styles.category}>
                                 {item.item}
                             </div>
                         ))}
                     </div>
 
-                    <h3 className={styles.header}>{course.name}</h3>
+                    <h3
+                        className={styles.header}
+                        style={{
+                            cursor: 'pointer',
+                        }}
+                        onClick={() => (router.pathname !== '/courses' ? handleClick(pathCourse) : null)}
+                    >
+                        {name}
+                    </h3>
                 </div>
 
-                <div className={styles.data}>{course.durationTraining} месяцев</div>
+                <div className={styles.data}>{durationTraining} месяцев</div>
 
                 <div className={styles.wrapperImage}>
                     <Image

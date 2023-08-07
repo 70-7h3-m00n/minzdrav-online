@@ -378,3 +378,14 @@
 .partners {
     margin-top: 30px;
 }
+
+.wrapperCardCourse {
+    display: inline-block;
+    min-width: 400px;
+    min-height: 200px;
+    margin: 0 15px;
+
+    @media screen and (max-width: 992px) {
+        min-width: 300px;
+    }
+}

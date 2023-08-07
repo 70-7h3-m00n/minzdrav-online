@@ -32,11 +32,14 @@ import { fetchLicenses } from '@/src/api/fetchLicenses'
 import getDaysDiscount from '@/src/helper/timer/getDaysDiscount'
 import { discountData } from '@/src/config/discountData'
 import OpenImage from '@/src/components/OpenImage'
+import fetchRecommendedPrograms from '@/src/api/fetchRecommendedPrograms'
+import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
     partnerData: Awaited<ReturnType<typeof fetchPartner>>
     licenses: Awaited<ReturnType<typeof fetchLicenses>>
+    relatedCourses: Awaited<ReturnType<typeof fetchRecommendedPrograms>>
 }
 
 interface ItemData {
@@ -57,7 +60,7 @@ interface DataPrice {
     price: number
 }
 
-function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Element {
+function PageCourse({ course, partnerData, licenses, relatedCourses }: PageCourseProps): JSX.Element {
     const { t } = useTranslation()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
@@ -307,6 +310,34 @@ function PageCourse({ course, partnerData, licenses }: PageCourseProps): JSX.Ele
 
             <motion.section
                 viewport={{ once: true }}
+                className={classNames('container', styles.partners, relatedCourses?.length === 0 && 'close')}
+                initial='hidden'
+                whileInView='visible'
+                layout
+                custom={2}
+                variants={animation.bottomContentAnimation}
+            >
+                <h2 className={'container header'}>{t('CoursesPage:otherPrograms')}</h2>
+
+                <Slider>
+                    <>
+                        {relatedCourses?.map((item, index) => (
+                            <div key={index} className={styles.wrapperCardCourse}>
+                                <CardCourse
+                                    color={item.color}
+                                    name={item.name}
+                                    pathCourse={item.pathCourse}
+                                    categories={item.categories}
+                                    durationTraining={item.durationTraining}
+                                />
+                            </div>
+                        ))}
+                    </>
+                </Slider>
+            </motion.section>
+
+            <motion.section
+                viewport={{ once: true }}
                 className={classNames(styles.partners, partnerData?.length === 0 && 'close')}
                 initial='hidden'
                 whileInView='visible'
@@ -382,6 +413,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
     const course = await fetchCourse(locale!, String(params!.slug))
+    const relatedCourses = await fetchRecommendedPrograms(locale!, course?.relatedCourses.map(item => item.name)!)
     const partnerData = await fetchPartner(locale!)
     const licenses = await fetchLicenses(locale!)
 
@@ -389,6 +421,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         props: {
             course,
             partnerData,
+            relatedCourses,
             licenses,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },

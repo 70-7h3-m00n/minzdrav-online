@@ -7,9 +7,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import classNames from 'classnames'
 import axios from 'axios'
 import { routerFront } from '@/src/config/routerApi'
-import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 import useUtmData from '@/src/hooks/useUtmData'
 import { useRouter } from 'next/router'
+import Spiner from '@/src/features/FormApplication/components/Spiner'
+import Answer from '@/src/features/FormApplication/components/Answer'
+import { useState } from 'react'
 
 interface FormSending {
     name: string
@@ -19,7 +21,11 @@ interface FormSending {
 
 const FormSending = (): JSX.Element => {
     const { t } = useTranslation('form')
-    const { setStatus, setLoading, setRoutForm, isForm }: IOpenModalStore = openModalStore
+    const [isOpen, setOpen] = useState(false)
+    const [isLoading, setLoading] = useState(false)
+    const [status, setStatus] = useState(true)
+    const [isForm, setForm] = useState(true)
+
     const { pathname } = useRouter()
     const utms = useUtmData()
     const {
@@ -37,8 +43,8 @@ const FormSending = (): JSX.Element => {
     })
 
     const submit: SubmitHandler<FormSending> = async data => {
-        setRoutForm(pathname)
-        setLoading(true, false, false)
+        setLoading(true)
+        setForm(false)
 
         try {
             const reason = await axios.post(`${routerFront.root}`, {
@@ -48,18 +54,20 @@ const FormSending = (): JSX.Element => {
             if (reason.status >= 400) {
                 setStatus(false)
             }
-            setLoading(false, false, true)
+            setOpen(true)
+            setLoading(false)
         } catch (e) {
             setStatus(false)
-            setLoading(false, false, true)
+            setOpen(true)
+            setLoading(false)
         }
 
         reset()
     }
 
     return (
-        <div className={isForm ? '' : 'close'}>
-            <form onSubmit={handleSubmit(submit)}>
+        <div>
+            <form className={isForm ? '' : 'close'} onSubmit={handleSubmit(submit)}>
                 <label className={styles.label}>
                     <p className={styles.descrTextValid}>{errors.name?.message}</p>
 
@@ -125,6 +133,10 @@ const FormSending = (): JSX.Element => {
                     </div>
                 </div>
             </form>
+
+            <Spiner isLoading={isLoading} />
+
+            <Answer isOpen={isOpen} status={status} />
         </div>
     )
 }

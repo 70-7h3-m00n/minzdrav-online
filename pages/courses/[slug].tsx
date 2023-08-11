@@ -32,6 +32,7 @@ import { discountData } from '@/src/config/discountData'
 import OpenImage from '@/src/components/OpenImage'
 import fetchRecommendedPrograms from '@/src/api/fetchRecommendedPrograms'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
+import PopUpForm from '@/src/features/FormApplication/components/PopUpForm'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -221,6 +222,8 @@ function PageCourse({ course, partnerData, licenses, relatedCourses }: PageCours
                         </ul>
                     </div>
                 </div>
+
+                <PopUpForm background={course.color} />
             </section>
 
             <section className={viewSkillsBlock ? 'close' : styles.learnInfo} style={{ backgroundColor: course.color }}>

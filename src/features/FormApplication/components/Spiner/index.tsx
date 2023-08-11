@@ -1,10 +1,10 @@
-import { observer } from 'mobx-react-lite'
 import styles from './styles.module.scss'
-import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 
-const Spiner = (): JSX.Element => {
-    const { isLoading }: IOpenModalStore = openModalStore
+interface SpinerProps {
+    isLoading: boolean
+}
 
+const Spiner = ({ isLoading }: SpinerProps): JSX.Element => {
     const elem = (): JSX.Element => {
         let i = 0
         let ldio = <></>
@@ -26,4 +26,4 @@ const Spiner = (): JSX.Element => {
     )
 }
 
-export default observer(Spiner)
+export default Spiner

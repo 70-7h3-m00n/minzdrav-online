@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import CheckMark from '@/src/components-svg/CheckMark'
 import { useTranslation } from 'next-i18next'
-import FormSending from '@/src/features/FormApplication/components/FormSending/formSending'
+import FormSending from '@/src/features/FormApplication/components/FormSending'
 import TabCourseInfo from '@/src/features/TabCourseInfo/components/TabCourseInfo'
 import Icon1 from '@/src/components-svg/Icons/Icon1'
 import Icon2 from '@/src/components-svg/Icons/Icon2'
@@ -26,8 +26,6 @@ import fetchPathsCourses from '@/src/api/fetchPathsCourses'
 import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
 import Link from 'next/link'
-import Spiner from '@/src/components/Spiner'
-import Answer from '@/src/features/FormApplication/components/Answer/Answer'
 import { fetchLicenses } from '@/src/api/fetchLicenses'
 import getDaysDiscount from '@/src/helper/timer/getDaysDiscount'
 import { discountData } from '@/src/config/discountData'
@@ -298,11 +296,7 @@ function PageCourse({ course, partnerData, licenses, relatedCourses }: PageCours
                         <h3 className={styles.headerPrice}>{t('CoursesPage:headerForm')}</h3>
 
                         <div className={styles.formContainer}>
-                            <Spiner />
-
                             <FormSending />
-
-                            <Answer />
                         </div>
                     </div>
                 </div>

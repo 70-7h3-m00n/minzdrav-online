@@ -8,7 +8,6 @@ import classNames from 'classnames'
 import axios from 'axios'
 import { routerFront } from '@/src/config/routerApi'
 import useUtmData from '@/src/hooks/useUtmData'
-import { useRouter } from 'next/router'
 import Spiner from '@/src/features/FormApplication/components/Spiner'
 import Answer from '@/src/features/FormApplication/components/Answer'
 import { useState } from 'react'
@@ -26,7 +25,6 @@ const FormSending = (): JSX.Element => {
     const [status, setStatus] = useState(true)
     const [isForm, setForm] = useState(true)
 
-    const { pathname } = useRouter()
     const utms = useUtmData()
     const {
         register,
@@ -134,9 +132,11 @@ const FormSending = (): JSX.Element => {
                 </div>
             </form>
 
-            <Spiner isLoading={isLoading} />
+            <div className={styles.flexCenter}>
+                <Spiner isLoading={isLoading} />
 
-            <Answer isOpen={isOpen} status={status} />
+                <Answer isOpen={isOpen} status={status} />
+            </div>
         </div>
     )
 }

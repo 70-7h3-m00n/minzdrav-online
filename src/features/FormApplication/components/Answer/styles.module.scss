@@ -1,23 +1,20 @@
 @use '@/src/styles/mixin/text';
 @use '@/src/styles/variables/color';
 
-.answerContainer {
-}
-
-.container {
-}
-
 .statusOk {
     @include text.text-header;
     color: color.$general;
+    text-align: center;
 }
 
 .statusError {
     @include text.text-header;
     color: color.$is-valid-color;
+    text-align: center;
 }
 
 .text {
     @include text.text-general;
     color: color.$general;
+    text-align: center;
 }

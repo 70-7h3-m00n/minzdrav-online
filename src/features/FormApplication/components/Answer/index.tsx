@@ -10,14 +10,14 @@ const Answer = ({ isOpen, status }: AnswerProps) => {
     const { t } = useTranslation('common')
 
     return (
-        <div className={isOpen ? styles.answerContainer : 'close'}>
-            <div className={status ? styles.container : 'close'}>
+        <div className={isOpen ? '' : 'close'}>
+            <div className={status ? '' : 'close'}>
                 <h3 className={styles.statusOk}>{t('statusOk')}</h3>
 
                 <p className={styles.text}>{t('statusOkText')}</p>
             </div>
 
-            <div className={!status ? styles.container : 'close'}>
+            <div className={!status ? '' : 'close'}>
                 <h3 className={styles.statusError}>{t('statusError')}</h3>
 
                 <p className={styles.text}>{t('statusErrorText')}</p>

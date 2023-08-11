@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 interface ModalProps {
     open: boolean
     setHidden(open: boolean): void
-    children?: JSX.Element
+    children: JSX.Element
 }
 
 const Modal = ({ open, setHidden, children }: ModalProps): JSX.Element => {

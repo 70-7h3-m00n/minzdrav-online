@@ -1,11 +1,13 @@
-import { observer } from 'mobx-react-lite'
-import { IOpenModalStore, openModalStore } from '@/src/features/FormApplication/store/OpenModal'
 import styles from './styles.module.scss'
 import { useTranslation } from 'next-i18next'
 
-const Answer = () => {
+interface AnswerProps {
+    isOpen: boolean
+    status: boolean
+}
+
+const Answer = ({ isOpen, status }: AnswerProps) => {
     const { t } = useTranslation('common')
-    const { isOpen, status }: IOpenModalStore = openModalStore
 
     return (
         <div className={isOpen ? styles.answerContainer : 'close'}>
@@ -24,4 +26,4 @@ const Answer = () => {
     )
 }
 
-export default observer(Answer)
+export default Answer

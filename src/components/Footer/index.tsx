@@ -33,8 +33,8 @@ const Footer = () => {
                         <div>
                             <h3 className={styles.header}>{t('consultation')}:</h3>
 
-                            <Link className={styles.linkPhone} href={'tel:+7(499)116-69-63'}>
-                                +7 (499) 116-69-63
+                            <Link className={styles.linkPhone} href={'tel:+78005507019'}>
+                                +7 (800) 550-70-19
                             </Link>
                         </div>
 

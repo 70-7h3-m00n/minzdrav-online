@@ -243,9 +243,8 @@ function AboutUniversityPage({ courses, speakers, licenses, licensesDocs, review
                     <div className={'container'}>
                         <div className={styles.cardInfoAddresses}>
                             <h3>Москва, Ул. Дербеневская набережная 11</h3>
-                            <Link href={'tel:+74952606671'}>+7 (495) 260-66-71</Link>
-                            <Link href={'tel:+78005551294'}>+7 (800) 555-12-94</Link>
-                            <div>orders@mededucation.ru</div>
+                            <Link href={'tel:+78005507019'}>+7 (800) 550-70-19</Link>
+                            <div>info@ipo.msk.ru</div>
                         </div>
                     </div>
                 </div>

@@ -43,6 +43,7 @@ const CoursesCardsList = ({ data }: CoursesCardsListProps): JSX.Element => {
                             pathCourse={course.pathCourse}
                             categories={course.categories}
                             durationTraining={course.durationTraining}
+                            training={course.typeTraining}
                         />
                     </li>
                 ))}

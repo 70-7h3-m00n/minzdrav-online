@@ -18,6 +18,8 @@
 
         .wrapperCategory {
             display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
 
             .category {
                 background-color: rgba(0, 0, 0, 0.1);

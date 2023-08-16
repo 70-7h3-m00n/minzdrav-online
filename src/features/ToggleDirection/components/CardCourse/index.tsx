@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Card from '@/public/images/imgCard.png'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/features/ToggleDirection/components/CardCourse/animation'
+import { useTranslation } from 'next-i18next'
 
 interface CardCourseProps {
     color: string
@@ -11,9 +12,18 @@ interface CardCourseProps {
     name: string
     durationTraining: number | string
     categories: Array<{ item: string }>
+    training?: Array<{ item: string }>
 }
 
-const CardCourse = ({ color, pathCourse, name, durationTraining, categories }: CardCourseProps): JSX.Element => {
+const CardCourse = ({
+    color,
+    pathCourse,
+    name,
+    durationTraining,
+    categories,
+    training,
+}: CardCourseProps): JSX.Element => {
+    const { t } = useTranslation('common')
     const router = useRouter()
 
     const handleClick = (slug: string) => {
@@ -39,6 +49,11 @@ const CardCourse = ({ color, pathCourse, name, durationTraining, categories }: C
                         {categories.map((item, index) => (
                             <div key={index} className={styles.category}>
                                 {item.item}
+                            </div>
+                        ))}
+                        {training?.map((item, index) => (
+                            <div key={index} className={styles.category}>
+                                {t(item.item)}
                             </div>
                         ))}
                     </div>

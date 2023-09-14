@@ -7,7 +7,6 @@ import React, { createContext } from 'react'
 import fetchCoursesName from '@/src/api/fetchCoursesName'
 import { CourseName } from '@/src/api/fetchCoursesName/types'
 import { NextSeo } from 'next-seo'
-import { routeDomainFront } from '@/src/config/routerApi'
 import logo from '@/public/icons/imo-logo-512-512.png'
 
 interface PageDirectionsProps {

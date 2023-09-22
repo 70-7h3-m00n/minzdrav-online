@@ -12,7 +12,9 @@ const nextConfig = {
     },
     env: {
         previewSecret: 'q4Bp6fgMJMIx9PdyVs12kQ',
-        SMTP_PASS: '^ge47cvp`xLd',
+        SMTP_PASS: 'd7UczAcejuf!',
+        SMTP_FROM: 'lead1@smtp.new-imo.msk.ru',
+        SMTP_LOGIN: 'lead1@smtp.new-imo.msk.ru',
         roistatKey: 'OTU1ZDc0NjZlN2M3NDkyYzg4ZDdhMWU5MDQ5Y2ZhYzM6MjMyMTk1',
         yandexMapsKey: 'ea5a06b6-9cea-47c4-9bda-bcbfb8b49e1d',
     },

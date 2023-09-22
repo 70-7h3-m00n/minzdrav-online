@@ -4,8 +4,8 @@ const SMTP = {
     TO: dev ? 'asgyrdjons@gmail.com' : 'info@ipo.msk.ru',
     HOST: 'smtp.jino.ru',
     PASS: process.env.SMTP_PASS,
-    FROM: 'lead@smtp.new-imo.msk.ru',
-    LOGIN: 'lead@smtp.new-imo.msk.ru',
+    FROM: process.env.SMTP_FROM,
+    LOGIN: process.env.SMTP_LOGIN,
     PORT: 587,
 }
 

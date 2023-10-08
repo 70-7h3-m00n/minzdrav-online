@@ -12,10 +12,10 @@ export const arrayRouterLinks: ArrayRouterLinks = [
     //     text: 'linkNews',
     //     link: '/news',
     // },
-    // {
-    //     text: 'linkWebinars',
-    //     link: '/webinars',
-    // },
+    {
+        text: 'linkWebinars',
+        link: '/webinars',
+    },
     {
         text: 'groupLinkUniversity',
         link: '/about-university',

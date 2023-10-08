@@ -1,0 +1,56 @@
+@use 'src/styles/mixin/text';
+
+.block {
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.headerBlock {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.fragment {
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 66px;
+
+    @media screen and (max-width: 768px) {
+        width: 70px;
+        margin-right: 20px;
+    }
+}
+
+.headerText {
+    @include text.text-card-link;
+
+    margin: 0;
+    width: calc(100% - 100px - 66px);
+
+    @media screen and (max-width: 768px) {
+        width: calc(100% - 70px - 20px);
+    }
+
+    @media screen and (max-width: 576px) {
+    }
+}
+
+.wrapperToggle {
+    display: flex;
+    align-items: center;
+
+    div {
+        margin-right: 20px;
+    }
+}
+
+.description {
+    p {
+        @include text.text-btn-form;
+    }
+}

@@ -1,0 +1,32 @@
+@use 'src/styles/mixin/text';
+
+.programBlock {
+    max-width: 50%;
+
+    @media screen and (max-width: 1400px) {
+        max-width: 100%;
+    }
+}
+
+.listPrograms {
+    margin-top: 30px;
+}
+
+.itemProgram {
+    display: flex;
+    margin-top: 15px;
+}
+
+.fragment {
+    width: 10px;
+    height: 20px;
+    border-radius: 10px;
+    background: #3d3bff;
+    margin-right: 20px;
+}
+
+.textProgram {
+    @include text.text-btn-form;
+    margin: 0;
+    width: calc(100% - 30px);
+}

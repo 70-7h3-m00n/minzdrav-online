@@ -32,7 +32,7 @@ const Webinars: NextPage<PageWebinarsProps> = ({ webinars }) => {
 
         setDataWebinars([...webinars])
     }
-    console.log(dataWebinars)
+
     return (
         <div className={styles.page}>
             <section className={'container'}>

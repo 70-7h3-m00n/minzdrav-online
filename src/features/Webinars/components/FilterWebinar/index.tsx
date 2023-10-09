@@ -10,6 +10,7 @@ interface Props {
 
 const FilterWebinars = ({ data, onDataWebinar }: Props) => {
     const [filterWebinars, setFilterWebinars] = useState('allCategory')
+
     const { t } = useTranslation()
 
     const category = [
@@ -30,7 +31,10 @@ const FilterWebinars = ({ data, onDataWebinar }: Props) => {
                 {category.map((item, index) => (
                     <div
                         className={filterWebinars !== item ? styles.btnCategory : styles.btnActive}
-                        onClick={() => onDataWebinar(item)}
+                        onClick={() => {
+                            onDataWebinar(item)
+                            setFilterWebinars(item)
+                        }}
                         key={index}
                     >
                         {t(item)}

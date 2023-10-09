@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styles from '@/styles/pages-styles/Webinars.module.scss'
 import { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -6,7 +6,7 @@ import getFilesName from '@/src/helper/getFilesName'
 import FilterWebinars from '@/src/features/Webinars/components/FilterWebinar'
 import fetchWebinars from '@/src/api/fetchWebinars'
 import WebinarSchedule from '@/src/features/Webinars/components/WebinarSchedule'
-import {useRouter} from "next/router";
+import { useRouter } from 'next/router'
 
 interface PageWebinarsProps {
     webinars: Awaited<ReturnType<typeof fetchWebinars>>

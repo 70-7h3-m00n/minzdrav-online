@@ -127,6 +127,7 @@
 
     img {
         border-radius: 10px;
+        object-position: top;
     }
 
     @media screen and (max-width: 576px) {
@@ -297,7 +298,7 @@
             margin-bottom: 40px;
             margin-top: 0;
             padding: 10px 0;
-			border: none;
+            border: none;
         }
 
         .blockImage {
@@ -353,6 +354,7 @@
 
     img {
         border-radius: 10px;
+        object-position: top;
     }
 
     @media screen and (max-width: 992px) {

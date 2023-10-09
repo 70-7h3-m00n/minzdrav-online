@@ -216,7 +216,9 @@ const PageWebinar = ({ webinar }: Props) => {
                                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                 />
 
-                                <div className={styles.timeText} suppressHydrationWarning>{RuData.format(timeWebinar)} Мск</div>
+                                <div className={styles.timeText} suppressHydrationWarning>
+                                    {RuData.format(timeWebinar)} Мск
+                                </div>
                             </div>
                         </div>
 
@@ -247,7 +249,12 @@ const PageWebinar = ({ webinar }: Props) => {
 
                 <div className={styles.wrapperAccordion}>
                     {webinar?.FAQ.map(item => (
-                        <AccordionWebinar colorFragment={color} header={item.header} description={item.description} key={item.id} />
+                        <AccordionWebinar
+                            colorFragment={color}
+                            header={item.header}
+                            description={item.description}
+                            key={item.id}
+                        />
                     ))}
                 </div>
             </section>

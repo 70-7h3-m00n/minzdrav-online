@@ -2,8 +2,8 @@ import BgFon from '@/public/images/popUpBg.png'
 import Image from 'next/image'
 import styles from './styles.module.scss'
 import Modal from '@/src/components/Modal/index'
-import {useState} from "react";
-import FormWebinar from "@/src/features/Webinars/components/FormWebinar";
+import { useState } from 'react'
+import FormWebinar from '@/src/features/Webinars/components/FormWebinar'
 
 const PopUpWebinar = () => {
     const [open, setOpen] = useState(false)
@@ -17,7 +17,9 @@ const PopUpWebinar = () => {
                     За 2 часа вебинара вы получите много практических знаний, который сможете сразу же начать применять
                 </p>
 
-                <button className={styles.btn} onClick={() => setOpen(true)}>Получить новые навыки</button>
+                <button className={styles.btn} onClick={() => setOpen(true)}>
+                    Получить новые навыки
+                </button>
             </div>
             <Image src={BgFon} alt={'bg'} className={styles.bgImage} />
 

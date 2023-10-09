@@ -7,7 +7,6 @@ interface Props {
 }
 
 const WebinarSchedule = ({ data }: Props) => {
-
     return (
         <div className={styles.webinarSchedule}>
             <h2 className={'header'}>График вебинаров</h2>

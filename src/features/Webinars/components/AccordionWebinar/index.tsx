@@ -14,7 +14,7 @@ const AccordionWebinar = ({ header, description, colorFragment }: Props) => {
     return (
         <div className={styles.block}>
             <div className={styles.headerBlock} onClick={() => setOpen(!open)}>
-                <div className={styles.fragment} style={{backgroundColor: colorFragment}} />
+                <div className={styles.fragment} style={{ backgroundColor: colorFragment }} />
 
                 <p className={styles.headerText}>{header}</p>
 

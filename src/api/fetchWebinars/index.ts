@@ -4,13 +4,16 @@ import { routerApi } from '@/src/config/routerApi'
 import { IWebinarData } from '@/src/api/fetchWebinars/types'
 
 export const fetchWebinars = async (locale: string, filter: string = 'allCategory') => {
-    const category = filter !== 'allCategory'? {
-        $eq: filter,
-    }: undefined
+    const category =
+        filter !== 'allCategory'
+            ? {
+                  $eq: filter,
+              }
+            : undefined
 
     const query = qs.stringify({
         filters: {
-            category
+            category,
         },
         sort: ['startTime'],
         fields: ['slug', 'description', 'speaker', 'startTime', 'category'],

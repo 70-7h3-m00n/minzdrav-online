@@ -2,9 +2,9 @@
     width: 450px;
     cursor: pointer;
 
-	@media screen and (max-width: 576px) {
-		width: 100%;
-	}
+    @media screen and (max-width: 576px) {
+        width: 100%;
+    }
 }
 
 .wrapperImage {
@@ -14,9 +14,9 @@
     border-radius: 10px;
     overflow: hidden;
 
-	@media screen and (max-width: 576px) {
-		width: 100%;
-	}
+    @media screen and (max-width: 576px) {
+        width: 100%;
+    }
 }
 
 .categoryCard {
@@ -47,9 +47,9 @@
     font-weight: 400;
     line-height: normal;
 
-	@media screen and (max-width: 576px) {
-		font-size: 16px;
-	}
+    @media screen and (max-width: 576px) {
+        font-size: 16px;
+    }
 }
 
 .timeWebinar {
@@ -59,7 +59,7 @@
     font-weight: 400;
     line-height: normal;
 
-	@media screen and (max-width: 576px) {
-		font-size: 14px;
-	}
+    @media screen and (max-width: 576px) {
+        font-size: 14px;
+    }
 }

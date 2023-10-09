@@ -1,7 +1,7 @@
 import styles from './styles.module.scss'
 import { Webinar } from '@/src/api/fetchWebinars/types'
 import { useTranslation } from 'next-i18next'
-import {useState} from "react";
+import { useState } from 'react'
 
 interface Props {
     data: Array<Webinar> | undefined

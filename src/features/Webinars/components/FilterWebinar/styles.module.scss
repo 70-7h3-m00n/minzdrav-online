@@ -4,19 +4,19 @@
     padding: 18px 62px;
     color: white;
 
-	@media screen and (max-width: 768px) {
-		padding: 15px 30px;
-	}
+    @media screen and (max-width: 768px) {
+        padding: 15px 30px;
+    }
 
-	@media screen and (max-width: 576px) {
-		padding: 15px;
-	}
+    @media screen and (max-width: 576px) {
+        padding: 15px;
+    }
 }
 
 .wrapperCategory {
     display: flex;
-	flex-wrap: wrap;
-	gap: 10px 20px;
+    flex-wrap: wrap;
+    gap: 10px 20px;
 }
 
 .btnCategory,

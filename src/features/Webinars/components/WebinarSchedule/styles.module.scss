@@ -5,9 +5,9 @@
 .wrapperCardWebinars {
     display: flex;
     gap: 20px;
-	flex-wrap: wrap;
+    flex-wrap: wrap;
 
-	@media screen and (max-width: 992px) {
-		justify-content: center;
-	}
+    @media screen and (max-width: 992px) {
+        justify-content: center;
+    }
 }

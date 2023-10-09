@@ -1,14 +1,15 @@
-import { observer } from 'mobx-react-lite'
 import styles from './styles.module.scss'
 import { Webinar } from '@/src/api/fetchWebinars/types'
 import { useTranslation } from 'next-i18next'
-import { filterWebinars } from '@/src/features/Webinars/store/FilterWebinars'
+import {useState} from "react";
 
 interface Props {
     data: Array<Webinar> | undefined
+    onDataWebinar(filter: string): Promise<void>
 }
 
-const FilterWebinars = ({ data }: Props) => {
+const FilterWebinars = ({ data, onDataWebinar }: Props) => {
+    const [filterWebinars, setFilterWebinars] = useState('allCategory')
     const { t } = useTranslation()
 
     const category = [
@@ -28,8 +29,8 @@ const FilterWebinars = ({ data }: Props) => {
             <div className={styles.wrapperCategory}>
                 {category.map((item, index) => (
                     <div
-                        className={filterWebinars.filter !== item ? styles.btnCategory : styles.btnActive}
-                        onClick={() => filterWebinars.setFilterWebinar(item)}
+                        className={filterWebinars !== item ? styles.btnCategory : styles.btnActive}
+                        onClick={() => onDataWebinar(item)}
                         key={index}
                     >
                         {t(item)}
@@ -40,4 +41,4 @@ const FilterWebinars = ({ data }: Props) => {
     )
 }
 
-export default observer(FilterWebinars)
+export default FilterWebinars

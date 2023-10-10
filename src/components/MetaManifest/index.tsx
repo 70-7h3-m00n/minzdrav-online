@@ -13,6 +13,8 @@ const MetaManifest = () => {
             <meta name='msapplication-tap-highlight' content='no' />
 
             <meta name={'yandex-verification'} content={'9ff11531d063e792'} />
+            <meta name={'google-site-verification'} content={'googlebbb923b6cf6cacde'} />
+
             <link rel='apple-touch-icon' sizes='180x180' href='/assets/imgs/icons/apple-icon-180.png' />
 
             <link rel='manifest' href='/manifest.json' />

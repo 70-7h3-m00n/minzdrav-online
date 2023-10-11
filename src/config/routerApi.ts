@@ -10,6 +10,7 @@ interface RouterApi {
         licenses: string
         licensesDocs: string
         reviews: string
+        webinars: string
     }
 }
 interface RouteDomainFront {
@@ -37,9 +38,16 @@ export const routerApi: RouterApi = {
         licenses: '/licenses',
         licensesDocs: '/licenses-docs',
         reviews: '/reviews',
+        webinars: '/webinars',
     },
 }
 
-export const routerFront = {
+interface RouterFront {
+    root: string
+    webinar: string
+}
+
+export const routerFront: RouterFront = {
     root: `${routeDomainFront.root}/api/lead`,
+    webinar: `${routeDomainFront.root}/api/webinar`,
 }

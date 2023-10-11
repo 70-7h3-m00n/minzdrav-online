@@ -7,8 +7,8 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { motion } from 'framer-motion'
 import { animation } from '@/src/components/BurgerMenu/animation'
-import SvgClose from '@/src/components-svg/close'
-import SvgBurger from '@/src/components-svg/burger'
+import SvgClose from '@/src/components-svg/Close'
+import SvgBurger from '@/src/components-svg/Burger'
 
 const BurgerMenu = () => {
     const { t } = useTranslation()

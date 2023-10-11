@@ -1,5 +1,5 @@
 import styles from './style.module.scss'
-import SearchIcon from '@/src/components-svg/search'
+import SearchIcon from '@/src/components-svg/Search'
 import { filterCourseStore } from '@/src/features/ToggleDirection/store/FilterCourse'
 
 const Search = (): JSX.Element => {

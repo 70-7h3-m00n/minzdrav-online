@@ -1,0 +1,13 @@
+.webinarSchedule {
+    margin: 20px 0;
+}
+
+.wrapperCardWebinars {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 992px) {
+        justify-content: center;
+    }
+}

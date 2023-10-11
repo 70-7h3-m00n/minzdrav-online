@@ -3,8 +3,8 @@ import styles from './styles.module.scss'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import imagePsych from '@/public/images/brains.png'
-import ArrowUp from '@/src/components-svg/arrowUp'
-import ArrowDown from '@/src/components-svg/arrowDown'
+import ArrowUp from '@/src/components-svg/ArrowUp'
+import ArrowDown from '@/src/components-svg/ArrowDown'
 
 interface AccordionSkillsProps {
     color: string

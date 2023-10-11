@@ -1,0 +1,100 @@
+@use 'src/styles/mixin/text';
+@use 'src/styles/variables/color';
+
+.formWrapper {
+    width: 505px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #fff;
+    padding: 50px 60px;
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 20px;
+        margin-bottom: 50px;
+    }
+}
+
+.header {
+    @include text.text-header;
+
+    margin: 0;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+
+    .descrTextValid {
+        @include text.text-extra-small;
+
+        color: color.$is-valid-color;
+        height: 13px;
+    }
+
+    .input,
+    .valid {
+        @include text.text-input;
+
+        background: color.$background-input;
+        border-radius: 10px;
+        border: 1px solid #e4e4e4;
+        padding: 18px 20px;
+        outline: none;
+        color: color.$general;
+        width: 100%;
+    }
+
+    .valid {
+        border: 1px solid color.$is-valid-color;
+
+        &::placeholder {
+            color: color.$is-valid-color;
+        }
+    }
+}
+
+.btn,
+.disabled {
+    @include text.text-btn-form;
+
+    width: 100%;
+    margin-top: 36px;
+    border-radius: 12px;
+    background: #3d3bff;
+    padding: 18px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+
+    @media screen and (max-width: 576px) {
+        width: 100%;
+        padding: 15px 25px;
+    }
+}
+
+.disabled {
+    background: color.$background-btn-form-disabled;
+    cursor: auto;
+}
+
+.textPersonalData {
+    @include text.text-extra-small;
+
+    margin-top: 32px;
+    color: color.$general;
+
+    a {
+        @include text.text-extra-small;
+        color: color.$general;
+    }
+
+    @media screen and (max-width: 576px) {
+        margin: 20px 0 0 0;
+    }
+}

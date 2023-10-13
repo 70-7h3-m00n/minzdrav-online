@@ -20,6 +20,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
             webinars,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
+        revalidate: 60,
     }
 }
 

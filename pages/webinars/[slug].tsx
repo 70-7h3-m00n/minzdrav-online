@@ -16,19 +16,23 @@ import FormImage from '@/public/images/formInfo.png'
 import RoundTick from '@/src/components-svg/RoundTick'
 import PopUpWebinar from '@/src/features/Webinars/components/PopUpWebinar'
 import FormWebinar from '@/src/features/Webinars/components/FormWebinar'
+import ButtonScroll from '@/src/components/ToScrollElement'
+import ToScrollElement from '@/src/components/ToScrollElement'
 
 interface Props {
     webinar: Awaited<ReturnType<typeof fetchWebinar>>
 }
 
+const RuData = new Intl.DateTimeFormat('ru', {
+    day: 'numeric',
+    month: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+})
+
 const PageWebinar = ({ webinar }: Props) => {
     const timeWebinar = new Date(webinar!.startTime)
-    const RuData = new Intl.DateTimeFormat('ru', {
-        day: 'numeric',
-        month: 'long',
-        hour: 'numeric',
-        minute: 'numeric',
-    })
+    const idFormBlock = 'formBlockWebinar'
 
     const color = colorCategory.filter(item => item.category === webinar!.category)[0].color
 
@@ -101,10 +105,11 @@ const PageWebinar = ({ webinar }: Props) => {
                                 </div>
                             ))}
                         </div>
-
-                        <button className={styles.btnBook} style={{ color }}>
-                            Забронировать место
-                        </button>
+                        <ToScrollElement idElement={idFormBlock}>
+                            <button className={styles.btnBook} style={{ color }}>
+                                Забронировать место
+                            </button>
+                        </ToScrollElement>
                     </div>
 
                     <div className={styles.desktop} style={{ position: 'relative' }}>
@@ -203,7 +208,7 @@ const PageWebinar = ({ webinar }: Props) => {
             </section>
 
             <section style={{ backgroundColor: color }}>
-                <div className={classNames(['container', styles.formBlock])}>
+                <div id={idFormBlock} className={classNames(['container', styles.formBlock])}>
                     <div>
                         <div className={styles.availabilityBlock}>
                             <div className={styles.availability}>Открытый вебинар</div>

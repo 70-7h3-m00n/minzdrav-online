@@ -4,12 +4,13 @@ import CardWebinar from '@/src/features/Webinars/components/CardWebinar'
 
 interface Props {
     data: Array<Webinar> | undefined
+    header: string
 }
 
-const WebinarSchedule = ({ data }: Props) => {
+const ShowWebinar = ({ data, header }: Props) => {
     return (
         <div className={styles.webinarSchedule}>
-            <h2 className={'header'}>График вебинаров</h2>
+            <h2 className={'header'}>{header}</h2>
 
             <div className={styles.wrapperCardWebinars}>
                 {data!.map((webinar, index) => (
@@ -20,4 +21,4 @@ const WebinarSchedule = ({ data }: Props) => {
     )
 }
 
-export default WebinarSchedule
+export default ShowWebinar

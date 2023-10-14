@@ -1,22 +1,30 @@
 import qs from 'qs'
 import fetcherGet from '@/src/helper/fetcher'
 import { routerApi } from '@/src/config/routerApi'
-import { IWebinarData } from '@/src/api/fetchWebinars/types'
+import { IWebinarData, Webinar } from '@/src/api/fetchWebinars/types'
 
-export const fetchWebinars = async (locale: string, filter: string = 'allCategory') => {
-    const timeFilter = new Date()
-    const category =
-        filter !== 'allCategory'
-            ? {
-                  $eq: filter,
-              }
-            : undefined
+interface FetchWebinars {
+    locale: string
+    filter?: string
+    timeFilter?: boolean
+    timer?: number
+}
+
+export const fetchWebinars = async ({
+    locale,
+    filter = 'allCategory',
+    timeFilter = true,
+    timer = 0,
+}: FetchWebinars): Promise<Webinar[] | []> => {
+    const currentDate = new Date()
+    const futureDate = new Date(timeFilter ? currentDate.getTime() + timer : currentDate.getTime() - timer)
+
+    const startTime = timeFilter ? { $gt: futureDate.toISOString() } : { $lt: futureDate.toISOString() }
+    const category = filter !== 'allCategory' ? { $eq: filter } : undefined
 
     const query = qs.stringify({
         filters: {
-            startTime: {
-                $gt: timeFilter.toISOString(),
-            },
+            startTime,
             category,
         },
         sort: ['startTime'],
@@ -29,7 +37,7 @@ export const fetchWebinars = async (locale: string, filter: string = 'allCategor
         locale,
     })
     const res = await fetcherGet<IWebinarData>(`${routerApi.root}${routerApi.router.webinars}?${query}`)
-    return res?.data || []
+    return res !== null ? res.data : []
 }
 
 export default fetchWebinars

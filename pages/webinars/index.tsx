@@ -5,41 +5,49 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getFilesName from '@/src/helper/getFilesName'
 import FilterWebinars from '@/src/features/Webinars/components/FilterWebinar'
 import fetchWebinars from '@/src/api/fetchWebinars'
-import WebinarSchedule from '@/src/features/Webinars/components/WebinarSchedule'
+import ShowWebinar from '@/src/features/Webinars/components/ShowWebinar'
 import { useRouter } from 'next/router'
 
 interface PageWebinarsProps {
-    webinars: Awaited<ReturnType<typeof fetchWebinars>>
+    webinarsNotStarted: Awaited<ReturnType<typeof fetchWebinars>>
+    webinarsIsOver: Awaited<ReturnType<typeof fetchWebinars>>
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const webinars = await fetchWebinars(locale!)
+    const webinarsNotStarted = await fetchWebinars({ locale: locale! })
+    const webinarsIsOver = await fetchWebinars({ locale: locale!, timeFilter: false })
 
     return {
         props: {
-            webinars,
+            webinarsNotStarted,
+            webinarsIsOver,
             ...(await serverSideTranslations(locale!, getFilesName('public/locales/ru'))),
         },
         revalidate: 60,
     }
 }
 
-const Webinars: NextPage<PageWebinarsProps> = ({ webinars }) => {
-    const [dataWebinars, setDataWebinars] = useState(webinars)
-    const route = useRouter().locale
+const Webinars: NextPage<PageWebinarsProps> = ({ webinarsNotStarted, webinarsIsOver }) => {
+    const [dataWebinarsNotStarted, setDataWebinarsNotStarted] = useState(webinarsNotStarted)
+    const [dataWebinarsIsOver, setDataWebinarsIsOver] = useState(webinarsIsOver)
+    const locale = useRouter().locale!
 
     const onDataWebinar = async (filter: string) => {
-        const webinars = await fetchWebinars(route!, filter)
+        const newWebinarsNotStarted = await fetchWebinars({ locale, filter })
+        const newWebinarsIsOver = await fetchWebinars({ locale: locale!, filter, timeFilter: false })
 
-        setDataWebinars([...webinars])
+        setDataWebinarsNotStarted([...newWebinarsNotStarted])
+        setDataWebinarsIsOver([...newWebinarsIsOver])
     }
 
     return (
         <div className={styles.page}>
             <section className={'container'}>
-                <FilterWebinars data={webinars} onDataWebinar={onDataWebinar} />
+                <FilterWebinars data={[webinarsNotStarted, webinarsIsOver].flat(1)} onDataWebinar={onDataWebinar} />
 
-                <WebinarSchedule data={dataWebinars} />
+                <ShowWebinar data={dataWebinarsNotStarted} header={'График вебинаров'} />
+
+                <ShowWebinar data={dataWebinarsIsOver} header={'Прошедшие вебинары'} />
             </section>
         </div>
     )

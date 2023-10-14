@@ -11,7 +11,10 @@ interface Props {
 
 const CardWebinar = ({ data }: Props) => {
     const route = useRouter()
+    const currentData = new Date()
     const timeWebinar = new Date(data.startTime)
+    const showButton = currentData.getTime() < timeWebinar.getTime()
+
     const color = colorCategory.filter(item => item.category === data.category)[0].color
 
     return (
@@ -36,8 +39,7 @@ const CardWebinar = ({ data }: Props) => {
                         objectFit: 'cover',
                     }}
                 />
-
-                <button className={styles.btnCard}>Принять участие</button>
+                {showButton ? <button className={styles.btnCard}>Принять участие</button> : <></>}
             </div>
 
             <p className={styles.titleCard}>{data.description}</p>

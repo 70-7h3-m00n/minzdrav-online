@@ -33,6 +33,8 @@ import OpenImage from '@/src/components/OpenImage'
 import fetchRecommendedPrograms from '@/src/api/fetchRecommendedPrograms'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
 import PopUpForm from '@/src/features/FormApplication/components/PopUpForm'
+import { Head } from 'next/document'
+import { useRouter } from 'next/router'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -60,6 +62,7 @@ interface DataPrice {
 }
 
 function PageCourse({ course, partnerData, licenses, relatedCourses }: PageCourseProps): JSX.Element {
+    const router = useRouter()
     const { t } = useTranslation()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
@@ -140,6 +143,7 @@ function PageCourse({ course, partnerData, licenses, relatedCourses }: PageCours
             <NextSeo
                 title={seoTitle}
                 description={truncate(seoDescription, 120)}
+                canonical={router.asPath.split('?')[0]}
                 openGraph={{
                     title: seoTitle,
                     description: truncate(seoDescription, 120),

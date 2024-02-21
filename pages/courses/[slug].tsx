@@ -33,8 +33,8 @@ import OpenImage from '@/src/components/OpenImage'
 import fetchRecommendedPrograms from '@/src/api/fetchRecommendedPrograms'
 import CardCourse from '@/src/features/ToggleDirection/components/CardCourse'
 import PopUpForm from '@/src/features/FormApplication/components/PopUpForm'
-import { Head } from 'next/document'
 import { useRouter } from 'next/router'
+import dev from '@/src/config/dev'
 
 interface PageCourseProps {
     course: Awaited<ReturnType<typeof fetchCourse>>
@@ -138,12 +138,14 @@ function PageCourse({ course, partnerData, licenses, relatedCourses }: PageCours
 
     const viewSkillsBlock = arrayListSkills.filter(item => !item.view).length === arrayListSkills.length
 
+    const canonicalUrl = `${dev ? 'http://localhost:5000' : 'https://api.minzdrav.online'}/courses/${course.pathCourse}`
+
     return (
         <>
             <NextSeo
                 title={seoTitle}
                 description={truncate(seoDescription, 120)}
-                canonical={router.asPath.split('?')[0]}
+                canonical={canonicalUrl}
                 openGraph={{
                     title: seoTitle,
                     description: truncate(seoDescription, 120),

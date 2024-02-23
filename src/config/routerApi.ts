@@ -26,6 +26,7 @@ export const routeDomainFront: RouteDomainFront = {
 
 export const routeDomainBack: RouteDomainBack = {
     // root: dev ? 'http://localhost:5000' : 'https://api.minzdrav.online',
+
     root: 'https://api.minzdrav.online',
 }
 
